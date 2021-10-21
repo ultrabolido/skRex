@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Data at A9AF</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-b">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Data</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43285.html">A915</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43439">Map</a></td>
+<td class="next">
+Next: <a href="43468.html">A9CC</a>
+</td>
+</tr>
+</table>
+<div class="description">A9AF: Table of position and graphic offset for missile trajectory</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Every pair of bytes contains the y-offset and graphic offset to compute the missile trajectory and the graphic of the missile. The byte $1E is an end marker Byte $0C of projectile configuration buffer contains the index to this table
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43439"></span>A9AF</td>
+<td class="instruction">DEFB $FB,$00,$FC,$00,$FD,$04,$FE,$04</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43447"></span>A9B7</td>
+<td class="instruction">DEFB $FF,$04,$00,$08,$01,$08,$02,$0C</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43455"></span>A9BF</td>
+<td class="instruction">DEFB $03,$0C,$04,$10,$05,$10,$06,$14</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43463"></span>A9C7</td>
+<td class="instruction">DEFB $07,$14,$08,$14,$1E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43285.html">A915</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43439">Map</a></td>
+<td class="next">
+Next: <a href="43468.html">A9CC</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

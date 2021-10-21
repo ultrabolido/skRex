@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A4E7</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42090.html">A46A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42215">Map</a></td>
+<td class="next">
+Next: <a href="42228.html">A4F4</a>
+</td>
+</tr>
+</table>
+<div class="description">A4E7: Pause game</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42215"></span>A4E7</td>
+<td class="instruction">CALL <a href="54743.html">$D5D7</a></td>
+<td class="comment-1" rowspan="1">Reset sound volume chanels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42218"></span>A4EA</td>
+<td class="instruction">CALL <a href="42090.html#42103">$A477</a></td>
+<td class="comment-1" rowspan="1">Check for FIRE key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42221"></span>A4ED</td>
+<td class="instruction">JP NZ,$A4E7</td>
+<td class="comment-1" rowspan="1">Jump back if key not pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42224"></span>A4F0</td>
+<td class="instruction">CALL <a href="54702.html">$D5AE</a></td>
+<td class="comment-1" rowspan="1">Reset sound data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42227"></span>A4F3</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42090.html">A46A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42215">Map</a></td>
+<td class="next">
+Next: <a href="42228.html">A4F4</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

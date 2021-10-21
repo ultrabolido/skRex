@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Data at B133</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-b">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Data</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44749.html">AECD</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45363">Map</a></td>
+<td class="next">
+Next: <a href="45573.html">B205</a>
+</td>
+</tr>
+</table>
+<div class="description">B133: Room directions and enemy pointers</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Every room spans 6 bytes. The first four bytes indicates the connections of the room (top, left, bottom and right). A value of $00 indicates no room connection <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Content</th>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$00</td>
+<td class="" colspan="1" rowspan="1">Top room</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$01</td>
+<td class="" colspan="1" rowspan="1">Right room</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$02</td>
+<td class="" colspan="1" rowspan="1">Bottom room</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$03</td>
+<td class="" colspan="1" rowspan="1">Left room</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$04 - $05</td>
+<td class="" colspan="1" rowspan="1">Address pointer for enemy configuration on this room</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45363"></span>B133</td>
+<td class="instruction">DEFB $00,$01,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45367"></span>B137</td>
+<td class="instruction">DEFW <a href="44749.html">$AECD</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45369"></span>B139</td>
+<td class="instruction">DEFB $00,$0F,$02,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45373"></span>B13D</td>
+<td class="instruction">DEFW <a href="44749.html#44756">$AED4</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45375"></span>B13F</td>
+<td class="instruction">DEFB $00,$03,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45379"></span>B143</td>
+<td class="instruction">DEFW <a href="44749.html#44772">$AEE4</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45381"></span>B145</td>
+<td class="instruction">DEFB $00,$04,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45385"></span>B149</td>
+<td class="instruction">DEFW <a href="44749.html#44782">$AEEE</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45387"></span>B14B</td>
+<td class="instruction">DEFB $00,$05,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45391"></span>B14F</td>
+<td class="instruction">DEFW <a href="44749.html#44804">$AF04</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45393"></span>B151</td>
+<td class="instruction">DEFB $00,$06,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45397"></span>B155</td>
+<td class="instruction">DEFW <a href="44749.html#44829">$AF1D</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45399"></span>B157</td>
+<td class="instruction">DEFB $00,$07,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45403"></span>B15B</td>
+<td class="instruction">DEFW <a href="44749.html#44860">$AF3C</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45405"></span>B15D</td>
+<td class="instruction">DEFB $08,$14,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45409"></span>B161</td>
+<td class="instruction">DEFW <a href="44749.html#44873">$AF49</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45411"></span>B163</td>
+<td class="instruction">DEFB $09,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45415"></span>B167</td>
+<td class="instruction">DEFW <a href="44749.html#44895">$AF5F</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45417"></span>B169</td>
+<td class="instruction">DEFB $00,$00,$00,$0A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45421"></span>B16D</td>
+<td class="instruction">DEFW <a href="44749.html#44905">$AF69</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45423"></span>B16F</td>
+<td class="instruction">DEFB $00,$00,$00,$0B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45427"></span>B173</td>
+<td class="instruction">DEFW <a href="44749.html#44930">$AF82</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45429"></span>B175</td>
+<td class="instruction">DEFB $00,$00,$00,$0C</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45433"></span>B179</td>
+<td class="instruction">DEFW <a href="44749.html#44937">$AF89</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45435"></span>B17B</td>
+<td class="instruction">DEFB $00,$00,$00,$0D</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45439"></span>B17F</td>
+<td class="instruction">DEFW <a href="44749.html#44947">$AF93</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45441"></span>B181</td>
+<td class="instruction">DEFB $11,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45445"></span>B185</td>
+<td class="instruction">DEFW <a href="44749.html#44972">$AFAC</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45447"></span>B187</td>
+<td class="instruction">DEFB $1E,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45451"></span>B18B</td>
+<td class="instruction">DEFW <a href="44749.html#44991">$AFBF</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45453"></span>B18D</td>
+<td class="instruction">DEFB $00,$10,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45457"></span>B191</td>
+<td class="instruction">DEFW <a href="44749.html#45022">$AFDE</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45459"></span>B193</td>
+<td class="instruction">DEFB $00,$00,$04,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45463"></span>B197</td>
+<td class="instruction">DEFW <a href="44749.html#45038">$AFEE</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45465"></span>B199</td>
+<td class="instruction">DEFB $00,$12,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45469"></span>B19D</td>
+<td class="instruction">DEFW <a href="44749.html#45045">$AFF5</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45471"></span>B19F</td>
+<td class="instruction">DEFB $00,$13,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45475"></span>B1A3</td>
+<td class="instruction">DEFW <a href="44749.html#45058">$B002</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45477"></span>B1A5</td>
+<td class="instruction">DEFB $1C,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45481"></span>B1A9</td>
+<td class="instruction">DEFW <a href="44749.html#45077">$B015</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45483"></span>B1AB</td>
+<td class="instruction">DEFB $18,$15,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45487"></span>B1AF</td>
+<td class="instruction">DEFW <a href="44749.html#45102">$B02E</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45489"></span>B1B1</td>
+<td class="instruction">DEFB $16,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45493"></span>B1B5</td>
+<td class="instruction">DEFW <a href="44749.html#45112">$B038</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45495"></span>B1B7</td>
+<td class="instruction">DEFB $17,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45499"></span>B1BB</td>
+<td class="instruction">DEFW <a href="44749.html#45134">$B04E</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45501"></span>B1BD</td>
+<td class="instruction">DEFB $00,$00,$00,$19</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45505"></span>B1C1</td>
+<td class="instruction">DEFW <a href="44749.html#45150">$B05E</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45507"></span>B1C3</td>
+<td class="instruction">DEFB $19,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45511"></span>B1C7</td>
+<td class="instruction">DEFW <a href="44749.html#45160">$B068</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45513"></span>B1C9</td>
+<td class="instruction">DEFB $00,$00,$00,$09</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45517"></span>B1CD</td>
+<td class="instruction">DEFW <a href="44749.html#45170">$B072</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45519"></span>B1CF</td>
+<td class="instruction">DEFB $00,$00,$00,$0E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45523"></span>B1D3</td>
+<td class="instruction">DEFW <a href="44749.html#45177">$B079</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45525"></span>B1D5</td>
+<td class="instruction">DEFB $00,$00,$00,$1A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45529"></span>B1D9</td>
+<td class="instruction">DEFW <a href="44749.html#45202">$B092</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45531"></span>B1DB</td>
+<td class="instruction">DEFB $00,$1D,$00,$1B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45535"></span>B1DF</td>
+<td class="instruction">DEFW <a href="44749.html#45215">$B09F</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45537"></span>B1E1</td>
+<td class="instruction">DEFB $22,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45541"></span>B1E5</td>
+<td class="instruction">DEFW <a href="44749.html#45231">$B0AF</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45543"></span>B1E7</td>
+<td class="instruction">DEFB $00,$1F,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45547"></span>B1EB</td>
+<td class="instruction">DEFW <a href="44749.html#45253">$B0C5</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45549"></span>B1ED</td>
+<td class="instruction">DEFB $63,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45553"></span>B1F1</td>
+<td class="instruction">DEFW <a href="44749.html#45272">$B0D8</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45555"></span>B1F3</td>
+<td class="instruction">DEFB $00,$00,$00,$1F</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45559"></span>B1F7</td>
+<td class="instruction">DEFW <a href="44749.html#45294">$B0EE</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45561"></span>B1F9</td>
+<td class="instruction">DEFB $00,$00,$00,$20</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45565"></span>B1FD</td>
+<td class="instruction">DEFW <a href="44749.html#45319">$B107</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45567"></span>B1FF</td>
+<td class="instruction">DEFB $00,$00,$00,$21</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45571"></span>B203</td>
+<td class="instruction">DEFW <a href="44749.html#45338">$B11A</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44749.html">AECD</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45363">Map</a></td>
+<td class="next">
+Next: <a href="45573.html">B205</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

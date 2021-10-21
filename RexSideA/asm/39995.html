@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 9C3B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39947.html">9C0B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39995">Map</a></td>
+<td class="next">
+Next: <a href="40054.html">9C76</a>
+</td>
+</tr>
+</table>
+<div class="description">9C3B: Handle respawn</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="40799.html">9F5F</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39995"></span>9C3B</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment address of tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39996"></span>9C3C</td>
+<td class="instruction">LD A,($A0BB)</td>
+<td class="comment-1" rowspan="3">Jump forward if Rex is facing right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39999"></span>9C3F</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40000"></span>9C40</td>
+<td class="instruction">JP Z,$9C45</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40003"></span>9C43</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="2">Rex is facing left, decrement address into til type buffer to check for tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40004"></span>9C44</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40005"></span>9C45</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Return if tile type is not respawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40006"></span>9C46</td>
+<td class="instruction">CP $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40008"></span>9C48</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40009"></span>9C49</td>
+<td class="instruction">LD DE,$D805</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to point to respawn sound data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40012"></span>9C4C</td>
+<td class="instruction">LD A,($D83A)</td>
+<td class="comment-1" rowspan="3">Configure sound channel and mixer register if sound channel 2 is free</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40015"></span>9C4F</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40017"></span>9C51</td>
+<td class="instruction">CALL Z,<a href="54759.html">$D5E7</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40020"></span>9C54</td>
+<td class="instruction">CALL <a href="42334.html#42423">$A5B7</a></td>
+<td class="comment-1" rowspan="1">Update graphic data of respawn indicators</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40023"></span>9C57</td>
+<td class="instruction">LD A,($A0B6)</td>
+<td class="comment-1" rowspan="4">Return if x-position of Rex bits 2-0 is not 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40026"></span>9C5A</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40028"></span>9C5C</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40030"></span>9C5E</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40031"></span>
+<div class="comments">
+<div class="paragraph">
+save respawn point
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40031"></span>9C5F</td>
+<td class="instruction">LD A,($A0B6)</td>
+<td class="comment-1" rowspan="3">Save fixed grid x-position of Rex into <a href="41049.html">A059</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40034"></span>9C62</td>
+<td class="instruction">AND $F8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40036"></span>9C64</td>
+<td class="instruction">LD ($A059),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40039"></span>9C67</td>
+<td class="instruction">LD A,($A0B7)</td>
+<td class="comment-1" rowspan="3">Save fixed grid y-position of Rex into <a href="41050.html">A05A</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40042"></span>9C6A</td>
+<td class="instruction">AND $F8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40044"></span>9C6C</td>
+<td class="instruction">LD ($A05A),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40047"></span>9C6F</td>
+<td class="instruction">LD A,($A0B8)</td>
+<td class="comment-1" rowspan="2">Save room number into <a href="41051.html">A05B</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40050"></span>9C72</td>
+<td class="instruction">LD ($A05B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40053"></span>9C75</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39947.html">9C0B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39995">Map</a></td>
+<td class="next">
+Next: <a href="40054.html">9C76</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

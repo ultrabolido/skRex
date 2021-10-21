@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 9C76</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39995.html">9C3B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40054">Map</a></td>
+<td class="next">
+Next: <a href="40207.html">9D0F</a>
+</td>
+</tr>
+</table>
+<div class="description">9C76: Handle Rex dead - Resume or finish game</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="39621.html">9AC5</a> and <a href="40450.html#40530">9E52</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40054"></span>9C76</td>
+<td class="instruction">LD A,($A063)</td>
+<td class="comment-1" rowspan="3">Decrement Rex lives</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40057"></span>9C79</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40058"></span>9C7A</td>
+<td class="instruction">LD ($A063),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40061"></span>9C7D</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="2">Jump forward if Rex has no more lives</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40063"></span>9C7F</td>
+<td class="instruction">JP Z,$9CBF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40066"></span>9C82</td>
+<td class="instruction">CALL <a href="39355.html">$99BB</a></td>
+<td class="comment-1" rowspan="1">Draw lives in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40069"></span>9C85</td>
+<td class="instruction">LD A,($A059)</td>
+<td class="comment-1" rowspan="2">Set the x-position of respawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40072"></span>9C88</td>
+<td class="instruction">LD ($A0B6),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40075"></span>9C8B</td>
+<td class="instruction">LD A,($A05A)</td>
+<td class="comment-1" rowspan="2">Set the y-poistion of respawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40078"></span>9C8E</td>
+<td class="instruction">LD ($A0B7),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40081"></span>9C91</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40082"></span>9C92</td>
+<td class="instruction">LD ($A0B3),A</td>
+<td class="comment-1" rowspan="1">Not used</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40085"></span>9C95</td>
+<td class="instruction">LD ($A049),A</td>
+<td class="comment-1" rowspan="1">Set shield inactive</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40088"></span>9C98</td>
+<td class="instruction">LD ($A0BB),A</td>
+<td class="comment-1" rowspan="1">Set face direction to right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40091"></span>9C9B</td>
+<td class="instruction">LD ($A0BD),A</td>
+<td class="comment-1" rowspan="1">Set Rex not jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40094"></span>9C9E</td>
+<td class="instruction">LD ($A091),A</td>
+<td class="comment-1" rowspan="1">Reset falling y-speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40097"></span>9CA1</td>
+<td class="instruction">LD ($A0BC),A</td>
+<td class="comment-1" rowspan="1">Set Rex not falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40100"></span>9CA4</td>
+<td class="instruction">LD ($A055),A</td>
+<td class="comment-1" rowspan="1">Set Rex alive</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40103"></span>9CA7</td>
+<td class="instruction">CALL <a href="40223.html">$9D1F</a></td>
+<td class="comment-1" rowspan="1">Configure data for Rex teleporting when game resume</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40106"></span>9CAA</td>
+<td class="instruction">LD A,($A05B)</td>
+<td class="comment-1" rowspan="4">If current room equals to respawn room jump to draw shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40109"></span>9CAD</td>
+<td class="instruction">LD HL,$A0B8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40112"></span>9CB0</td>
+<td class="instruction">CP (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40113"></span>9CB1</td>
+<td class="instruction">JP Z,$9CBB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40116"></span>9CB4</td>
+<td class="instruction">LD ($A0B8),A</td>
+<td class="comment-1" rowspan="1">Set the new current room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40119"></span>9CB7</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40120"></span>9CB8</td>
+<td class="instruction">JP <a href="38010.html#38275">$9583</a></td>
+<td class="comment-1" rowspan="1">Jump to the main loop for the game</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40123"></span>9CBB</td>
+<td class="instruction">CALL <a href="39418.html">$99FA</a></td>
+<td class="comment-1" rowspan="1">Draw shield power on HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40126"></span>9CBE</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40127"></span>
+<div class="comments">
+<div class="paragraph">
+no more lives
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40127"></span>9CBF</td>
+<td class="instruction">LD DE,($A03E)</td>
+<td class="comment-1" rowspan="6">Set <a href="41099.html">A08B</a> the final score. Final score will be the value initialised on <a href="41099.html">A08B</a> if this value is greater than the actual score on <a href="41022.html">A03E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40131"></span>9CC3</td>
+<td class="instruction">LD HL,($A08B)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40134"></span>9CC6</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40135"></span>9CC7</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40137"></span>9CC9</td>
+<td class="instruction">JP NC,$9CD0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40140"></span>9CCC</td>
+<td class="instruction">LD ($A08B),DE</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40144"></span>9CD0</td>
+<td class="instruction">LD IX,$AAED</td>
+<td class="comment-1" rowspan="3">Show GAME OVER windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40148"></span>9CD4</td>
+<td class="instruction">LD B,$01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40150"></span>9CD6</td>
+<td class="instruction">CALL <a href="41278.html">$A13E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40153"></span>9CD9</td>
+<td class="instruction">LD IX,$AAFA</td>
+<td class="comment-1" rowspan="3">Show HI SCORE windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40157"></span>9CDD</td>
+<td class="instruction">LD B,$01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40159"></span>9CDF</td>
+<td class="instruction">CALL <a href="41278.html">$A13E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40162"></span>9CE2</td>
+<td class="instruction">LD IX,$AB0E</td>
+<td class="comment-1" rowspan="3">Show HUMANS KILLED windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40166"></span>9CE6</td>
+<td class="instruction">LD B,$01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40168"></span>9CE8</td>
+<td class="instruction">CALL <a href="41278.html">$A13E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40171"></span>9CEB</td>
+<td class="instruction">LD HL,($A089)</td>
+<td class="comment-1" rowspan="2">Convert humans killed valur into a list of charcodes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40174"></span>9CEE</td>
+<td class="instruction">CALL <a href="41986.html">$A402</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40177"></span>9CF1</td>
+<td class="instruction">LD E,$1B</td>
+<td class="comment-1" rowspan="4">Draw the number of humans killed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40179"></span>9CF3</td>
+<td class="instruction">LD L,$80</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40181"></span>9CF5</td>
+<td class="instruction">LD B,$05</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40183"></span>9CF7</td>
+<td class="instruction">CALL <a href="41928.html">$A3C8</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40186"></span>9CFA</td>
+<td class="instruction">LD HL,($A08B)</td>
+<td class="comment-1" rowspan="2">Convert the score into a list of charcodes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40189"></span>9CFD</td>
+<td class="instruction">CALL <a href="41986.html">$A402</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40192"></span>9D00</td>
+<td class="instruction">LD E,$14</td>
+<td class="comment-1" rowspan="4">Draw the score into the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40194"></span>9D02</td>
+<td class="instruction">LD L,$60</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40196"></span>9D04</td>
+<td class="instruction">LD B,$05</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40198"></span>9D06</td>
+<td class="instruction">CALL <a href="41928.html">$A3C8</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40201"></span>9D09</td>
+<td class="instruction">CALL <a href="38890.html">$97EA</a></td>
+<td class="comment-1" rowspan="1">Reset sound data and wait for FIRE key press</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40204"></span>9D0C</td>
+<td class="instruction">JP <a href="38010.html#38040">$9498</a></td>
+<td class="comment-1" rowspan="1">Jump to init game</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39995.html">9C3B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40054">Map</a></td>
+<td class="next">
+Next: <a href="40207.html">9D0F</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C05A</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49210.html">C03A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49242">Map</a></td>
+<td class="next">
+Next: <a href="49376.html">C0E0</a>
+</td>
+</tr>
+</table>
+<div class="description">C05A: Handle POD and MINE LAYER</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="50720.html">C620</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49242"></span>C05A</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="3">Jump forward if emeny is not moving up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49245"></span>C05D</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49246"></span>C05E</td>
+<td class="instruction">JP NZ,$C0C4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49249"></span>C061</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Decrement y-position based on speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49252"></span>C064</td>
+<td class="instruction">SUB (IX+$12)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49255"></span>C067</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49258"></span>C06A</td>
+<td class="instruction">CALL <a href="50987.html">$C72B</a></td>
+<td class="comment-1" rowspan="1">Obtain into <span class="register">HL</span> the tile type address pointer under the entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49261"></span>C06D</td>
+<td class="instruction">LD DE,$0040</td>
+<td class="comment-1" rowspan="3">Point <span class="register">HL</span> to the top of the entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49264"></span>C070</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49265"></span>C071</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49267"></span>C073</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="1">Check is tile type is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49270"></span>C076</td>
+<td class="instruction">JP Z,$C0BB</td>
+<td class="comment-1" rowspan="1">Jump if it's a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49273"></span>C079</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49274"></span>C07A</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="1">Check is tile type is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49277"></span>C07D</td>
+<td class="instruction">JP Z,$C0BB</td>
+<td class="comment-1" rowspan="1">Jump if it's a wall</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49280"></span>
+<div class="comments">
+<div class="paragraph">
+check enemy moving beyond bounds
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49280"></span>C080</td>
+<td class="instruction">JP Z,$C0C4</td>
+<td class="comment-1" rowspan="1">never jump!</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49283"></span>C083</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">is y-position less than $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49286"></span>C086</td>
+<td class="instruction">CP $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49288"></span>C088</td>
+<td class="instruction">JP C,$C0BB</td>
+<td class="comment-1" rowspan="1">Jump if so and change enemy state to move down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49291"></span>C08B</td>
+<td class="instruction">CP $A8</td>
+<td class="comment-1" rowspan="1">is y-position greather than $A8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49293"></span>C08D</td>
+<td class="instruction">JP NC,$C0B2</td>
+<td class="comment-1" rowspan="1">Jump if so and change enemy state to move up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49296"></span>C090</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo-random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49299"></span>C093</td>
+<td class="instruction">CP $07</td>
+<td class="comment-1" rowspan="1">random number is less than $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49301"></span>C095</td>
+<td class="instruction">JP C,$C0A9</td>
+<td class="comment-1" rowspan="1">Jump to change direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49304"></span>C098</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="3">return if enemy is a MINE LAYER</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49307"></span>C09B</td>
+<td class="instruction">CP $0D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49309"></span>C09D</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49310"></span>
+<div class="comments">
+<div class="paragraph">
+increment speed for POD
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49310"></span>C09E</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="2">increment speed for POD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49313"></span>C0A1</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49314"></span>C0A2</td>
+<td class="instruction">CP $05</td>
+<td class="comment-1" rowspan="2">if speed is $05 don't increment a return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49316"></span>C0A4</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49317"></span>C0A5</td>
+<td class="instruction">LD (IX+$12),A</td>
+<td class="comment-1" rowspan="1">Set the new speed for the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49320"></span>C0A8</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49321"></span>
+<div class="comments">
+<div class="paragraph">
+change enemy horizontal direction
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49321"></span>C0A9</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="3">change enemy horizontal direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49324"></span>C0AC</td>
+<td class="instruction">XOR $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49326"></span>C0AE</td>
+<td class="instruction">LD (IX+$02),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49329"></span>C0B1</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49330"></span>
+<div class="comments">
+<div class="paragraph">
+enemy change direction to moves up
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49330"></span>C0B2</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Set enemy direction up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49334"></span>C0B6</td>
+<td class="instruction">LD (IX+$12),$01</td>
+<td class="comment-1" rowspan="1">Set enemy speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49338"></span>C0BA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49339"></span>
+<div class="comments">
+<div class="paragraph">
+enemy change direction to moves down
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49339"></span>C0BB</td>
+<td class="instruction">LD (IX+$11),$01</td>
+<td class="comment-1" rowspan="1">Set enemy direction down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49343"></span>C0BF</td>
+<td class="instruction">LD (IX+$12),$01</td>
+<td class="comment-1" rowspan="1">Set enemy speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49347"></span>C0C3</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49348"></span>
+<div class="comments">
+<div class="paragraph">
+enemy moves down
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49348"></span>C0C4</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Increment y-position based on speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49351"></span>C0C7</td>
+<td class="instruction">ADD A,(IX+$12)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49354"></span>C0CA</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49357"></span>C0CD</td>
+<td class="instruction">CALL <a href="50987.html">$C72B</a></td>
+<td class="comment-1" rowspan="1">Obtain into <span class="register">HL</span> the tile type address pointer under the entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49360"></span>C0D0</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="1">Check is tile type is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49363"></span>C0D3</td>
+<td class="instruction">JP Z,$C0B2</td>
+<td class="comment-1" rowspan="1">Jump back if it's a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49366"></span>C0D6</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49367"></span>C0D7</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="1">Check is tile type is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49370"></span>C0DA</td>
+<td class="instruction">JP Z,$C0B2</td>
+<td class="comment-1" rowspan="1">Jump back if it's a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49373"></span>C0DD</td>
+<td class="instruction">JP $C080</td>
+<td class="comment-1" rowspan="1">Jump back and check enemy moving beyond screen boundary</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49210.html">C03A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49242">Map</a></td>
+<td class="next">
+Next: <a href="49376.html">C0E0</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

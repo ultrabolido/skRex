@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at CF6E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53053.html">CF3D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53102">Map</a></td>
+<td class="next">
+Next: <a href="53135.html">CF8F</a>
+</td>
+</tr>
+</table>
+<div class="description">CF6E: Copy a 3x3 grid of attribute color from attribute buffer to attribute file</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="39621.html">9AC5</a> and <a href="47708.html#48491">BD6B</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address into attribute file</td>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Address into attribute buffer</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53102"></span>CF6E</td>
+<td class="instruction">CALL $CF7D</td>
+<td class="comment-1" rowspan="1">Copy a row of 3 attribute colors</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53105"></span>CF71</td>
+<td class="instruction">LD BC,$001E</td>
+<td class="comment-1" rowspan="2">Increment address into attribute file to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53108"></span>CF74</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53109"></span>CF75</td>
+<td class="instruction">CALL $CF7D</td>
+<td class="comment-1" rowspan="1">Copy a row of 3 attribute colors</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53112"></span>CF78</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1">Increment address into attribute file to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53113"></span>CF79</td>
+<td class="instruction">CALL $CF7D</td>
+<td class="comment-1" rowspan="1">Copy a row of 3 attribute colors</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53116"></span>CF7C</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53117"></span>
+<div class="comments">
+<div class="paragraph">
+Copy a row of attribute colors
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53117"></span>CF7D</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="2">Copy an attribute color from attribute buffer to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53118"></span>CF7E</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53119"></span>CF7F</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Increment address into attribute file and buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53120"></span>CF80</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53121"></span>CF81</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="2">Copy an attribute color from attribute buffer to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53122"></span>CF82</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53123"></span>CF83</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Increment address into attribute file and buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53124"></span>CF84</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53125"></span>CF85</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="2">Copy an attribute color from attribute buffer to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53126"></span>CF86</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53127"></span>CF87</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53128"></span>CF88</td>
+<td class="instruction">LD HL,$001E</td>
+<td class="comment-1" rowspan="4">Increment address into attribute buffer to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53131"></span>CF8B</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53132"></span>CF8C</td>
+<td class="instruction">EX DE,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53133"></span>CF8D</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53134"></span>CF8E</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53053.html">CF3D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53102">Map</a></td>
+<td class="next">
+Next: <a href="53135.html">CF8F</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

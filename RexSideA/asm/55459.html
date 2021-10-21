@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D8A3</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55409.html">D871</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55459">Map</a></td>
+<td class="next">
+Next: <a href="55488.html">D8C0</a>
+</td>
+</tr>
+</table>
+<div class="description">D8A3: Copy screen display file into room graphic data buffer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="55409.html">D871</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55459"></span>D8A3</td>
+<td class="instruction">LD IY,$AC0D</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the address into the display lookup table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55463"></span>D8A7</td>
+<td class="instruction">LD B,$A8</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of pixel-rows to copy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55465"></span>D8A9</td>
+<td class="instruction">LD DE,$EAFF</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the base address for the room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55468"></span>D8AC</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save REGbc</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55469"></span>D8AD</td>
+<td class="instruction">LD L,(IY+$00)</td>
+<td class="comment-1" rowspan="4">Copy a pixel-row from display file to room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55472"></span>D8B0</td>
+<td class="instruction">LD H,(IY+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55475"></span>D8B3</td>
+<td class="instruction">LD BC,$0020</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55478"></span>D8B6</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55480"></span>D8B8</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="2">Increment address into the display lookup table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55482"></span>D8BA</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55484"></span>D8BC</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55485"></span>D8BD</td>
+<td class="instruction">DJNZ $D8AC</td>
+<td class="comment-1" rowspan="1">Jump back until all the screen copied</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55487"></span>D8BF</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55409.html">D871</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55459">Map</a></td>
+<td class="next">
+Next: <a href="55488.html">D8C0</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

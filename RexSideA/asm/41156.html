@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A0C4</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41155.html">A0C3</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41156">Map</a></td>
+<td class="next">
+Next: <a href="41267.html">A133</a>
+</td>
+</tr>
+</table>
+<div class="description">A0C4: Update timer bar in HUD</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a> and <a href="43285.html">A915</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41156"></span>A0C4</td>
+<td class="instruction">LD A,($A042)</td>
+<td class="comment-1" rowspan="3">Return if HDU flash active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41159"></span>A0C7</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41161"></span>A0C9</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41162"></span>A0CA</td>
+<td class="instruction">LD A,($A064)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">DE</span> the timer bar update slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41165"></span>A0CD</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41166"></span>A0CE</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41168"></span>A0D0</td>
+<td class="instruction">LD HL,$582B</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the address into attribute file for the time bar position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41171"></span>A0D3</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41172"></span>A0D4</td>
+<td class="instruction">LD (HL),$46</td>
+<td class="comment-1" rowspan="1">Set color attribute to bright yellow</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41174"></span>A0D6</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increase to the next time bar slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41175"></span>A0D7</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Jump forward if slot is green</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41176"></span>A0D8</td>
+<td class="instruction">CP $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41178"></span>A0DA</td>
+<td class="instruction">JP Z,$A0DF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41181"></span>A0DD</td>
+<td class="instruction">LD (HL),$06</td>
+<td class="comment-1" rowspan="1">Set color attribute to normal yellow</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41183"></span>A0DF</td>
+<td class="instruction">LD A,($A066)</td>
+<td class="comment-1" rowspan="1">Check for time bar update direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41186"></span>A0E2</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump forward to increase slot if direction is right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41187"></span>A0E3</td>
+<td class="instruction">JP Z,$A0E9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41190"></span>A0E6</td>
+<td class="instruction">JP $A0FB</td>
+<td class="comment-1" rowspan="1">Jump forward to decrease slot if direction is left</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41193"></span>A0E9</td>
+<td class="instruction">LD A,($A064)</td>
+<td class="comment-1" rowspan="3">Increase time bar update slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41196"></span>A0EC</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41197"></span>A0ED</td>
+<td class="instruction">LD ($A064),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41200"></span>A0F0</td>
+<td class="instruction">LD HL,$A067</td>
+<td class="comment-1" rowspan="3">Return if current update slot is less than the number of slots availables</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41203"></span>A0F3</td>
+<td class="instruction">CP (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41204"></span>A0F4</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41205"></span>A0F5</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Change update direction to left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41207"></span>A0F7</td>
+<td class="instruction">LD ($A066),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41210"></span>A0FA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="41211"></span>A0FB</td>
+<td class="instruction">LD A,($A064)</td>
+<td class="comment-1" rowspan="3">Decrease timer bar update slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41214"></span>A0FE</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41215"></span>A0FF</td>
+<td class="instruction">LD ($A064),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41218"></span>A102</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return if slot is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41219"></span>A103</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41220"></span>A104</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Change direction to right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41221"></span>A105</td>
+<td class="instruction">LD ($A066),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41224"></span>A108</td>
+<td class="instruction">LD A,($A065)</td>
+<td class="comment-1" rowspan="3">Decrement time bar counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41227"></span>A10B</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41228"></span>A10C</td>
+<td class="instruction">LD ($A065),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41231"></span>A10F</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">if time bar counter is not zero return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41232"></span>A110</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41233"></span>A111</td>
+<td class="instruction">LD A,$05</td>
+<td class="comment-1" rowspan="2">Reset time bar counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41235"></span>A113</td>
+<td class="instruction">LD ($A065),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41238"></span>A116</td>
+<td class="instruction">LD A,($A067)</td>
+<td class="comment-1" rowspan="2">Decrement a time slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41241"></span>A119</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41242"></span>A11A</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump to kill rex if no time slots availables</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41243"></span>A11B</td>
+<td class="instruction">JP Z,<a href="39898.html">$9BDA</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41246"></span>A11E</td>
+<td class="instruction">LD ($A067),A</td>
+<td class="comment-1" rowspan="1">Set the number of availables time slots</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41249"></span>A121</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="6">Set this slot to green color in attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41250"></span>A122</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41252"></span>A124</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41253"></span>A125</td>
+<td class="instruction">LD HL,$582C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41256"></span>A128</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41257"></span>A129</td>
+<td class="instruction">LD (HL),$04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41259"></span>A12B</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="4">Set this slot to green color in attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41260"></span>A12C</td>
+<td class="instruction">LD HL,$E52B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41263"></span>A12F</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41264"></span>A130</td>
+<td class="instruction">LD (HL),$04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41266"></span>A132</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41155.html">A0C3</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41156">Map</a></td>
+<td class="next">
+Next: <a href="41267.html">A133</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

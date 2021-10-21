@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C239</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49683.html">C213</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49721">Map</a></td>
+<td class="next">
+Next: <a href="49754.html">C25A</a>
+</td>
+</tr>
+</table>
+<div class="description">C239: Handler for Scanner bumping animation</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="49790.html">C27E</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49721"></span>C239</td>
+<td class="instruction">DEC (IX+$12)</td>
+<td class="comment-1" rowspan="1">Decrement scanner state change</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49724"></span>C23C</td>
+<td class="instruction">JP Z,<a href="49917.html#49939">$C313</a></td>
+<td class="comment-1" rowspan="1">Jump to handle state change if zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49727"></span>C23F</td>
+<td class="instruction">LD A,(IX+$13)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the scanner bumping counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49730"></span>C242</td>
+<td class="instruction">AND $0F</td>
+<td class="comment-1" rowspan="6">Set <span class="register">HL</span> to the address pointer into the graphic data list for bumping animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49732"></span>C244</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49734"></span>C246</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49735"></span>C247</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49737"></span>C249</td>
+<td class="instruction">LD HL,$C25A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49740"></span>C24C</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49741"></span>C24D</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="5">Set graphic data of bump animation into enemy configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49742"></span>C24E</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49743"></span>C24F</td>
+<td class="instruction">LD D,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49744"></span>C250</td>
+<td class="instruction">LD (IX+$04),E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49747"></span>C253</td>
+<td class="instruction">LD (IX+$05),D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49750"></span>C256</td>
+<td class="instruction">INC (IX+$13)</td>
+<td class="comment-1" rowspan="1">Increase bumping counter for scanner</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49753"></span>C259</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49683.html">C213</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49721">Map</a></td>
+<td class="next">
+Next: <a href="49754.html">C25A</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

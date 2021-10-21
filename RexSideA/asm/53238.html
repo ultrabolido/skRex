@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at CFF6</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53210.html">CFDA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53238">Map</a></td>
+<td class="next">
+Next: <a href="53267.html">D013</a>
+</td>
+</tr>
+</table>
+<div class="description">CFF6: Configure Rex to move left</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53238"></span>CFF6</td>
+<td class="instruction">LD A,($A072)</td>
+<td class="comment-1" rowspan="3">Jump if Rex speed mode is normal</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53241"></span>CFF9</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53242"></span>CFFA</td>
+<td class="instruction">JP Z,$D008</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53245"></span>CFFD</td>
+<td class="instruction">LD A,$FC</td>
+<td class="comment-1" rowspan="2">Set Rex speed to fast (-4)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53247"></span>CFFF</td>
+<td class="instruction">LD ($A091),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53250"></span>D002</td>
+<td class="instruction">CALL <a href="53196.html">$CFCC</a></td>
+<td class="comment-1" rowspan="1">Handle speed up duration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53253"></span>D005</td>
+<td class="instruction">JP $D00D</td>
+<td class="comment-1" rowspan="1">Jump to set face direction</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53256"></span>D008</td>
+<td class="instruction">LD A,$FE</td>
+<td class="comment-1" rowspan="2">Set Rex speed to normal (-2)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53258"></span>D00A</td>
+<td class="instruction">LD ($A091),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53261"></span>D00D</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set face direction to left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53263"></span>D00F</td>
+<td class="instruction">LD ($A0BB),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53266"></span>D012</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53210.html">CFDA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53238">Map</a></td>
+<td class="next">
+Next: <a href="53267.html">D013</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

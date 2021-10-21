@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at DD54</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56659.html">DD53</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56660">Map</a></td>
+<td class="next">
+Next: <a href="57093.html">DF05</a>
+</td>
+</tr>
+</table>
+<div class="description">DD54: Keypress handlers for the title screen menu</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+This routine handles the Define keys option menu
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56660"></span>DD54</td>
+<td class="instruction">CALL <a href="56000.html#56214">$DB96</a></td>
+<td class="comment-1" rowspan="1">Hidden the enemy windows of the title screen (if any)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56663"></span>DD57</td>
+<td class="instruction">LD HL,$0000</td>
+<td class="comment-1" rowspan="4">Reset the keys for Rex movement defined at <a href="56654.html">DD4E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56666"></span>DD5A</td>
+<td class="instruction">LD ($DD4E),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56669"></span>DD5D</td>
+<td class="instruction">LD ($DD50),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56672"></span>DD60</td>
+<td class="instruction">LD ($DD52),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56675"></span>DD63</td>
+<td class="instruction">LD IY,$DD4E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the base address of the keys defined for Rex movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56679"></span>DD67</td>
+<td class="instruction">LD IX,$DF9F</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to address of the text definition data for DEFINE KEYS</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56683"></span>DD6B</td>
+<td class="instruction">LD B,$06</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of rows of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56685"></span>DD6D</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56687"></span>DD6F</td>
+<td class="instruction">CALL <a href="41278.html">$A13E</a></td>
+<td class="comment-1" rowspan="1">Draws the windows DEFINE KEYS</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56690"></span>DD72</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-2"><span id="56692"></span>DD74</td>
+<td class="instruction">LD BC,$F7FE</td>
+<td class="comment-1" rowspan="2">Read keys 1-2-3-4-5 into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56695"></span>DD77</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56697"></span>DD79</td>
+<td class="instruction">BIT 0,A</td>
+<td class="comment-1" rowspan="1">Is key 1 pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56699"></span>DD7B</td>
+<td class="instruction">JP Z,$DD74</td>
+<td class="comment-1" rowspan="1">Jump back until key 1 is not pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56702"></span>DD7E</td>
+<td class="instruction">LD IX,$DFDA</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the address of the windows defintion for the highlighted options of the menu</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56706"></span>DD82</td>
+<td class="instruction">LD B,$01</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of files</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56708"></span>DD84</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56710"></span>DD86</td>
+<td class="instruction">CALL <a href="41695.html">$A2DF</a></td>
+<td class="comment-1" rowspan="1">Draw the line of highlighted text UP</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56713"></span>DD89</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56715"></span>
+<div class="comments">
+<div class="paragraph">
+Handles the DEFINE UP key
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56715"></span>DD8B</td>
+<td class="instruction">CALL <a href="56238.html">$DBAE</a></td>
+<td class="comment-1" rowspan="1">Check for UP key pressed in the DEFINE keys windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56718"></span>DD8E</td>
+<td class="instruction">LD (IY+$00),A</td>
+<td class="comment-1" rowspan="1">Save the keycode of the key pressed at the UP address of the Rex movement table at <a href="56654.html">DD4E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56721"></span>DD91</td>
+<td class="instruction">CALL $DEF0</td>
+<td class="comment-1" rowspan="1">Point <span class="register">DE</span> to the address graphics data of the key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56724"></span>DD94</td>
+<td class="instruction">LD HL,$488F</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the address of the diplay file to print the character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56727"></span>DD97</td>
+<td class="instruction">CALL $DEFC</td>
+<td class="comment-1" rowspan="1">Draw the grahics data of character into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56730"></span>DD9A</td>
+<td class="instruction">CALL <a href="42090.html#42165">$A4B5</a></td>
+<td class="comment-1" rowspan="1">Configure check UP key pressed routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56733"></span>DD9D</td>
+<td class="instruction">LD IX,$DFE2</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the address of the text definition data for higlighted DOWN text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56737"></span>DDA1</td>
+<td class="instruction">LD B,$01</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56739"></span>DDA3</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56741"></span>DDA5</td>
+<td class="instruction">CALL <a href="41695.html">$A2DF</a></td>
+<td class="comment-1" rowspan="1">Draws the line of higlighted text DOWN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56744"></span>DDA8</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56746"></span>
+<div class="comments">
+<div class="paragraph">
+Handles the DEFINE DOWN key
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56746"></span>DDAA</td>
+<td class="instruction">CALL <a href="56238.html">$DBAE</a></td>
+<td class="comment-1" rowspan="1">Check for DOWN key pressed in the DEFINE keys windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56749"></span>DDAD</td>
+<td class="instruction">LD (IY+$01),A</td>
+<td class="comment-1" rowspan="1">Save the keycode of the key pressed at the DOWN address of the Rex movement table at <a href="56654.html">DD4E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56752"></span>DDB0</td>
+<td class="instruction">CALL $DEF0</td>
+<td class="comment-1" rowspan="1">Point <span class="register">DE</span> to the address graphics data of the key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56755"></span>DDB3</td>
+<td class="instruction">LD HL,$48AF</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the address of the diplay file to print the character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56758"></span>DDB6</td>
+<td class="instruction">CALL $DEFC</td>
+<td class="comment-1" rowspan="1">Draw the grahics data of character into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56761"></span>DDB9</td>
+<td class="instruction">CALL <a href="42090.html#42190">$A4CE</a></td>
+<td class="comment-1" rowspan="1">Configure check DOWN key pressed routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56764"></span>DDBC</td>
+<td class="instruction">LD IX,$DFEC</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the address of the text definition data for higlighted LEFT text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56768"></span>DDC0</td>
+<td class="instruction">LD B,$01</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56770"></span>DDC2</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56772"></span>DDC4</td>
+<td class="instruction">CALL <a href="41695.html">$A2DF</a></td>
+<td class="comment-1" rowspan="1">Draws the line of higlighted text LEFT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56775"></span>DDC7</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56777"></span>
+<div class="comments">
+<div class="paragraph">
+Handles the DEFINE LEFT key
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56777"></span>DDC9</td>
+<td class="instruction">CALL <a href="56238.html">$DBAE</a></td>
+<td class="comment-1" rowspan="1">Check for LEFT key pressed in the DEFINE keys windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56780"></span>DDCC</td>
+<td class="instruction">LD (IY+$02),A</td>
+<td class="comment-1" rowspan="1">Save the keycode of the key pressed at the LEFT address of the Rex movement table at <a href="56654.html">DD4E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56783"></span>DDCF</td>
+<td class="instruction">CALL $DEF0</td>
+<td class="comment-1" rowspan="1">Point <span class="register">DE</span> to the address graphics data of the key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56786"></span>DDD2</td>
+<td class="instruction">LD HL,$48CF</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the address of the diplay file to print the character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56789"></span>DDD5</td>
+<td class="instruction">CALL $DEFC</td>
+<td class="comment-1" rowspan="1">Draw the grahics data of character into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56792"></span>DDD8</td>
+<td class="instruction">CALL <a href="42090.html#42115">$A483</a></td>
+<td class="comment-1" rowspan="1">Configure check LEFT key pressed routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56795"></span>DDDB</td>
+<td class="instruction">LD IX,$DFF6</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the address of the text definition data for higlighted RIGHT text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56799"></span>DDDF</td>
+<td class="instruction">LD B,$01</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56801"></span>DDE1</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56803"></span>DDE3</td>
+<td class="instruction">CALL <a href="41695.html">$A2DF</a></td>
+<td class="comment-1" rowspan="1">Draws the line of higlighted text RIGHT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56806"></span>DDE6</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56808"></span>
+<div class="comments">
+<div class="paragraph">
+Handles the DEFINE RIGHT key
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56808"></span>DDE8</td>
+<td class="instruction">CALL <a href="56238.html">$DBAE</a></td>
+<td class="comment-1" rowspan="1">Check for RIGHT key pressed in the DEFINE keys windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56811"></span>DDEB</td>
+<td class="instruction">LD (IY+$03),A</td>
+<td class="comment-1" rowspan="1">Save the keycode of the key pressed at the RIGHT address of the Rex movement table at <a href="56654.html">DD4E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56814"></span>DDEE</td>
+<td class="instruction">CALL $DEF0</td>
+<td class="comment-1" rowspan="1">Point <span class="register">DE</span> to the address graphics data of the key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56817"></span>DDF1</td>
+<td class="instruction">LD HL,$48EF</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the address of the diplay file to print the character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56820"></span>DDF4</td>
+<td class="instruction">CALL $DEFC</td>
+<td class="comment-1" rowspan="1">Draw the grahics data of character into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56823"></span>DDF7</td>
+<td class="instruction">CALL <a href="42090.html#42140">$A49C</a></td>
+<td class="comment-1" rowspan="1">Configure check RIGHT key pressed routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56826"></span>DDFA</td>
+<td class="instruction">LD IX,$E001</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the address of the text definition data for higlighted FIRE text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56830"></span>DDFE</td>
+<td class="instruction">LD B,$01</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56832"></span>DE00</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56834"></span>DE02</td>
+<td class="instruction">CALL <a href="41695.html">$A2DF</a></td>
+<td class="comment-1" rowspan="1">Draws the line of higlighted text FIRE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56837"></span>DE05</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56839"></span>
+<div class="comments">
+<div class="paragraph">
+Handles the FIRE key
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56839"></span>DE07</td>
+<td class="instruction">CALL <a href="56238.html">$DBAE</a></td>
+<td class="comment-1" rowspan="1">Check for FIRE key pressed in the DEFINE keys windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56842"></span>DE0A</td>
+<td class="instruction">LD (IY+$04),A</td>
+<td class="comment-1" rowspan="1">Save the keycode of the key pressed at the FIRE address of the Rex movement table at <a href="56654.html">DD4E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56845"></span>DE0D</td>
+<td class="instruction">CALL $DEF0</td>
+<td class="comment-1" rowspan="1">Point <span class="register">DE</span> to the address graphics data of the key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56848"></span>DE10</td>
+<td class="instruction">LD HL,$500F</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the address of the diplay file to print the character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56851"></span>DE13</td>
+<td class="instruction">CALL $DEFC</td>
+<td class="comment-1" rowspan="1">Draw the grahics data of character into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56854"></span>DE16</td>
+<td class="instruction">CALL <a href="42090.html">$A46A</a></td>
+<td class="comment-1" rowspan="1">Configure check FIRE key pressed routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56857"></span>DE19</td>
+<td class="instruction">LD IX,$DF8B</td>
+<td class="comment-1" rowspan="1">Points <span class="register">IX</span> to the text definition data for CONFIRM KEYS windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56861"></span>DE1D</td>
+<td class="instruction">JP $DE92</td>
+<td class="comment-1" rowspan="1">Jump to show confirmation windows and handles Y/N key presses</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56864"></span>
+<div class="comments">
+<div class="paragraph">
+This routine handles the Kempston option
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56864"></span>DE20</td>
+<td class="instruction">CALL <a href="56000.html#56214">$DB96</a></td>
+<td class="comment-1" rowspan="1">Hide the current visible enemy animation windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56867"></span>DE23</td>
+<td class="instruction">LD HL,$001F</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the port to read the inputs from Kempston joystick</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56870"></span>DE26</td>
+<td class="instruction">LD ($A0AB),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56873"></span>DE29</td>
+<td class="instruction">LD A,$67</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the FIRE button</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56875"></span>DE2B</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56878"></span>DE2E</td>
+<td class="instruction">CALL <a href="42090.html">$A46A</a></td>
+<td class="comment-1" rowspan="1">Configure check FIRE button pressed routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56881"></span>DE31</td>
+<td class="instruction">LD A,$5F</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick UP</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56883"></span>DE33</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56886"></span>DE36</td>
+<td class="instruction">CALL <a href="42090.html#42165">$A4B5</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick UP routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56889"></span>DE39</td>
+<td class="instruction">LD A,$57</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick DOWN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56891"></span>DE3B</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56894"></span>DE3E</td>
+<td class="instruction">CALL <a href="42090.html#42190">$A4CE</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick DOWN routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56897"></span>DE41</td>
+<td class="instruction">LD A,$47</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick RIGHT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56899"></span>DE43</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56902"></span>DE46</td>
+<td class="instruction">CALL <a href="42090.html#42140">$A49C</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick RIGHT routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56905"></span>DE49</td>
+<td class="instruction">LD A,$4F</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick LEFT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56907"></span>DE4B</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56910"></span>DE4E</td>
+<td class="instruction">CALL <a href="42090.html#42115">$A483</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick LEFT routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56913"></span>DE51</td>
+<td class="instruction">LD A,$FF</td>
+<td class="comment-1" rowspan="2">Set Kempston as input device type at <a href="41134.html">A0AE</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56915"></span>DE53</td>
+<td class="instruction">LD ($A0AE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56918"></span>DE56</td>
+<td class="instruction">LD IX,$DF73</td>
+<td class="comment-1" rowspan="1">Points <span class="register">IX</span> to the text definition data for CONFIRM KEMPSTON windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56922"></span>DE5A</td>
+<td class="instruction">JP $DED2</td>
+<td class="comment-1" rowspan="1">Jump to show confirmation windows and handles Y/N key presses</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56925"></span>
+<div class="comments">
+<div class="paragraph">
+This routine handles the Sinclair option
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56925"></span>DE5D</td>
+<td class="instruction">CALL <a href="56000.html#56214">$DB96</a></td>
+<td class="comment-1" rowspan="1">Hide the current visible enemy animation windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56928"></span>DE60</td>
+<td class="instruction">LD HL,$EFFE</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the port to read the inputs from Sinclair joystick</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56931"></span>DE63</td>
+<td class="instruction">LD ($A0AB),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56934"></span>DE66</td>
+<td class="instruction">LD A,$47</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the FIRE button</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56936"></span>DE68</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56939"></span>DE6B</td>
+<td class="instruction">CALL <a href="42090.html">$A46A</a></td>
+<td class="comment-1" rowspan="1">Configure check FIRE button pressed routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56942"></span>DE6E</td>
+<td class="instruction">LD A,$4F</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick UP</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56944"></span>DE70</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56947"></span>DE73</td>
+<td class="instruction">CALL <a href="42090.html#42165">$A4B5</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick UP routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56950"></span>DE76</td>
+<td class="instruction">LD A,$57</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick DOWN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56952"></span>DE78</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56955"></span>DE7B</td>
+<td class="instruction">CALL <a href="42090.html#42190">$A4CE</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick DOWN routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56958"></span>DE7E</td>
+<td class="instruction">LD A,$5F</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick RIGHT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56960"></span>DE80</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56963"></span>DE83</td>
+<td class="instruction">CALL <a href="42090.html#42140">$A49C</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick RIGHT routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56966"></span>DE86</td>
+<td class="instruction">LD A,$67</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick LEFT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56968"></span>DE88</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56971"></span>DE8B</td>
+<td class="instruction">CALL <a href="42090.html#42115">$A483</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick LEFT routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56974"></span>DE8E</td>
+<td class="instruction">LD IX,$DF45</td>
+<td class="comment-1" rowspan="1">Points <span class="register">IX</span> to the text definition data for CONFIRM SINCLAIR windows</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56978"></span>
+<div class="comments">
+<div class="paragraph">
+Reset input device type
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56978"></span>DE92</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Reset input device type at <a href="41134.html">A0AE</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56979"></span>DE93</td>
+<td class="instruction">LD ($A0AE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56982"></span>DE96</td>
+<td class="instruction">JP $DED2</td>
+<td class="comment-1" rowspan="1">Jump to show confirmation windows and handles Y/N key presses</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56985"></span>
+<div class="comments">
+<div class="paragraph">
+This routine handles the Cursor option
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56985"></span>DE99</td>
+<td class="instruction">CALL <a href="56000.html#56214">$DB96</a></td>
+<td class="comment-1" rowspan="1">Hide the current visible enemy animation windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56988"></span>DE9C</td>
+<td class="instruction">LD HL,$EFFE</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the port to read the inputs FIRE, UP, DOWN and RIGHT from Sinclair joystick</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56991"></span>DE9F</td>
+<td class="instruction">LD ($A0AB),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56994"></span>DEA2</td>
+<td class="instruction">LD A,$47</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the FIRE button</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56996"></span>DEA4</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56999"></span>DEA7</td>
+<td class="instruction">CALL <a href="42090.html">$A46A</a></td>
+<td class="comment-1" rowspan="1">Configure check FIRE button pressed routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57002"></span>DEAA</td>
+<td class="instruction">LD A,$57</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick RIGHT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57004"></span>DEAC</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57007"></span>DEAF</td>
+<td class="instruction">CALL <a href="42090.html#42140">$A49C</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick RIGHT routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57010"></span>DEB2</td>
+<td class="instruction">LD A,$5F</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick UP</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57012"></span>DEB4</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57015"></span>DEB7</td>
+<td class="instruction">CALL <a href="42090.html#42165">$A4B5</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick UP routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57018"></span>DEBA</td>
+<td class="instruction">LD A,$67</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the BIT opcode corresponent to the joystick DOWN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57020"></span>DEBC</td>
+<td class="instruction">LD ($A0AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57023"></span>DEBF</td>
+<td class="instruction">CALL <a href="42090.html#42190">$A4CE</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick DOWN routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57026"></span>DEC2</td>
+<td class="instruction">LD HL,$F7FE</td>
+<td class="comment-1" rowspan="2">Set <a href="41131.html">A0AB</a> to the port to read the input LEFT from Sinclair joystick</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57029"></span>DEC5</td>
+<td class="instruction">LD ($A0AB),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57032"></span>DEC8</td>
+<td class="instruction">CALL <a href="42090.html#42115">$A483</a></td>
+<td class="comment-1" rowspan="1">Configure check joystick LEFT routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57035"></span>DECB</td>
+<td class="instruction">LD IX,$DF5D</td>
+<td class="comment-1" rowspan="1">Points <span class="register">IX</span> to the text definition data for CONFIRM CURSOR windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57039"></span>DECF</td>
+<td class="instruction">JP $DE92</td>
+<td class="comment-1" rowspan="1">Jump to show confirmation windows and handles Y/N key presses</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="57042"></span>
+<div class="comments">
+<div class="paragraph">
+Show confirmation windows for input device and handles Y/N key press
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="57042"></span>DED2</td>
+<td class="instruction">LD B,$01</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57044"></span>DED4</td>
+<td class="instruction">CALL <a href="41278.html">$A13E</a></td>
+<td class="comment-1" rowspan="1">Draw input device confirmation windows</td>
+</tr>
+<tr>
+<td class="address-2"><span id="57047"></span>DED7</td>
+<td class="instruction">LD BC,$DFFE</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to port $DFFE for read keys P-O-I-U-Y</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57050"></span>DEDA</td>
+<td class="instruction">IN A,(C)</td>
+<td class="comment-1" rowspan="2">Check if key Y is pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57052"></span>DEDC</td>
+<td class="instruction">BIT 4,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57054"></span>DEDE</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if pressed. Jump to the start routine to init the game</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57055"></span>DEDF</td>
+<td class="instruction">LD BC,$7FFE</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to port $DFFE for read keys SPACE-SYM-M-N-B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57058"></span>DEE2</td>
+<td class="instruction">IN A,(C)</td>
+<td class="comment-1" rowspan="2">Check if key N is pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57060"></span>DEE4</td>
+<td class="instruction">BIT 3,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57062"></span>DEE6</td>
+<td class="instruction">JP Z,$DEEC</td>
+<td class="comment-1" rowspan="1">Jump forward if pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57065"></span>DEE9</td>
+<td class="instruction">JP $DED7</td>
+<td class="comment-1" rowspan="1">Jump backs and continue to read for keys if not</td>
+</tr>
+<tr>
+<td class="address-2"><span id="57068"></span>DEEC</td>
+<td class="instruction">JP <a href="56000.html#56046">$DAEE</a></td>
+<td class="comment-1" rowspan="1">Jump back to the main loop routine for the title screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57071"></span>DEEF</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="57072"></span>
+<div class="comments">
+<div class="paragraph">
+Point <span class="register">DE</span> to the address graphics data of the key pressed
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="57072"></span>DEF0</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="7">Point <span class="register">HL</span> to the address graphic data of the key pressed from the charset table at <a href="24800.html">60E0</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="57073"></span>DEF1</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57075"></span>DEF3</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57076"></span>DEF4</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57077"></span>DEF5</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57078"></span>DEF6</td>
+<td class="instruction">LD DE,$5FE0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57081"></span>DEF9</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57082"></span>DEFA</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="57083"></span>DEFB</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="57084"></span>
+<div class="comments">
+<div class="paragraph">
+Draw the grahics data of character into display file
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="57084"></span>DEFC</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of bytes to copy</td>
+</tr>
+<tr>
+<td class="address-2"><span id="57086"></span>DEFE</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="2">Copy a byte from the graphics data to the display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57087"></span>DEFF</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57088"></span>DF00</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Point <span class="register">DE</span> to the next byte of the graphics data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57089"></span>DF01</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the addres of the next row of pixels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57090"></span>DF02</td>
+<td class="instruction">DJNZ $DEFE</td>
+<td class="comment-1" rowspan="1">Jump back until all the bytes are copied</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57092"></span>DF04</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56659.html">DD53</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56660">Map</a></td>
+<td class="next">
+Next: <a href="57093.html">DF05</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 99FA</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39374.html">99CE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39418">Map</a></td>
+<td class="next">
+Next: <a href="39463.html">9A27</a>
+</td>
+</tr>
+</table>
+<div class="description">99FA: Draw shield power</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="39374.html">99CE</a>, <a href="40054.html">9C76</a>, <a href="40799.html">9F5F</a> and <a href="43165.html">A89D</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39418"></span>99FA</td>
+<td class="instruction">LD A,($A04D)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39421"></span>99FD</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="2">Copy shield power to <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39422"></span>99FE</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39424"></span>9A00</td>
+<td class="instruction">CALL <a href="41986.html">$A402</a></td>
+<td class="comment-1" rowspan="1">Convert shield power to charcode digits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39427"></span>9A03</td>
+<td class="instruction">LD E,$15</td>
+<td class="comment-1" rowspan="4">Draw shield power into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39429"></span>9A05</td>
+<td class="instruction">LD L,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39431"></span>9A07</td>
+<td class="instruction">LD B,$02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39433"></span>9A09</td>
+<td class="instruction">CALL <a href="41928.html">$A3C8</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39436"></span>9A0C</td>
+<td class="instruction">LD A,($A04D)</td>
+<td class="comment-1" rowspan="7">Computes color attribute of digits based on shield power Color attribute is bit6-4 of shield power + 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39439"></span>9A0F</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39441"></span>9A11</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39443"></span>9A13</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39445"></span>9A15</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39447"></span>9A17</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39449"></span>9A19</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39450"></span>9A1A</td>
+<td class="instruction">LD ($5815),A</td>
+<td class="comment-1" rowspan="2">Set color attribute into attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39453"></span>9A1D</td>
+<td class="instruction">LD ($5814),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39456"></span>9A20</td>
+<td class="instruction">LD ($E514),A</td>
+<td class="comment-1" rowspan="2">Set color attribute into attribute buffer for HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39459"></span>9A23</td>
+<td class="instruction">LD ($E513),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39462"></span>9A26</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39374.html">99CE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39418">Map</a></td>
+<td class="next">
+Next: <a href="39463.html">9A27</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

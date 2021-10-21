@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 9A27</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39418.html">99FA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39463">Map</a></td>
+<td class="next">
+Next: <a href="39500.html">9A4C</a>
+</td>
+</tr>
+</table>
+<div class="description">9A27: Increment score</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38943.html">981F</a>, <a href="39087.html">98AF</a>, <a href="53781.html#54210">D3C2</a> and <a href="53781.html#54303">D41F</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Points to increment</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39463"></span>9A27</td>
+<td class="instruction">LD A,($A055)</td>
+<td class="comment-1" rowspan="3">Return if Rex is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39466"></span>9A2A</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39467"></span>9A2B</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39468"></span>9A2C</td>
+<td class="instruction">LD HL,($A03E)</td>
+<td class="comment-1" rowspan="3">Increment score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39471"></span>9A2F</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39472"></span>9A30</td>
+<td class="instruction">LD ($A03E),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39475"></span>9A33</td>
+<td class="instruction">LD HL,($A076)</td>
+<td class="comment-1" rowspan="3">Increment lives score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39478"></span>9A36</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39479"></span>9A37</td>
+<td class="instruction">LD ($A076),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39482"></span>9A3A</td>
+<td class="instruction">LD DE,$0064</td>
+<td class="comment-1" rowspan="4">If lives score greather than 100 then increment live</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39485"></span>9A3D</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39486"></span>9A3E</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39488"></span>9A40</td>
+<td class="instruction">JP C,$9A49</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39491"></span>9A43</td>
+<td class="instruction">LD ($A076),HL</td>
+<td class="comment-1" rowspan="1">Reset lives score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39494"></span>9A46</td>
+<td class="instruction">CALL <a href="54688.html">$D5A0</a></td>
+<td class="comment-1" rowspan="1">Increment lives</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39497"></span>9A49</td>
+<td class="instruction">JP <a href="39339.html">$99AB</a></td>
+<td class="comment-1" rowspan="1">Draw score on HUD</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39418.html">99FA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39463">Map</a></td>
+<td class="next">
+Next: <a href="39500.html">9A4C</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

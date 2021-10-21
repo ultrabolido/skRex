@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C27E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49754.html">C25A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49790">Map</a></td>
+<td class="next">
+Next: <a href="49917.html">C2FD</a>
+</td>
+</tr>
+</table>
+<div class="description">C27E: Handle scanner shot and collision detection horizontally</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="49135.html">BFEF</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49790"></span>C27E</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Check x-position of SCANNER</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49793"></span>C281</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49795"></span>C283</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49796"></span>C284</td>
+<td class="instruction">JP NZ,$C2DE</td>
+<td class="comment-1" rowspan="1">Jump forward if scanner is not grid fixed</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49799"></span>
+<div class="comments">
+<div class="paragraph">
+Scanner shot if rex is moving and on sight
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49799"></span>C287</td>
+<td class="instruction">LD A,($A0BD)</td>
+<td class="comment-1" rowspan="3">Jump forward if Rex is jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49802"></span>C28A</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49803"></span>C28B</td>
+<td class="instruction">JP NZ,$C2A4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49806"></span>C28E</td>
+<td class="instruction">LD A,($A0BC)</td>
+<td class="comment-1" rowspan="3">Jump forward if Rex is falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49809"></span>C291</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49810"></span>C292</td>
+<td class="instruction">JP NZ,$C2A4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49813"></span>C295</td>
+<td class="instruction">CALL <a href="42090.html#42153">$A4A9</a></td>
+<td class="comment-1" rowspan="1">Check if right key is pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49816"></span>C298</td>
+<td class="instruction">JP Z,$C2A4</td>
+<td class="comment-1" rowspan="1">Jump forward if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49819"></span>C29B</td>
+<td class="instruction">CALL <a href="42090.html#42128">$A490</a></td>
+<td class="comment-1" rowspan="1">Check if left key is pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49822"></span>C29E</td>
+<td class="instruction">JP Z,$C2A4</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49825"></span>C2A1</td>
+<td class="instruction">JP $C2DE</td>
+<td class="comment-1" rowspan="1">Jump to handle scanner movement</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49828"></span>
+<div class="comments">
+<div class="paragraph">
+Rex is moving, check if is on sight
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49828"></span>C2A4</td>
+<td class="instruction">LD A,($A0B7)</td>
+<td class="comment-1" rowspan="7">Check if scanner y-position is the range of rex y-position (y-position - 12 , y-position + 4)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49831"></span>C2A7</td>
+<td class="instruction">ADD A,$04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49833"></span>C2A9</td>
+<td class="instruction">CP (IX+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49836"></span>C2AC</td>
+<td class="instruction">JP C,$C2C1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49839"></span>C2AF</td>
+<td class="instruction">SUB $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49841"></span>C2B1</td>
+<td class="instruction">CP (IX+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49844"></span>C2B4</td>
+<td class="instruction">JP NC,$C2C1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49847"></span>C2B7</td>
+<td class="instruction">CALL <a href="50110.html">$C3BE</a></td>
+<td class="comment-1" rowspan="1">Configure scanner to fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49850"></span>C2BA</td>
+<td class="instruction">LD (IX+$12),$14</td>
+<td class="comment-1" rowspan="1">Reset state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49854"></span>C2BE</td>
+<td class="instruction">CALL <a href="49210.html">$C03A</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="49857"></span>C2C1</td>
+<td class="instruction">LD A,($A0B6)</td>
+<td class="comment-1" rowspan="7">Check if scanner x-position is in the range of rex x-position (x-position -12 , x-position + 4)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49860"></span>C2C4</td>
+<td class="instruction">ADD A,$04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49862"></span>C2C6</td>
+<td class="instruction">CP (IX+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49865"></span>C2C9</td>
+<td class="instruction">JP C,$C2DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49868"></span>C2CC</td>
+<td class="instruction">SUB $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49870"></span>C2CE</td>
+<td class="instruction">CP (IX+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49873"></span>C2D1</td>
+<td class="instruction">JP NC,$C2DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49876"></span>C2D4</td>
+<td class="instruction">CALL <a href="50110.html">$C3BE</a></td>
+<td class="comment-1" rowspan="1">Configure scanner to fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49879"></span>C2D7</td>
+<td class="instruction">LD (IX+$12),$14</td>
+<td class="comment-1" rowspan="1">Reset state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49883"></span>C2DB</td>
+<td class="instruction">CALL <a href="49210.html">$C03A</a></td>
+<td class="comment-1" rowspan="1">Scanner fires weapon</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49886"></span>
+<div class="comments">
+<div class="paragraph">
+check scanner movement and state change
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49886"></span>C2DE</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="1">Check scanner state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49889"></span>C2E1</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="2">Jump if scanner is bumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49891"></span>C2E3</td>
+<td class="instruction">JP Z,<a href="49721.html">$C239</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49894"></span>C2E6</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return if scanner is moving up and down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49895"></span>C2E7</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49896"></span>C2E8</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to scanner direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49899"></span>C2EB</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump to handle collision detection in right direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49900"></span>C2EC</td>
+<td class="instruction">CALL Z,<a href="50144.html">$C3E0</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49903"></span>C2EF</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="3">Jump to handle collision detection in left direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49906"></span>C2F2</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49907"></span>C2F3</td>
+<td class="instruction">CALL NZ,<a href="50342.html">$C4A6</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49910"></span>C2F6</td>
+<td class="instruction">DEC (IX+$12)</td>
+<td class="comment-1" rowspan="1">Decrement state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49913"></span>C2F9</td>
+<td class="instruction">JP Z,<a href="49917.html#49939">$C313</a></td>
+<td class="comment-1" rowspan="1">If counter = 0 jump to handle state change</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49916"></span>C2FC</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49754.html">C25A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49790">Map</a></td>
+<td class="next">
+Next: <a href="49917.html">C2FD</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at B57E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46342.html">B506</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46462">Map</a></td>
+<td class="next">
+Next: <a href="46661.html">B645</a>
+</td>
+</tr>
+</table>
+<div class="description">B57E: Create a new projectile</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="49210.html">C03A</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">Address pointer in the projectile configuration buffer</td>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Address pointer in the enemy configuration buffer</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46462"></span>B57E</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> to the x-position for the laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46465"></span>B581</td>
+<td class="instruction">SUB $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46467"></span>B583</td>
+<td class="instruction">JP $B589</td>
+<td class="comment-1" rowspan="1">Jump forward</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46470"></span>B586</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the enemy x-position</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46473"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="46462.html">B57E</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46473"></span>B589</td>
+<td class="instruction">LD ($A093),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41107.html">A093</a> the enemy x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46476"></span>B58C</td>
+<td class="instruction">LD A,$0F</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the increment for the y-position</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46478"></span>
+<div class="comments">
+<div class="paragraph">
+Creates a new projectile for enemy. Used by the routines at <a href="47708.html">BA5C</a>, <a href="48731.html">BE5B</a>, <a href="48731.html#48757">BE75</a>, <a href="48731.html#48795">BE9B</a> and <a href="48731.html#48819">BEB3</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46478"></span>B58E</td>
+<td class="instruction">LD ($A099),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41113.html">A099</a> to the increment for the y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46481"></span>B591</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">Set <a href="41109.html">A095</a> to enemy y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46484"></span>B594</td>
+<td class="instruction">LD ($A095),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46487"></span>B597</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="2">Set <a href="41147.html">A0BB</a> to enemy face direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46490"></span>B59A</td>
+<td class="instruction">LD ($A097),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46493"></span>B59D</td>
+<td class="instruction">LD A,($A054)</td>
+<td class="comment-1" rowspan="2">Set the projectile type to <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46496"></span>B5A0</td>
+<td class="instruction">SET 7,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46498"></span>B5A2</td>
+<td class="instruction">JP $B5C1</td>
+<td class="comment-1" rowspan="1">Jump to create this projectile</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46501"></span>
+<div class="comments">
+<div class="paragraph">
+Create a new projectile fired for Rex. Used by the routines at <a href="45938.html">B372</a> and <a href="46166.html">B456</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46501"></span>B5A5</td>
+<td class="instruction">LD A,($A0B6)</td>
+<td class="comment-1" rowspan="2">Set <a href="41107.html">A093</a> to Rex x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46504"></span>B5A8</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46507"></span>B5AB</td>
+<td class="instruction">LD A,($A0B7)</td>
+<td class="comment-1" rowspan="2">Set <a href="41109.html">A095</a> to Rex y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46510"></span>B5AE</td>
+<td class="instruction">LD ($A095),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46513"></span>B5B1</td>
+<td class="instruction">LD A,($A0BB)</td>
+<td class="comment-1" rowspan="2">Set <a href="41147.html">A0BB</a> to Rex face direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46516"></span>B5B4</td>
+<td class="instruction">LD ($A097),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46519"></span>B5B7</td>
+<td class="instruction">LD A,$11</td>
+<td class="comment-1" rowspan="2">Set <a href="41113.html">A099</a> to the increment for the y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46521"></span>B5B9</td>
+<td class="instruction">LD ($A099),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46524"></span>B5BC</td>
+<td class="instruction">LD A,($A013)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> to Rex weapon number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46527"></span>B5BF</td>
+<td class="instruction">RES 7,A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46529"></span>
+<div class="comments">
+<div class="paragraph">
+Create a new projectile in the projectile configuration buffer based on predefined values This entry point is used by the routines at <a href="45938.html">B372</a>, <a href="46462.html#46473">B589</a>, <a href="46661.html#46670">B64E</a> and <a href="47708.html#48326">BCC6</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46529"></span>B5C1</td>
+<td class="instruction">LD (IY+$06),$01</td>
+<td class="comment-1" rowspan="1">Set projectile status to flying</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46533"></span>B5C5</td>
+<td class="instruction">LD (IY+$0B),A</td>
+<td class="comment-1" rowspan="1">Set the projectile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46536"></span>B5C8</td>
+<td class="instruction">LD A,($A095)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46539"></span>B5CB</td>
+<td class="instruction">LD HL,$A099</td>
+<td class="comment-1" rowspan="2">Increment y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46542"></span>B5CE</td>
+<td class="instruction">ADD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46543"></span>B5CF</td>
+<td class="instruction">LD (IY+$01),A</td>
+<td class="comment-1" rowspan="1">Save y-position of laser to projectile configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46546"></span>B5D2</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="7">Computes offset on room buffer for y-position. NOT NEEDED HERE!</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46547"></span>B5D3</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46549"></span>B5D5</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46550"></span>B5D6</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46551"></span>B5D7</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46552"></span>B5D8</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46553"></span>B5D9</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46554"></span>B5DA</td>
+<td class="instruction">LD A,($A093)</td>
+<td class="comment-1" rowspan="3">Increment x-position and save it at projectile configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46557"></span>B5DD</td>
+<td class="instruction">ADD A,$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46559"></span>B5DF</td>
+<td class="instruction">LD (IY+$00),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46562"></span>B5E2</td>
+<td class="instruction">LD A,($A07B)</td>
+<td class="comment-1" rowspan="2">is Rex firing the wepaon?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46565"></span>B5E5</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46566"></span>B5E6</td>
+<td class="instruction">JP NZ,$B5FA</td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46569"></span>B5E9</td>
+<td class="instruction">LD A,($A093)</td>
+<td class="comment-1" rowspan="2">Check bits 2-0 of x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46572"></span>B5EC</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46574"></span>B5EE</td>
+<td class="instruction">CP $06</td>
+<td class="comment-1" rowspan="5">Decrement y-position of laser when Rex is moving Bits 2-0: $06 and $00 decrement y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46576"></span>B5F0</td>
+<td class="instruction">JP Z,$B5F7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46579"></span>B5F3</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46580"></span>B5F4</td>
+<td class="instruction">JP NZ,$B5FA</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46583"></span>B5F7</td>
+<td class="instruction">DEC (IY+$01)</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46586"></span>B5FA</td>
+<td class="instruction">LD (IY+$04),$08</td>
+<td class="comment-1" rowspan="1">Set x-delta of laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46590"></span>B5FE</td>
+<td class="instruction">LD HL,$0001</td>
+<td class="comment-1" rowspan="3">Set offset of 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46593"></span>B601</td>
+<td class="instruction">LD (IY+$07),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46596"></span>B604</td>
+<td class="instruction">LD (IY+$08),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46599"></span>B607</td>
+<td class="instruction">LD A,($A097)</td>
+<td class="comment-1" rowspan="2">is Rex direction facing right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46602"></span>B60A</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46603"></span>B60B</td>
+<td class="instruction">JP Z,$B623</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46606"></span>B60E</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="3">Recompute x-position for facing left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46609"></span>B611</td>
+<td class="instruction">SUB $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46611"></span>B613</td>
+<td class="instruction">LD (IY+$00),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46614"></span>B616</td>
+<td class="instruction">LD HL,$FFFF</td>
+<td class="comment-1" rowspan="3">Recompute x-offset for facing left (-1)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46617"></span>B619</td>
+<td class="instruction">LD (IY+$07),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46620"></span>B61C</td>
+<td class="instruction">LD (IY+$08),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46623"></span>B61F</td>
+<td class="instruction">LD (IY+$04),$F8</td>
+<td class="comment-1" rowspan="1">Recompute x-delta for facing left</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46627"></span>B623</td>
+<td class="instruction">LD L,(IY+$01)</td>
+<td class="comment-1" rowspan="7">Computes offset on room buffer for y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46630"></span>B626</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46632"></span>B628</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46633"></span>B629</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46634"></span>B62A</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46635"></span>B62B</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46636"></span>B62C</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46637"></span>B62D</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="4">Computes offset on room buffer for x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46640"></span>B630</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46642"></span>B632</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46644"></span>B634</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46646"></span>B636</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="7">Computes address into room buffer for draw the projectile and save this address into projectile configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46647"></span>B637</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46649"></span>B639</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46650"></span>B63A</td>
+<td class="instruction">LD DE,$E7FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46653"></span>B63D</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46654"></span>B63E</td>
+<td class="instruction">LD (IY+$02),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46657"></span>B641</td>
+<td class="instruction">LD (IY+$03),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46660"></span>B644</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46342.html">B506</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46462">Map</a></td>
+<td class="next">
+Next: <a href="46661.html">B645</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

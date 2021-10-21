@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A55E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42293.html">A535</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42334">Map</a></td>
+<td class="next">
+Next: <a href="42484.html">A5F4</a>
+</td>
+</tr>
+</table>
+<div class="description">A55E: Update arrow tiles, shield recharger, respawn indicator, fire and water effect</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a> and <a href="43285.html">A915</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42334"></span>A55E</td>
+<td class="instruction">LD HL,$AE8D</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset address for arrows (tilt #0)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42337"></span>A561</td>
+<td class="instruction">LD A,($A017)</td>
+<td class="comment-1" rowspan="3">Jump forward if tilt #0 frame</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42340"></span>A564</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42341"></span>A565</td>
+<td class="instruction">JP Z,$A56B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42344"></span>A568</td>
+<td class="instruction">LD HL,$AEAD</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address for the animated arrows (tilt #1)</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42347"></span>A56B</td>
+<td class="instruction">LD DE,$6BC0</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the base address for the arrows tiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42350"></span>A56E</td>
+<td class="instruction">LD BC,$0020</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to the number of bytes</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42353"></span>A571</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="9">Copy graphic data to tile address until all the bytes copied</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42355"></span>A573</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42357"></span>A575</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42359"></span>A577</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42361"></span>A579</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42363"></span>A57B</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42365"></span>A57D</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42367"></span>A57F</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42369"></span>A581</td>
+<td class="instruction">JP PE,$A571</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42372"></span>A584</td>
+<td class="instruction">CALL $A5A7</td>
+<td class="comment-1" rowspan="1">Update shield recharger</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42375"></span>A587</td>
+<td class="instruction">LD IY,$A06B</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the respawn fire index value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42379"></span>A58B</td>
+<td class="instruction">LD DE,$A60C</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the base address for the graphic data address table for the respawn fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42382"></span>A58E</td>
+<td class="instruction">LD HL,$6600</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address for the respawn fire tile graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42385"></span>A591</td>
+<td class="instruction">LD BC,$0008</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to the number of bytes to copy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42388"></span>A594</td>
+<td class="instruction">CALL $A5C4</td>
+<td class="comment-1" rowspan="1">Handle respawn fire animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42391"></span>A597</td>
+<td class="instruction">LD IY,$A07C</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the water effect index value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42395"></span>A59B</td>
+<td class="instruction">LD DE,$A61A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the base address for the graphic data address table for the water effect</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42398"></span>A59E</td>
+<td class="instruction">LD HL,$67D8</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address for the water tile graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42401"></span>A5A1</td>
+<td class="instruction">LD BC,$0008</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to the number of bytes to copy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42404"></span>A5A4</td>
+<td class="instruction">JP $A5C4</td>
+<td class="comment-1" rowspan="1">Jump to handle the water effect</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42407"></span>
+<div class="comments">
+<div class="paragraph">
+Update shield recharger
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42407"></span>A5A7</td>
+<td class="instruction">LD IY,$A06A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the shield recharger index value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42411"></span>A5AB</td>
+<td class="instruction">LD DE,$A602</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the base address for the graphic data address table of shield recharger</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42414"></span>A5AE</td>
+<td class="instruction">LD HL,$6BB0</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address for the shield recharger tile graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42417"></span>A5B1</td>
+<td class="instruction">LD BC,$0010</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to the number of bytes to copy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42420"></span>A5B4</td>
+<td class="instruction">JP $A5C4</td>
+<td class="comment-1" rowspan="1">Jump to handle shield recharger animation</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42423"></span>
+<div class="comments">
+<div class="paragraph">
+Update respawn indicators
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42423"></span>A5B7</td>
+<td class="instruction">LD IY,$A069</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the respawn indicator index value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42427"></span>A5BB</td>
+<td class="instruction">LD DE,$A5F4</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the base address for the graphic data address table of respawn indicator</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42430"></span>A5BE</td>
+<td class="instruction">LD HL,$6BA8</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address for the respawn indicator tile graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42433"></span>A5C1</td>
+<td class="instruction">LD BC,$0008</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to the number of bytes to copy</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42436"></span>
+<div class="comments">
+<div class="paragraph">
+Animate tile graphic
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42436"></span>A5C4</td>
+<td class="instruction">LD ($A093),DE</td>
+<td class="comment-1" rowspan="1">Set <a href="41107.html">A093</a> the base address for the table of graphic data address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42440"></span>A5C8</td>
+<td class="instruction">LD ($A095),HL</td>
+<td class="comment-1" rowspan="1">Set <a href="41109.html">A095</a> the base address for the tile graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42443"></span>A5CB</td>
+<td class="instruction">INC (IY+$00)</td>
+<td class="comment-1" rowspan="2">Increase loop value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42446"></span>A5CE</td>
+<td class="instruction">INC (IY+$00)</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42449"></span>A5D1</td>
+<td class="instruction">LD L,(IY+$00)</td>
+<td class="comment-1" rowspan="5">Point into <span class="register">DE</span> the address for the corresponent index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42452"></span>A5D4</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42454"></span>A5D6</td>
+<td class="instruction">LD DE,($A093)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42458"></span>A5DA</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42459"></span>A5DB</td>
+<td class="instruction">EX DE,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42460"></span>A5DC</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="4">if value is $FF then reset the index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42461"></span>A5DD</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42463"></span>A5DF</td>
+<td class="instruction">JP NZ,$A5E9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42466"></span>A5E2</td>
+<td class="instruction">LD (IY+$00),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42470"></span>A5E6</td>
+<td class="instruction">JP $A5D1</td>
+<td class="comment-1" rowspan="1">Jump to handle next address</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42473"></span>A5E9</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="4">Set into <span class="register">HL</span> the base address for the next graphic data of the tile animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42474"></span>A5EA</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42475"></span>A5EB</td>
+<td class="instruction">LD A,(DE)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42476"></span>A5EC</td>
+<td class="instruction">LD H,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42477"></span>A5ED</td>
+<td class="instruction">LD DE,($A095)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the base address for the tile graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42481"></span>A5F1</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy all the bytes of the tiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42483"></span>A5F3</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42293.html">A535</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42334">Map</a></td>
+<td class="next">
+Next: <a href="42484.html">A5F4</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

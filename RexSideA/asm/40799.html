@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 9F5F</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40724.html">9F14</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40799">Map</a></td>
+<td class="next">
+Next: <a href="40978.html">A012</a>
+</td>
+</tr>
+</table>
+<div class="description">9F5F: Handle Rex over special tiles</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40799"></span>9F5F</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Reset Rex on elevtor</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40800"></span>9F60</td>
+<td class="instruction">LD ($A07A),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40803"></span>9F63</td>
+<td class="instruction">LD HL,($A019)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to point into tile type buffer data under Rex feet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40806"></span>9F66</td>
+<td class="instruction">LD DE,$0060</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40809"></span>9F69</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40810"></span>9F6A</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Check tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40811"></span>9F6B</td>
+<td class="instruction">CP $12</td>
+<td class="comment-1" rowspan="2">Jump forward to handle elevator</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40813"></span>9F6D</td>
+<td class="instruction">JP Z,$9F97</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40816"></span>9F70</td>
+<td class="instruction">LD HL,($A019)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to point into tile type buffer data in front-under Rex feet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40819"></span>9F73</td>
+<td class="instruction">LD DE,$0061</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40822"></span>9F76</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40823"></span>9F77</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Check tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40824"></span>9F78</td>
+<td class="instruction">CP $07</td>
+<td class="comment-1" rowspan="2">Jump to handle respawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40826"></span>9F7A</td>
+<td class="instruction">JP Z,<a href="39995.html">$9C3B</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40829"></span>9F7D</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">Jump to handle shield recharging</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40831"></span>9F7F</td>
+<td class="instruction">JP Z,$9FEE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40834"></span>9F82</td>
+<td class="instruction">CP $0D</td>
+<td class="comment-1" rowspan="2">Jump to handle Double fire weapon bonus</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40836"></span>9F84</td>
+<td class="instruction">JP Z,$9FB2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40839"></span>9F87</td>
+<td class="instruction">CP $0A</td>
+<td class="comment-1" rowspan="2">Jump to handle laser weapon bonus</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40841"></span>9F89</td>
+<td class="instruction">JP Z,$9FC1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40844"></span>9F8C</td>
+<td class="instruction">CP $0B</td>
+<td class="comment-1" rowspan="2">Jump to handle multiple weapon bonus</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40846"></span>9F8E</td>
+<td class="instruction">JP Z,$9FD0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40849"></span>9F91</td>
+<td class="instruction">CP $0C</td>
+<td class="comment-1" rowspan="2">Jump to handle spray weapon bonus</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40851"></span>9F93</td>
+<td class="instruction">JP Z,$9FDF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40854"></span>9F96</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40855"></span>
+<div class="comments">
+<div class="paragraph">
+handle Rex on elevator
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40855"></span>9F97</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Reset speed Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40856"></span>9F98</td>
+<td class="instruction">LD ($A091),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40859"></span>9F9B</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set Rex on elevator</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40861"></span>9F9D</td>
+<td class="instruction">LD ($A07A),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40864"></span>9FA0</td>
+<td class="instruction">LD A,($A0B7)</td>
+<td class="comment-1" rowspan="4">Return if Rex is not grid fixed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40867"></span>9FA3</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40869"></span>9FA5</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40870"></span>9FA6</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40871"></span>9FA7</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set falling speed to zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40872"></span>9FA8</td>
+<td class="instruction">LD ($A0BC),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40875"></span>9FAB</td>
+<td class="instruction">CALL <a href="53476.html#53530">$D11A</a></td>
+<td class="comment-1" rowspan="1">Configure Rex for falling - Does nothing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40878"></span>9FAE</td>
+<td class="instruction">CALL <a href="53442.html">$D0C2</a></td>
+<td class="comment-1" rowspan="1">Configure Rex for jump</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40881"></span>9FB1</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40882"></span>
+<div class="comments">
+<div class="paragraph">
+handle double fire weapon bonus
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40882"></span>9FB2</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="4">Return if next tile is not the same type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40883"></span>9FB3</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40884"></span>9FB4</td>
+<td class="instruction">CP $0D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40886"></span>9FB6</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40887"></span>9FB7</td>
+<td class="instruction">CALL <a href="42891.html">$A78B</a></td>
+<td class="comment-1" rowspan="1">Update weapon in inventory (HUD)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40890"></span>9FBA</td>
+<td class="instruction">LD HL,$ABA0</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the base address for text definition of DOUBLE FIRE weapon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40893"></span>9FBD</td>
+<td class="instruction">CALL <a href="55409.html">$D871</a></td>
+<td class="comment-1" rowspan="1">Show weapon bonus windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40896"></span>9FC0</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40897"></span>
+<div class="comments">
+<div class="paragraph">
+handle laser weapon bonus
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40897"></span>9FC1</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="4">Return if next tile is not the same type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40898"></span>9FC2</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40899"></span>9FC3</td>
+<td class="instruction">CP $0A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40901"></span>9FC5</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40902"></span>9FC6</td>
+<td class="instruction">CALL <a href="42891.html#42897">$A791</a></td>
+<td class="comment-1" rowspan="1">Update weapon in inventory (HUD)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40905"></span>9FC9</td>
+<td class="instruction">LD HL,$ABB1</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the base address for text definition of LASER weapon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40908"></span>9FCC</td>
+<td class="instruction">CALL <a href="55409.html">$D871</a></td>
+<td class="comment-1" rowspan="1">Show weapon bonus windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40911"></span>9FCF</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40912"></span>
+<div class="comments">
+<div class="paragraph">
+handle multiple weapon bonus
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40912"></span>9FD0</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="4">Return if next tile is not the same type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40913"></span>9FD1</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40914"></span>9FD2</td>
+<td class="instruction">CP $0B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40916"></span>9FD4</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40917"></span>9FD5</td>
+<td class="instruction">CALL <a href="42891.html#42903">$A797</a></td>
+<td class="comment-1" rowspan="1">Update weapon in inventory (HUD)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40920"></span>9FD8</td>
+<td class="instruction">LD HL,$ABBC</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the base address for text definition of MULTIPLE weapon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40923"></span>9FDB</td>
+<td class="instruction">CALL <a href="55409.html">$D871</a></td>
+<td class="comment-1" rowspan="1">Show weapon bonus windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40926"></span>9FDE</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40927"></span>
+<div class="comments">
+<div class="paragraph">
+handle spray weapon bonus
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40927"></span>9FDF</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="4">Return if next tile is not the same type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40928"></span>9FE0</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40929"></span>9FE1</td>
+<td class="instruction">CP $0C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40931"></span>9FE3</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40932"></span>9FE4</td>
+<td class="instruction">CALL <a href="42891.html#42909">$A79D</a></td>
+<td class="comment-1" rowspan="1">Update weapon in inventory (HUD)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40935"></span>9FE7</td>
+<td class="instruction">LD HL,$ABCA</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the base address for text definition of SPRAY weapon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40938"></span>9FEA</td>
+<td class="instruction">CALL <a href="55409.html">$D871</a></td>
+<td class="comment-1" rowspan="1">Show weapon bonus windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40941"></span>9FED</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40942"></span>
+<div class="comments">
+<div class="paragraph">
+handle shield recharging
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40942"></span>9FEE</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="4">Return if next tile is not the same type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40943"></span>9FEF</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40944"></span>9FF0</td>
+<td class="instruction">CP $08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40946"></span>9FF2</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40947"></span>9FF3</td>
+<td class="instruction">LD A,($A049)</td>
+<td class="comment-1" rowspan="3">Return if shield active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40950"></span>9FF6</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40951"></span>9FF7</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40952"></span>9FF8</td>
+<td class="instruction">LD A,($A04D)</td>
+<td class="comment-1" rowspan="2">Increment shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40955"></span>9FFB</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40956"></span>9FFC</td>
+<td class="instruction">CP $64</td>
+<td class="comment-1" rowspan="2">Return if shield power = 100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40958"></span>9FFE</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40959"></span>9FFF</td>
+<td class="instruction">LD ($A04D),A</td>
+<td class="comment-1" rowspan="1">Set the new shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40962"></span>A002</td>
+<td class="instruction">CALL <a href="39418.html">$99FA</a></td>
+<td class="comment-1" rowspan="1">Draw shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40965"></span>A005</td>
+<td class="instruction">LD A,($D83A)</td>
+<td class="comment-1" rowspan="3">Return if channel 2 in use</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40968"></span>A008</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40970"></span>A00A</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40971"></span>A00B</td>
+<td class="instruction">LD DE,$D826</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the shield recharging sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40974"></span>A00E</td>
+<td class="instruction">CALL <a href="54759.html">$D5E7</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40977"></span>A011</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40724.html">9F14</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40799">Map</a></td>
+<td class="next">
+Next: <a href="40978.html">A012</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

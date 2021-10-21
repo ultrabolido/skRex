@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D759</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55108.html">D744</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55129">Map</a></td>
+<td class="next">
+Next: <a href="55139.html">D763</a>
+</td>
+</tr>
+</table>
+<div class="description">D759: Send commands to AY-3-8912</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="54743.html">D5D7</a>, <a href="54759.html#54776">D5F8</a>, <a href="54924.html">D68C</a>, <a href="55003.html">D6DB</a> and <a href="55108.html">D744</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">D</td>
+<td class="register-desc">Register to write</td>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">Data to write</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55129"></span>D759</td>
+<td class="instruction">LD BC,$FFFD</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55132"></span>D75C</td>
+<td class="instruction">OUT (C),D</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55134"></span>D75E</td>
+<td class="instruction">LD B,$BF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55136"></span>D760</td>
+<td class="instruction">OUT (C),E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55138"></span>D762</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55108.html">D744</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55129">Map</a></td>
+<td class="next">
+Next: <a href="55139.html">D763</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

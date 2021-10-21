@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 9751</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38729.html">9749</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38737">Map</a></td>
+<td class="next">
+Next: <a href="38790.html">9786</a>
+</td>
+</tr>
+</table>
+<div class="description">9751: Release a smartbomb</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38737"></span>9751</td>
+<td class="instruction">LD A,($A030)</td>
+<td class="comment-1" rowspan="3">Return if not destroy all enemies active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38740"></span>9754</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38741"></span>9755</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38742"></span>9756</td>
+<td class="instruction">LD A,($A06C)</td>
+<td class="comment-1" rowspan="5">Decrement smartbomb inventory</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38745"></span>9759</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38746"></span>975A</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38748"></span>975C</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38749"></span>975D</td>
+<td class="instruction">LD ($A06C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38752"></span>9760</td>
+<td class="instruction">CALL <a href="41381.html#41417">$A1C9</a></td>
+<td class="comment-1" rowspan="1">Draw smartbombs in HUD</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="38755"></span>
+<div class="comments">
+<div class="paragraph">
+Destroy all enemies / projectiles flying. This entry point is used by the routine at <a href="38729.html">9749</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38755"></span>9763</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Active destroy all enemies</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38757"></span>9765</td>
+<td class="instruction">LD ($A030),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38760"></span>9768</td>
+<td class="instruction">LD A,$10</td>
+<td class="comment-1" rowspan="2">Set the max number of enemies to be killes equal to 16</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38762"></span>976A</td>
+<td class="instruction">LD ($A02F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38765"></span>976D</td>
+<td class="instruction">LD HL,$5E66</td>
+<td class="comment-1" rowspan="2">Set address pointer fot the data buffer of enemies configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38768"></span>9770</td>
+<td class="instruction">LD ($A031),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38771"></span>9773</td>
+<td class="instruction">LD HL,$5D28</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address for the projectile status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38774"></span>9776</td>
+<td class="instruction">LD B,$14</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the max number of projectiles on screen</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38776"></span>9778</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the status of the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38777"></span>9779</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump to the next projectile if projectile is destroyed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38778"></span>977A</td>
+<td class="instruction">JP Z,$977F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38781"></span>977D</td>
+<td class="instruction">LD (HL),$02</td>
+<td class="comment-1" rowspan="1">Set projectile status to Impact #1</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38783"></span>977F</td>
+<td class="instruction">LD DE,$000F</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to pint to the next projectile status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38786"></span>9782</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38787"></span>9783</td>
+<td class="instruction">DJNZ $9778</td>
+<td class="comment-1" rowspan="1">Jump back until all projectiles checked</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38789"></span>9785</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38729.html">9749</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38737">Map</a></td>
+<td class="next">
+Next: <a href="38790.html">9786</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

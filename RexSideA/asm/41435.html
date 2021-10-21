@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A1DB</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41381.html">A1A5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41435">Map</a></td>
+<td class="next">
+Next: <a href="41457.html">A1F1</a>
+</td>
+</tr>
+</table>
+<div class="description">A1DB: Draw the sprites for the smartbomb icons in HUD (1/2)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="41381.html">A1A5</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41435"></span>A1DB</td>
+<td class="instruction">LD B,$03</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of smartbomb icons</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41437"></span>A1DD</td>
+<td class="instruction">LD A,$19</td>
+<td class="comment-1" rowspan="2">Set horizontal position of first smartbomb icon in data buffer at <a href="41457.html">A1F1</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41439"></span>A1DF</td>
+<td class="instruction">LD ($A1F3),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41442"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="41463.html">A1F7</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41442"></span>A1E2</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41443"></span>A1E3</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">E</span> to the offset of the graphics data for the corresponent smartbomb icon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41444"></span>A1E4</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41445"></span>A1E5</td>
+<td class="instruction">LD D,$00</td>
+<td class="comment-1" rowspan="3">Add the offset to the base addres of the graphics data and set <span class="register">HL</span> to point to the graphcis data of the smartbomb icon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41447"></span>A1E7</td>
+<td class="instruction">LD HL,$8C0A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41450"></span>A1EA</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41451"></span>A1EB</td>
+<td class="instruction">LD ($A1F1),HL</td>
+<td class="comment-1" rowspan="1">Save this addres to the data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41454"></span>A1EE</td>
+<td class="instruction">CALL <a href="55488.html">$D8C0</a></td>
+<td class="comment-1" rowspan="1">Draw the smarbomb icon</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41381.html">A1A5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41435">Map</a></td>
+<td class="next">
+Next: <a href="41457.html">A1F1</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

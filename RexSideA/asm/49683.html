@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C213</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49610.html">C1CA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49683">Map</a></td>
+<td class="next">
+Next: <a href="49721.html">C239</a>
+</td>
+</tr>
+</table>
+<div class="description">C213: Handle SCANNER - moves up</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="50720.html">C620</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49683"></span>C213</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="3">Return if scanner is not moving up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49686"></span>C216</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49688"></span>C218</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49689"></span>C219</td>
+<td class="instruction">DEC (IX+$12)</td>
+<td class="comment-1" rowspan="1">Decrement state change counter for scanner</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49692"></span>C21C</td>
+<td class="instruction">JP Z,<a href="49917.html#49939">$C313</a></td>
+<td class="comment-1" rowspan="1">Jump to handle state change if counter is 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49695"></span>C21F</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Decrement y-position based on scanner speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49698"></span>C222</td>
+<td class="instruction">SUB (IX+$10)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49701"></span>C225</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49704"></span>C228</td>
+<td class="instruction">LD L,(IX+$04)</td>
+<td class="comment-1" rowspan="6">Point to the address of the next graphic data for scanner</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49707"></span>C22B</td>
+<td class="instruction">LD H,(IX+$05)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49710"></span>C22E</td>
+<td class="instruction">LD DE,$0020</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49713"></span>C231</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49714"></span>C232</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49717"></span>C235</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49720"></span>C238</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49610.html">C1CA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49683">Map</a></td>
+<td class="next">
+Next: <a href="49721.html">C239</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C95A</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51439.html">C8EF</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51546">Map</a></td>
+<td class="next">
+Next: <a href="51557.html">C965</a>
+</td>
+</tr>
+</table>
+<div class="description">C95A: Check for end game room</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="53408.html">D0A0</a>, <a href="53425.html">D0B1</a>, <a href="53476.html">D0E4</a> and <a href="53581.html">D14D</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51546"></span>C95A</td>
+<td class="instruction">LD A,($A0B8)</td>
+<td class="comment-1" rowspan="3">If current room is $63 then jump to show password code for Rex 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51549"></span>C95D</td>
+<td class="instruction">CP $63</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51551"></span>C95F</td>
+<td class="instruction">JP Z,<a href="42958.html">$A7CE</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51554"></span>C962</td>
+<td class="instruction">JP <a href="38010.html#38275">$9583</a></td>
+<td class="comment-1" rowspan="1">Jump back to the main loop game</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51439.html">C8EF</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51546">Map</a></td>
+<td class="next">
+Next: <a href="51557.html">C965</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

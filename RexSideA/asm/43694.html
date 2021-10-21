@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Data at AAAE</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-b">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Data</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43630.html">AA6E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43694">Map</a></td>
+<td class="next">
+Next: <a href="43989.html">ABD5</a>
+</td>
+</tr>
+</table>
+<div class="description">AAAE: Text Definition Data - Start game, game over and in-game windows</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The Text Definition Data format is as follows
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Content</th>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$01</td>
+<td class="" colspan="1" rowspan="1">Color attribute of text</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="2">$02</td>
+<td class="" colspan="1" rowspan="1">Bits 7-5: not used</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">Bits 4-0: hotizontal position (0-31)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="2">$03</td>
+<td class="" colspan="1" rowspan="1">Bits 7-3: vertical position (0-24)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">Bits 2-0: not used</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+PHASE ONE:PROCEED ON FOOT THROUGH UNDERGROUND COMPLEX
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43694"></span>AAAE</td>
+<td class="instruction">DEFB $46,$07,$50</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43697"></span>AAB1</td>
+<td class="instruction">DEFM "PHASE ONE:PROCEED"</td>
+<td class="comment-1" rowspan="1"><img alt="phase_one" src="../images/udgs/phase_one.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43714"></span>AAC2</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43715"></span>AAC3</td>
+<td class="instruction">DEFB $46,$07,$58</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43718"></span>AAC6</td>
+<td class="instruction">DEFM "ON FOOT THROUGH"</td>
+<td class="comment-1" rowspan="1"><img alt="on_foot" src="../images/udgs/on_foot.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43733"></span>AAD5</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43734"></span>AAD6</td>
+<td class="instruction">DEFB $46,$07,$60</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43737"></span>AAD9</td>
+<td class="instruction">DEFM "UNDERGROUND COMPLEX"</td>
+<td class="comment-1" rowspan="1"><img alt="underground" src="../images/udgs/underground.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43756"></span>AAEC</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43757"></span>
+<div class="comments">
+<div class="paragraph">
+GAME OVER
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43757"></span>AAED</td>
+<td class="instruction">DEFB $43,$05,$40</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43760"></span>AAF0</td>
+<td class="instruction">DEFM "GAME OVER"</td>
+<td class="comment-1" rowspan="1"><img alt="game_over" src="../images/udgs/game_over.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43769"></span>AAF9</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43770"></span>
+<div class="comments">
+<div class="paragraph">
+HI:SCORE
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43770"></span>AAFA</td>
+<td class="instruction">DEFB $45,$07,$60</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43773"></span>AAFD</td>
+<td class="instruction">DEFM "HI:SCORE 0000000"</td>
+<td class="comment-1" rowspan="1"><img alt="hi_score" src="../images/udgs/hi_score.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43789"></span>AB0D</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43790"></span>
+<div class="comments">
+<div class="paragraph">
+HUMANS KILLED
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43790"></span>AB0E</td>
+<td class="instruction">DEFB $45,$09,$80</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43793"></span>AB11</td>
+<td class="instruction">DEFM "HUMANS KILLED:00000"</td>
+<td class="comment-1" rowspan="1"><img alt="humans_killed" src="../images/udgs/humans_killed.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43812"></span>AB24</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43813"></span>
+<div class="comments">
+<div class="paragraph">
+PRESS FIRE TO BEGIN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43813"></span>AB25</td>
+<td class="instruction">DEFB $44,$04,$70</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43816"></span>AB28</td>
+<td class="instruction">DEFM "PRESS FIRE"</td>
+<td class="comment-1" rowspan="1"><img alt="press_fire" src="../images/udgs/press_fire.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43826"></span>AB32</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43827"></span>AB33</td>
+<td class="instruction">DEFB $44,$04,$78</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43830"></span>AB36</td>
+<td class="instruction">DEFM "TO BEGIN  "</td>
+<td class="comment-1" rowspan="1"><img alt="to_begin" src="../images/udgs/to_begin.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43840"></span>AB40</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43841"></span>
+<div class="comments">
+<div class="paragraph">
+SPEED UP
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43841"></span>AB41</td>
+<td class="instruction">DEFB $46,$03,$28</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43844"></span>AB44</td>
+<td class="instruction">DEFM "    SPEED UP   "</td>
+<td class="comment-1" rowspan="1"><img alt="speed_up" src="../images/udgs/speed_up.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43859"></span>AB53</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43860"></span>
+<div class="comments">
+<div class="paragraph">
+SHIELD LOSS
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43860"></span>AB54</td>
+<td class="instruction">DEFB $42,$03,$28</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43863"></span>AB57</td>
+<td class="instruction">DEFM "  SHIELD LOSS  "</td>
+<td class="comment-1" rowspan="1"><img alt="shield_loss" src="../images/udgs/shield_loss.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43878"></span>AB66</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43879"></span>
+<div class="comments">
+<div class="paragraph">
+1000 BONUS
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43879"></span>AB67</td>
+<td class="instruction">DEFB $46,$03,$28</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43882"></span>AB6A</td>
+<td class="instruction">DEFM "   1000 BONUS  "</td>
+<td class="comment-1" rowspan="1"><img alt="1000_bonus" src="../images/udgs/1000_bonus.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43897"></span>AB79</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43898"></span>
+<div class="comments">
+<div class="paragraph">
+ENERGY LOSS
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43898"></span>AB7A</td>
+<td class="instruction">DEFB $42,$03,$28</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43901"></span>AB7D</td>
+<td class="instruction">DEFM "  ENERGY LOSS  "</td>
+<td class="comment-1" rowspan="1"><img alt="energy_loss" src="../images/udgs/energy_loss.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43916"></span>AB8C</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43917"></span>
+<div class="comments">
+<div class="paragraph">
+100 RAPID SHOTS
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43917"></span>AB8D</td>
+<td class="instruction">DEFB $46,$03,$28</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43920"></span>AB90</td>
+<td class="instruction">DEFM "100 RAPID SHOTS"</td>
+<td class="comment-1" rowspan="1"><img alt="100_rapid_shots" src="../images/udgs/100_rapid_shots.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43935"></span>AB9F</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43936"></span>
+<div class="comments">
+<div class="paragraph">
+DOUBLE FIRE
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43936"></span>ABA0</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">Weapon on inventory: $FF Available $00 Not available</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43937"></span>ABA1</td>
+<td class="instruction">DEFB $01</td>
+<td class="comment-1" rowspan="1">Number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43938"></span>ABA2</td>
+<td class="instruction">DEFB $45,$12,$28</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43941"></span>ABA5</td>
+<td class="instruction">DEFM "DOUBLE FIRE"</td>
+<td class="comment-1" rowspan="1"><img alt="double_fire" src="../images/udgs/double_fire.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43952"></span>ABB0</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43953"></span>
+<div class="comments">
+<div class="paragraph">
+LASER
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43953"></span>ABB1</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">Weapon on inventory: $FF Available $00 Not available</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43954"></span>ABB2</td>
+<td class="instruction">DEFB $01</td>
+<td class="comment-1" rowspan="1">Number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43955"></span>ABB3</td>
+<td class="instruction">DEFB $45,$03,$28</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43958"></span>ABB6</td>
+<td class="instruction">DEFM "LASER"</td>
+<td class="comment-1" rowspan="1"><img alt="laser" src="../images/udgs/laser.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43963"></span>ABBB</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43964"></span>
+<div class="comments">
+<div class="paragraph">
+MULTIPLE
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43964"></span>ABBC</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">Weapon on inventory: $FF Available $00 Not available</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43965"></span>ABBD</td>
+<td class="instruction">DEFB $01</td>
+<td class="comment-1" rowspan="1">Number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43966"></span>ABBE</td>
+<td class="instruction">DEFB $45,$14,$28</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43969"></span>ABC1</td>
+<td class="instruction">DEFM "MULTIPLE"</td>
+<td class="comment-1" rowspan="1"><img alt="multiple" src="../images/udgs/multiple.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43977"></span>ABC9</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43978"></span>
+<div class="comments">
+<div class="paragraph">
+SPRAY
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43978"></span>ABCA</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">Weapon on inventory: $FF Available $00 Not available</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43979"></span>ABCB</td>
+<td class="instruction">DEFB $01</td>
+<td class="comment-1" rowspan="1">Number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43980"></span>ABCC</td>
+<td class="instruction">DEFB $45,$12,$28</td>
+<td class="comment-1" rowspan="1">Color attribute and position of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43983"></span>ABCF</td>
+<td class="instruction">DEFM "SPRAY"</td>
+<td class="comment-1" rowspan="1"><img alt="spray" src="../images/udgs/spray.png" /></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43988"></span>ABD4</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43630.html">AA6E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43694">Map</a></td>
+<td class="next">
+Next: <a href="43989.html">ABD5</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

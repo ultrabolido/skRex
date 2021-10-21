@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Data at E067</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-b">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Data</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="57423.html">E04F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#57447">Map</a></td>
+<td class="next">
+Next: <a href="57568.html">E0E0</a>
+</td>
+</tr>
+</table>
+<div class="description">E067: Animation definition for the enemies showed in the tile screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+The tile screen display ten enemies. Every animation is defined with 12 bytes in the format showed below
+</div>
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Bytes</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x00-0x01</td>
+<td class="" colspan="1" rowspan="1">Address pointer to sprite graphics data</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x02</td>
+<td class="" colspan="1" rowspan="1">Width of sprite (in bytes)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x03</td>
+<td class="" colspan="1" rowspan="1">Height of sprite (in pixels)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x04</td>
+<td class="" colspan="1" rowspan="1">Animation frame 0</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x05</td>
+<td class="" colspan="1" rowspan="1">Animation frame 1</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x06</td>
+<td class="" colspan="1" rowspan="1">Animation frame 2</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x07</td>
+<td class="" colspan="1" rowspan="1">Animation frame 3</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x08</td>
+<td class="" colspan="1" rowspan="1">Animation frame 4</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x09</td>
+<td class="" colspan="1" rowspan="1">Animation frame 5</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0A</td>
+<td class="" colspan="1" rowspan="1">Animation frame 6</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0B</td>
+<td class="" colspan="1" rowspan="1">Animation frame 7</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57447"></span>E067</td>
+<td class="instruction">DEFB $F6,$E0</td>
+<td class="comment-1" rowspan="2">Animation definition for FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57449"></span>E069</td>
+<td class="instruction">DEFB $02,$10,$00,$20,$40,$60,$00,$20,$40,$60</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57459"></span>E073</td>
+<td class="instruction">DEFB $76,$E1</td>
+<td class="comment-1" rowspan="2">Animation definition for STOMPER</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57461"></span>E075</td>
+<td class="instruction">DEFB $02,$10,$00,$20,$40,$60,$00,$20,$40,$60</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57471"></span>E07F</td>
+<td class="instruction">DEFB $F6,$E1</td>
+<td class="comment-1" rowspan="2">Animation definition for SCANNER</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57473"></span>E081</td>
+<td class="instruction">DEFB $02,$10,$00,$20,$40,$60,$80,$A0,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57483"></span>E08B</td>
+<td class="instruction">DEFB $B6,$E2</td>
+<td class="comment-1" rowspan="2">Animation definition for RAMMING POD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57485"></span>E08D</td>
+<td class="instruction">DEFB $02,$10,$00,$20,$40,$60,$00,$20,$40,$60</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57495"></span>E097</td>
+<td class="instruction">DEFB $4A,$8E</td>
+<td class="comment-1" rowspan="2">Animation definition for LAUNCHER</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57497"></span>E099</td>
+<td class="instruction">DEFB $02,$10,$00,$00,$00,$00,$00,$00,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57507"></span>E0A3</td>
+<td class="instruction">DEFB $6A,$8E</td>
+<td class="comment-1" rowspan="2">Animation definition for SHOOTER</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57509"></span>E0A5</td>
+<td class="instruction">DEFB $02,$10,$00,$00,$00,$00,$00,$00,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57519"></span>E0AF</td>
+<td class="instruction">DEFB $AA,$8E</td>
+<td class="comment-1" rowspan="2">Animation definition for SWING GUN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57521"></span>E0B1</td>
+<td class="instruction">DEFB $02,$10,$00,$20,$40,$60,$80,$60,$40,$20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57531"></span>E0BB</td>
+<td class="instruction">DEFB $F6,$E3</td>
+<td class="comment-1" rowspan="2">Animation definition for BLOB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57533"></span>E0BD</td>
+<td class="instruction">DEFB $01,$08,$00,$08,$10,$18,$20,$28,$30,$38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57543"></span>E0C7</td>
+<td class="instruction">DEFB $36,$E4</td>
+<td class="comment-1" rowspan="2">Animation definition for MINE LAYER</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57545"></span>E0C9</td>
+<td class="instruction">DEFB $02,$0C,$00,$18,$30,$48,$00,$18,$30,$48</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57555"></span>E0D3</td>
+<td class="instruction">DEFB $96,$E4</td>
+<td class="comment-1" rowspan="2">Animation definition for MINE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57557"></span>E0D5</td>
+<td class="instruction">DEFB $01,$08,$00,$08,$10,$18,$20,$28,$30,$38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57567"></span>E0DF</td>
+<td class="instruction">DEFB $FF</td>
+<td class="comment-1" rowspan="1">End marker</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="57423.html">E04F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#57447">Map</a></td>
+<td class="next">
+Next: <a href="57568.html">E0E0</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D0C2</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53425.html">D0B1</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53442">Map</a></td>
+<td class="next">
+Next: <a href="53464.html">D0D8</a>
+</td>
+</tr>
+</table>
+<div class="description">D0C2: Configure Rex for jump</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a> and <a href="40799.html">9F5F</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53442"></span>D0C2</td>
+<td class="instruction">LD A,($A0BC)</td>
+<td class="comment-1" rowspan="3">Return if Rex is falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53445"></span>D0C5</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53446"></span>D0C6</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53447"></span>D0C7</td>
+<td class="instruction">LD A,($A0BD)</td>
+<td class="comment-1" rowspan="3">Return if Rex is jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53450"></span>D0CA</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53451"></span>D0CB</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53452"></span>D0CC</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set Rex jump active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53454"></span>D0CE</td>
+<td class="instruction">LD ($A0BD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53457"></span>D0D1</td>
+<td class="instruction">LD HL,$D0D8</td>
+<td class="comment-1" rowspan="2">Set <a href="41152.html">A0C0</a> the address pointer for the table of y-offsets increments for jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53460"></span>D0D4</td>
+<td class="instruction">LD ($A0C0),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53463"></span>D0D7</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53425.html">D0B1</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53442">Map</a></td>
+<td class="next">
+Next: <a href="53464.html">D0D8</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

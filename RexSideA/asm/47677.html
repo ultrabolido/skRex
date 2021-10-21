@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at BA3D</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47599.html">B9EF</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47677">Map</a></td>
+<td class="next">
+Next: <a href="47689.html">BA49</a>
+</td>
+</tr>
+</table>
+<div class="description">BA3D: Handle double energy loss</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="39898.html">9BDA</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47677"></span>BA3D</td>
+<td class="instruction">LD B,$02</td>
+<td class="comment-1" rowspan="1">Set loop counter to 2</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47679"></span>BA3F</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47680"></span>BA40</td>
+<td class="instruction">LD A,$32</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the energy to loss (50)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47682"></span>BA42</td>
+<td class="instruction">CALL <a href="47599.html">$B9EF</a></td>
+<td class="comment-1" rowspan="1">Handle weapon energy loss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47685"></span>BA45</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47686"></span>BA46</td>
+<td class="instruction">DJNZ $BA3F</td>
+<td class="comment-1" rowspan="1">Jump back and handle next energy loss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47688"></span>BA48</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47599.html">B9EF</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47677">Map</a></td>
+<td class="next">
+Next: <a href="47689.html">BA49</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at CF9B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53135.html">CF8F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53147">Map</a></td>
+<td class="next">
+Next: <a href="53196.html">CFCC</a>
+</td>
+</tr>
+</table>
+<div class="description">CF9B: Draw random attribute color for explosion</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="39621.html">9AC5</a> and <a href="47708.html#48491">BD6B</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53147"></span>CF9B</td>
+<td class="instruction">CALL <a href="42293.html">$A535</a></td>
+<td class="comment-1" rowspan="1">Computes into <span class="register">HL</span> the address into the attribute file for the explosion position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53150"></span>CF9E</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="2">Set this address to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53153"></span>CFA1</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53154"></span>CFA2</td>
+<td class="instruction">LD ($A093),HL</td>
+<td class="comment-1" rowspan="1">Save at <a href="41107.html">A093</a> the address into the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53157"></span>CFA5</td>
+<td class="instruction">LD DE,$5800</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> the base address for the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53160"></span>CFA8</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Reset carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53161"></span>CFA9</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="3">Computes the equivalent address of the attribute file into the attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53163"></span>CFAB</td>
+<td class="instruction">LD DE,$E4FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53166"></span>CFAE</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53167"></span>CFAF</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="2">Point <a href="41109.html">A095</a> to the address into the attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53168"></span>CFB0</td>
+<td class="instruction">LD ($A095),DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53172"></span>CFB4</td>
+<td class="instruction">LD A,R</td>
+<td class="comment-1" rowspan="4">Set into <span class="register">DE</span> a pseudo-random number from 0 to 7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53174"></span>CFB6</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53176"></span>CFB8</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53177"></span>CFB9</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53179"></span>CFBB</td>
+<td class="instruction">LD HL,$BFE7</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the address into attribute color for explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53182"></span>CFBE</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53183"></span>CFBF</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">C</span> to the attribute color</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53184"></span>CFC0</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53185"></span>CFC1</td>
+<td class="instruction">LD HL,($A093)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address into the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53188"></span>CFC4</td>
+<td class="instruction">LD DE,($A095)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the address into the attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53192"></span>CFC8</td>
+<td class="instruction">CALL <a href="53053.html">$CF3D</a></td>
+<td class="comment-1" rowspan="1">Draw attribte color for explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53195"></span>CFCB</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53135.html">CF8F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53147">Map</a></td>
+<td class="next">
+Next: <a href="53196.html">CFCC</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

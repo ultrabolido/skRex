@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C745</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50987.html">C72B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51013">Map</a></td>
+<td class="next">
+Next: <a href="51391.html">C8BF</a>
+</td>
+</tr>
+</table>
+<div class="description">C745: Initialize graphic and attribute data buffers for current room</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="43165.html">A89D</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51013"></span>C745</td>
+<td class="instruction">LD A,($A05F)</td>
+<td class="comment-1" rowspan="3">If atoms of Rex ar not flushing on teleporting reset sound volume</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51016"></span>C748</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51017"></span>C749</td>
+<td class="instruction">CALL Z,<a href="54743.html">$D5D7</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51020"></span>C74C</td>
+<td class="instruction">LD HL,$DE9F</td>
+<td class="comment-1" rowspan="5">Reset tile type and tile counter buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51023"></span>C74F</td>
+<td class="instruction">LD DE,$DEA0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51026"></span>C752</td>
+<td class="instruction">LD BC,$065F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51029"></span>C755</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51031"></span>C757</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51033"></span>C759</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Initialize counter for tile drawn on room grahics buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51035"></span>C75B</td>
+<td class="instruction">LD ($A01D),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51038"></span>C75E</td>
+<td class="instruction">LD IX,$EB00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the base address of room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51042"></span>C762</td>
+<td class="instruction">LD HL,$D962</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address of mapping table for tile grahic data and room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51045"></span>C765</td>
+<td class="instruction">LD ($A0B9),HL</td>
+<td class="comment-1" rowspan="1">Copy at <a href="41145.html">A0B9</a> this base address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51048"></span>C768</td>
+<td class="instruction">LD A,($A0B8)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">DE</span> to the current room number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51051"></span>C76B</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51052"></span>C76C</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51054"></span>C76E</td>
+<td class="instruction">LD B,$46</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of supertiles in the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51056"></span>C770</td>
+<td class="instruction">CALL <a href="51432.html">$C8E8</a></td>
+<td class="comment-1" rowspan="1">Computes the offset in the room layout table for the current room (70 x number of room)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51059"></span>C773</td>
+<td class="instruction">LD DE,$75E0</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the base address in the room layout table for the current room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51062"></span>C776</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51063"></span>C777</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Copy the base address into <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51064"></span>C778</td>
+<td class="instruction">POP IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51066"></span>C77A</td>
+<td class="instruction">LD B,$07</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of supertiles row for a room (10x7)</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51068"></span>C77C</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Save REGbc and REGix</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51069"></span>C77D</td>
+<td class="instruction">PUSH IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51071"></span>C77F</td>
+<td class="instruction">LD B,$0A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of supertiles columns for a room (10x7)</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51073"></span>C781</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51074"></span>C782</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="3">Pickup into <span class="register">DE</span> the number of supertile pointed by <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51077"></span>C785</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51078"></span>C786</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51080"></span>C788</td>
+<td class="instruction">LD B,$09</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of tiles for each supertile (3x3)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51082"></span>C78A</td>
+<td class="instruction">CALL <a href="51432.html">$C8E8</a></td>
+<td class="comment-1" rowspan="3">Computes the base addres for the supertile layout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51085"></span>C78D</td>
+<td class="instruction">LD DE,$6CE0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51088"></span>C790</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51089"></span>C791</td>
+<td class="instruction">CALL $C7C5</td>
+<td class="comment-1" rowspan="1">Initialize the supertile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51092"></span>C794</td>
+<td class="instruction">LD DE,$0003</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IX</span> to the next supertile location in the room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51095"></span>C797</td>
+<td class="instruction">ADD IX,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51097"></span>C799</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IY</span> to the next supertile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51099"></span>C79B</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51100"></span>C79C</td>
+<td class="instruction">DJNZ $C781</td>
+<td class="comment-1" rowspan="1">Jump back until all supertiles in a row are drawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51102"></span>C79E</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51104"></span>C7A0</td>
+<td class="instruction">LD DE,$0300</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IX</span> to the first supertile of the next row in the room graphics buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51107"></span>C7A3</td>
+<td class="instruction">ADD IX,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51109"></span>C7A5</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51110"></span>C7A6</td>
+<td class="instruction">DJNZ $C77C</td>
+<td class="comment-1" rowspan="1">Jump back until all the seven rows of supertiles are drawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51112"></span>C7A8</td>
+<td class="instruction">LD HL,$5860</td>
+<td class="comment-1" rowspan="11">Fill the attribute file with color attribute $47 if the current color attribute is $00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51115"></span>C7AB</td>
+<td class="instruction">LD BC,$02A0</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51118"></span>C7AE</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51119"></span>C7AF</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51120"></span>C7B0</td>
+<td class="instruction">JP NZ,$C7B5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51123"></span>C7B3</td>
+<td class="instruction">LD (HL),$47</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51125"></span>C7B5</td>
+<td class="instruction">DEC BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51126"></span>C7B6</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51127"></span>C7B7</td>
+<td class="instruction">LD A,B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51128"></span>C7B8</td>
+<td class="instruction">OR C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51129"></span>C7B9</td>
+<td class="instruction">JP NZ,$C7AE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51132"></span>C7BC</td>
+<td class="instruction">LD A,($A05F)</td>
+<td class="comment-1" rowspan="2">Is <a href="41055.html">A05F</a> = 0 ?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51135"></span>C7BF</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51136"></span>C7C0</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if it isn't</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51137"></span>C7C1</td>
+<td class="instruction">CALL <a href="54702.html">$D5AE</a></td>
+<td class="comment-1" rowspan="1">Reset sound data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51140"></span>C7C4</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51141"></span>
+<div class="comments">
+<div class="paragraph">
+Initialize a supertile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51141"></span>C7C5</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51143"></span>C7C7</td>
+<td class="instruction">LD B,$03</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of rows per supertile (3x3)</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51145"></span>C7C9</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51146"></span>C7CA</td>
+<td class="instruction">LD B,$03</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of columns per supertile (3x3)</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51148"></span>C7CC</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51149"></span>C7CD</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the value of the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51150"></span>C7CE</td>
+<td class="instruction">CALL $C7E2</td>
+<td class="comment-1" rowspan="1">Copy color attribute, type and graphic data of the tile into corresponding buffers and drawn tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51153"></span>C7D1</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the next tile in the supertile layout</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51154"></span>C7D2</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the next address into room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51156"></span>C7D4</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51157"></span>C7D5</td>
+<td class="instruction">DJNZ $C7CC</td>
+<td class="comment-1" rowspan="1">Jump back until all the tiles in a row are drawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51159"></span>C7D7</td>
+<td class="instruction">LD DE,$00FD</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IX</span> to the addres into room graphics buffer for the next row of tiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51162"></span>C7DA</td>
+<td class="instruction">ADD IX,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51164"></span>C7DC</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51165"></span>C7DD</td>
+<td class="instruction">DJNZ $C7C9</td>
+<td class="comment-1" rowspan="1">Jump back until all three rows of tiles are drawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51167"></span>C7DF</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51169"></span>C7E1</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51170"></span>
+<div class="comments">
+<div class="paragraph">
+Copy the color attribute of the file to the attribute buffer, the tile type into the tile type buffer, the mapping of the address for the graphic data and the address of the location of the tile into graphics data buffer and drawn the tile into the room graphics buffer
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51170"></span>C7E2</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Save <span class="register">HL</span> and <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51171"></span>C7E3</td>
+<td class="instruction">PUSH AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51172"></span>C7E4</td>
+<td class="instruction">LD ($A095),A</td>
+<td class="comment-1" rowspan="1">Save the tile value into temporal variable <a href="41109.html">A095</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51175"></span>C7E7</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="4">Computes the address into the tile attributes table for the corresponent tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51176"></span>C7E8</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51178"></span>C7EA</td>
+<td class="instruction">LD HL,$6BE0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51181"></span>C7ED</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51182"></span>C7EE</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the color attribute for the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51183"></span>C7EF</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="2">Copy <span class="register">IX</span> into <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51185"></span>C7F1</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51186"></span>C7F2</td>
+<td class="instruction">CALL $C893</td>
+<td class="comment-1" rowspan="1">Computes into <span class="register">HL</span> the position of the tile in the attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51189"></span>C7F5</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Save the color attribute for the tile into attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51190"></span>C7F6</td>
+<td class="instruction">LD DE,$E55F</td>
+<td class="comment-1" rowspan="3">Computes into <span class="register">HL</span> the offset of the tile into the attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51193"></span>C7F9</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51194"></span>C7FA</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51196"></span>C7FC</td>
+<td class="instruction">LD DE,$E1FF</td>
+<td class="comment-1" rowspan="2">And add this offset to the base address of the tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51199"></span>C7FF</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51200"></span>C800</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51201"></span>C801</td>
+<td class="instruction">LD ($A01E),HL</td>
+<td class="comment-1" rowspan="1">Save the address into tile type buffer of the tile at <a href="40990.html">A01E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51204"></span>C804</td>
+<td class="instruction">LD A,($A095)</td>
+<td class="comment-1" rowspan="1">Pick up the tile value from <a href="41109.html">A095</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51207"></span>C807</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="4">Set <span class="register">HL</span> to the address of the tile type table for the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51208"></span>C808</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51210"></span>C80A</td>
+<td class="instruction">LD HL,$62E0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51213"></span>C80D</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51214"></span>C80E</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the tile type value of the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51215"></span>C80F</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore into <span class="register">HL</span> the address of the tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51216"></span>C810</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Copy the value of the tile type into the tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51217"></span>C811</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51218"></span>C812</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="7">Computes address for the graphics data of the tile into <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51219"></span>C813</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51221"></span>C815</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51222"></span>C816</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51223"></span>C817</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51224"></span>C818</td>
+<td class="instruction">LD DE,$63E0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51227"></span>C81B</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51228"></span>C81C</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51229"></span>C81D</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of bytes to copy into graphics buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51231"></span>C81F</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="2">Copy <span class="register">IX</span> into <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51233"></span>C821</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51234"></span>
+<div class="comments">
+<div class="paragraph">
+Check if the tile is visible
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51234"></span>C822</td>
+<td class="instruction">LD A,($A095)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the tile value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51237"></span>C825</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is a background (blank) tile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51238"></span>C826</td>
+<td class="instruction">JP Z,$C87F</td>
+<td class="comment-1" rowspan="1">Jump forward (this will not be drawn in display file)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51241"></span>C829</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">ia an S (space) tile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51243"></span>C82B</td>
+<td class="instruction">JP Z,$C87F</td>
+<td class="comment-1" rowspan="1">Jump forward (this will not be drawn in display file)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51246"></span>C82E</td>
+<td class="instruction">CP $10</td>
+<td class="comment-1" rowspan="1">is an RJ (random jump) tile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51248"></span>C830</td>
+<td class="instruction">JP Z,$C87F</td>
+<td class="comment-1" rowspan="1">Jump forward (this will not be drawn in display file)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51251"></span>C833</td>
+<td class="instruction">CP $71</td>
+<td class="comment-1" rowspan="1">is a D (always crouch) tile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51253"></span>C835</td>
+<td class="instruction">JP Z,$C87F</td>
+<td class="comment-1" rowspan="1">Jump forward (this will not be drawn in display file)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51256"></span>C838</td>
+<td class="instruction">CP $81</td>
+<td class="comment-1" rowspan="1">is a J (always jump) tile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51258"></span>C83A</td>
+<td class="instruction">JP Z,$C87F</td>
+<td class="comment-1" rowspan="1">Jump forward (this will not be drawn in display file)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51261"></span>C83D</td>
+<td class="instruction">CP $91</td>
+<td class="comment-1" rowspan="1">is a RD (random crouch) tile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51263"></span>C83F</td>
+<td class="instruction">JP Z,$C87F</td>
+<td class="comment-1" rowspan="1">Jump forward</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51266"></span>
+<div class="comments">
+<div class="paragraph">
+Establish mapping between tile graphic data and room graphics buffer
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51266"></span>C842</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51268"></span>C844</td>
+<td class="instruction">LD IY,($A0B9)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the address pointer into the mapping table of tile graphics and room graphics buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51272"></span>C848</td>
+<td class="instruction">LD (IY+$00),L</td>
+<td class="comment-1" rowspan="2">Save into the first word the address of the room graphics buffer where tile will be draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51275"></span>C84B</td>
+<td class="instruction">LD (IY+$01),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51278"></span>C84E</td>
+<td class="instruction">LD (IY+$02),E</td>
+<td class="comment-1" rowspan="2">Save into the second word the address of the tile graphics data for the tile drawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51281"></span>C851</td>
+<td class="instruction">LD (IY+$03),D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51284"></span>C854</td>
+<td class="instruction">LD (IY+$04),$FF</td>
+<td class="comment-1" rowspan="1">Set in the fifth byte the end marker</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51288"></span>C858</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Save <span class="register">HL</span> and <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51289"></span>C859</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51290"></span>C85A</td>
+<td class="instruction">LD HL,($A01E)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address pointer into the tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51293"></span>C85D</td>
+<td class="instruction">LD DE,$E19F</td>
+<td class="comment-1" rowspan="3">Computes the offset of the current tile into the tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51296"></span>C860</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51297"></span>C861</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51299"></span>C863</td>
+<td class="instruction">LD DE,$DE9F</td>
+<td class="comment-1" rowspan="2">Add the offset to the base address of the tile count buffer to obtain the address for the current tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51302"></span>C866</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51303"></span>C867</td>
+<td class="instruction">LD A,($A01D)</td>
+<td class="comment-1" rowspan="2">Save the current count tile into this address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51306"></span>C86A</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51307"></span>C86B</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="2">Increment the tile count number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51308"></span>C86C</td>
+<td class="instruction">LD ($A01D),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51311"></span>C86F</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51312"></span>C870</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51313"></span>C871</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="4">Point to the next address into the mapping table of tile graphics and room graphics buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51315"></span>C873</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51317"></span>C875</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51319"></span>C877</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51321"></span>C879</td>
+<td class="instruction">LD ($A0B9),IY</td>
+<td class="comment-1" rowspan="1">Point <a href="41145.html">A0B9</a> to the new address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51325"></span>C87D</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51327"></span>
+<div class="comments">
+<div class="paragraph">
+Copy tile graphics into room graphics buffer
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51327"></span>C87F</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="8">Copy the tile graphic data into room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51328"></span>C880</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51329"></span>C881</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51330"></span>C882</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51331"></span>C883</td>
+<td class="instruction">LD DE,$0020</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51334"></span>C886</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51335"></span>C887</td>
+<td class="instruction">POP DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51336"></span>C888</td>
+<td class="instruction">DJNZ $C87F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51338"></span>C88A</td>
+<td class="instruction">LD HL,($A01E)</td>
+<td class="comment-1" rowspan="3">Increment the tile type address at <a href="40990.html">A01E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51341"></span>C88D</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51342"></span>C88E</td>
+<td class="instruction">LD ($A01E),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51345"></span>C891</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51346"></span>C892</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51347"></span>
+<div class="comments">
+<div class="paragraph">
+Computes into <span class="register">HL</span> the position of the tile in the attribute buffer
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51347"></span>C893</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="2">Save <span class="register">AF</span> and <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51348"></span>C894</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51349"></span>C895</td>
+<td class="instruction">LD DE,$EAFF</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the address of the room graphics buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51352"></span>C898</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Reset carry bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51353"></span>C899</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset of the current tile into graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51355"></span>C89B</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="2">Computes into <span class="register">A</span> the horizontal position of the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51356"></span>C89C</td>
+<td class="instruction">AND $1F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51358"></span>C89E</td>
+<td class="instruction">LD ($A093),A</td>
+<td class="comment-1" rowspan="1">Save this into <a href="41107.html">A093</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51361"></span>C8A1</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="9">Computes into <span class="register">HL</span> the offset for the vertical position of the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51362"></span>C8A2</td>
+<td class="instruction">AND $E0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51364"></span>C8A4</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51365"></span>C8A5</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51367"></span>C8A7</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51369"></span>C8A9</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51371"></span>C8AB</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51373"></span>C8AD</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51375"></span>C8AF</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51377"></span>C8B1</td>
+<td class="instruction">LD A,($A093)</td>
+<td class="comment-1" rowspan="1">Restore horizontal position into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51380"></span>C8B4</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="3">And add the horizontal position to the computed offset for the vertical position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51381"></span>C8B5</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51383"></span>C8B7</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51384"></span>C8B8</td>
+<td class="instruction">LD DE,$E55F</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the address of the tile into the attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51387"></span>C8BB</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51388"></span>C8BC</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">DE</span> and <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51389"></span>C8BD</td>
+<td class="instruction">POP AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51390"></span>C8BE</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50987.html">C72B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51013">Map</a></td>
+<td class="next">
+Next: <a href="51391.html">C8BF</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

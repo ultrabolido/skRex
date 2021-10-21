@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 9D1F</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40207.html">9D0F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40223">Map</a></td>
+<td class="next">
+Next: <a href="40263.html">9D47</a>
+</td>
+</tr>
+</table>
+<div class="description">9D1F: Configure data for Rex teleporting when game begins or resume</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a> and <a href="40054.html">9C76</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40223"></span>9D1F</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40225"></span>9D21</td>
+<td class="instruction">LD ($A05F),A</td>
+<td class="comment-1" rowspan="1">Set Rex atoms flushing active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40228"></span>9D24</td>
+<td class="instruction">LD ($A060),A</td>
+<td class="comment-1" rowspan="1">Set Rex teleporting active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40231"></span>9D27</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40232"></span>9D28</td>
+<td class="instruction">LD ($A062),A</td>
+<td class="comment-1" rowspan="1">Set Rex teleporting on init game</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40235"></span>9D2B</td>
+<td class="instruction">LD ($A05D),A</td>
+<td class="comment-1" rowspan="1">Set Rex invisible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40238"></span>9D2E</td>
+<td class="instruction">LD A,$64</td>
+<td class="comment-1" rowspan="2">Set teleporting counter loop to 100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40240"></span>9D30</td>
+<td class="instruction">LD ($A061),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40243"></span>
+<div class="comments">
+<div class="paragraph">
+Reset buffer data for teleporting and configure sound
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40243"></span>9D33</td>
+<td class="instruction">LD HL,$9F14</td>
+<td class="comment-1" rowspan="5">Reset teleporting buffer data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40246"></span>9D36</td>
+<td class="instruction">LD DE,$9F15</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40249"></span>9D39</td>
+<td class="instruction">LD BC,$003B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40252"></span>9D3C</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40254"></span>9D3E</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40256"></span>9D40</td>
+<td class="instruction">LD DE,$D7AE</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to teleporting sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40259"></span>9D43</td>
+<td class="instruction">CALL <a href="54759.html">$D5E7</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40262"></span>9D46</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40207.html">9D0F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40223">Map</a></td>
+<td class="next">
+Next: <a href="40263.html">9D47</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

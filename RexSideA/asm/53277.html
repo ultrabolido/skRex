@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D01D</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53267.html">D013</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53277">Map</a></td>
+<td class="next">
+Next: <a href="53312.html">D040</a>
+</td>
+</tr>
+</table>
+<div class="description">D01D: Move Rex left or right</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="53312.html">D040</a> and <a href="53334.html">D056</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53277"></span>D01D</td>
+<td class="instruction">LD A,($A0B6)</td>
+<td class="comment-1" rowspan="3">Add speed to x-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53280"></span>D020</td>
+<td class="instruction">LD HL,$A091</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53283"></span>D023</td>
+<td class="instruction">ADD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53284"></span>D024</td>
+<td class="instruction">CP $F0</td>
+<td class="comment-1" rowspan="2">If x-position of Rex is greater than 240 then check for next room on the right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53286"></span>D026</td>
+<td class="instruction">JP NC,<a href="53425.html">$D0B1</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53289"></span>D029</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="2">If x-position of Rex is less than 3 then check for next room on the left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53291"></span>D02B</td>
+<td class="instruction">JP C,<a href="53408.html">$D0A0</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53294"></span>D02E</td>
+<td class="instruction">LD ($A0B6),A</td>
+<td class="comment-1" rowspan="1">Set the new x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53297"></span>D031</td>
+<td class="instruction">LD A,($A0BD)</td>
+<td class="comment-1" rowspan="3">Return if Rex is jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53300"></span>D034</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53301"></span>D035</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53302"></span>D036</td>
+<td class="instruction">LD A,($A0BC)</td>
+<td class="comment-1" rowspan="3">Return if Rex is falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53305"></span>D039</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53306"></span>D03A</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53307"></span>D03B</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set speed to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53308"></span>D03C</td>
+<td class="instruction">LD ($A091),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53311"></span>D03F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53267.html">D013</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53277">Map</a></td>
+<td class="next">
+Next: <a href="53312.html">D040</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

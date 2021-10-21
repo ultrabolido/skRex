@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C0E0</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49242.html">C05A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49376">Map</a></td>
+<td class="next">
+Next: <a href="49454.html">C12E</a>
+</td>
+</tr>
+</table>
+<div class="description">C0E0: Handle collision detection for BLOB</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="49485.html">C14D</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49376"></span>C0E0</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="5">if y-position for BLOB greater than $A0 and less than $10 then jump to change movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49379"></span>C0E3</td>
+<td class="instruction">CP $A0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49381"></span>C0E5</td>
+<td class="instruction">JP NC,$C119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49384"></span>C0E8</td>
+<td class="instruction">CP $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49386"></span>C0EA</td>
+<td class="instruction">JP C,$C119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49389"></span>C0ED</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="5">if x-position for BLOB greater then $F0 and less than $10 then jump to change movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49392"></span>C0F0</td>
+<td class="instruction">CP $F0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49394"></span>C0F2</td>
+<td class="instruction">JP NC,$C119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49397"></span>C0F5</td>
+<td class="instruction">CP $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49399"></span>C0F7</td>
+<td class="instruction">JP C,$C119</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49402"></span>C0FA</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Set <a href="41135.html">A0AF</a> the new x-position based on x-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49405"></span>C0FD</td>
+<td class="instruction">ADD A,(IX+$04)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49408"></span>C100</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49411"></span>C103</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Set <a href="41136.html">A0B0</a> the new y-position based on y-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49414"></span>C106</td>
+<td class="instruction">ADD A,(IX+$05)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49417"></span>C109</td>
+<td class="instruction">LD ($A0B0),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49420"></span>C10C</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the direction of BLOB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49423"></span>C10F</td>
+<td class="instruction">CALL <a href="42243.html">$A503</a></td>
+<td class="comment-1" rowspan="3">Computes into <span class="register">HL</span> address of tile buffer for the tile under BLOB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49426"></span>C112</td>
+<td class="instruction">LD DE,$0021</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49429"></span>C115</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49430"></span>C116</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Check tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49431"></span>C117</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return if tile is background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49432"></span>C118</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49433"></span>C119</td>
+<td class="instruction">LD A,(IX+$04)</td>
+<td class="comment-1" rowspan="3">Invert x-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49436"></span>C11C</td>
+<td class="instruction">NEG</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49438"></span>C11E</td>
+<td class="instruction">LD (IX+$04),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49441"></span>C121</td>
+<td class="instruction">LD A,(IX+$05)</td>
+<td class="comment-1" rowspan="3">Invert y-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49444"></span>C124</td>
+<td class="instruction">NEG</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49446"></span>C126</td>
+<td class="instruction">LD (IX+$05),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49449"></span>C129</td>
+<td class="instruction">LD (IX+$11),$04</td>
+<td class="comment-1" rowspan="1">Reset state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49453"></span>C12D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49242.html">C05A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49376">Map</a></td>
+<td class="next">
+Next: <a href="49454.html">C12E</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

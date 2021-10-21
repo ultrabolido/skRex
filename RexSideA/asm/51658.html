@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C9CA</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51576.html">C978</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51658">Map</a></td>
+<td class="next">
+Next: <a href="51971.html">CB03</a>
+</td>
+</tr>
+</table>
+<div class="description">C9CA: Creates a new mobile enemy on room</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a> and <a href="43285.html">A915</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51658"></span>C9CA</td>
+<td class="instruction">LD A,($A045)</td>
+<td class="comment-1" rowspan="3">Return if generating train in current room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51661"></span>C9CD</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51662"></span>C9CE</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51663"></span>C9CF</td>
+<td class="instruction">LD A,($A043)</td>
+<td class="comment-1" rowspan="3">Decrement enemy room enter counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51666"></span>C9D2</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51667"></span>C9D3</td>
+<td class="instruction">LD ($A043),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51670"></span>C9D6</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return if coutner has not reached zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51671"></span>C9D7</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51672"></span>C9D8</td>
+<td class="instruction">LD A,($A044)</td>
+<td class="comment-1" rowspan="2">Reset counter with the original value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51675"></span>C9DB</td>
+<td class="instruction">LD ($A043),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51678"></span>C9DE</td>
+<td class="instruction">LD HL,$5E72</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address for enemy status into the enemy configuration table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51681"></span>C9E1</td>
+<td class="instruction">LD A,($A092)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> to the max number of enemies for the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51684"></span>C9E4</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51685"></span>C9E5</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Check enemy status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51686"></span>C9E6</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump forward if enemy dead/not visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51687"></span>C9E7</td>
+<td class="instruction">JP Z,$C9F1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51690"></span>C9EA</td>
+<td class="instruction">LD DE,$0018</td>
+<td class="comment-1" rowspan="2">Point to the next enemy configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51693"></span>C9ED</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51694"></span>C9EE</td>
+<td class="instruction">DJNZ $C9E5</td>
+<td class="comment-1" rowspan="1">Jump back until all the enemies slots checked</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51696"></span>C9F0</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51697"></span>
+<div class="comments">
+<div class="paragraph">
+try to create a new enemy
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51697"></span>C9F1</td>
+<td class="instruction">LD DE,$000C</td>
+<td class="comment-1" rowspan="3">Point <span class="register">HL</span> to the base address for the current slot of enemy configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51700"></span>C9F4</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51701"></span>C9F5</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51703"></span>C9F7</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Set <span class="register">IX</span> to this base address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51704"></span>C9F8</td>
+<td class="instruction">POP IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51706"></span>C9FA</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51709"></span>C9FD</td>
+<td class="instruction">CP $55</td>
+<td class="comment-1" rowspan="1">is <span class="register">A</span> less than 85?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51711"></span>C9FF</td>
+<td class="instruction">JP C,$CA0F</td>
+<td class="comment-1" rowspan="1">Jump to handle enemy enters from the left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51714"></span>CA02</td>
+<td class="instruction">CP $AA</td>
+<td class="comment-1" rowspan="1">is <span class="register">A</span> less than 170?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51716"></span>CA04</td>
+<td class="instruction">JP C,$CA0B</td>
+<td class="comment-1" rowspan="1">Jump to handle enemy enters from the right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51719"></span>CA07</td>
+<td class="instruction">CALL $CAA7</td>
+<td class="comment-1" rowspan="1">Handle enemy enters from the top</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51722"></span>CA0A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="51723"></span>CA0B</td>
+<td class="instruction">CALL $CA71</td>
+<td class="comment-1" rowspan="1">Handle enemy enters from the right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51726"></span>CA0E</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="51727"></span>CA0F</td>
+<td class="instruction">CALL $CA13</td>
+<td class="comment-1" rowspan="1">Handle enemy enters from the left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51730"></span>CA12</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51731"></span>
+<div class="comments">
+<div class="paragraph">
+Handle enemy enters from the left
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51731"></span>CA13</td>
+<td class="instruction">LD A,($A02C)</td>
+<td class="comment-1" rowspan="3">Return if no enemies enters from the left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51734"></span>CA16</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51735"></span>CA17</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51736"></span>CA18</td>
+<td class="instruction">LD A,($A0B6)</td>
+<td class="comment-1" rowspan="3">Return if x-position of Rex less than 48</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51739"></span>CA1B</td>
+<td class="instruction">CP $30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51741"></span>CA1D</td>
+<td class="instruction">RET C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51742"></span>CA1E</td>
+<td class="instruction">LD A,$00</td>
+<td class="comment-1" rowspan="2">Set x-pixel-position of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51744"></span>CA20</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51747"></span>CA23</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51750"></span>CA26</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="4">Jump back until number generated is between 32 and 168</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51752"></span>CA28</td>
+<td class="instruction">JP C,$CA23</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51755"></span>CA2B</td>
+<td class="instruction">CP $A8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51757"></span>CA2D</td>
+<td class="instruction">JP NC,$CA23</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51760"></span>CA30</td>
+<td class="instruction">AND $F8</td>
+<td class="comment-1" rowspan="1">Change number to be grid 8x8 fixed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51762"></span>CA32</td>
+<td class="instruction">LD ($A0B0),A</td>
+<td class="comment-1" rowspan="1">Set this number to the y-pixel-position for the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51765"></span>CA35</td>
+<td class="instruction">CALL <a href="51971.html">$CB03</a></td>
+<td class="comment-1" rowspan="1">Check if enemy can be generated</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51768"></span>CA38</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump back if enemy cannot be generated</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51769"></span>CA39</td>
+<td class="instruction">JP Z,$CA23</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51772"></span>CA3C</td>
+<td class="instruction">LD A,$0F</td>
+<td class="comment-1" rowspan="2">Set x-pixel-position of enemy to 15</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51774"></span>CA3E</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51777"></span>CA41</td>
+<td class="instruction">CALL $CA49</td>
+<td class="comment-1" rowspan="1">Configure new enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51780"></span>CA44</td>
+<td class="instruction">LD (IX+$02),$00</td>
+<td class="comment-1" rowspan="1">Set enemy to face right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51784"></span>CA48</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51785"></span>
+<div class="comments">
+<div class="paragraph">
+Configure new enemy. Used by the routines at <a href="51658.html#51731">CA13</a>, <a href="51658.html#51825">CA71</a> and <a href="51658.html#51879">CAA7</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51785"></span>CA49</td>
+<td class="instruction">LD A,($A088)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> and <span class="register">L</span> the type of enemy to generate</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51788"></span>CA4C</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51789"></span>CA4D</td>
+<td class="instruction">BIT 7,A</td>
+<td class="comment-1" rowspan="2">Jump forward if generate random FOOT MAN bit is not set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51791"></span>CA4F</td>
+<td class="instruction">JP Z,$CA60</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51794"></span>
+<div class="comments">
+<div class="paragraph">
+try to generate random FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51794"></span>CA52</td>
+<td class="instruction">AND $7F</td>
+<td class="comment-1" rowspan="2">Set <span class="register">L</span> the type of enemy to generate</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51796"></span>CA54</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51797"></span>CA55</td>
+<td class="instruction">CALL <a href="41845.html#41864">$A388</a></td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> a pseudo random number between 0 an 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51800"></span>CA58</td>
+<td class="instruction">AND $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51802"></span>CA5A</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">if random number is 1 then generate FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51803"></span>CA5B</td>
+<td class="instruction">JP Z,$CA60</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51806"></span>CA5E</td>
+<td class="instruction">LD L,$00</td>
+<td class="comment-1" rowspan="1">Generate FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51808"></span>CA60</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the new enemy type to create</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51809"></span>CA61</td>
+<td class="instruction">CALL <a href="52104.html#52107">$CB8B</a></td>
+<td class="comment-1" rowspan="1">Configure the new enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51812"></span>CA64</td>
+<td class="instruction">LD A,($A0AF)</td>
+<td class="comment-1" rowspan="2">Set x-pixel-position for enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51815"></span>CA67</td>
+<td class="instruction">LD (IX+$00),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51818"></span>CA6A</td>
+<td class="instruction">LD A,($A0B0)</td>
+<td class="comment-1" rowspan="2">Set y-pixel-position for enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51821"></span>CA6D</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51824"></span>CA70</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51825"></span>
+<div class="comments">
+<div class="paragraph">
+Handle enemy enters from the right
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51825"></span>CA71</td>
+<td class="instruction">LD A,($A02D)</td>
+<td class="comment-1" rowspan="3">Return if enemies doesn't enters from the right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51828"></span>CA74</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51829"></span>CA75</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51830"></span>CA76</td>
+<td class="instruction">LD A,($A0B6)</td>
+<td class="comment-1" rowspan="3">Return if x-position of Rex greater than 200</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51833"></span>CA79</td>
+<td class="instruction">CP $C8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51835"></span>CA7B</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51836"></span>CA7C</td>
+<td class="instruction">LD A,$E0</td>
+<td class="comment-1" rowspan="2">Set x-position of enemy at <a href="41135.html">A0AF</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51838"></span>CA7E</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51841"></span>CA81</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51844"></span>CA84</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="4">Jump back until number generated is between 32 and 168</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51846"></span>CA86</td>
+<td class="instruction">JP C,$CA81</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51849"></span>CA89</td>
+<td class="instruction">CP $A8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51851"></span>CA8B</td>
+<td class="instruction">JP NC,$CA81</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51854"></span>CA8E</td>
+<td class="instruction">AND $F8</td>
+<td class="comment-1" rowspan="1">Change number to be grid 8x8 fixed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51856"></span>CA90</td>
+<td class="instruction">LD ($A0B0),A</td>
+<td class="comment-1" rowspan="1">Set this number to the y-pixel-position for the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51859"></span>CA93</td>
+<td class="instruction">CALL <a href="51971.html">$CB03</a></td>
+<td class="comment-1" rowspan="1">Check if enemy can be generated</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51862"></span>CA96</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump back if enemy cannot be generated</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51863"></span>CA97</td>
+<td class="instruction">JP Z,$CA81</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51866"></span>CA9A</td>
+<td class="instruction">LD A,$E8</td>
+<td class="comment-1" rowspan="2">Set x-position of enemy at <a href="41135.html">A0AF</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51868"></span>CA9C</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51871"></span>CA9F</td>
+<td class="instruction">CALL $CA49</td>
+<td class="comment-1" rowspan="1">Configure the new enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51874"></span>CAA2</td>
+<td class="instruction">LD (IX+$02),$01</td>
+<td class="comment-1" rowspan="1">Set enemy to face left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51878"></span>CAA6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51879"></span>
+<div class="comments">
+<div class="paragraph">
+Handle enemy enters from the top
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51879"></span>CAA7</td>
+<td class="instruction">LD A,($A02E)</td>
+<td class="comment-1" rowspan="3">Return if enemies doesn't enters from the top</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51882"></span>CAAA</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51883"></span>CAAB</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51884"></span>CAAC</td>
+<td class="instruction">LD A,($A0B7)</td>
+<td class="comment-1" rowspan="3">Return if y-position of Rex is less than 56</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51887"></span>CAAF</td>
+<td class="instruction">CP $38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51889"></span>CAB1</td>
+<td class="instruction">RET C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51890"></span>CAB2</td>
+<td class="instruction">LD A,$18</td>
+<td class="comment-1" rowspan="2">Set y-position of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51892"></span>CAB4</td>
+<td class="instruction">LD ($A0B0),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51895"></span>CAB7</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51898"></span>CABA</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="4">Jump back until number generated is between 32 and 224</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51900"></span>CABC</td>
+<td class="instruction">JP C,$CAB7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51903"></span>CABF</td>
+<td class="instruction">CP $E0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51905"></span>CAC1</td>
+<td class="instruction">JP NC,$CAB7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51908"></span>CAC4</td>
+<td class="instruction">AND $F8</td>
+<td class="comment-1" rowspan="1">Change number to be grid 8x8 fixed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51910"></span>CAC6</td>
+<td class="instruction">LD ($A0AF),A</td>
+<td class="comment-1" rowspan="1">Set this number to the x-pixel-position for the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51913"></span>CAC9</td>
+<td class="instruction">CALL <a href="42243.html">$A503</a></td>
+<td class="comment-1" rowspan="1">Computes into <span class="register">HL</span> the address into tile type buffer for the enemy position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51916"></span>CACC</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51917"></span>CACD</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump back and computes another position if tile type is not background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51918"></span>CACE</td>
+<td class="instruction">JP NZ,$CAB7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51921"></span>CAD1</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increase address into tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51922"></span>CAD2</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51923"></span>CAD3</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump back and computes another position if tile type is not background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51924"></span>CAD4</td>
+<td class="instruction">JP NZ,$CAB7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51927"></span>CAD7</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increase address into tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51928"></span>CAD8</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51929"></span>CAD9</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump back and computes another position if tile type is not background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51930"></span>CADA</td>
+<td class="instruction">JP NZ,$CAB7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51933"></span>CADD</td>
+<td class="instruction">LD DE,$001E</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51936"></span>CAE0</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51937"></span>CAE1</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51938"></span>CAE2</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump back and computes another position if tile type is not background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51939"></span>CAE3</td>
+<td class="instruction">JP NZ,$CAB7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51942"></span>CAE6</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increase address into tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51943"></span>CAE7</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51944"></span>CAE8</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump back and computes another position if tile type is not background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51945"></span>CAE9</td>
+<td class="instruction">JP NZ,$CAB7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51948"></span>CAEC</td>
+<td class="instruction">LD A,($A0AF)</td>
+<td class="comment-1" rowspan="3">Set the new x-position for enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51951"></span>CAEF</td>
+<td class="instruction">ADD A,$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51953"></span>CAF1</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51956"></span>CAF4</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set y-position to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51957"></span>CAF5</td>
+<td class="instruction">LD ($A0B0),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51960"></span>CAF8</td>
+<td class="instruction">CALL $CA49</td>
+<td class="comment-1" rowspan="1">Configure the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51963"></span>CAFB</td>
+<td class="instruction">LD A,R</td>
+<td class="comment-1" rowspan="3">Set random facing direction for enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51965"></span>CAFD</td>
+<td class="instruction">AND $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51967"></span>CAFF</td>
+<td class="instruction">LD (IX+$02),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51970"></span>CB02</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51576.html">C978</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51658">Map</a></td>
+<td class="next">
+Next: <a href="51971.html">CB03</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

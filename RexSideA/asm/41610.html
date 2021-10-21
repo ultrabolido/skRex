@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A28A</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41548.html">A24C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41610">Map</a></td>
+<td class="next">
+Next: <a href="41695.html">A2DF</a>
+</td>
+</tr>
+</table>
+<div class="description">A28A: Copy room graphic buffer to display file</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a>, <a href="43165.html">A89D</a>, <a href="43285.html">A915</a> and <a href="55409.html">D871</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41610"></span>A28A</td>
+<td class="instruction">LD ($A093),SP</td>
+<td class="comment-1" rowspan="1">Save <span class="register">SP</span> to temporal variable <a href="41107.html">A093</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41614"></span>A28E</td>
+<td class="instruction">LD SP,$AC0D</td>
+<td class="comment-1" rowspan="1">Set <span class="register">SP</span> to point to display file lookup table at position (0,24)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41617"></span>A291</td>
+<td class="instruction">LD HL,$EAFF</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address for the room graphics buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41620"></span>A294</td>
+<td class="instruction">LD BC,$13B0</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to the number of bytes to copy</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41623"></span>A297</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the corresponent addres into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41624"></span>A298</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment display file to the next byte (first and last column of room screen are not copied)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41625"></span>A299</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment base address for the room graphics buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41626"></span>A29A</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="30">Copy the 30 bytes for this scanline</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41628"></span>A29C</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41630"></span>A29E</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41632"></span>A2A0</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41634"></span>A2A2</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41636"></span>A2A4</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41638"></span>A2A6</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41640"></span>A2A8</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41642"></span>A2AA</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41644"></span>A2AC</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41646"></span>A2AE</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41648"></span>A2B0</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41650"></span>A2B2</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41652"></span>A2B4</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41654"></span>A2B6</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41656"></span>A2B8</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41658"></span>A2BA</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41660"></span>A2BC</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41662"></span>A2BE</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41664"></span>A2C0</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41666"></span>A2C2</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41668"></span>A2C4</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41670"></span>A2C6</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41672"></span>A2C8</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41674"></span>A2CA</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41676"></span>A2CC</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41678"></span>A2CE</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41680"></span>A2D0</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41682"></span>A2D2</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41684"></span>A2D4</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41686"></span>A2D6</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment base address for the room graphics buffer (next line)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41687"></span>A2D7</td>
+<td class="instruction">JP PE,$A297</td>
+<td class="comment-1" rowspan="1">Jump back if not all bytes are copied</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41690"></span>A2DA</td>
+<td class="instruction">LD SP,($A093)</td>
+<td class="comment-1" rowspan="1">Recover <span class="register">SP</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41694"></span>A2DE</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41548.html">A24C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41610">Map</a></td>
+<td class="next">
+Next: <a href="41695.html">A2DF</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

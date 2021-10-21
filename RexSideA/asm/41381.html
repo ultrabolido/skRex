@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A1A5</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41278.html">A13E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41381">Map</a></td>
+<td class="next">
+Next: <a href="41435.html">A1DB</a>
+</td>
+</tr>
+</table>
+<div class="description">A1A5: Draw HUD</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Draw Scores, shield power, lives, bonus points, timer bar and weapon icons. Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41381"></span>A1A5</td>
+<td class="instruction">LD B,$03</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of lines of text to print</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41383"></span>A1A7</td>
+<td class="instruction">LD IX,$A24C</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the text definition data for the HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41387"></span>A1AB</td>
+<td class="instruction">CALL <a href="41695.html">$A2DF</a></td>
+<td class="comment-1" rowspan="1">Draw HUD text/icons: score, shield power, lives, time bar and points.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41390"></span>A1AE</td>
+<td class="instruction">LD HL,$5801</td>
+<td class="comment-1" rowspan="5">Fill into attribute file the attribute color for HUD weapon icons</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41393"></span>A1B1</td>
+<td class="instruction">LD B,$02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41395"></span>A1B3</td>
+<td class="instruction">LD E,$0A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41397"></span>A1B5</td>
+<td class="instruction">LD A,$01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41399"></span>A1B7</td>
+<td class="instruction">CALL <a href="55561.html">$D909</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41402"></span>A1BA</td>
+<td class="instruction">LD HL,$5819</td>
+<td class="comment-1" rowspan="5">Fill into attribute file the attribute color for smartbombs icons</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41405"></span>A1BD</td>
+<td class="instruction">LD B,$02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41407"></span>A1BF</td>
+<td class="instruction">LD E,$06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41409"></span>A1C1</td>
+<td class="instruction">LD A,$02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41411"></span>A1C3</td>
+<td class="instruction">CALL <a href="55561.html">$D909</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41414"></span>A1C6</td>
+<td class="instruction">CALL <a href="41490.html">$A212</a></td>
+<td class="comment-1" rowspan="1">Draw the sprites for the weapon icons in HUD</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41417"></span>
+<div class="comments">
+<div class="paragraph">
+Draw smartbombs. This entry point is used by the routines at <a href="38737.html">9751</a> and <a href="53781.html#54420">D494</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41417"></span>A1C9</td>
+<td class="instruction">LD A,($A06C)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the number of smartbombs availables</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41420"></span>A1CC</td>
+<td class="instruction">SLA A</td>
+<td class="comment-1" rowspan="6">Computes address in <a href="41474.html">A202</a> for obtain the offset of the graphics data of the corresponents smartbomb icons</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41422"></span>A1CE</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41424"></span>A1D0</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41425"></span>A1D1</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41427"></span>A1D3</td>
+<td class="instruction">LD HL,$A202</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41430"></span>A1D6</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41431"></span>A1D7</td>
+<td class="instruction">CALL <a href="41435.html">$A1DB</a></td>
+<td class="comment-1" rowspan="1">Draw the sprites for the smartbomb icons in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41434"></span>A1DA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41278.html">A13E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41381">Map</a></td>
+<td class="next">
+Next: <a href="41435.html">A1DB</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

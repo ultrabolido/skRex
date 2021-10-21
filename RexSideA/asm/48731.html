@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at BE5B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="48723.html">BE53</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#48731">Map</a></td>
+<td class="next">
+Next: <a href="48843.html">BECB</a>
+</td>
+</tr>
+</table>
+<div class="description">BE5B: Configure projectile for swing gun</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Configure projectile for swing gun left orientation. Used by the routine at <a href="47708.html#48349">BCDD</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48731"></span>BE5B</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48732"></span>BE5C</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Set <a href="41107.html">A093</a> x-pixel-position for projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48735"></span>BE5F</td>
+<td class="instruction">SUB $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48737"></span>BE61</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48740"></span>BE64</td>
+<td class="instruction">LD A,$14</td>
+<td class="comment-1" rowspan="1">Set increment for y-pixel-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48742"></span>BE66</td>
+<td class="instruction">CALL <a href="46462.html#46478">$B58E</a></td>
+<td class="comment-1" rowspan="1">Draw projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48745"></span>BE69</td>
+<td class="instruction">LD HL,$FFFF</td>
+<td class="comment-1" rowspan="1">Base offset into room graphic data for every frame (left)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48748"></span>BE6C</td>
+<td class="instruction">LD (IY+$04),$F8</td>
+<td class="comment-1" rowspan="1">Set the x-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48752"></span>BE70</td>
+<td class="instruction">LD A,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the y-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48754"></span>BE72</td>
+<td class="instruction">JP $BE8C</td>
+<td class="comment-1" rowspan="1">Jump to finish projectile configuration</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48757"></span>
+<div class="comments">
+<div class="paragraph">
+Configure projectile for swing gun left orientation. Used by the routine at <a href="47708.html#48349">BCDD</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48757"></span>BE75</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48758"></span>BE76</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Set <a href="41107.html">A093</a> x-pixel-position for projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48761"></span>BE79</td>
+<td class="instruction">SUB $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48763"></span>BE7B</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48766"></span>BE7E</td>
+<td class="instruction">LD A,$19</td>
+<td class="comment-1" rowspan="1">Set increment for y-pixel-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48768"></span>BE80</td>
+<td class="instruction">CALL <a href="46462.html#46478">$B58E</a></td>
+<td class="comment-1" rowspan="1">Draw projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48771"></span>BE83</td>
+<td class="instruction">LD HL,$FFFF</td>
+<td class="comment-1" rowspan="1">Base offset into room graphic data for every frame (left)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48774"></span>BE86</td>
+<td class="instruction">LD (IY+$04),$F8</td>
+<td class="comment-1" rowspan="1">Set the x-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48778"></span>BE8A</td>
+<td class="instruction">LD A,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the y-delta for the projectile</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48780"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routines at <a href="48731.html">BE5B</a>, <a href="48731.html#48795">BE9B</a> and <a href="48731.html#48819">BEB3</a>. Finish projectile configuration
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48780"></span>BE8C</td>
+<td class="instruction">LD (IY+$07),L</td>
+<td class="comment-1" rowspan="2">Save offset into projectile configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48783"></span>BE8F</td>
+<td class="instruction">LD (IY+$08),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48786"></span>BE92</td>
+<td class="instruction">LD (IY+$05),$00</td>
+<td class="comment-1" rowspan="1">Reset y-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48790"></span>BE96</td>
+<td class="instruction">CALL <a href="46314.html">$B4EA</a></td>
+<td class="comment-1" rowspan="1">Computes offset into the room graphic data based on projectile y-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48793"></span>BE99</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48794"></span>BE9A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48795"></span>
+<div class="comments">
+<div class="paragraph">
+Configure projectile for swing gun right bottom orientation. Used by the routine at <a href="47708.html#48349">BCDD</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48795"></span>BE9B</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48796"></span>BE9C</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41107.html">A093</a> x-pixel-position for projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48799"></span>BE9F</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48802"></span>BEA2</td>
+<td class="instruction">LD A,$19</td>
+<td class="comment-1" rowspan="1">Set increment for y-pixel-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48804"></span>BEA4</td>
+<td class="instruction">CALL <a href="46462.html#46478">$B58E</a></td>
+<td class="comment-1" rowspan="1">Draw projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48807"></span>BEA7</td>
+<td class="instruction">LD HL,$0001</td>
+<td class="comment-1" rowspan="1">Base offset into room graphic data for every frame (right)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48810"></span>BEAA</td>
+<td class="instruction">LD (IY+$04),$08</td>
+<td class="comment-1" rowspan="1">Set the x-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48814"></span>BEAE</td>
+<td class="instruction">LD A,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the y-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48816"></span>BEB0</td>
+<td class="instruction">JP $BE8C</td>
+<td class="comment-1" rowspan="1">Jump to finish projectile configuration</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48819"></span>
+<div class="comments">
+<div class="paragraph">
+Configure projectile for swing gun right orientation. Used by the routine at <a href="47708.html#48349">BCDD</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48819"></span>BEB3</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48820"></span>BEB4</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41107.html">A093</a> x-pixel-position for projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48823"></span>BEB7</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48826"></span>BEBA</td>
+<td class="instruction">LD A,$14</td>
+<td class="comment-1" rowspan="1">Set increment for y-pixel-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48828"></span>BEBC</td>
+<td class="instruction">CALL <a href="46462.html#46478">$B58E</a></td>
+<td class="comment-1" rowspan="1">Draw projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48831"></span>BEBF</td>
+<td class="instruction">LD HL,$0001</td>
+<td class="comment-1" rowspan="1">Base Offset into room graphic data for every frame (right)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48834"></span>BEC2</td>
+<td class="instruction">LD (IY+$04),$08</td>
+<td class="comment-1" rowspan="1">Set the x-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48838"></span>BEC6</td>
+<td class="instruction">LD A,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the y-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48840"></span>BEC8</td>
+<td class="instruction">JP $BE8C</td>
+<td class="comment-1" rowspan="1">Jump to finish projectile configuration</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="48723.html">BE53</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#48731">Map</a></td>
+<td class="next">
+Next: <a href="48843.html">BECB</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

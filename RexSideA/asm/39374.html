@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 99CE</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39355.html">99BB</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39374">Map</a></td>
+<td class="next">
+Next: <a href="39418.html">99FA</a>
+</td>
+</tr>
+</table>
+<div class="description">99CE: Handle shield loss</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="53689.html">D1B9</a> and <a href="53781.html">D215</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">L</td>
+<td class="register-desc">Shield loss quantity</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39374"></span>99CE</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set shield loss counter to 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39376"></span>99D0</td>
+<td class="instruction">LD ($A04E),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39379"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="38555.html">969B</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39379"></span>99D3</td>
+<td class="instruction">LD A,($A04E)</td>
+<td class="comment-1" rowspan="3">Decrement shield loss counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39382"></span>99D6</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39383"></span>99D7</td>
+<td class="instruction">LD ($A04E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39386"></span>99DA</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return is shield loss counter is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39387"></span>99DB</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39388"></span>99DC</td>
+<td class="instruction">LD A,$04</td>
+<td class="comment-1" rowspan="2">Reset shield loss counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39390"></span>99DE</td>
+<td class="instruction">LD ($A04E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39393"></span>99E1</td>
+<td class="instruction">LD A,($A04D)</td>
+<td class="comment-1" rowspan="2">Decrement shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39396"></span>99E4</td>
+<td class="instruction">SUB L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39397"></span>99E5</td>
+<td class="instruction">JP C,$99EF</td>
+<td class="comment-1" rowspan="1">Jump forward if shield loss is less than 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39400"></span>99E8</td>
+<td class="instruction">LD ($A04D),A</td>
+<td class="comment-1" rowspan="1">Set new shield power value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39403"></span>99EB</td>
+<td class="instruction">CALL <a href="39418.html">$99FA</a></td>
+<td class="comment-1" rowspan="1">Draw shield power in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39406"></span>99EE</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="39407"></span>99EF</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set shield power to zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39408"></span>99F0</td>
+<td class="instruction">LD ($A04D),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39411"></span>99F3</td>
+<td class="instruction">LD ($A049),A</td>
+<td class="comment-1" rowspan="1">Deactivite shield</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39414"></span>99F6</td>
+<td class="instruction">CALL <a href="39418.html">$99FA</a></td>
+<td class="comment-1" rowspan="1">Draw shield power in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39417"></span>99F9</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39355.html">99BB</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39374">Map</a></td>
+<td class="next">
+Next: <a href="39418.html">99FA</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

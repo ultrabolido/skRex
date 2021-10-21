@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 967F</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38523.html">967B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38527">Map</a></td>
+<td class="next">
+Next: <a href="38555.html">969B</a>
+</td>
+</tr>
+</table>
+<div class="description">967F: Active/inactive shield</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38527"></span>967F</td>
+<td class="instruction">LD A,($A060)</td>
+<td class="comment-1" rowspan="3">Return if Rex is teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38530"></span>9682</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38531"></span>9683</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38532"></span>9684</td>
+<td class="instruction">LD A,($A04C)</td>
+<td class="comment-1" rowspan="3">Return if shield key is hold down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38535"></span>9687</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38536"></span>9688</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38537"></span>9689</td>
+<td class="instruction">LD A,($A04D)</td>
+<td class="comment-1" rowspan="3">Return if shield power is zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38540"></span>968C</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38541"></span>968D</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38542"></span>968E</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set shield key is hold down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38544"></span>9690</td>
+<td class="instruction">LD ($A04C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38547"></span>9693</td>
+<td class="instruction">LD A,($A049)</td>
+<td class="comment-1" rowspan="3">Invert shield status active/inactive</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38550"></span>9696</td>
+<td class="instruction">CPL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38551"></span>9697</td>
+<td class="instruction">LD ($A049),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38554"></span>969A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38523.html">967B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38527">Map</a></td>
+<td class="next">
+Next: <a href="38555.html">969B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

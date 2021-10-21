@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D0A0</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53402.html">D09A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53408">Map</a></td>
+<td class="next">
+Next: <a href="53425.html">D0B1</a>
+</td>
+</tr>
+</table>
+<div class="description">D0A0: Check room connection to the left</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="53277.html">D01D</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53408"></span>D0A0</td>
+<td class="instruction">LD A,($A090)</td>
+<td class="comment-1" rowspan="3">Return if no room connection on the left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53411"></span>D0A3</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53412"></span>D0A4</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53413"></span>D0A5</td>
+<td class="instruction">LD ($A0B8),A</td>
+<td class="comment-1" rowspan="1">Set the new room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53416"></span>D0A8</td>
+<td class="instruction">LD A,$E8</td>
+<td class="comment-1" rowspan="2">Set the new x-position (232)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53418"></span>D0AA</td>
+<td class="instruction">LD ($A0B6),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53421"></span>D0AD</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53422"></span>D0AE</td>
+<td class="instruction">JP <a href="51546.html">$C95A</a></td>
+<td class="comment-1" rowspan="1">Check for end game room</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53402.html">D09A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53408">Map</a></td>
+<td class="next">
+Next: <a href="53425.html">D0B1</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

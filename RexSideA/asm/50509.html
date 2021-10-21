@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C54D</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50496.html">C540</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50509">Map</a></td>
+<td class="next">
+Next: <a href="50551.html">C577</a>
+</td>
+</tr>
+</table>
+<div class="description">C54D: Enemy configuration for FOOTMAN crouched or stand-by</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="50481.html">C531</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50509"></span>C54D</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50510"></span>
+<div class="comments">
+<div class="paragraph">
+Set enemy configuration for FOOT MAN crouched
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50510"></span>C54E</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="3">Return if state change counter is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50513"></span>C551</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50514"></span>C552</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50515"></span>C553</td>
+<td class="instruction">LD HL,$8E8A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address for the graphic data of crouched FOOT MAN</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50518"></span>
+<div class="comments">
+<div class="paragraph">
+Set enemy configuration for FOOT MAN. Used to set the type: crouched or stand-by
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50518"></span>C556</td>
+<td class="instruction">LD (IX+$10),$00</td>
+<td class="comment-1" rowspan="1">Stop FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50522"></span>C55A</td>
+<td class="instruction">LD (IX+$04),L</td>
+<td class="comment-1" rowspan="2">Set the address for the static sprite graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50525"></span>C55D</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50528"></span>C560</td>
+<td class="instruction">LD (IX+$0E),$02</td>
+<td class="comment-1" rowspan="1">Set width of sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50532"></span>C564</td>
+<td class="instruction">LD (IX+$12),$01</td>
+<td class="comment-1" rowspan="1">Set FOOT MAN type to crouched</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50536"></span>C568</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo-random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50539"></span>C56B</td>
+<td class="instruction">AND $0F</td>
+<td class="comment-1" rowspan="2">Set the pseudo-rendom number to be between $1F and $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50541"></span>C56D</td>
+<td class="instruction">ADD A,$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50543"></span>C56F</td>
+<td class="instruction">LD (IX+$11),A</td>
+<td class="comment-1" rowspan="1">Set this number to the state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50546"></span>C572</td>
+<td class="instruction">SET 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set the enemy type to select the address for the static graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50550"></span>C576</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50496.html">C540</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50509">Map</a></td>
+<td class="next">
+Next: <a href="50551.html">C577</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

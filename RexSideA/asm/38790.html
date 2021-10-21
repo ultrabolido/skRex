@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 9786</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38737.html">9751</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38790">Map</a></td>
+<td class="next">
+Next: <a href="38851.html">97C3</a>
+</td>
+</tr>
+</table>
+<div class="description">9786: Destroy an enemy if smartbomb released or Rex dead</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38790"></span>9786</td>
+<td class="instruction">LD A,($A030)</td>
+<td class="comment-1" rowspan="3">Return if Destroy all enemies not activated</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38793"></span>9789</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38794"></span>978A</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38795"></span>978B</td>
+<td class="instruction">LD IX,($A031)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> the address pointer into enemy configuration buffer for the next enemy to be destroyed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38799"></span>978F</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38802"></span>9792</td>
+<td class="instruction">CP $FE</td>
+<td class="comment-1" rowspan="8">Jump to check next enemy if enemy type is bubble, smartbomb, question or boss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38804"></span>9794</td>
+<td class="instruction">JP Z,$97A9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38807"></span>9797</td>
+<td class="instruction">CP $FD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38809"></span>9799</td>
+<td class="instruction">JP Z,$97A9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38812"></span>979C</td>
+<td class="instruction">CP $FC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38814"></span>979E</td>
+<td class="instruction">JP Z,$97A9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38817"></span>97A1</td>
+<td class="instruction">CP $90</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38819"></span>97A3</td>
+<td class="instruction">JP Z,$97A9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38822"></span>97A6</td>
+<td class="instruction">CALL <a href="38943.html">$981F</a></td>
+<td class="comment-1" rowspan="1">Destroy enemy</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38825"></span>97A9</td>
+<td class="instruction">LD DE,$0018</td>
+<td class="comment-1" rowspan="3">Point address to the next enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38828"></span>97AC</td>
+<td class="instruction">ADD IX,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38830"></span>97AE</td>
+<td class="instruction">LD ($A031),IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38834"></span>97B2</td>
+<td class="instruction">LD A,($A02F)</td>
+<td class="comment-1" rowspan="3">Decrement the max number of enemies to be destroyed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38837"></span>97B5</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38838"></span>97B6</td>
+<td class="instruction">LD ($A02F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38841"></span>97B9</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return if is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38842"></span>97BA</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38843"></span>97BB</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Inactive destroy all enemies if max number of enemiies destroyed has been reached</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38844"></span>97BC</td>
+<td class="instruction">LD ($A030),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38847"></span>97BF</td>
+<td class="instruction">CALL <a href="51391.html">$C8BF</a></td>
+<td class="comment-1" rowspan="1">Copy room color attribute buffer to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38850"></span>97C2</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38737.html">9751</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38790">Map</a></td>
+<td class="next">
+Next: <a href="38851.html">97C3</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 9968</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39246.html">994E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39272">Map</a></td>
+<td class="next">
+Next: <a href="39314.html">9992</a>
+</td>
+</tr>
+</table>
+<div class="description">9968: Handle train stop. Front wagon has been destroyed</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38943.html">981F</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39272"></span>9968</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39274"></span>996A</td>
+<td class="instruction">LD IY,$5E66</td>
+<td class="comment-1" rowspan="11">Search for entities middle and rear wagon and jump to stop the wagon if found</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39278"></span>996E</td>
+<td class="instruction">LD A,($A092)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39281"></span>9971</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39282"></span>9972</td>
+<td class="instruction">LD A,(IY+$09)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39285"></span>9975</td>
+<td class="instruction">CP $03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39287"></span>9977</td>
+<td class="instruction">CALL Z,$9989</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39290"></span>997A</td>
+<td class="instruction">CP $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39292"></span>997C</td>
+<td class="instruction">CALL Z,$9989</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39295"></span>997F</td>
+<td class="instruction">LD DE,$0018</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39298"></span>9982</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39300"></span>9984</td>
+<td class="instruction">DJNZ $9972</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39302"></span>9986</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39304"></span>9988</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39305"></span>
+<div class="comments">
+<div class="paragraph">
+Stop waagon
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39305"></span>9989</td>
+<td class="instruction">LD (IY+$10),$00</td>
+<td class="comment-1" rowspan="1">Set wagon speed to zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39309"></span>998D</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Stop generating train</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39310"></span>998E</td>
+<td class="instruction">LD ($A045),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39313"></span>9991</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39246.html">994E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39272">Map</a></td>
+<td class="next">
+Next: <a href="39314.html">9992</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

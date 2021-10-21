@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A7BA</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42921.html">A7A9</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42938">Map</a></td>
+<td class="next">
+Next: <a href="42958.html">A7CE</a>
+</td>
+</tr>
+</table>
+<div class="description">A7BA: Simulate conveyor belt going down</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a> and <a href="43285.html">A915</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address pointer for tile graphic data</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42938"></span>A7BA</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42939"></span>A7BB</td>
+<td class="instruction">LD DE,$0007</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the last byte of the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42942"></span>A7BE</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42943"></span>A7BF</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">C</span> to the last byte value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42944"></span>A7C0</td>
+<td class="instruction">LD E,L</td>
+<td class="comment-1" rowspan="2">Copy <span class="register">HL</span> to <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42945"></span>A7C1</td>
+<td class="instruction">LD D,H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42946"></span>A7C2</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Decrement <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42947"></span>A7C3</td>
+<td class="instruction">LD B,$07</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to loop 7 times</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42949"></span>A7C5</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Copy byte from <span class="register">HL</span> to <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42950"></span>A7C6</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42951"></span>A7C7</td>
+<td class="instruction">DEC DE</td>
+<td class="comment-1" rowspan="2">Decrement <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42952"></span>A7C8</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42953"></span>A7C9</td>
+<td class="instruction">DJNZ $A7C5</td>
+<td class="comment-1" rowspan="1">Jump until all 7 bytes copied</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42955"></span>A7CB</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42956"></span>A7CC</td>
+<td class="instruction">LD (HL),C</td>
+<td class="comment-1" rowspan="1">Put the last byte into the first position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42957"></span>A7CD</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42921.html">A7A9</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42938">Map</a></td>
+<td class="next">
+Next: <a href="42958.html">A7CE</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

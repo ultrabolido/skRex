@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C978</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51557.html">C965</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51576">Map</a></td>
+<td class="next">
+Next: <a href="51658.html">C9CA</a>
+</td>
+</tr>
+</table>
+<div class="description">C978: Generate train parts: front, middle or rear wagon</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a> and <a href="43285.html">A915</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51576"></span>C978</td>
+<td class="instruction">LD A,($A045)</td>
+<td class="comment-1" rowspan="3">Return if not generating train in current room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51579"></span>C97B</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51580"></span>C97C</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51581"></span>C97D</td>
+<td class="instruction">LD A,($A048)</td>
+<td class="comment-1" rowspan="3">Decrement train appareance counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51584"></span>C980</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51585"></span>C981</td>
+<td class="instruction">LD ($A048),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51588"></span>C984</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return if counter is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51589"></span>C985</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51590"></span>C986</td>
+<td class="instruction">LD HL,$5E72</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address for entity definition - visibility of entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51593"></span>C989</td>
+<td class="instruction">LD A,($A092)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> to the max number of entities on screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51596"></span>C98C</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51597"></span>C98D</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">if entity not visible jump configure the new train-part (front, rear or wagon)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51598"></span>C98E</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51599"></span>C98F</td>
+<td class="instruction">JP Z,$C99D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51602"></span>C992</td>
+<td class="instruction">LD DE,$0018</td>
+<td class="comment-1" rowspan="3">Increment to the next slot for entity definition and jump back</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51605"></span>C995</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51606"></span>C996</td>
+<td class="instruction">DJNZ $C98D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51608"></span>C998</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Stop generating the train if no slots available</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51609"></span>C999</td>
+<td class="instruction">LD ($A045),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51612"></span>C99C</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51613"></span>
+<div class="comments">
+<div class="paragraph">
+Generate a new train part
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51613"></span>C99D</td>
+<td class="instruction">LD DE,$000C</td>
+<td class="comment-1" rowspan="3">Point <span class="register">HL</span> to the base address of the corresponent entity configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51616"></span>C9A0</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51617"></span>C9A1</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51619"></span>C9A3</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51620"></span>C9A4</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51622"></span>C9A6</td>
+<td class="instruction">LD IY,($A046)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> to the entity type for the wagon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51626"></span>C9AA</td>
+<td class="instruction">LD A,(IY+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51629"></span>C9AD</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="2">if end of train jump forward and stop generating train parts</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51631"></span>C9AF</td>
+<td class="instruction">JP Z,$C9C5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51634"></span>C9B2</td>
+<td class="instruction">CALL <a href="52104.html">$CB88</a></td>
+<td class="comment-1" rowspan="1">Configure entity type wagon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51637"></span>C9B5</td>
+<td class="instruction">LD A,(IY+$03)</td>
+<td class="comment-1" rowspan="2">Set <a href="41032.html">A048</a> to the next train appearance counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51640"></span>C9B8</td>
+<td class="instruction">LD ($A048),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51643"></span>C9BB</td>
+<td class="instruction">LD DE,$0004</td>
+<td class="comment-1" rowspan="3">Point <a href="41030.html">A046</a> to the address for the next train wagon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51646"></span>C9BE</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51648"></span>C9C0</td>
+<td class="instruction">LD ($A046),IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51652"></span>C9C4</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="51653"></span>C9C5</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Stop generating the train - no more wagons left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51654"></span>C9C6</td>
+<td class="instruction">LD ($A045),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51657"></span>C9C9</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51557.html">C965</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51576">Map</a></td>
+<td class="next">
+Next: <a href="51658.html">C9CA</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

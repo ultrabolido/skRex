@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D858</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55383.html">D857</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55384">Map</a></td>
+<td class="next">
+Next: <a href="55409.html">D871</a>
+</td>
+</tr>
+</table>
+<div class="description">D858: Check for an slot in Enemy configuration buffer to create another enemy</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="39087.html">98AF</a> and <a href="49610.html">C1CA</a>.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">base address into enemy configuration to create the enemy</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55384"></span>D858</td>
+<td class="instruction">LD IX,$5E66</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> the base address for enemy configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55388"></span>D85C</td>
+<td class="instruction">LD A,($A092)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> the number of enemies in the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55391"></span>D85F</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55392"></span>D860</td>
+<td class="instruction">LD A,(IX+$0C)</td>
+<td class="comment-1" rowspan="2">is enemy dead?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55395"></span>D863</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55396"></span>D864</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55397"></span>D865</td>
+<td class="instruction">LD DE,$0018</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IX</span> to the next slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55400"></span>D868</td>
+<td class="instruction">ADD IX,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55402"></span>D86A</td>
+<td class="instruction">DJNZ $D860</td>
+<td class="comment-1" rowspan="1">Jump wback until there are enemies</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55404"></span>D86C</td>
+<td class="instruction">LD IX,$03E8</td>
+<td class="comment-1" rowspan="1">No slots availables. Set <span class="register">IX</span> to $03E8?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55408"></span>D870</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55383.html">D857</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55384">Map</a></td>
+<td class="next">
+Next: <a href="55409.html">D871</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

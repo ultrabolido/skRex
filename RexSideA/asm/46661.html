@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at B645</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46462.html">B57E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46661">Map</a></td>
+<td class="next">
+Next: <a href="47427.html">B943</a>
+</td>
+</tr>
+</table>
+<div class="description">B645: Draw projectiles</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Draw Enemy projectiles. Used by the routines at <a href="38010.html">947A</a> and <a href="43285.html">A915</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46661"></span>B645</td>
+<td class="instruction">LD IX,$5D22</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the base address for enemy projectile configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46665"></span>B649</td>
+<td class="instruction">LD B,$14</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the max number of enemy projectiles on screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46667"></span>B64B</td>
+<td class="instruction">JP $B654</td>
+<td class="comment-1" rowspan="1">Jump forward to read projectile data and draw</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46670"></span>
+<div class="comments">
+<div class="paragraph">
+Draw Rex projectiles. Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46670"></span>B64E</td>
+<td class="instruction">LD IX,$5B60</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the base addres for enemy projectile configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46674"></span>B652</td>
+<td class="instruction">LD B,$1E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the max number of Rex projectiles</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46676"></span>
+<div class="comments">
+<div class="paragraph">
+Read configuration data and draw projectiles
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46676"></span>B654</td>
+<td class="instruction">LD A,(IX+$06)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the projectile status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46679"></span>B657</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is destroyed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46680"></span>B658</td>
+<td class="instruction">JP Z,$B6F6</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46683"></span>B65B</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">just hit?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46685"></span>B65D</td>
+<td class="instruction">JP Z,$B7BD</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46688"></span>B660</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="1">exploding?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46690"></span>B662</td>
+<td class="instruction">JP Z,$B7D8</td>
+<td class="comment-1" rowspan="1">Jump is so The projectile is flying</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46693"></span>B665</td>
+<td class="instruction">LD L,(IX+$02)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the addres location in room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46696"></span>B668</td>
+<td class="instruction">LD H,(IX+$03)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46699"></span>B66B</td>
+<td class="instruction">LD A,(IX+$0B)</td>
+<td class="comment-1" rowspan="1">Set REG#a the projectile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46702"></span>B66E</td>
+<td class="instruction">AND $7F</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46704"></span>B670</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is a basic laser?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46705"></span>B671</td>
+<td class="instruction">JP Z,$B893</td>
+<td class="comment-1" rowspan="1">draw basic laser sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46708"></span>B674</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">is a basic laser?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46710"></span>B676</td>
+<td class="instruction">JP Z,$B893</td>
+<td class="comment-1" rowspan="1">draw basic laser sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46713"></span>B679</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="1">is a spray?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46715"></span>B67B</td>
+<td class="instruction">JP Z,$B867</td>
+<td class="comment-1" rowspan="1">draw spray sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46718"></span>B67E</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">is a laser?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46720"></span>B680</td>
+<td class="instruction">JP Z,$B8BC</td>
+<td class="comment-1" rowspan="1">draw laser sprite $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46723"></span>B683</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="1">is a multiple?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46725"></span>B685</td>
+<td class="instruction">JP Z,$B893</td>
+<td class="comment-1" rowspan="1">draw basic laser sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46728"></span>B688</td>
+<td class="instruction">CP $06</td>
+<td class="comment-1" rowspan="1">is a laser?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46730"></span>B68A</td>
+<td class="instruction">JP Z,$B920</td>
+<td class="comment-1" rowspan="1">draw laser sprite $06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46733"></span>B68D</td>
+<td class="instruction">CP $07</td>
+<td class="comment-1" rowspan="1">is a missile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46735"></span>B68F</td>
+<td class="instruction">JP Z,$B7FC</td>
+<td class="comment-1" rowspan="1">draw missile</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46738"></span>B692</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the projectile x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46741"></span>B695</td>
+<td class="instruction">ADC A,(IX+$04)</td>
+<td class="comment-1" rowspan="1">Adds the projectile x-speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46744"></span>B698</td>
+<td class="instruction">LD (IX+$00),A</td>
+<td class="comment-1" rowspan="1">Set the new x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46747"></span>B69B</td>
+<td class="instruction">LD ($A0AF),A</td>
+<td class="comment-1" rowspan="1">Save the x-position at <a href="41135.html">A0AF</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46750"></span>B69E</td>
+<td class="instruction">CP $F8</td>
+<td class="comment-1" rowspan="1">Projectile left room from the right?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46752"></span>B6A0</td>
+<td class="instruction">JP NC,$B700</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46755"></span>B6A3</td>
+<td class="instruction">CP $09</td>
+<td class="comment-1" rowspan="1">Projectile left room from the left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46757"></span>B6A5</td>
+<td class="instruction">JP C,$B700</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46760"></span>B6A8</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the proejctile y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46763"></span>B6AB</td>
+<td class="instruction">ADC A,(IX+$05)</td>
+<td class="comment-1" rowspan="1">Add the projectile y-speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46766"></span>B6AE</td>
+<td class="instruction">LD (IX+$01),A</td>
+<td class="comment-1" rowspan="1">Save the new y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46769"></span>B6B1</td>
+<td class="instruction">LD ($A0B0),A</td>
+<td class="comment-1" rowspan="1">Save the  y-position at <a href="41136.html">A0B0</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46772"></span>B6B4</td>
+<td class="instruction">CP $C0</td>
+<td class="comment-1" rowspan="1">Projectile left room from the bottom?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46774"></span>B6B6</td>
+<td class="instruction">JP NC,$B700</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46777"></span>B6B9</td>
+<td class="instruction">CP $18</td>
+<td class="comment-1" rowspan="1">Projectil left the room from the top?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46779"></span>B6BB</td>
+<td class="instruction">JP C,$B700</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46782"></span>B6BE</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Computes address into the tile type buffer based on the computed position of the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46784"></span>B6C0</td>
+<td class="instruction">CALL <a href="42243.html">$A503</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46787"></span>B6C3</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the tile type impacted by the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46788"></span>B6C4</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="1">Is a destructible tile (needs 3 impacts to destroy)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46790"></span>B6C6</td>
+<td class="instruction">JP Z,$B707</td>
+<td class="comment-1" rowspan="1">Jump forward to handle impact</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46793"></span>B6C9</td>
+<td class="instruction">CP $05</td>
+<td class="comment-1" rowspan="1">Is a destructible tile (needs 2 impascts to destry)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46795"></span>B6CB</td>
+<td class="instruction">JP Z,$B707</td>
+<td class="comment-1" rowspan="1">Jump forward to handle impact</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46798"></span>B6CE</td>
+<td class="instruction">CP $06</td>
+<td class="comment-1" rowspan="1">Is a destructible tile (needs 1 impact to destroy)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46800"></span>B6D0</td>
+<td class="instruction">JP Z,$B707</td>
+<td class="comment-1" rowspan="1">Jump forward to handle impact</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46803"></span>B6D3</td>
+<td class="instruction">CALL <a href="53356.html#53387">$D08B</a></td>
+<td class="comment-1" rowspan="1">Check if <span class="register">A</span> is a 'background' type tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46806"></span>B6D6</td>
+<td class="instruction">JP NZ,$B794</td>
+<td class="comment-1" rowspan="1">Jump if is not a background tile</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46809"></span>
+<div class="comments">
+<div class="paragraph">
+the projectile continue flying
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46809"></span>B6D9</td>
+<td class="instruction">LD A,(IX+$0B)</td>
+<td class="comment-1" rowspan="3">the projectile is a missile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46812"></span>B6DC</td>
+<td class="instruction">AND $7F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46814"></span>B6DE</td>
+<td class="instruction">CP $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46816"></span>B6E0</td>
+<td class="instruction">JP Z,$B6F6</td>
+<td class="comment-1" rowspan="1">Jump and check the next projectile if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46819"></span>B6E3</td>
+<td class="instruction">LD L,(IX+$02)</td>
+<td class="comment-1" rowspan="5">Computes into <span class="register">HL</span> the addres pointer into room graphics buffer for the new position of projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46822"></span>B6E6</td>
+<td class="instruction">LD H,(IX+$03)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46825"></span>B6E9</td>
+<td class="instruction">LD E,(IX+$07)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46828"></span>B6EC</td>
+<td class="instruction">LD D,(IX+$08)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46831"></span>B6EF</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46832"></span>B6F0</td>
+<td class="instruction">LD (IX+$02),L</td>
+<td class="comment-1" rowspan="2">Set into projectile configuration buffer the new address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46835"></span>B6F3</td>
+<td class="instruction">LD (IX+$03),H</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46838"></span>
+<div class="comments">
+<div class="paragraph">
+this projectile has been handled, go the next one
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46838"></span>B6F6</td>
+<td class="instruction">LD DE,$000F</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the length of projectile configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46841"></span>B6F9</td>
+<td class="instruction">ADD IX,DE</td>
+<td class="comment-1" rowspan="1">Adds to the previous base address into <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46843"></span>B6FB</td>
+<td class="instruction">DEC B</td>
+<td class="comment-1" rowspan="1">Decrement <span class="register">B</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46844"></span>B6FC</td>
+<td class="instruction">JP NZ,$B654</td>
+<td class="comment-1" rowspan="1">Jump back if there are projectiles to handle</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46847"></span>B6FF</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46848"></span>
+<div class="comments">
+<div class="paragraph">
+the projectile has been destroyed
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46848"></span>B700</td>
+<td class="instruction">LD (IX+$06),$00</td>
+<td class="comment-1" rowspan="1">Set the projectile status to destroyed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46852"></span>B704</td>
+<td class="instruction">JP $B6F6</td>
+<td class="comment-1" rowspan="1">Jump back and check for the next one</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46855"></span>
+<div class="comments">
+<div class="paragraph">
+handle destructible tiles
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46855"></span>B707</td>
+<td class="instruction">BIT 7,(IX+$0B)</td>
+<td class="comment-1" rowspan="1">Check if projectile goes through objects</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46859"></span>B70B</td>
+<td class="instruction">JP NZ,$B6D9</td>
+<td class="comment-1" rowspan="1">Jump back if so and the projectile continue flying</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46862"></span>B70E</td>
+<td class="instruction">LD ($A093),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41107.html">A093</a> to the destructible tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46865"></span>B711</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increasee the tile type number (one more impact receive)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46866"></span>B712</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">And set the new tile type into tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46867"></span>B713</td>
+<td class="instruction">LD DE,$E19F</td>
+<td class="comment-1" rowspan="3">Computes into <span class="register">HL</span> the offset of the tile to the tile type buffer base address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46870"></span>B716</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46871"></span>B717</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46873"></span>B719</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46874"></span>B71A</td>
+<td class="instruction">LD DE,$DE9F</td>
+<td class="comment-1" rowspan="3">Set <span class="register">A</span> to the tile number into tile counter buffer based on the offset previously compted</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46877"></span>B71D</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46878"></span>B71E</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46879"></span>B71F</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrement <span class="register">A</span>, as tile count begins by 1.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46880"></span>B720</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="6">Computes into <span class="register">HL</span> the address of the tile into the mapping table of tile graphics and room graphic buffer. (every tile mapping spans two words)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46881"></span>B721</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46883"></span>B723</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46884"></span>B724</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46885"></span>B725</td>
+<td class="instruction">LD DE,$D962</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46888"></span>B728</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46889"></span>B729</td>
+<td class="instruction">LD ($A095),HL</td>
+<td class="comment-1" rowspan="1">Set into <a href="41109.html">A095</a> this address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46892"></span>B72C</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="5">Set <span class="register">DE</span> the address for the tile graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46893"></span>B72D</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46894"></span>B72E</td>
+<td class="instruction">LD E,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46895"></span>B72F</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46896"></span>B730</td>
+<td class="instruction">LD D,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46897"></span>B731</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46898"></span>B732</td>
+<td class="instruction">LD HL,$0008</td>
+<td class="comment-1" rowspan="3">Increment tile graphic data address to point to the next tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46901"></span>B735</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46902"></span>B736</td>
+<td class="instruction">EX DE,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46903"></span>B737</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46904"></span>B738</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="4">Puts the new addres into the mapping table of tile graphics and room graphics data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46905"></span>B739</td>
+<td class="instruction">LD (HL),E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46906"></span>B73A</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46907"></span>B73B</td>
+<td class="instruction">LD (HL),D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46908"></span>B73C</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46909"></span>B73D</td>
+<td class="instruction">LD DE,$63E0</td>
+<td class="comment-1" rowspan="9">Computes into <span class="register">HL</span> the tile number based on the tile graphic data offset of the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46912"></span>B740</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46913"></span>B741</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46915"></span>B743</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46917"></span>B745</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46919"></span>B747</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46921"></span>B749</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46923"></span>B74B</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46925"></span>B74D</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46927"></span>B74F</td>
+<td class="instruction">LD DE,$6BE0</td>
+<td class="comment-1" rowspan="3">Set into <span class="register">A</span> the color attribute for the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46930"></span>B752</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46931"></span>B753</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46932"></span>B754</td>
+<td class="instruction">LD ($A097),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41111.html">A097</a> to the color attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46935"></span>B757</td>
+<td class="instruction">LD A,($A093)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to destructible tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46938"></span>B75A</td>
+<td class="instruction">CP $06</td>
+<td class="comment-1" rowspan="1">is tile type $06?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46940"></span>B75C</td>
+<td class="instruction">JP NZ,$B764</td>
+<td class="comment-1" rowspan="1">Jump forward if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46943"></span>B75F</td>
+<td class="instruction">LD A,$47</td>
+<td class="comment-1" rowspan="2">Set color attribute to $47 (background color attribute)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46945"></span>B761</td>
+<td class="instruction">LD ($A097),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46948"></span>B764</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46949"></span>B765</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46950"></span>B766</td>
+<td class="instruction">LD DE,$5800</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to attribute file base address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46953"></span>B769</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Adds offset of the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46954"></span>B76A</td>
+<td class="instruction">LD A,($A097)</td>
+<td class="comment-1" rowspan="2">Set color attribute for the tile in attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46957"></span>B76D</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46958"></span>B76E</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="2">Save and restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46959"></span>B76F</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46960"></span>B770</td>
+<td class="instruction">LD DE,$E4FF</td>
+<td class="comment-1" rowspan="4">Set color attribute for the tile in attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46963"></span>B773</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46964"></span>B774</td>
+<td class="instruction">LD A,($A097)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46967"></span>B777</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46968"></span>B778</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46969"></span>B779</td>
+<td class="instruction">LD A,($A093)</td>
+<td class="comment-1" rowspan="5">If tile type is destructible type $04 or $05 jump forward</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46972"></span>B77C</td>
+<td class="instruction">CP $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46974"></span>B77E</td>
+<td class="instruction">JP Z,$B794</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46977"></span>B781</td>
+<td class="instruction">CP $05</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46979"></span>B783</td>
+<td class="instruction">JP Z,$B794</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46982"></span>B786</td>
+<td class="instruction">LD DE,$E19F</td>
+<td class="comment-1" rowspan="3">Set tile type to $00 (background) at tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46985"></span>B789</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46986"></span>B78A</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46988"></span>B78C</td>
+<td class="instruction">LD DE,($A095)</td>
+<td class="comment-1" rowspan="5">Reset room graphic address into mapping table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46992"></span>B790</td>
+<td class="instruction">XOR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46993"></span>B791</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46994"></span>B792</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46995"></span>B793</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46996"></span>
+<div class="comments">
+<div class="paragraph">
+the projectile has just impacted 1
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46996"></span>B794</td>
+<td class="instruction">LD L,(IX+$02)</td>
+<td class="comment-1" rowspan="3">Draw impact 1 projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46999"></span>B797</td>
+<td class="instruction">LD H,(IX+$03)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47002"></span>B79A</td>
+<td class="instruction">LD (HL),$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47004"></span>B79C</td>
+<td class="instruction">LD (IX+$06),$00</td>
+<td class="comment-1" rowspan="1">Set state of projectile to destroyed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47008"></span>B7A0</td>
+<td class="instruction">LD A,($A013)</td>
+<td class="comment-1" rowspan="2">Check if weapon used is $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47011"></span>B7A3</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47013"></span>B7A5</td>
+<td class="instruction">JP Z,$B6F6</td>
+<td class="comment-1" rowspan="1">Jump to handle the next projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47016"></span>B7A8</td>
+<td class="instruction">LD (IX+$06),$02</td>
+<td class="comment-1" rowspan="1">Set impact 1 state for projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47020"></span>B7AC</td>
+<td class="instruction">LD A,($D842)</td>
+<td class="comment-1" rowspan="2">Sound channel 3 is in use?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47023"></span>B7AF</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47025"></span>B7B1</td>
+<td class="instruction">JP NZ,$B6F6</td>
+<td class="comment-1" rowspan="1">Jump to the next projectile if in use</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47028"></span>B7B4</td>
+<td class="instruction">LD DE,$D787</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to impact sound data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47031"></span>B7B7</td>
+<td class="instruction">CALL <a href="54759.html">$D5E7</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47034"></span>B7BA</td>
+<td class="instruction">JP $B6F6</td>
+<td class="comment-1" rowspan="1">Jump back to handle next projectile</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47037"></span>
+<div class="comments">
+<div class="paragraph">
+the projectile has just impacted 2
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47037"></span>B7BD</td>
+<td class="instruction">LD L,(IX+$02)</td>
+<td class="comment-1" rowspan="10">Draw impact 2 projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47040"></span>B7C0</td>
+<td class="instruction">LD H,(IX+$03)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47043"></span>B7C3</td>
+<td class="instruction">LD DE,$0020</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47046"></span>B7C6</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47047"></span>B7C7</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47049"></span>B7C9</td>
+<td class="instruction">LD (HL),$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47051"></span>B7CB</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47052"></span>B7CC</td>
+<td class="instruction">LD (HL),$38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47054"></span>B7CE</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47055"></span>B7CF</td>
+<td class="instruction">LD (HL),$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47057"></span>B7D1</td>
+<td class="instruction">LD (IX+$06),$03</td>
+<td class="comment-1" rowspan="1">Set projectile status to impact 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47061"></span>B7D5</td>
+<td class="instruction">JP $B6F6</td>
+<td class="comment-1" rowspan="1">Jump back to handle next projectile</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47064"></span>
+<div class="comments">
+<div class="paragraph">
+the projectile is exploding
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47064"></span>B7D8</td>
+<td class="instruction">LD L,(IX+$02)</td>
+<td class="comment-1" rowspan="15">Draw projectile exploding</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47067"></span>B7DB</td>
+<td class="instruction">LD H,(IX+$03)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47070"></span>B7DE</td>
+<td class="instruction">LD DE,$0040</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47073"></span>B7E1</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47074"></span>B7E2</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47076"></span>B7E4</td>
+<td class="instruction">LD DE,$0020</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47079"></span>B7E7</td>
+<td class="instruction">LD (HL),$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47081"></span>B7E9</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47082"></span>B7EA</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47084"></span>B7EC</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47085"></span>B7ED</td>
+<td class="instruction">LD (HL),$44</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47087"></span>B7EF</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47088"></span>B7F0</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47090"></span>B7F2</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47091"></span>B7F3</td>
+<td class="instruction">LD (HL),$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47093"></span>B7F5</td>
+<td class="instruction">LD (IX+$06),$00</td>
+<td class="comment-1" rowspan="1">Set projectile status to destroyed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47097"></span>B7F9</td>
+<td class="instruction">JP $B6F6</td>
+<td class="comment-1" rowspan="1">Jump back to handle next projectile</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47100"></span>
+<div class="comments">
+<div class="paragraph">
+Draw missile projectile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47100"></span>B7FC</td>
+<td class="instruction">LD L,(IX+$01)</td>
+<td class="comment-1" rowspan="15">Computes address into room graphic buffer based on x and y position of projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47103"></span>B7FF</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47105"></span>B801</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47106"></span>B802</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47107"></span>B803</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47108"></span>B804</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47109"></span>B805</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47110"></span>B806</td>
+<td class="instruction">LD E,(IX+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47113"></span>B809</td>
+<td class="instruction">SRL E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47115"></span>B80B</td>
+<td class="instruction">SRL E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47117"></span>B80D</td>
+<td class="instruction">SRL E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47119"></span>B80F</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47121"></span>B811</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47122"></span>B812</td>
+<td class="instruction">LD DE,$E7FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47125"></span>B815</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47126"></span>B816</td>
+<td class="instruction">LD (IX+$02),L</td>
+<td class="comment-1" rowspan="2">Puts this address into the projectile configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47129"></span>B819</td>
+<td class="instruction">LD (IX+$03),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47132"></span>B81C</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47133"></span>B81D</td>
+<td class="instruction">LD A,(IX+$0C)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the missile trajectory index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47136"></span>B820</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="4">Computes the address into the missile trajectory position offset based on the missile trajectory index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47137"></span>B821</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47139"></span>B823</td>
+<td class="instruction">LD HL,$A9AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47142"></span>B826</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47143"></span>B827</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the offset y-position of the missile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47144"></span>B828</td>
+<td class="instruction">CP $1E</td>
+<td class="comment-1" rowspan="1">is an end marker?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47146"></span>B82A</td>
+<td class="instruction">JP NZ,$B838</td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47149"></span>B82D</td>
+<td class="instruction">DEC (IX+$0C)</td>
+<td class="comment-1" rowspan="2">Point the missile trajectory index to the last offset value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47152"></span>B830</td>
+<td class="instruction">DEC (IX+$0C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47155"></span>B833</td>
+<td class="instruction">LD HL,$A9C9</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the last address into the missile trajectory position offset table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47158"></span>B836</td>
+<td class="instruction">LD A,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the y-offset of $08</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47160"></span>B838</td>
+<td class="instruction">LD (IX+$05),A</td>
+<td class="comment-1" rowspan="1">Set the y-offset into the projectile configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47163"></span>B83B</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment the address into the missile trajectory position offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47164"></span>B83C</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">DE</span> to the offset for the missile graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47165"></span>B83D</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47167"></span>B83F</td>
+<td class="instruction">LD HL,$8F4A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address for the missile graphic data heading right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47170"></span>B842</td>
+<td class="instruction">BIT 7,(IX+$04)</td>
+<td class="comment-1" rowspan="3">Is x-offset is negative then set <span class="register">HL</span> to the address for the missile graphic data heading left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47174"></span>B846</td>
+<td class="instruction">JP Z,$B84C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47177"></span>B849</td>
+<td class="instruction">LD HL,$8A42</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47180"></span>B84C</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="2">Adds the offset of the missile graphics data and exchange registers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47181"></span>B84D</td>
+<td class="instruction">EX DE,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47182"></span>B84E</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47183"></span>B84F</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47184"></span>B850</td>
+<td class="instruction">LD B,$04</td>
+<td class="comment-1" rowspan="9">Copy into room graphics data the graphic data of the missile</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47186"></span>B852</td>
+<td class="instruction">LD A,(DE)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47187"></span>B853</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47188"></span>B854</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47189"></span>B855</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47190"></span>B856</td>
+<td class="instruction">LD DE,$0020</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47193"></span>B859</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47194"></span>B85A</td>
+<td class="instruction">POP DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47195"></span>B85B</td>
+<td class="instruction">DJNZ $B852</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47197"></span>B85D</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47198"></span>B85E</td>
+<td class="instruction">INC (IX+$0C)</td>
+<td class="comment-1" rowspan="2">Increment the missile trajectory index to the next pair of offsets</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47201"></span>B861</td>
+<td class="instruction">INC (IX+$0C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47204"></span>B864</td>
+<td class="instruction">JP $B692</td>
+<td class="comment-1" rowspan="1">Jump back and handle next projectile</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47207"></span>
+<div class="comments">
+<div class="paragraph">
+draw spray bullet
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47207"></span>B867</td>
+<td class="instruction">LD DE,$0040</td>
+<td class="comment-1" rowspan="4">Init offset to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47210"></span>B86A</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47211"></span>B86B</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47213"></span>B86D</td>
+<td class="instruction">LD DE,$0020</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47216"></span>B870</td>
+<td class="instruction">BIT 7,(IX+$0B)</td>
+<td class="comment-1" rowspan="1">Check subtype of spray bullet</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47220"></span>B874</td>
+<td class="instruction">JP NZ,$B885</td>
+<td class="comment-1" rowspan="1">Jump if subtype is 1</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47223"></span>
+<div class="comments">
+<div class="paragraph">
+draw spray bullet 0
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47223"></span>B877</td>
+<td class="instruction">LD (HL),$10</td>
+<td class="comment-1" rowspan="7">Draw spray bullet 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47225"></span>B879</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47226"></span>B87A</td>
+<td class="instruction">LD (HL),$1C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47228"></span>B87C</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47229"></span>B87D</td>
+<td class="instruction">LD (HL),$38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47231"></span>B87F</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47232"></span>B880</td>
+<td class="instruction">LD (HL),$08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47234"></span>B882</td>
+<td class="instruction">JP $B692</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47237"></span>
+<div class="comments">
+<div class="paragraph">
+draw spray bullet 1
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47237"></span>B885</td>
+<td class="instruction">LD (HL),$00</td>
+<td class="comment-1" rowspan="7">Draw spray bullet 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47239"></span>B887</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47240"></span>B888</td>
+<td class="instruction">LD (HL),$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47242"></span>B88A</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47243"></span>B88B</td>
+<td class="instruction">LD (HL),$28</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47245"></span>B88D</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47246"></span>B88E</td>
+<td class="instruction">LD (HL),$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47248"></span>B890</td>
+<td class="instruction">JP $B692</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47251"></span>
+<div class="comments">
+<div class="paragraph">
+draw basic laser-type projectile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47251"></span>B893</td>
+<td class="instruction">BIT 7,(IX+$0B)</td>
+<td class="comment-1" rowspan="1">Check laser-type projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47255"></span>B897</td>
+<td class="instruction">JP NZ,$B8AB</td>
+<td class="comment-1" rowspan="1">Jump to draw basic laser-type 1</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47258"></span>
+<div class="comments">
+<div class="paragraph">
+draw basic laser-type 0
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47258"></span>B89A</td>
+<td class="instruction">LD A,(IX+$04)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> direction of projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47261"></span>B89D</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47262"></span>B89E</td>
+<td class="instruction">JP M,$B8A6</td>
+<td class="comment-1" rowspan="1">Jump if lase direction is left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47265"></span>B8A1</td>
+<td class="instruction">LD (HL),$B7</td>
+<td class="comment-1" rowspan="1">Draw laser sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47267"></span>B8A3</td>
+<td class="instruction">JP $B692</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47270"></span>B8A6</td>
+<td class="instruction">LD (HL),$ED</td>
+<td class="comment-1" rowspan="1">Draw laser sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47272"></span>B8A8</td>
+<td class="instruction">JP $B692</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47275"></span>
+<div class="comments">
+<div class="paragraph">
+draw basic laser-type 1
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47275"></span>B8AB</td>
+<td class="instruction">LD A,(IX+$04)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> direction of projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47278"></span>B8AE</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47279"></span>B8AF</td>
+<td class="instruction">JP M,$B8B7</td>
+<td class="comment-1" rowspan="1">Jump if laser direction is left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47282"></span>B8B2</td>
+<td class="instruction">LD (HL),$97</td>
+<td class="comment-1" rowspan="1">Draw laser sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47284"></span>B8B4</td>
+<td class="instruction">JP $B692</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47287"></span>B8B7</td>
+<td class="instruction">LD (HL),$E9</td>
+<td class="comment-1" rowspan="1">Draw laser sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47289"></span>B8B9</td>
+<td class="instruction">JP $B692</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47292"></span>
+<div class="comments">
+<div class="paragraph">
+draw laser
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47292"></span>B8BC</td>
+<td class="instruction">LD A,(IX+$0E)</td>
+<td class="comment-1" rowspan="3">Decrement laser duration counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47295"></span>B8BF</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47296"></span>B8C0</td>
+<td class="instruction">LD (IX+$0E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47299"></span>B8C3</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is 0 ?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47300"></span>B8C4</td>
+<td class="instruction">JP NZ,$B8CE</td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47303"></span>B8C7</td>
+<td class="instruction">LD (IX+$06),$00</td>
+<td class="comment-1" rowspan="1">Destroy laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47307"></span>B8CB</td>
+<td class="instruction">JP $B692</td>
+<td class="comment-1" rowspan="1">Jump back for next projectile</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47310"></span>B8CE</td>
+<td class="instruction">LD A,(IX+$0C)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to number of laser type $06 extensions</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47313"></span>B8D1</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="3">if no need to create more laser type $06 jump back and handle next projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47314"></span>B8D2</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47315"></span>B8D3</td>
+<td class="instruction">JP Z,$B692</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47318"></span>B8D6</td>
+<td class="instruction">LD (IX+$0C),A</td>
+<td class="comment-1" rowspan="1">Decrement the laser type $06 counter on projectile configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47321"></span>B8D9</td>
+<td class="instruction">LD A,(IX+$0D)</td>
+<td class="comment-1" rowspan="3">Set <a href="41107.html">A093</a> to laser type $06 x-position + 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47324"></span>B8DC</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47325"></span>B8DD</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47328"></span>B8E0</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">Set <a href="41109.html">A095</a> to laser y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47331"></span>B8E3</td>
+<td class="instruction">LD ($A095),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47334"></span>B8E6</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set laser direction to left at <a href="41111.html">A097</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47336"></span>B8E8</td>
+<td class="instruction">LD ($A097),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47339"></span>B8EB</td>
+<td class="instruction">BIT 7,(IX+$04)</td>
+<td class="comment-1" rowspan="1">laser x-delta is negative (moving left)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47343"></span>B8EF</td>
+<td class="instruction">JP NZ,$B8FE</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47346"></span>B8F2</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set laser diretion to right at <a href="41111.html">A097</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47347"></span>B8F3</td>
+<td class="instruction">LD ($A097),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47350"></span>B8F6</td>
+<td class="instruction">LD A,($A093)</td>
+<td class="comment-1" rowspan="3">Substract two byte to x-position of laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47353"></span>B8F9</td>
+<td class="instruction">SUB $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47355"></span>B8FB</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47358"></span>B8FE</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set 0 for y-position increment at <a href="41113.html">A099</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47359"></span>B8FF</td>
+<td class="instruction">LD ($A099),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47362"></span>B902</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="2">Save <span class="register">IX</span> and <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47364"></span>B904</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47365"></span>B905</td>
+<td class="instruction">CALL <a href="46342.html">$B506</a></td>
+<td class="comment-1" rowspan="1">Configure weapon sound and check for weapon free slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47368"></span>B908</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> = 0 (used as laser type in nex routine)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47369"></span>B909</td>
+<td class="instruction">CALL <a href="46462.html#46529">$B5C1</a></td>
+<td class="comment-1" rowspan="1">Create a new laser type $06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47372"></span>B90C</td>
+<td class="instruction">LD A,($A068)</td>
+<td class="comment-1" rowspan="2">Set laser duration/graphic index from <a href="41064.html">A068</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47375"></span>B90F</td>
+<td class="instruction">LD (IY+$0E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47378"></span>B912</td>
+<td class="instruction">LD (IY+$05),$00</td>
+<td class="comment-1" rowspan="1">Set y-delta to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47382"></span>B916</td>
+<td class="instruction">LD (IY+$0B),$06</td>
+<td class="comment-1" rowspan="1">Set laser type to $06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47386"></span>B91A</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">BC</span> and <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47387"></span>B91B</td>
+<td class="instruction">POP IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47389"></span>B91D</td>
+<td class="instruction">JP $B692</td>
+<td class="comment-1" rowspan="1">Jump back and configure next projectile</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47392"></span>B920</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47393"></span>B921</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47394"></span>B922</td>
+<td class="instruction">LD A,(IX+$0E)</td>
+<td class="comment-1" rowspan="5">Point <span class="register">HL</span> to the graphic of laser at <a href="47427.html">B943</a> base on laser graphic index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47397"></span>B925</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47398"></span>B926</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47400"></span>B928</td>
+<td class="instruction">LD HL,$B943</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47403"></span>B92B</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47404"></span>B92C</td>
+<td class="instruction">LD A,R</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to semi-random number (R: memory refresh register)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47406"></span>B92E</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Apply AND operator to laser graphics</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47407"></span>B92F</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="2">Puts this random graphics to room graphics buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47408"></span>B930</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47409"></span>B931</td>
+<td class="instruction">LD A,(IX+$0E)</td>
+<td class="comment-1" rowspan="3">Decrement laser graphic index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47412"></span>B934</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47413"></span>B935</td>
+<td class="instruction">LD (IX+$0E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47416"></span>B938</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="4">if graphic index=0 then set projectile status to destroyed. Then jump back and configure next projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47417"></span>B939</td>
+<td class="instruction">JP NZ,$B692</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47420"></span>B93C</td>
+<td class="instruction">LD (IX+$06),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47424"></span>B940</td>
+<td class="instruction">JP $B692</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46462.html">B57E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46661">Map</a></td>
+<td class="next">
+Next: <a href="47427.html">B943</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

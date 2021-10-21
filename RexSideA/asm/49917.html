@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C2FD</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49790.html">C27E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49917">Map</a></td>
+<td class="next">
+Next: <a href="50110.html">C3BE</a>
+</td>
+</tr>
+</table>
+<div class="description">C2FD: Handle SCANNER - Moves down</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="50882.html">C6C2</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49917"></span>C2FD</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="3">If scanner is not moving down return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49920"></span>C300</td>
+<td class="instruction">CP $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49922"></span>C302</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49923"></span>C303</td>
+<td class="instruction">DEC (IX+$12)</td>
+<td class="comment-1" rowspan="1">Decrement state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49926"></span>C306</td>
+<td class="instruction">JP Z,$C313</td>
+<td class="comment-1" rowspan="1">Jump to chenge state if counter is 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49929"></span>C309</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Increment y-position of scanner based on speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49932"></span>C30C</td>
+<td class="instruction">ADD A,(IX+$10)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49935"></span>C30F</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49938"></span>C312</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49939"></span>
+<div class="comments">
+<div class="paragraph">
+Handle state change for SCANNER. This entry point is used by the routines at <a href="49683.html">C213</a>, <a href="49721.html">C239</a> and <a href="49790.html">C27E</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49939"></span>C313</td>
+<td class="instruction">LD (IX+$12),$07</td>
+<td class="comment-1" rowspan="1">Reset state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49943"></span>C317</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="4">Return if x-position bits2-0 is not 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49946"></span>C31A</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49948"></span>C31C</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49949"></span>C31D</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49950"></span>C31E</td>
+<td class="instruction">RES 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set graphic data bit to select animated graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49954"></span>C322</td>
+<td class="instruction">LD (IX+$0F),$0B</td>
+<td class="comment-1" rowspan="1">Set height of sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49958"></span>C326</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41135.html">A0AF</a> to the x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49961"></span>C329</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49964"></span>C32C</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">is y-position of scanner less than $18?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49967"></span>C32F</td>
+<td class="instruction">CP $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49969"></span>C331</td>
+<td class="instruction">JP C,$C397</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49972"></span>C334</td>
+<td class="instruction">CP $A0</td>
+<td class="comment-1" rowspan="1">is y-position of scanner greater then $A0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49974"></span>C336</td>
+<td class="instruction">JP NC,$C3A0</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49977"></span>C339</td>
+<td class="instruction">LD ($A0B0),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41136.html">A0B0</a> the y-position of scanner</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49980"></span>C33C</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the direction of scanner</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49983"></span>C33F</td>
+<td class="instruction">CALL <a href="42243.html">$A503</a></td>
+<td class="comment-1" rowspan="1">Computes into <span class="register">HL</span> address position of scanner in tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49986"></span>C342</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49987"></span>C343</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="1">Check if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49990"></span>C346</td>
+<td class="instruction">JP Z,$C397</td>
+<td class="comment-1" rowspan="1">Jump if is a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49993"></span>C349</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49994"></span>C34A</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="1">Check if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49997"></span>C34D</td>
+<td class="instruction">JP Z,$C397</td>
+<td class="comment-1" rowspan="1">Jump if is a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50000"></span>C350</td>
+<td class="instruction">LD DE,$0060</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the tile under the scanner</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50003"></span>C353</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50004"></span>C354</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="1">Check if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50007"></span>C357</td>
+<td class="instruction">JP Z,$C3A0</td>
+<td class="comment-1" rowspan="1">Jump if is a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50010"></span>C35A</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Decrement <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50011"></span>C35B</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="1">Check if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50014"></span>C35E</td>
+<td class="instruction">JP Z,$C3A0</td>
+<td class="comment-1" rowspan="1">Jump if is a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50017"></span>C361</td>
+<td class="instruction">LD A,R</td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> a pseudo random number between 0-3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50019"></span>C363</td>
+<td class="instruction">AND $03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50021"></span>C365</td>
+<td class="instruction">CP $00</td>
+<td class="comment-1" rowspan="1">is 0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50023"></span>C367</td>
+<td class="instruction">JP Z,$C397</td>
+<td class="comment-1" rowspan="1">Jump to configure scanner to move down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50026"></span>C36A</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">is 1?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50028"></span>C36C</td>
+<td class="instruction">JP Z,$C387</td>
+<td class="comment-1" rowspan="1">Jump to configure scanner to move left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50031"></span>C36F</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">is 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50033"></span>C371</td>
+<td class="instruction">JP Z,$C377</td>
+<td class="comment-1" rowspan="1">Jump to configure scanner to move right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50036"></span>C374</td>
+<td class="instruction">JP $C3A0</td>
+<td class="comment-1" rowspan="1">is 3? Jump to configure scanner to bump animation</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50039"></span>
+<div class="comments">
+<div class="paragraph">
+scanner will move right
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50039"></span>C377</td>
+<td class="instruction">LD (IX+$12),$08</td>
+<td class="comment-1" rowspan="1">Reset state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50043"></span>C37B</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50046"></span>C37E</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Set moves horizontal</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50050"></span>C382</td>
+<td class="instruction">LD (IX+$02),$01</td>
+<td class="comment-1" rowspan="1">Set direction right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50054"></span>C386</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50055"></span>
+<div class="comments">
+<div class="paragraph">
+scanner will move left
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50055"></span>C387</td>
+<td class="instruction">LD (IX+$12),$08</td>
+<td class="comment-1" rowspan="1">Reset state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50059"></span>C38B</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50062"></span>C38E</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Set moves horizontal</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50066"></span>C392</td>
+<td class="instruction">LD (IX+$02),$00</td>
+<td class="comment-1" rowspan="1">Set direction left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50070"></span>C396</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50071"></span>
+<div class="comments">
+<div class="paragraph">
+scanner will move down
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50071"></span>C397</td>
+<td class="instruction">LD (IX+$12),$07</td>
+<td class="comment-1" rowspan="1">Reset state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50075"></span>C39B</td>
+<td class="instruction">LD (IX+$11),$01</td>
+<td class="comment-1" rowspan="1">Scanner moves down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50079"></span>C39F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50080"></span>
+<div class="comments">
+<div class="paragraph">
+scanner will bump (animation)
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50080"></span>C3A0</td>
+<td class="instruction">LD (IX+$02),$00</td>
+<td class="comment-1" rowspan="1">scanner direction to left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50084"></span>C3A4</td>
+<td class="instruction">LD (IX+$12),$06</td>
+<td class="comment-1" rowspan="1">Reset state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50088"></span>C3A8</td>
+<td class="instruction">LD (IX+$0F),$10</td>
+<td class="comment-1" rowspan="1">Set height of sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50092"></span>C3AC</td>
+<td class="instruction">LD (IX+$11),$02</td>
+<td class="comment-1" rowspan="1">Set scanner moving up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50096"></span>C3B0</td>
+<td class="instruction">LD HL,$8A5A</td>
+<td class="comment-1" rowspan="3">Set address for scanner bump animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50099"></span>C3B3</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50102"></span>C3B6</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50105"></span>C3B9</td>
+<td class="instruction">SET 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set enemy configuration to get static graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50109"></span>C3BD</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49790.html">C27E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49917">Map</a></td>
+<td class="next">
+Next: <a href="50110.html">C3BE</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

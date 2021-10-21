@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D682</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54759.html">D5E7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54914">Map</a></td>
+<td class="next">
+Next: <a href="54924.html">D68C</a>
+</td>
+</tr>
+</table>
+<div class="description">D682: Send data to the mixer register of AY-3-8912</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used in the routine at <a href="54702.html">D5AE</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54914"></span>D682</td>
+<td class="instruction">LD A,($D855)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the value of the mixer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54917"></span>D685</td>
+<td class="instruction">LD D,$07</td>
+<td class="comment-1" rowspan="1">Set <span class="register">D</span> to the mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54919"></span>D687</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">Copy value of the mixer to <span class="register">E</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54920"></span>D688</td>
+<td class="instruction">CALL <a href="55129.html">$D759</a></td>
+<td class="comment-1" rowspan="1">Send mixer command to sound device</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54923"></span>D68B</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54759.html">D5E7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54914">Map</a></td>
+<td class="next">
+Next: <a href="54924.html">D68C</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

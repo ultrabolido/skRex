@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 98AF</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38943.html">981F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39087">Map</a></td>
+<td class="next">
+Next: <a href="39246.html">994E</a>
+</td>
+</tr>
+</table>
+<div class="description">98AF: Handle Boss destruction. Boss semi/full destroyed</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38943.html">981F</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39087"></span>98AF</td>
+<td class="instruction">LD DE,$000A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the points obtained</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39090"></span>98B2</td>
+<td class="instruction">CALL <a href="39463.html">$9A27</a></td>
+<td class="comment-1" rowspan="1">Increment score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39093"></span>98B5</td>
+<td class="instruction">CALL <a href="52104.html#52839">$CE67</a></td>
+<td class="comment-1" rowspan="1">Recompute boss health</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39096"></span>98B8</td>
+<td class="instruction">LD (IX+$12),$01</td>
+<td class="comment-1" rowspan="1">Set boss type semidestroyed - boss speed 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39100"></span>98BC</td>
+<td class="instruction">LD A,$0F</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39102"></span>98BE</td>
+<td class="instruction">LD ($A092),A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39105"></span>98C1</td>
+<td class="instruction">LD HL,$92F2</td>
+<td class="comment-1" rowspan="3">Set address for semidestroyed boss graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39108"></span>98C4</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39111"></span>98C7</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39114"></span>98CA</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41107.html">A093</a> the x-position of Boss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39117"></span>98CD</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39120"></span>98D0</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">Set <a href="41109.html">A095</a> the y-position of Boss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39123"></span>98D3</td>
+<td class="instruction">LD ($A095),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39126"></span>98D6</td>
+<td class="instruction">LD A,(IX+$13)</td>
+<td class="comment-1" rowspan="2">Set <a href="41111.html">A097</a> the boss status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39129"></span>98D9</td>
+<td class="instruction">LD ($A097),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39132"></span>98DC</td>
+<td class="instruction">INC (IX+$13)</td>
+<td class="comment-1" rowspan="1">Incremetnt boss status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39135"></span>98DF</td>
+<td class="instruction">LD A,(IX+$13)</td>
+<td class="comment-1" rowspan="2">if boss status equals $02?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39138"></span>98E2</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39140"></span>98E4</td>
+<td class="instruction">JP NZ,$990A</td>
+<td class="comment-1" rowspan="1">Jump forward if not and explode</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39143"></span>
+<div class="comments">
+<div class="paragraph">
+convert Boss to an escape Pod
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39143"></span>98E7</td>
+<td class="instruction">CALL <a href="52104.html#52642">$CDA2</a></td>
+<td class="comment-1" rowspan="1">Configure escape pod</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39146"></span>98EA</td>
+<td class="instruction">LD (IX+$16),E</td>
+<td class="comment-1" rowspan="2">Set address for graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39149"></span>98ED</td>
+<td class="instruction">LD (IX+$17),D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39152"></span>98F0</td>
+<td class="instruction">LD (IX+$15),$00</td>
+<td class="comment-1" rowspan="1">Set bubble type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39156"></span>98F4</td>
+<td class="instruction">LD (IX+$0A),L</td>
+<td class="comment-1" rowspan="2">Set address for the offset animation table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39159"></span>98F7</td>
+<td class="instruction">LD (IX+$0B),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39162"></span>98FA</td>
+<td class="instruction">LD (IX+$0E),$03</td>
+<td class="comment-1" rowspan="1">Set width of sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39166"></span>98FE</td>
+<td class="instruction">LD (IX+$0F),$10</td>
+<td class="comment-1" rowspan="1">Set height of sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39170"></span>9902</td>
+<td class="instruction">LD (IX+$09),$0C</td>
+<td class="comment-1" rowspan="1">Set enemy type (POD)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39174"></span>9906</td>
+<td class="instruction">LD (IX+$14),$08</td>
+<td class="comment-1" rowspan="1">Set health for enemy</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39178"></span>
+<div class="comments">
+<div class="paragraph">
+generate explosions
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39178"></span>990A</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39180"></span>990C</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of explosions to generate</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39182"></span>990E</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39183"></span>990F</td>
+<td class="instruction">CALL <a href="55384.html">$D858</a></td>
+<td class="comment-1" rowspan="1">Check for an avaliable slot into Enemy configuration buffer to configure the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39186"></span>9912</td>
+<td class="instruction">CALL <a href="38909.html">$97FD</a></td>
+<td class="comment-1" rowspan="1">Configure explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39189"></span>9915</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="3">Set random bubble type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39192"></span>9918</td>
+<td class="instruction">AND $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39194"></span>991A</td>
+<td class="instruction">LD (IX+$15),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39197"></span>991D</td>
+<td class="instruction">LD A,($A097)</td>
+<td class="comment-1" rowspan="2">check Boss status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39200"></span>9920</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39201"></span>9921</td>
+<td class="instruction">JP NZ,$9928</td>
+<td class="comment-1" rowspan="1">Jump forward if Boss was wounded</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39204"></span>9924</td>
+<td class="instruction">LD (IX+$15),$FF</td>
+<td class="comment-1" rowspan="1">Set to no bubble if Boss was in good health</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39208"></span>9928</td>
+<td class="instruction">LD (IX+$0C),$01</td>
+<td class="comment-1" rowspan="1">Set explosion visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39212"></span>992C</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> to a random number between $00-$1F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39215"></span>992F</td>
+<td class="instruction">AND $1F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39217"></span>9931</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="4">Set x-position of explosion based on x-position of Boss and random generated number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39218"></span>9932</td>
+<td class="instruction">LD A,($A093)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39221"></span>9935</td>
+<td class="instruction">ADD A,L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39222"></span>9936</td>
+<td class="instruction">LD (IX+$00),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39225"></span>9939</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> to a random number between $00-$1F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39228"></span>993C</td>
+<td class="instruction">AND $1F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39230"></span>993E</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="5">Set y-position of explosion based on y-position of Boss and random generated number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39231"></span>993F</td>
+<td class="instruction">LD A,($A095)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39234"></span>9942</td>
+<td class="instruction">ADD A,L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39235"></span>9943</td>
+<td class="instruction">AND $F8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39237"></span>9945</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39240"></span>9948</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39241"></span>9949</td>
+<td class="instruction">DJNZ $990E</td>
+<td class="comment-1" rowspan="1">Jump back and configure new explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39243"></span>994B</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39245"></span>994D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38943.html">981F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39087">Map</a></td>
+<td class="next">
+Next: <a href="39246.html">994E</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

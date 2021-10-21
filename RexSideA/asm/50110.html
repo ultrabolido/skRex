@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C3BE</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49917.html">C2FD</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50110">Map</a></td>
+<td class="next">
+Next: <a href="50144.html">C3E0</a>
+</td>
+</tr>
+</table>
+<div class="description">C3BE: Configure scanner for bump/fire state</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="49790.html">C27E</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50110"></span>C3BE</td>
+<td class="instruction">LD (IX+$02),$00</td>
+<td class="comment-1" rowspan="1">Reset scanner direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50114"></span>C3C2</td>
+<td class="instruction">LD (IX+$12),$11</td>
+<td class="comment-1" rowspan="1">Reset scanner state counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50118"></span>C3C6</td>
+<td class="instruction">LD (IX+$0F),$10</td>
+<td class="comment-1" rowspan="1">Set sprite height</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50122"></span>C3CA</td>
+<td class="instruction">LD (IX+$11),$03</td>
+<td class="comment-1" rowspan="1">Set scanner state bump/fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50126"></span>C3CE</td>
+<td class="instruction">LD (IX+$13),$00</td>
+<td class="comment-1" rowspan="1">Reset scanner bumping counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50130"></span>C3D2</td>
+<td class="instruction">LD HL,$8A5A</td>
+<td class="comment-1" rowspan="3">Set graphic data for scanner bump/fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50133"></span>C3D5</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50136"></span>C3D8</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50139"></span>C3DB</td>
+<td class="instruction">SET 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set bit for graphic data for fixed sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50143"></span>C3DF</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49917.html">C2FD</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50110">Map</a></td>
+<td class="next">
+Next: <a href="50144.html">C3E0</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

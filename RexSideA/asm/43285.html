@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A915</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43276.html">A90C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43285">Map</a></td>
+<td class="next">
+Next: <a href="43439.html">A9AF</a>
+</td>
+</tr>
+</table>
+<div class="description">A915: Main loop for attract-mode</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Until a key is pressed, show the list of rooms defined at <a href="43276.html">A90C</a> Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43285"></span>A915</td>
+<td class="instruction">LD A,$C8</td>
+<td class="comment-1" rowspan="2">Set <a href="41155.html">A0C3</a> the loop counter for the showed room = 200</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43287"></span>A917</td>
+<td class="instruction">LD ($A0C3),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43290"></span>A91A</td>
+<td class="instruction">LD A,($A0C2)</td>
+<td class="comment-1" rowspan="1">Pick up the list number for the next room to show</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43293"></span>A91D</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="5">Set <span class="register">A</span> the room number to show</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43294"></span>A91E</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43296"></span>A920</td>
+<td class="instruction">LD HL,$A90C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43299"></span>A923</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43300"></span>A924</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43301"></span>A925</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">the room number is $FF?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43303"></span>A927</td>
+<td class="instruction">JP NZ,$A931</td>
+<td class="comment-1" rowspan="1">Jump if it isn't</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43306"></span>A92A</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Reset the list number at R$A0C2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43307"></span>A92B</td>
+<td class="instruction">LD ($A0C2),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43310"></span>A92E</td>
+<td class="instruction">JP $A91A</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43313"></span>A931</td>
+<td class="instruction">LD ($A0B8),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41144.html">A0B8</a> to the room number to display</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43316"></span>A934</td>
+<td class="instruction">LD A,($A0C2)</td>
+<td class="comment-1" rowspan="3">Point $A0C2 to the next room on the list</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43319"></span>A937</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43320"></span>A938</td>
+<td class="instruction">LD ($A0C2),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43323"></span>A93B</td>
+<td class="instruction">CALL <a href="43165.html">$A89D</a></td>
+<td class="comment-1" rowspan="1">Configure current room</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43326"></span>A93E</td>
+<td class="instruction">LD A,($A0C3)</td>
+<td class="comment-1" rowspan="1">Pick up loop counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43329"></span>A941</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrement loop counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43330"></span>A942</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is zero?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43331"></span>A943</td>
+<td class="instruction">JP Z,$A915</td>
+<td class="comment-1" rowspan="1">Jump back if so and show next room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43334"></span>A946</td>
+<td class="instruction">LD ($A0C3),A</td>
+<td class="comment-1" rowspan="1">Save loop counter at <a href="41155.html">A0C3</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43337"></span>A949</td>
+<td class="instruction">CALL <a href="46661.html">$B645</a></td>
+<td class="comment-1" rowspan="1">Draw enemy projectiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43340"></span>A94C</td>
+<td class="instruction">CALL <a href="47708.html">$BA5C</a></td>
+<td class="comment-1" rowspan="1">Draw enemies</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43343"></span>A94F</td>
+<td class="instruction">CALL <a href="54924.html">$D68C</a></td>
+<td class="comment-1" rowspan="1">Play sound channels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43346"></span>A952</td>
+<td class="instruction">CALL <a href="45881.html#45886">$B33E</a></td>
+<td class="comment-1" rowspan="1">Copy tile graphic into room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43349"></span>A955</td>
+<td class="instruction">CALL <a href="41610.html">$A28A</a></td>
+<td class="comment-1" rowspan="1">Copy room graphic buffer to display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43352"></span>A958</td>
+<td class="instruction">CALL <a href="45573.html">$B205</a></td>
+<td class="comment-1" rowspan="1">Reset room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43355"></span>A95B</td>
+<td class="instruction">CALL <a href="54924.html">$D68C</a></td>
+<td class="comment-1" rowspan="1">Play sound channels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43358"></span>A95E</td>
+<td class="instruction">CALL <a href="53689.html">$D1B9</a></td>
+<td class="comment-1" rowspan="1">Handle enemy projectile collision with Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43361"></span>A961</td>
+<td class="instruction">CALL <a href="47467.html">$B96B</a></td>
+<td class="comment-1" rowspan="1">Update color attribute for weapon icon on HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43364"></span>A964</td>
+<td class="instruction">CALL <a href="51576.html">$C978</a></td>
+<td class="comment-1" rowspan="1">Generate train parts: front, middle or rear wagon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43367"></span>A967</td>
+<td class="instruction">CALL <a href="51658.html">$C9CA</a></td>
+<td class="comment-1" rowspan="1">Creates a new mobile enemy on room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43370"></span>A96A</td>
+<td class="instruction">CALL <a href="39314.html">$9992</a></td>
+<td class="comment-1" rowspan="1">Update attribute color for score points in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43373"></span>A96D</td>
+<td class="instruction">CALL <a href="39500.html">$9A4C</a></td>
+<td class="comment-1" rowspan="1">HUD flash</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43376"></span>A970</td>
+<td class="instruction">CALL <a href="41156.html">$A0C4</a></td>
+<td class="comment-1" rowspan="1">Update timer bar in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43379"></span>A973</td>
+<td class="instruction">CALL <a href="42090.html#42103">$A477</a></td>
+<td class="comment-1" rowspan="1">Check fire pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43382"></span>A976</td>
+<td class="instruction">JP Z,<a href="38010.html#38040">$9498</a></td>
+<td class="comment-1" rowspan="1">Jump to init game if pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43385"></span>A979</td>
+<td class="instruction">LD HL,$6758</td>
+<td class="comment-1" rowspan="5">Rotate left tile $6F. Not used in game</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43388"></span>A97C</td>
+<td class="instruction">LD B,$08</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43390"></span>A97E</td>
+<td class="instruction">RRC (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43392"></span>A980</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43393"></span>A981</td>
+<td class="instruction">DJNZ $A97E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43395"></span>A983</td>
+<td class="instruction">LD HL,$6858</td>
+<td class="comment-1" rowspan="6">Rotate right two times tile $8F. Simulate horizontal conveyor belt</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43398"></span>A986</td>
+<td class="instruction">LD B,$08</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43400"></span>A988</td>
+<td class="instruction">RLC (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43402"></span>A98A</td>
+<td class="instruction">RLC (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43404"></span>A98C</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43405"></span>A98D</td>
+<td class="instruction">DJNZ $A988</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43407"></span>A98F</td>
+<td class="instruction">LD HL,$64C0</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to point to tile $1C graphic data (vertical conveyor belt)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43410"></span>A992</td>
+<td class="instruction">CALL <a href="42938.html">$A7BA</a></td>
+<td class="comment-1" rowspan="1">Simulate conveyor belt going down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43413"></span>A995</td>
+<td class="instruction">LD HL,$6438</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to point to tile $0B graphic data (vertical conveyor belt)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43416"></span>A998</td>
+<td class="instruction">CALL <a href="42921.html">$A7A9</a></td>
+<td class="comment-1" rowspan="1">Simulate conveyor belt going up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43419"></span>A99B</td>
+<td class="instruction">LD HL,$64B0</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to point to tile $1A graphic data (vertical conveyor belt)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43422"></span>A99E</td>
+<td class="instruction">CALL <a href="42938.html">$A7BA</a></td>
+<td class="comment-1" rowspan="1">Simulate conveyor belt going down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43425"></span>A9A1</td>
+<td class="instruction">CALL <a href="42334.html">$A55E</a></td>
+<td class="comment-1" rowspan="1">Update arrow tiles, shield recharger, respawn indicator, fire and water effect</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43428"></span>A9A4</td>
+<td class="instruction">LD A,($A017)</td>
+<td class="comment-1" rowspan="3">Change tilt arrow tiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43431"></span>A9A7</td>
+<td class="instruction">XOR $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43433"></span>A9A9</td>
+<td class="instruction">LD ($A017),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43436"></span>A9AC</td>
+<td class="instruction">JP $A93E</td>
+<td class="comment-1" rowspan="1">Jump back to the main loop</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43276.html">A90C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43285">Map</a></td>
+<td class="next">
+Next: <a href="43439.html">A9AF</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

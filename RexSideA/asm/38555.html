@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 969B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38527.html">967F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38555">Map</a></td>
+<td class="next">
+Next: <a href="38729.html">9749</a>
+</td>
+</tr>
+</table>
+<div class="description">969B: Draw Rex and shield</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38555"></span>969B</td>
+<td class="instruction">LD A,($A05D)</td>
+<td class="comment-1" rowspan="3">Return if Rex is not visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38558"></span>969E</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38559"></span>969F</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38560"></span>96A0</td>
+<td class="instruction">LD A,($A055)</td>
+<td class="comment-1" rowspan="3">Jump to handle dead animation if Rex is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38563"></span>96A3</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38564"></span>96A4</td>
+<td class="instruction">JP NZ,<a href="39621.html">$9AC5</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="38567"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="39621.html">9AC5</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38567"></span>96A7</td>
+<td class="instruction">LD A,($A0B6)</td>
+<td class="comment-1" rowspan="2">Set <a href="41135.html">A0AF</a> the x-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38570"></span>96AA</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38573"></span>96AD</td>
+<td class="instruction">LD A,($A0B7)</td>
+<td class="comment-1" rowspan="2">Set <a href="41136.html">A0B0</a> the y-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38576"></span>96B0</td>
+<td class="instruction">LD ($A0B0),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38579"></span>96B3</td>
+<td class="instruction">LD A,$03</td>
+<td class="comment-1" rowspan="2">Set <a href="41137.html">A0B1</a> the width in bytes of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38581"></span>96B5</td>
+<td class="instruction">LD ($A0B1),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38584"></span>96B8</td>
+<td class="instruction">LD A,$10</td>
+<td class="comment-1" rowspan="2">Set <a href="41138.html">A0B2</a> the height in pixels of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38586"></span>96BA</td>
+<td class="instruction">LD ($A0B2),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38589"></span>96BD</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set the entity type for Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38590"></span>96BE</td>
+<td class="instruction">LD ($A033),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38593"></span>96C1</td>
+<td class="instruction">LD HL,$AE5D</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the address for the offset animation for Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38596"></span>96C4</td>
+<td class="instruction">LD DE,$8F62</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> the address for graphic data of Rex falling/jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38599"></span>96C7</td>
+<td class="instruction">LD A,($A07A)</td>
+<td class="comment-1" rowspan="3">Jump forward if Rex on elevator</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38602"></span>96CA</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38603"></span>96CB</td>
+<td class="instruction">JP NZ,$96DC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38606"></span>96CE</td>
+<td class="instruction">LD A,($A0BD)</td>
+<td class="comment-1" rowspan="3">Jump forward if Rex is jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38609"></span>96D1</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38610"></span>96D2</td>
+<td class="instruction">JP NZ,$96E2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38613"></span>96D5</td>
+<td class="instruction">LD A,($A0BC)</td>
+<td class="comment-1" rowspan="3">Jump forward if Rex is falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38616"></span>96D8</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38617"></span>96D9</td>
+<td class="instruction">JP NZ,$96E2</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38620"></span>96DC</td>
+<td class="instruction">LD HL,$AE5D</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the address for the offset animation for Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38623"></span>96DF</td>
+<td class="instruction">LD DE,$80F2</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> the address for graphic data of Rex walking</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="38626"></span>
+<div class="comments">
+<div class="paragraph">
+Rex is falling or jumping
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38626"></span>96E2</td>
+<td class="instruction">LD A,($A0BB)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the facing direction of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38629"></span>96E5</td>
+<td class="instruction">CALL <a href="45656.html">$B258</a></td>
+<td class="comment-1" rowspan="1">Draw Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38632"></span>96E8</td>
+<td class="instruction">LD A,($A049)</td>
+<td class="comment-1" rowspan="3">Return if shield not active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38635"></span>96EB</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38636"></span>96EC</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38637"></span>96ED</td>
+<td class="instruction">LD A,($D83A)</td>
+<td class="comment-1" rowspan="3">Jump forward if channel 2 is playing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38640"></span>96F0</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38642"></span>96F2</td>
+<td class="instruction">JP NZ,$970A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38645"></span>96F5</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> to a pseudo random number between 0-31</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38648"></span>96F8</td>
+<td class="instruction">AND $1F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38650"></span>96FA</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="5">Configure random fine/noise pitch into shield sound data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38651"></span>96FB</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38653"></span>96FD</td>
+<td class="instruction">LD HL,$04B0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38656"></span>9700</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38657"></span>9701</td>
+<td class="instruction">LD ($D7A0),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38660"></span>9704</td>
+<td class="instruction">LD DE,$D79C</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to play shield sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38663"></span>9707</td>
+<td class="instruction">CALL <a href="54759.html">$D5E7</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38666"></span>970A</td>
+<td class="instruction">LD L,$01</td>
+<td class="comment-1" rowspan="2">Decrease 1 shield point</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38668"></span>970C</td>
+<td class="instruction">CALL <a href="39374.html#39379">$99D3</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="38671"></span>970F</td>
+<td class="instruction">LD A,($A0B6)</td>
+<td class="comment-1" rowspan="3">Set <a href="41135.html">A0AF</a> the x-position for the shield</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38674"></span>9712</td>
+<td class="instruction">SUB $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38676"></span>9714</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38679"></span>9717</td>
+<td class="instruction">LD A,($A0BB)</td>
+<td class="comment-1" rowspan="3">Jump forward if Rex facing right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38682"></span>971A</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38683"></span>971B</td>
+<td class="instruction">JP Z,$9726</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38686"></span>971E</td>
+<td class="instruction">LD A,($A0AF)</td>
+<td class="comment-1" rowspan="3">Increment x-position of shield if Rex is facing left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38689"></span>9721</td>
+<td class="instruction">ADD A,$08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38691"></span>9723</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38694"></span>9726</td>
+<td class="instruction">LD A,($A0B7)</td>
+<td class="comment-1" rowspan="3">Set <a href="41136.html">A0B0</a> the y-position for the shield</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38697"></span>9729</td>
+<td class="instruction">SUB $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38699"></span>972B</td>
+<td class="instruction">LD ($A0B0),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38702"></span>972E</td>
+<td class="instruction">LD A,$04</td>
+<td class="comment-1" rowspan="2">Set <a href="41137.html">A0B1</a> the width in bytes of the shield</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38704"></span>9730</td>
+<td class="instruction">LD ($A0B1),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38707"></span>9733</td>
+<td class="instruction">LD A,$15</td>
+<td class="comment-1" rowspan="2">Set <a href="41138.html">A0B2</a> the height in pixels of the shield</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38709"></span>9735</td>
+<td class="instruction">LD ($A0B2),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38712"></span>9738</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set entity type of #0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38713"></span>9739</td>
+<td class="instruction">LD ($A033),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38716"></span>973C</td>
+<td class="instruction">LD HL,$AE65</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the address pointer for shield offsets</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38719"></span>973F</td>
+<td class="instruction">LD DE,$88F2</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the address pointer for shield graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38722"></span>9742</td>
+<td class="instruction">LD A,($A0BB)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the face direction of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38725"></span>9745</td>
+<td class="instruction">CALL <a href="45656.html">$B258</a></td>
+<td class="comment-1" rowspan="1">Draw shield</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38728"></span>9748</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38527.html">967F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38555">Map</a></td>
+<td class="next">
+Next: <a href="38729.html">9749</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

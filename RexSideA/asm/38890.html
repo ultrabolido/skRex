@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 97EA</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38851.html">97C3</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38890">Map</a></td>
+<td class="next">
+Next: <a href="38909.html">97FD</a>
+</td>
+</tr>
+</table>
+<div class="description">97EA: Reset sound data and wait for FIRE key press</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="40054.html">9C76</a> and <a href="42958.html">A7CE</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38890"></span>97EA</td>
+<td class="instruction">CALL <a href="54743.html">$D5D7</a></td>
+<td class="comment-1" rowspan="1">Reset sound volume channels</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38893"></span>97ED</td>
+<td class="instruction">CALL <a href="42090.html#42103">$A477</a></td>
+<td class="comment-1" rowspan="1">Check for FIRE key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38896"></span>97F0</td>
+<td class="instruction">JP NZ,$97ED</td>
+<td class="comment-1" rowspan="1">Jump back until keypressed</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38899"></span>97F3</td>
+<td class="instruction">CALL <a href="42090.html#42103">$A477</a></td>
+<td class="comment-1" rowspan="1">Check for FIRE key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38902"></span>97F6</td>
+<td class="instruction">JP Z,$97F3</td>
+<td class="comment-1" rowspan="1">Jump back until key released</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38905"></span>97F9</td>
+<td class="instruction">CALL <a href="54702.html">$D5AE</a></td>
+<td class="comment-1" rowspan="1">Reset sound data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38908"></span>97FC</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38851.html">97C3</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38890">Map</a></td>
+<td class="next">
+Next: <a href="38909.html">97FD</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

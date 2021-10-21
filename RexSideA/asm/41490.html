@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A212</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41474.html">A202</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41490">Map</a></td>
+<td class="next">
+Next: <a href="41523.html">A233</a>
+</td>
+</tr>
+</table>
+<div class="description">A212: Draw the sprites for the weapon icons in HUD (1/2)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="41381.html">A1A5</a> and <a href="42891.html#42909">A79D</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41490"></span>A212</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set horizontal position of the first weapon icon in data buffer at <a href="41523.html">A233</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41492"></span>A214</td>
+<td class="instruction">LD ($A235),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41495"></span>A217</td>
+<td class="instruction">LD DE,$A04F</td>
+<td class="comment-1" rowspan="1">Point <span class="register">DE</span> to the weapon inventory status.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41498"></span>A21A</td>
+<td class="instruction">LD HL,$8C0A</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the graphics data of weapon sprites</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41501"></span>A21D</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of weapons availables</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41503"></span>
+<div class="comments">
+<div class="paragraph">
+Check if Rex got the weapon and draw the corresponent sprite
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41503"></span>A21F</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="3">Save <span class="register">BC</span>, <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41504"></span>A220</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41505"></span>A221</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41506"></span>A222</td>
+<td class="instruction">LD ($A233),HL</td>
+<td class="comment-1" rowspan="1">Set address of the graphics data for the weapon in data buffer at <a href="41523.html">A233</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41509"></span>A225</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the status inventory of the corresponent weapon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41510"></span>A226</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Is the weapon in the inventory of Rex?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41511"></span>A227</td>
+<td class="instruction">JP NZ,$A230</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41514"></span>A22A</td>
+<td class="instruction">LD HL,$8CAA</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the empty weapon graphics data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41517"></span>A22D</td>
+<td class="instruction">LD ($A233),HL</td>
+<td class="comment-1" rowspan="1">Set address of the graphics data for the empty weapon in data buffer at <a href="41523.html">A233</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="41520"></span>A230</td>
+<td class="instruction">CALL <a href="55488.html">$D8C0</a></td>
+<td class="comment-1" rowspan="1">Draw the sprite of the weapon icon to display file</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41474.html">A202</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41490">Map</a></td>
+<td class="next">
+Next: <a href="41523.html">A233</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

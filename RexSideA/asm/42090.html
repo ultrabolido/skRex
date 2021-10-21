@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A46A</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41986.html">A402</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42090">Map</a></td>
+<td class="next">
+Next: <a href="42215.html">A4E7</a>
+</td>
+</tr>
+</table>
+<div class="description">A46A: Configure and check key pressed routines for Rex movement</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Configure check FIRE key pressed routine. Used by the routines at <a href="56660.html#56925">DE5D</a> and <a href="56660.html#56985">DE99</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42090"></span>A46A</td>
+<td class="instruction">LD HL,($A0AB)</td>
+<td class="comment-1" rowspan="2">Configure port for key read in routine $A477</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42093"></span>A46D</td>
+<td class="instruction">LD ($A478),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42096"></span>A470</td>
+<td class="instruction">LD A,($A0AD)</td>
+<td class="comment-1" rowspan="2">Configure operand BIT to check for key press in routine $A477</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42099"></span>A473</td>
+<td class="instruction">LD ($A481),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42102"></span>A476</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42103"></span>
+<div class="comments">
+<div class="paragraph">
+Check FIRE key pressed. Default key is O. Used by the routines at <a href="38010.html">947A</a>, <a href="38851.html">97C3</a>, <a href="38890.html">97EA</a>, <a href="42215.html">A4E7</a> and <a href="43285.html">A915</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42103"></span>A477</td>
+<td class="instruction">LD BC,$DFFE</td>
+<td class="comment-1" rowspan="2">Read port for FIRE key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42106"></span>A47A</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42108"></span>A47C</td>
+<td class="instruction">LD HL,$A0AE</td>
+<td class="comment-1" rowspan="2">Reset input device type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42111"></span>A47F</td>
+<td class="instruction">XOR (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42112"></span>A480</td>
+<td class="instruction">BIT 1,A</td>
+<td class="comment-1" rowspan="1">Execute specific BIT operand to test if bit of key FIRE is set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42114"></span>A482</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42115"></span>
+<div class="comments">
+<div class="paragraph">
+Configure check LEFT key pressed routine. Used by the routines at <a href="56660.html#56925">DE5D</a> and <a href="56660.html#56985">DE99</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42115"></span>A483</td>
+<td class="instruction">LD HL,($A0AB)</td>
+<td class="comment-1" rowspan="2">Configure port for key read in routine $A490</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42118"></span>A486</td>
+<td class="instruction">LD ($A491),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42121"></span>A489</td>
+<td class="instruction">LD A,($A0AD)</td>
+<td class="comment-1" rowspan="2">Configure operand BIT to check for key press in routine $A490</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42124"></span>A48C</td>
+<td class="instruction">LD ($A49A),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42127"></span>A48F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42128"></span>
+<div class="comments">
+<div class="paragraph">
+Check LEFT key pressed. Default key is Q. Used by the routines at <a href="38010.html">947A</a> and <a href="49790.html">C27E</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42128"></span>A490</td>
+<td class="instruction">LD BC,$FBFE</td>
+<td class="comment-1" rowspan="2">Read port for LEFT key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42131"></span>A493</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42133"></span>A495</td>
+<td class="instruction">LD HL,$A0AE</td>
+<td class="comment-1" rowspan="2">Reset input device type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42136"></span>A498</td>
+<td class="instruction">XOR (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42137"></span>A499</td>
+<td class="instruction">BIT 0,A</td>
+<td class="comment-1" rowspan="1">Execute specific BIT operand to test if bit of key LEFT is set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42139"></span>A49B</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42140"></span>
+<div class="comments">
+<div class="paragraph">
+Configure check RIGHT key pressed routine. Used by the routines at <a href="56660.html#56925">DE5D</a> and <a href="56660.html#56985">DE99</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42140"></span>A49C</td>
+<td class="instruction">LD HL,($A0AB)</td>
+<td class="comment-1" rowspan="2">Configure port for key read in routine $A4A9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42143"></span>A49F</td>
+<td class="instruction">LD ($A4AA),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42146"></span>A4A2</td>
+<td class="instruction">LD A,($A0AD)</td>
+<td class="comment-1" rowspan="2">Configure operand BIT to check for key press in routine $A4A9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42149"></span>A4A5</td>
+<td class="instruction">LD ($A4B3),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42152"></span>A4A8</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42153"></span>
+<div class="comments">
+<div class="paragraph">
+Check RIGHT key pressed. Default key is W. Used by the routines at <a href="38010.html">947A</a> and <a href="49790.html">C27E</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42153"></span>A4A9</td>
+<td class="instruction">LD BC,$FBFE</td>
+<td class="comment-1" rowspan="2">Read port for RIGHT key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42156"></span>A4AC</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42158"></span>A4AE</td>
+<td class="instruction">LD HL,$A0AE</td>
+<td class="comment-1" rowspan="2">Reset input device type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42161"></span>A4B1</td>
+<td class="instruction">XOR (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42162"></span>A4B2</td>
+<td class="instruction">BIT 1,A</td>
+<td class="comment-1" rowspan="1">Execute specific BIT operand to test if bit of key RIGHT is set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42164"></span>A4B4</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42165"></span>
+<div class="comments">
+<div class="paragraph">
+Configure check UP key pressed routine. Used by the routines at <a href="56660.html#56925">DE5D</a> and <a href="56660.html#56985">DE99</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42165"></span>A4B5</td>
+<td class="instruction">LD HL,($A0AB)</td>
+<td class="comment-1" rowspan="2">Configure port for key read in routine $A4C2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42168"></span>A4B8</td>
+<td class="instruction">LD ($A4C3),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42171"></span>A4BB</td>
+<td class="instruction">LD A,($A0AD)</td>
+<td class="comment-1" rowspan="2">Configure operand BIT to check for key press in routine $A4C2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42174"></span>A4BE</td>
+<td class="instruction">LD ($A4CC),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42177"></span>A4C1</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42178"></span>
+<div class="comments">
+<div class="paragraph">
+Check UP key pressed. Default key is I. Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42178"></span>A4C2</td>
+<td class="instruction">LD BC,$DFFE</td>
+<td class="comment-1" rowspan="2">Read port for UP key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42181"></span>A4C5</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42183"></span>A4C7</td>
+<td class="instruction">LD HL,$A0AE</td>
+<td class="comment-1" rowspan="2">Reset input device type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42186"></span>A4CA</td>
+<td class="instruction">XOR (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42187"></span>A4CB</td>
+<td class="instruction">BIT 2,A</td>
+<td class="comment-1" rowspan="1">Execute specific BIT operand to test if bit of key UP is set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42189"></span>A4CD</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42190"></span>
+<div class="comments">
+<div class="paragraph">
+Configure check DOWN key pressed routine. Used by the routines at <a href="56660.html#56925">DE5D</a> and <a href="56660.html#56985">DE99</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42190"></span>A4CE</td>
+<td class="instruction">LD HL,($A0AB)</td>
+<td class="comment-1" rowspan="2">Configure port for key read in routine $A4DB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42193"></span>A4D1</td>
+<td class="instruction">LD ($A4DC),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42196"></span>A4D4</td>
+<td class="instruction">LD A,($A0AD)</td>
+<td class="comment-1" rowspan="2">Configure operand BIT to check for key press in routine $A4DB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42199"></span>A4D7</td>
+<td class="instruction">LD ($A4E5),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42202"></span>A4DA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42203"></span>
+<div class="comments">
+<div class="paragraph">
+Check DOWN key pressed. Default key is J. Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42203"></span>A4DB</td>
+<td class="instruction">LD BC,$BFFE</td>
+<td class="comment-1" rowspan="2">Read port for DOWN key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42206"></span>A4DE</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42208"></span>A4E0</td>
+<td class="instruction">LD HL,$A0AE</td>
+<td class="comment-1" rowspan="2">Reset input device type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42211"></span>A4E3</td>
+<td class="instruction">XOR (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42212"></span>A4E4</td>
+<td class="instruction">BIT 3,A</td>
+<td class="comment-1" rowspan="1">Execute specific BIT operand to test if bit of key DOWN is set</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42214"></span>A4E6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41986.html">A402</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42090">Map</a></td>
+<td class="next">
+Next: <a href="42215.html">A4E7</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C5FD</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50682.html">C5FA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50685">Map</a></td>
+<td class="next">
+Next: <a href="50720.html">C620</a>
+</td>
+</tr>
+</table>
+<div class="description">C5FD: Enemy configuration for FOOT MAN jumping</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="50342.html">C4A6</a> and <a href="50496.html">C540</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50685"></span>C5FD</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="3">Return if state change counter is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50688"></span>C600</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50689"></span>C601</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50690"></span>
+<div class="comments">
+<div class="paragraph">
+Configure FOOT MAN to jump. This entry point is used by the routines at <a href="50144.html">C3E0</a> and <a href="53781.html#54210">D3C2</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50690"></span>C602</td>
+<td class="instruction">LD A,(IX+$06)</td>
+<td class="comment-1" rowspan="3">Return if FOOT MAN falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50693"></span>C605</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50694"></span>C606</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50695"></span>C607</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Return if y-position less than $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50698"></span>C60A</td>
+<td class="instruction">CP $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50700"></span>C60C</td>
+<td class="instruction">RET C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50701"></span>C60D</td>
+<td class="instruction">LD A,(IX+$03)</td>
+<td class="comment-1" rowspan="3">Return if FOOT MAN is jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50704"></span>C610</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50705"></span>C611</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50706"></span>C612</td>
+<td class="instruction">LD (IX+$03),$01</td>
+<td class="comment-1" rowspan="1">Set FOOT MAN jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50710"></span>C616</td>
+<td class="instruction">LD HL,$D0D8</td>
+<td class="comment-1" rowspan="3">Set y-offset for FOOT MAN jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50713"></span>C619</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50716"></span>C61C</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50719"></span>C61F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50682.html">C5FA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50685">Map</a></td>
+<td class="next">
+Next: <a href="50720.html">C620</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

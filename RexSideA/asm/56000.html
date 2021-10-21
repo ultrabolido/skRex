@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at DAC0</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55650.html">D962</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56000">Map</a></td>
+<td class="next">
+Next: <a href="56238.html">DBAE</a>
+</td>
+</tr>
+</table>
+<div class="description">DAC0: Main loop for the tile screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38010.html">947A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56000"></span>DAC0</td>
+<td class="instruction">LD A,$00</td>
+<td class="comment-1" rowspan="2">Set screen border color to black</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56002"></span>DAC2</td>
+<td class="instruction">OUT ($FE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56004"></span>DAC4</td>
+<td class="instruction">LD DE,$6018</td>
+<td class="comment-1" rowspan="4">Copy graphic data of FOOTMAN falling at $E336 into the buffer at $6018</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56007"></span>DAC7</td>
+<td class="instruction">LD HL,$E336</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56010"></span>DACA</td>
+<td class="instruction">LD BC,$00C0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56013"></span>DACD</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56015"></span>DACF</td>
+<td class="instruction">LD DE,$4000</td>
+<td class="comment-1" rowspan="4">Copy the contents of the screen buffer at <a href="58623.html">E4FF</a> to the display and attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56018"></span>DAD2</td>
+<td class="instruction">LD HL,$E4FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56021"></span>DAD5</td>
+<td class="instruction">LD BC,$1B00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56024"></span>DAD8</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56026"></span>DADA</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of lines of text of the select control popup</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56028"></span>DADC</td>
+<td class="instruction">LD IX,$DF05</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> at the first byte of the text definition data for the select control popup</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56032"></span>DAE0</td>
+<td class="instruction">CALL <a href="41278.html">$A13E</a></td>
+<td class="comment-1" rowspan="1">Draws the select control popup on display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56035"></span>DAE3</td>
+<td class="instruction">LD DE,$E4FF</td>
+<td class="comment-1" rowspan="4">Copy the display and attribute file to the screen buffer at <a href="58623.html">E4FF</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56038"></span>DAE6</td>
+<td class="instruction">LD HL,$4000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56041"></span>DAE9</td>
+<td class="instruction">LD BC,$1B00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56044"></span>DAEC</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56046"></span>
+<div class="comments">
+<div class="paragraph">
+Prepares to display the enemies windows showroom on title screen
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56046"></span>DAEE</td>
+<td class="instruction">LD DE,$4000</td>
+<td class="comment-1" rowspan="4">Copy the contents of the screen buffer at <a href="58623.html">E4FF</a> to the display and attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56049"></span>DAF1</td>
+<td class="instruction">LD HL,$E4FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56052"></span>DAF4</td>
+<td class="instruction">LD BC,$1B00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56055"></span>DAF7</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56057"></span>DAF9</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56058"></span>DAFA</td>
+<td class="instruction">LD ($A07F),A</td>
+<td class="comment-1" rowspan="1">Initialise the animation frame number for the enemy animation on tile screen at <a href="41087.html">A07F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56061"></span>DAFD</td>
+<td class="instruction">LD ($A085),A</td>
+<td class="comment-1" rowspan="1">Initialise the enemy windows of the tile screen to hidden at <a href="41093.html">A085</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56064"></span>DB00</td>
+<td class="instruction">LD HL,$E05B</td>
+<td class="comment-1" rowspan="2">Initialise address for the animation definition at <a href="41091.html">A083</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56067"></span>DB03</td>
+<td class="instruction">LD ($A083),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56070"></span>DB06</td>
+<td class="instruction">LD A,$32</td>
+<td class="comment-1" rowspan="2">Initialise loop counter at <a href="41061.html">A065</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56072"></span>DB08</td>
+<td class="instruction">LD ($A065),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56075"></span>DB0B</td>
+<td class="instruction">LD HL,$DC26</td>
+<td class="comment-1" rowspan="2">Initialise the pointer to the first byte of the windows definition for the FOOT MAN POINTS popup</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56078"></span>DB0E</td>
+<td class="instruction">LD ($A086),HL</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56081"></span>
+<div class="comments">
+<div class="paragraph">
+Draws the windows, the animated enemies and check for keyboard inputs There is a routine that waits aprox. 100 ms every loop of the counter (50 times), so the windows display duration and the duration between windows is aprox. 5 seconds.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56081"></span>DB11</td>
+<td class="instruction">LD HL,($A083)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address pointer to the enemy animation definition</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56084"></span>DB14</td>
+<td class="instruction">CALL <a href="57355.html">$E00B</a></td>
+<td class="comment-1" rowspan="1">Draws the animation frame for the corresponding enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56087"></span>DB17</td>
+<td class="instruction">LD BC,$07D0</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span>=2000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56090"></span>DB1A</td>
+<td class="instruction">CALL <a href="51419.html">$C8DB</a></td>
+<td class="comment-1" rowspan="1">Wait ~ 100ms = 182 t-states 2000 times</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56093"></span>DB1D</td>
+<td class="instruction">LD BC,$F7FE</td>
+<td class="comment-1" rowspan="2">Read keys 1-2-3-4-5 into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56096"></span>DB20</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56098"></span>DB22</td>
+<td class="instruction">BIT 3,A</td>
+<td class="comment-1" rowspan="1">Key 4 is pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56100"></span>DB24</td>
+<td class="instruction">JP Z,<a href="56660.html#56925">$DE5D</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56103"></span>DB27</td>
+<td class="instruction">LD BC,$F7FE</td>
+<td class="comment-1" rowspan="2">Read keys 1-2-3-4-5 into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56106"></span>DB2A</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56108"></span>DB2C</td>
+<td class="instruction">BIT 2,A</td>
+<td class="comment-1" rowspan="1">Key 3 is pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56110"></span>DB2E</td>
+<td class="instruction">JP Z,<a href="56660.html#56985">$DE99</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56113"></span>DB31</td>
+<td class="instruction">LD BC,$F7FE</td>
+<td class="comment-1" rowspan="2">Read keys 1-2-3-4-5 into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56116"></span>DB34</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56118"></span>DB36</td>
+<td class="instruction">BIT 1,A</td>
+<td class="comment-1" rowspan="1">Key 2 is pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56120"></span>DB38</td>
+<td class="instruction">JP Z,<a href="56660.html#56864">$DE20</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56123"></span>DB3B</td>
+<td class="instruction">LD BC,$F7FE</td>
+<td class="comment-1" rowspan="2">Read keys 1-2-3-4-5 into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56126"></span>DB3E</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56128"></span>DB40</td>
+<td class="instruction">BIT 0,A</td>
+<td class="comment-1" rowspan="1">Key 1 is pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56130"></span>DB42</td>
+<td class="instruction">JP Z,<a href="56660.html">$DD54</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56133"></span>DB45</td>
+<td class="instruction">LD A,($A065)</td>
+<td class="comment-1" rowspan="3">Decrease the loop counter at <a href="41061.html">A065</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56136"></span>DB48</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56137"></span>DB49</td>
+<td class="instruction">LD ($A065),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56140"></span>DB4C</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">The loop counter is $00?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56141"></span>DB4D</td>
+<td class="instruction">JP NZ,$DB11</td>
+<td class="comment-1" rowspan="1">Jump back if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56144"></span>DB50</td>
+<td class="instruction">LD A,$32</td>
+<td class="comment-1" rowspan="2">Reset the loop counter at <a href="41061.html">A065</a> to $32</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56146"></span>DB52</td>
+<td class="instruction">LD ($A065),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56149"></span>DB55</td>
+<td class="instruction">LD A,($A085)</td>
+<td class="comment-1" rowspan="3">Show/hide the enemy windows in the title screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56152"></span>DB58</td>
+<td class="instruction">XOR $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56154"></span>DB5A</td>
+<td class="instruction">LD ($A085),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56157"></span>DB5D</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Is the enemy windows hidden?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56158"></span>DB5E</td>
+<td class="instruction">JP Z,$DB90</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56161"></span>DB61</td>
+<td class="instruction">LD HL,($A083)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the value of the current address of the enemy animation defnition</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56164"></span>DB64</td>
+<td class="instruction">LD DE,$000C</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the next enemy animation definition</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56167"></span>DB67</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56168"></span>DB68</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Pick up the first byte of the enemy animation definition</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56169"></span>DB69</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">Is an end marker?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56171"></span>DB6B</td>
+<td class="instruction">JP NZ,$DB71</td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56174"></span>DB6E</td>
+<td class="instruction">LD HL,$E067</td>
+<td class="comment-1" rowspan="2">Point <a href="41091.html">A083</a> to the initial enemy animation definition address</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56177"></span>DB71</td>
+<td class="instruction">LD ($A083),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56180"></span>DB74</td>
+<td class="instruction">LD IX,($A086)</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the address of the text definition data at <a href="41094.html">A086</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56184"></span>DB78</td>
+<td class="instruction">LD B,$02</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of files of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56186"></span>DB7A</td>
+<td class="instruction">CALL <a href="41278.html">$A13E</a></td>
+<td class="comment-1" rowspan="1">Draw the corresponding windows in tile screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56189"></span>DB7D</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the first byte of the text definition data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56192"></span>DB80</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">Is an end marker?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56194"></span>DB82</td>
+<td class="instruction">JP NZ,$DB89</td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56197"></span>DB85</td>
+<td class="instruction">LD IX,$DC26</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the address of the first windows definition (FOOT MAN) at <a href="56358.html">DC26</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="56201"></span>DB89</td>
+<td class="instruction">LD ($A086),IX</td>
+<td class="comment-1" rowspan="1">Save to <a href="41094.html">A086</a> this windows defintion address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56205"></span>DB8D</td>
+<td class="instruction">JP $DB11</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56208"></span>DB90</td>
+<td class="instruction">CALL $DB96</td>
+<td class="comment-1" rowspan="1">Hide the current visible enemy animation windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56211"></span>DB93</td>
+<td class="instruction">JP $DB11</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56214"></span>
+<div class="comments">
+<div class="paragraph">
+Hide the current visible enemy animation windows
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56214"></span>DB96</td>
+<td class="instruction">LD HL,$5800</td>
+<td class="comment-1" rowspan="5">Draw a rectangle (15x4) of color attribute $02 directly into the attribute file It does not seem necessary because later overwrites it with the content of the screen buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56217"></span>DB99</td>
+<td class="instruction">LD B,$04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56219"></span>DB9B</td>
+<td class="instruction">LD E,$0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56221"></span>DB9D</td>
+<td class="instruction">LD A,$02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56223"></span>DB9F</td>
+<td class="instruction">CALL <a href="55561.html">$D909</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56226"></span>DBA2</td>
+<td class="instruction">LD DE,$4000</td>
+<td class="comment-1" rowspan="4">Copy the contents of the screen buffer at $E4FF into de display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56229"></span>DBA5</td>
+<td class="instruction">LD HL,$E4FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56232"></span>DBA8</td>
+<td class="instruction">LD BC,$1B00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56235"></span>DBAB</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56237"></span>DBAD</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55650.html">D962</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56000">Map</a></td>
+<td class="next">
+Next: <a href="56238.html">DBAE</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

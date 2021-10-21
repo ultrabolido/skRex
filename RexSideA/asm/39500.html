@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 9A4C</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39463.html">9A27</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39500">Map</a></td>
+<td class="next">
+Next: <a href="39603.html">9AB3</a>
+</td>
+</tr>
+</table>
+<div class="description">9A4C: HUD flash</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a> and <a href="43285.html">A915</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39500"></span>9A4C</td>
+<td class="instruction">LD A,($A042)</td>
+<td class="comment-1" rowspan="3">Return if HUD flash is not active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39503"></span>9A4F</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39505"></span>9A51</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39506"></span>9A52</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="4">Set <span class="register">HL</span> to the address into commands table for HUD flash based on flash index value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39507"></span>9A53</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39509"></span>9A55</td>
+<td class="instruction">LD HL,$9AB3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39512"></span>9A58</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39513"></span>9A59</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the value of the commands table for HUD flash</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39514"></span>9A5A</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="2">Jump forward if command value is not equal to $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39516"></span>9A5C</td>
+<td class="instruction">JP NZ,$9A65</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39519"></span>9A5F</td>
+<td class="instruction">LD A,$FF</td>
+<td class="comment-1" rowspan="2">inactive HUD flash</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39521"></span>9A61</td>
+<td class="instruction">LD ($A042),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39524"></span>9A64</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="39525"></span>9A65</td>
+<td class="instruction">LD ($A093),A</td>
+<td class="comment-1" rowspan="1">Save into <a href="41107.html">A093</a> the value of the command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39528"></span>9A68</td>
+<td class="instruction">LD HL,$5800</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the base address of the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39531"></span>9A6B</td>
+<td class="instruction">LD DE,$E4FF</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> the base address of the attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39534"></span>9A6E</td>
+<td class="instruction">LD B,$40</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> the number of bytes to flash</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39536"></span>9A70</td>
+<td class="instruction">LD A,($A093)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the value of the command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39539"></span>9A73</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">command 1?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39541"></span>9A75</td>
+<td class="instruction">JP Z,$9A9A</td>
+<td class="comment-1" rowspan="1">Jump to handle flash command 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39544"></span>9A78</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">command 0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39545"></span>9A79</td>
+<td class="instruction">JP Z,$9AA7</td>
+<td class="comment-1" rowspan="1">Jump to handle flash command 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39548"></span>9A7C</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">command 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39550"></span>9A7E</td>
+<td class="instruction">JP Z,$9A8D</td>
+<td class="comment-1" rowspan="1">Jump to handle flash command 2</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39553"></span>
+<div class="comments">
+<div class="paragraph">
+handle the next byte
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39553"></span>9A81</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increase address into attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39554"></span>9A82</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increase address into attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39555"></span>9A83</td>
+<td class="instruction">DJNZ $9A70</td>
+<td class="comment-1" rowspan="1">Jump to process the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39557"></span>9A85</td>
+<td class="instruction">LD A,($A042)</td>
+<td class="comment-1" rowspan="3">Increment flash index into commands table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39560"></span>9A88</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39561"></span>9A89</td>
+<td class="instruction">LD ($A042),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39564"></span>9A8C</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39565"></span>
+<div class="comments">
+<div class="paragraph">
+handle flash command #2
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39565"></span>9A8D</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the color attribute from attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39566"></span>9A8E</td>
+<td class="instruction">CP (HL)</td>
+<td class="comment-1" rowspan="1">Compare with attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39567"></span>9A8F</td>
+<td class="instruction">JP Z,$9A81</td>
+<td class="comment-1" rowspan="1">Jump to the next byte if equal</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39570"></span>9A92</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">Increment attribute color in attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39571"></span>9A93</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39572"></span>9A94</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39574"></span>9A96</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39575"></span>9A97</td>
+<td class="instruction">JP $9A81</td>
+<td class="comment-1" rowspan="1">Jump to process next byte</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39578"></span>
+<div class="comments">
+<div class="paragraph">
+handle flash command #1
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39578"></span>9A9A</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the color attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39579"></span>9A9B</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increase color attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39580"></span>9A9C</td>
+<td class="instruction">CP $07</td>
+<td class="comment-1" rowspan="2">Jump to the next byte if color attribute is $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39582"></span>9A9E</td>
+<td class="instruction">JP Z,$9A81</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39585"></span>9AA1</td>
+<td class="instruction">AND $07</td>
+<td class="comment-1" rowspan="2">Set the new color attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39587"></span>9AA3</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39588"></span>9AA4</td>
+<td class="instruction">JP $9A81</td>
+<td class="comment-1" rowspan="1">Jump to the next byte</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39591"></span>
+<div class="comments">
+<div class="paragraph">
+handle flash command #0
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39591"></span>9AA7</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the color attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39592"></span>9AA8</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease color attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39593"></span>9AA9</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump to the next byte if color attribute is $00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39594"></span>9AAA</td>
+<td class="instruction">JP Z,$9A81</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39597"></span>9AAD</td>
+<td class="instruction">AND $07</td>
+<td class="comment-1" rowspan="2">Set the new color attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39599"></span>9AAF</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39600"></span>9AB0</td>
+<td class="instruction">JP $9A81</td>
+<td class="comment-1" rowspan="1">Jump to the next byte</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39463.html">9A27</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39500">Map</a></td>
+<td class="next">
+Next: <a href="39603.html">9AB3</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

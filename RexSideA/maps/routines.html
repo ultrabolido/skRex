@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routines</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="RoutinesMap">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<div class="map-intro"></div>
+<table class="map">
+<tr>
+<th>Address</th>
+<th>Description</th>
+</tr>
+<tr>
+<td class="map-c"><span id="38010"></span><a href="../asm/38010.html">947A</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/38010.html">The game has just loaded</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="38527"></span><a href="../asm/38527.html">967F</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/38527.html">Active/inactive shield</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="38555"></span><a href="../asm/38555.html">969B</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/38555.html">Draw Rex and shield</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="38729"></span><a href="../asm/38729.html">9749</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/38729.html">Destroy all enemy projectiles</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="38737"></span><a href="../asm/38737.html">9751</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/38737.html">Release a smartbomb</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="38790"></span><a href="../asm/38790.html">9786</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/38790.html">Destroy an enemy if smartbomb released or Rex dead</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="38851"></span><a href="../asm/38851.html">97C3</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/38851.html">Reset sound buffer, volume channels and check for FIRE key</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="38890"></span><a href="../asm/38890.html">97EA</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/38890.html">Reset sound data and wait for FIRE key press</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="38909"></span><a href="../asm/38909.html">97FD</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/38909.html">Configure explosion</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="38943"></span><a href="../asm/38943.html">981F</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/38943.html">Destroy enemy</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39087"></span><a href="../asm/39087.html">98AF</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39087.html">Handle Boss destruction. Boss semi/full destroyed</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39272"></span><a href="../asm/39272.html">9968</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39272.html">Handle train stop. Front wagon has been destroyed</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39314"></span><a href="../asm/39314.html">9992</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39314.html">Update attribute color for score points in HUD</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39339"></span><a href="../asm/39339.html">99AB</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39339.html">Draw score on HUD</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39355"></span><a href="../asm/39355.html">99BB</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39355.html">Draws lives number on HUD</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39374"></span><a href="../asm/39374.html">99CE</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39374.html">Handle shield loss</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39418"></span><a href="../asm/39418.html">99FA</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39418.html">Draw shield power</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39463"></span><a href="../asm/39463.html">9A27</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39463.html">Increment score</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39500"></span><a href="../asm/39500.html">9A4C</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39500.html">HUD flash</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39621"></span><a href="../asm/39621.html">9AC5</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39621.html">Handle Rex Dead - Last live explossion</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39898"></span><a href="../asm/39898.html">9BDA</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39898.html">Handle Rex dead - Main routine</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="39995"></span><a href="../asm/39995.html">9C3B</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/39995.html">Handle respawn</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="40054"></span><a href="../asm/40054.html">9C76</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/40054.html">Handle Rex dead - Resume or finish game</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="40207"></span><a href="../asm/40207.html">9D0F</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/40207.html">Rex visibility active</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="40223"></span><a href="../asm/40223.html">9D1F</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/40223.html">Configure data for Rex teleporting when game begins or resume</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="40263"></span><a href="../asm/40263.html">9D47</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/40263.html">Configure data for Rex teleporting when dead</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="40305"></span><a href="../asm/40305.html">9D71</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/40305.html">Handle Rex visibility during teleporting</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="40450"></span><a href="../asm/40450.html">9E02</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/40450.html">Handle Rex atoms flush during teleporting</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="40799"></span><a href="../asm/40799.html">9F5F</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/40799.html">Handle Rex over special tiles</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41156"></span><a href="../asm/41156.html">A0C4</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41156.html">Update timer bar in HUD</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41267"></span><a href="../asm/41267.html">A133</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41267.html">Initialize time bar loop counters</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41278"></span><a href="../asm/41278.html">A13E</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41278.html">Draws a windows in the display file</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41381"></span><a href="../asm/41381.html">A1A5</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41381.html">Draw HUD</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41435"></span><a href="../asm/41435.html">A1DB</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41435.html">Draw the sprites for the smartbomb icons in HUD (1/2)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41463"></span><a href="../asm/41463.html">A1F7</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41463.html">Draw the sprites for the smartbomb icons in HUD (2/2)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41490"></span><a href="../asm/41490.html">A212</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41490.html">Draw the sprites for the weapon icons in HUD (1/2)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41529"></span><a href="../asm/41529.html">A239</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41529.html">Draw the sprites for the weapon icons in HUD (2/2)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41610"></span><a href="../asm/41610.html">A28A</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41610.html">Copy room graphic buffer to display file</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41695"></span><a href="../asm/41695.html">A2DF</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41695.html">Print the text content of the windows</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41845"></span><a href="../asm/41845.html">A375</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41845.html">Pseudo-random number generator</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41902"></span><a href="../asm/41902.html">A3AE</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41902.html">Reset display and attribute file</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41928"></span><a href="../asm/41928.html">A3C8</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41928.html">Draw the number saved in charcode buffer at <a href="../asm/41124.html">A0A4</a> into display file</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="41986"></span><a href="../asm/41986.html">A402</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/41986.html">Convert a number into a list of digits charcodes</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42090"></span><a href="../asm/42090.html">A46A</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42090.html">Configure and check key pressed routines for Rex movement</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42215"></span><a href="../asm/42215.html">A4E7</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42215.html">Pause game</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42228"></span><a href="../asm/42228.html">A4F4</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42228.html">Draw explosion debris</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42243"></span><a href="../asm/42243.html">A503</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42243.html">Computes address position in tile type buffer based on (x,y) position on screen</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42293"></span><a href="../asm/42293.html">A535</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42293.html">Computes address into attribute file based of (x,y)-pixel-position on screen</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42334"></span><a href="../asm/42334.html">A55E</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42334.html">Update arrow tiles, shield recharger, respawn indicator, fire and water effect</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42536"></span><a href="../asm/42536.html">A628</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42536.html">Initialise drones configuration data buffer</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42553"></span><a href="../asm/42553.html">A639</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42553.html">Draw drones for multiple weapon</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42891"></span><a href="../asm/42891.html">A78B</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42891.html">Update weapon in inventory (HUD)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42921"></span><a href="../asm/42921.html">A7A9</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42921.html">Simulate conveyor belt going up</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42938"></span><a href="../asm/42938.html">A7BA</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42938.html">Simulate conveyor belt going down</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="42958"></span><a href="../asm/42958.html">A7CE</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/42958.html">Computes and show password code for Rex 2</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="43165"></span><a href="../asm/43165.html">A89D</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/43165.html">Configure current room</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="43285"></span><a href="../asm/43285.html">A915</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/43285.html">Main loop for attract-mode</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45573"></span><a href="../asm/45573.html">B205</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45573.html">Reset room graphic buffer</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45656"></span><a href="../asm/45656.html">B258</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45656.html">Draw an entity (enemy, object or player)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45881"></span><a href="../asm/45881.html">B339</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45881.html">Copy tile graphic into room graphic data</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="45938"></span><a href="../asm/45938.html">B372</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/45938.html">Rex fires weapon</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46166"></span><a href="../asm/46166.html">B456</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46166.html">Handle spray weapon fire</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46291"></span><a href="../asm/46291.html">B4D3</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46291.html">Configure scanner bullet projectile and Rex spray weapon projectile</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46314"></span><a href="../asm/46314.html">B4EA</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46314.html">Computes offset into the room graphic data based on projectile y-delta</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46342"></span><a href="../asm/46342.html">B506</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46342.html">Configure weapon sound and check for weapon free slot</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46462"></span><a href="../asm/46462.html">B57E</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46462.html">Create a new projectile</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="46661"></span><a href="../asm/46661.html">B645</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/46661.html">Draw projectiles</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="47467"></span><a href="../asm/47467.html">B96B</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/47467.html">Update color attribute for weapon icon on HUD</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="47502"></span><a href="../asm/47502.html">B98E</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/47502.html">Handle weapon energy increase</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="47599"></span><a href="../asm/47599.html">B9EF</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/47599.html">Handle weapon energy loss</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="47677"></span><a href="../asm/47677.html">BA3D</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/47677.html">Handle double energy loss</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="47689"></span><a href="../asm/47689.html">BA49</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/47689.html">Initialise weapon data</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="47708"></span><a href="../asm/47708.html">BA5C</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/47708.html">Draw enemies</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="48731"></span><a href="../asm/48731.html">BE5B</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/48731.html">Configure projectile for swing gun</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="48851"></span><a href="../asm/48851.html">BED3</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/48851.html">Handle bubble bouncing and burst</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="48998"></span><a href="../asm/48998.html">BF66</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/48998.html">Handle explosion debris movement and draw it</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49135"></span><a href="../asm/49135.html">BFEF</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49135.html">Handle lateral movement for FOOTMAN, STOMPER, MINE, SCANNER, POD, MINE LAYER and BLOB</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49210"></span><a href="../asm/49210.html">C03A</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49210.html">Scanner fire weapon</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49242"></span><a href="../asm/49242.html">C05A</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49242.html">Handle POD and MINE LAYER</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49376"></span><a href="../asm/49376.html">C0E0</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49376.html">Handle collision detection for BLOB</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49454"></span><a href="../asm/49454.html">C12E</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49454.html">Change x/y-delta for BLOB</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49485"></span><a href="../asm/49485.html">C14D</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49485.html">Handle BLOB and MINE movement</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49610"></span><a href="../asm/49610.html">C1CA</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49610.html">Handle lateral collision detection for POD and MINE LAYER and shot for MINE LAYER</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49683"></span><a href="../asm/49683.html">C213</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49683.html">Handle SCANNER - moves up</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49721"></span><a href="../asm/49721.html">C239</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49721.html">Handler for Scanner bumping animation</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49790"></span><a href="../asm/49790.html">C27E</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49790.html">Handle scanner shot and collision detection horizontally</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="49917"></span><a href="../asm/49917.html">C2FD</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/49917.html">Handle SCANNER - Moves down</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50110"></span><a href="../asm/50110.html">C3BE</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50110.html">Configure scanner for bump/fire state</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50144"></span><a href="../asm/50144.html">C3E0</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50144.html">Handle collision detection for entity moving right</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50342"></span><a href="../asm/50342.html">C4A6</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50342.html">Handle collision detection for entity moving left</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50481"></span><a href="../asm/50481.html">C531</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50481.html">Handle possible crouch for FOOT MAN</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50496"></span><a href="../asm/50496.html">C540</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50496.html">Handle possible jump for FOOT MAN</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50509"></span><a href="../asm/50509.html">C54D</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50509.html">Enemy configuration for FOOTMAN crouched or stand-by</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50551"></span><a href="../asm/50551.html">C577</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50551.html">Handle FOOT MAN walking/stand-by state change</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50614"></span><a href="../asm/50614.html">C5B6</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50614.html">Handle FOOT MAN walking/crouching state change</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50685"></span><a href="../asm/50685.html">C5FD</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50685.html">Enemy configuration for FOOT MAN jumping</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50720"></span><a href="../asm/50720.html">C620</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50720.html">Handler for enemies going up: SCANNER, POD, MINE LAYER and FOOTMAN Jumping</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50882"></span><a href="../asm/50882.html">C6C2</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50882.html">Handler for enemies going down: SCANNER, POD, MINE LAYER and FOOTMAN falling</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="50987"></span><a href="../asm/50987.html">C72B</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/50987.html">Obtain the tile type address pointer under the entity</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="51013"></span><a href="../asm/51013.html">C745</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/51013.html">Initialize graphic and attribute data buffers for current room</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="51391"></span><a href="../asm/51391.html">C8BF</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/51391.html">Copy room color attribute buffer to attribute file</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="51419"></span><a href="../asm/51419.html">C8DB</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/51419.html">Utilities routine - Wait some time</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="51432"></span><a href="../asm/51432.html">C8E8</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/51432.html">Utilities routine - Multiply two values</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="51439"></span><a href="../asm/51439.html">C8EF</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/51439.html">Configure room connection and enemies of the room</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="51546"></span><a href="../asm/51546.html">C95A</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/51546.html">Check for end game room</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="51557"></span><a href="../asm/51557.html">C965</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/51557.html">Initialize train for the current room</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="51576"></span><a href="../asm/51576.html">C978</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/51576.html">Generate train parts: front, middle or rear wagon</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="51658"></span><a href="../asm/51658.html">C9CA</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/51658.html">Creates a new mobile enemy on room</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="51971"></span><a href="../asm/51971.html">CB03</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/51971.html">Check if enemy can be generated in a position</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="52050"></span><a href="../asm/52050.html">CB52</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/52050.html">Configure static enemies for the current room</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="52104"></span><a href="../asm/52104.html">CB88</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/52104.html">Configure entity for the current room</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="52859"></span><a href="../asm/52859.html">CE7B</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/52859.html">Draw the windows borders in the display file</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53002"></span><a href="../asm/53002.html">CF0A</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53002.html">Draw a row of borders for the windows</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53053"></span><a href="../asm/53053.html">CF3D</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53053.html">Draw a 3x3 grid attribute color into attribute file if tile is background</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53102"></span><a href="../asm/53102.html">CF6E</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53102.html">Copy a 3x3 grid of attribute color from attribute buffer to attribute file</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53135"></span><a href="../asm/53135.html">CF8F</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53135.html">Copy the attribute file of the HUD (3 first rows) to the attribute buffer of the HUD</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53147"></span><a href="../asm/53147.html">CF9B</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53147.html">Draw random attribute color for explosion</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53196"></span><a href="../asm/53196.html">CFCC</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53196.html">Handle speed up duration</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53210"></span><a href="../asm/53210.html">CFDA</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53210.html">Configure Rex to move right</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53238"></span><a href="../asm/53238.html">CFF6</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53238.html">Configure Rex to move left</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53267"></span><a href="../asm/53267.html">D013</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53267.html">Handle Rex lateral movement</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53277"></span><a href="../asm/53277.html">D01D</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53277.html">Move Rex left or right</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53312"></span><a href="../asm/53312.html">D040</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53312.html">Handle Rex collision detection moving right</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53334"></span><a href="../asm/53334.html">D056</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53334.html">Handle Rex collision detection moving left</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53356"></span><a href="../asm/53356.html">D06C</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53356.html">Check if a tile is a wall or a background</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53408"></span><a href="../asm/53408.html">D0A0</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53408.html">Check room connection to the left</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53425"></span><a href="../asm/53425.html">D0B1</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53425.html">Check room connection to the right</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53442"></span><a href="../asm/53442.html">D0C2</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53442.html">Configure Rex for jump</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53476"></span><a href="../asm/53476.html">D0E4</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53476.html">Handle Rex jumping</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53581"></span><a href="../asm/53581.html">D14D</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53581.html">Handle Rex falling</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53689"></span><a href="../asm/53689.html">D1B9</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53689.html">Handle enemy projectile collision with Rex</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="53781"></span><a href="../asm/53781.html">D215</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/53781.html">Handle collision detection of enemy with Rex and projectiles</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="54454"></span><a href="../asm/54454.html">D4B6</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/54454.html">Handle Rex takes question</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="54688"></span><a href="../asm/54688.html">D5A0</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/54688.html">Increment lives</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="54702"></span><a href="../asm/54702.html">D5AE</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/54702.html">Reset sound data channels</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="54743"></span><a href="../asm/54743.html">D5D7</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/54743.html">Reset the 3 channel volumes of the AY-3-8912</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="54759"></span><a href="../asm/54759.html">D5E7</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/54759.html">Configure sound channel and mixer register</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="54914"></span><a href="../asm/54914.html">D682</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/54914.html">Send data to the mixer register of AY-3-8912</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="54924"></span><a href="../asm/54924.html">D68C</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/54924.html">Play sound channels</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="55003"></span><a href="../asm/55003.html">D6DB</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/55003.html">Configure note for current channel</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="55108"></span><a href="../asm/55108.html">D744</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/55108.html">Send channel volume command</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="55129"></span><a href="../asm/55129.html">D759</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/55129.html">Send commands to AY-3-8912</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="55384"></span><a href="../asm/55384.html">D858</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/55384.html">Check for an slot in Enemy configuration buffer to create another enemy</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="55409"></span><a href="../asm/55409.html">D871</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/55409.html">Show weapon bonus windows</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="55459"></span><a href="../asm/55459.html">D8A3</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/55459.html">Copy screen display file into room graphic data buffer</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="55488"></span><a href="../asm/55488.html">D8C0</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/55488.html">Draws an sprite</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="55561"></span><a href="../asm/55561.html">D909</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/55561.html">Fill a rectangle with a color attribute in the attribute file</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="56000"></span><a href="../asm/56000.html">DAC0</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/56000.html">Main loop for the tile screen</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="56238"></span><a href="../asm/56238.html">DBAE</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/56238.html">Check for key pressed in the DEFINE keys windows</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="56660"></span><a href="../asm/56660.html">DD54</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/56660.html">Keypress handlers for the title screen menu</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="57355"></span><a href="../asm/57355.html">E00B</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/57355.html">Draw the enemy sprite on title screen (1/2)</a></div>
+</td>
+</tr>
+<tr>
+<td class="map-c"><span id="57423"></span><a href="../asm/57423.html">E04F</a></td>
+<td class="map-c-desc">
+<div class="map-entry-title-10"><a class="map-entry-title" href="../asm/57423.html">Draw the enemy sprite on title screen (2/2)</a></div>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

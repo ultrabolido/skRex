@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D8C0</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55459.html">D8A3</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55488">Map</a></td>
+<td class="next">
+Next: <a href="55561.html">D909</a>
+</td>
+</tr>
+</table>
+<div class="description">D8C0: Draws an sprite</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Draws an sprite with the information defined in the data buffer pointed by the address at <span class="register">SP</span> Used by the routines at <a href="41435.html">A1DB</a>, <a href="41490.html">A212</a> and <a href="57355.html">E00B</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55488"></span>D8C0</td>
+<td class="instruction">LD ($A093),IX</td>
+<td class="comment-1" rowspan="1">Save at <a href="41107.html">A093</a> the current value of <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55492"></span>D8C4</td>
+<td class="instruction">LD ($A095),IY</td>
+<td class="comment-1" rowspan="1">Save at <a href="41109.html">A095</a> the current value of <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55496"></span>D8C8</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore the base address of the data buffer for the sprite to display</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55498"></span>D8CA</td>
+<td class="instruction">LD L,(IY+$03)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the vertical position of the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55501"></span>D8CD</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55503"></span>D8CF</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> the address location of the sprite in the display file lookup table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55504"></span>D8D0</td>
+<td class="instruction">LD DE,$ABDD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55507"></span>D8D3</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55508"></span>D8D4</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Copy <span class="register">HL</span> to <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55509"></span>D8D5</td>
+<td class="instruction">POP IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55511"></span>D8D7</td>
+<td class="instruction">LD L,(IY+$00)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to point to address of the graphic data for the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55514"></span>D8DA</td>
+<td class="instruction">LD H,(IY+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55517"></span>D8DD</td>
+<td class="instruction">LD B,(IY+$05)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> the height of the sprite</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55520"></span>D8E0</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55521"></span>D8E1</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the lower byte of the address to the display file where draw the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55524"></span>D8E4</td>
+<td class="instruction">LD D,(IX+$01)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">D</span> to the high byte of the address to the display file where draw the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55527"></span>D8E7</td>
+<td class="instruction">ADD A,(IY+$02)</td>
+<td class="comment-1" rowspan="1">Add the horizontal position to the lowe byte of the display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55530"></span>D8EA</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> the address point in display file to draw the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55531"></span>D8EB</td>
+<td class="instruction">LD C,(IY+$04)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">BC</span> to the width of the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55534"></span>D8EE</td>
+<td class="instruction">LD B,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55536"></span>D8F0</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy to display file the graphics data of the sprite (a row of pixels)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55538"></span>D8F2</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="2">Points to the next address in the display file look up table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55540"></span>D8F4</td>
+<td class="instruction">INC IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55542"></span>D8F6</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Recover <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55543"></span>D8F7</td>
+<td class="instruction">DJNZ $D8E0</td>
+<td class="comment-1" rowspan="1">Jump back if there are partial sprite to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55545"></span>D8F9</td>
+<td class="instruction">LD DE,$0006</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IY</span> to the end of the data buffer for the sprite. This will be the next instruction to execute when return from this routine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55548"></span>D8FC</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55550"></span>D8FE</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55552"></span>D900</td>
+<td class="instruction">LD IY,($A095)</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">IY</span> and <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55556"></span>D904</td>
+<td class="instruction">LD IX,($A093)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55560"></span>D908</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return to instruction pointed by <span class="register">IY</span></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55459.html">D8A3</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55488">Map</a></td>
+<td class="next">
+Next: <a href="55561.html">D909</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

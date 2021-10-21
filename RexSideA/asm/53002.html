@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at CF0A</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52859.html">CE7B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53002">Map</a></td>
+<td class="next">
+Next: <a href="53053.html">CF3D</a>
+</td>
+</tr>
+</table>
+<div class="description">CF0A: Draw a row of borders for the windows</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Computes the pointer on display file and draw a row of borders for the windows
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Point to the address of the graphics data for the left border tile</td>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">point to the address of the graphics data for the middle border tile</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Point to the addres into the display file look up table corresponding to the row of pixels to draw</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53002"></span>CF0A</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span>=8</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53004"></span>CF0C</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">DE</span> to point to the address on the display file to draw the corner</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53005"></span>CF0D</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53006"></span>CF0E</td>
+<td class="instruction">LD D,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53007"></span>CF0F</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="2">Increment the pointer by 2. All the windows has a margin of 2 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53008"></span>CF10</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53009"></span>CF11</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span> briefly</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53010"></span>CF12</td>
+<td class="instruction">LD A,($A028)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to the horizontal position of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53013"></span>CF15</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53014"></span>CF16</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53016"></span>CF18</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the address of this location in display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53017"></span>CF19</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> with <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53018"></span>CF1A</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53019"></span>CF1B</td>
+<td class="instruction">CALL $CF21</td>
+<td class="comment-1" rowspan="1">Draw one row of pixels for this border</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53022"></span>CF1E</td>
+<td class="instruction">DJNZ $CF0C</td>
+<td class="comment-1" rowspan="1">Jump back while there are remaining pixels to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53024"></span>CF20</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53025"></span>
+<div class="comments">
+<div class="paragraph">
+This routine draws the corresponding pixels of the tiles borders into display file
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53025"></span>CF21</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53026"></span>CF22</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Put the byte of the left border tile into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53029"></span>CF25</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53030"></span>CF26</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment the pointer to the display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53031"></span>CF27</td>
+<td class="instruction">LD A,($A02A)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> to the length of the longest line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53034"></span>CF2A</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53035"></span>CF2B</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="2">Put the byte of the middle border tile into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53038"></span>CF2E</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53039"></span>CF2F</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment the pointer to the display files</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53040"></span>CF30</td>
+<td class="instruction">DJNZ $CF2B</td>
+<td class="comment-1" rowspan="1">Jump back while there are middle borders to show</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53042"></span>CF32</td>
+<td class="instruction">LD A,(IX+$08)</td>
+<td class="comment-1" rowspan="2">Put the byte of the right border tile into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53045"></span>CF35</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53046"></span>CF36</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point to the next byte of the middle border tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53048"></span>CF38</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Point to the next byte of the left border tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53050"></span>CF3A</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Point to the next address into the display file lookup table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53051"></span>CF3B</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Recover <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53052"></span>CF3C</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52859.html">CE7B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53002">Map</a></td>
+<td class="next">
+Next: <a href="53053.html">CF3D</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

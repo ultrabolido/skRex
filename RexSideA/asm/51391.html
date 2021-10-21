@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C8BF</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51013.html">C745</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51391">Map</a></td>
+<td class="next">
+Next: <a href="51419.html">C8DB</a>
+</td>
+</tr>
+</table>
+<div class="description">C8BF: Copy room color attribute buffer to attribute file</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38790.html">9786</a>, <a href="43165.html">A89D</a> and <a href="55409.html">D871</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51391"></span>C8BF</td>
+<td class="instruction">LD DE,$5860</td>
+<td class="comment-1" rowspan="4">Copy attribute buffer for room intro attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51394"></span>C8C2</td>
+<td class="instruction">LD HL,$E55F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51397"></span>C8C5</td>
+<td class="instruction">LD BC,$02A0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51400"></span>C8C8</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51402"></span>C8CA</td>
+<td class="instruction">LD HL,$5860</td>
+<td class="comment-1" rowspan="8">Set color attribute $47 for the first and last column of the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51405"></span>C8CD</td>
+<td class="instruction">LD B,$15</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51407"></span>C8CF</td>
+<td class="instruction">LD (HL),$47</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51409"></span>C8D1</td>
+<td class="instruction">LD DE,$001F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51412"></span>C8D4</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51413"></span>C8D5</td>
+<td class="instruction">LD (HL),$47</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51415"></span>C8D7</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51416"></span>C8D8</td>
+<td class="instruction">DJNZ $C8CF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51418"></span>C8DA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51013.html">C745</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51391">Map</a></td>
+<td class="next">
+Next: <a href="51419.html">C8DB</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

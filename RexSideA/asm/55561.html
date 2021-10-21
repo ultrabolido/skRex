@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D909</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55488.html">D8C0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55561">Map</a></td>
+<td class="next">
+Next: <a href="55598.html">D92E</a>
+</td>
+</tr>
+</table>
+<div class="description">D909: Fill a rectangle with a color attribute in the attribute file</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="41381.html">A1A5</a>, <a href="52859.html">CE7B</a> and <a href="56000.html#56214">DB96</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Points to the address in the attributte file for the top-left corner of the rectangle to fill</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Fill color attribute</td>
+</tr>
+<tr>
+<td class="register">B</td>
+<td class="register-desc">Height of the rectangle</td>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">Width of the rectangle</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55561"></span>D909</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="4">Save <span class="register">AF</span>, <span class="register">DE</span>, <span class="register">BC</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55562"></span>D90A</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55563"></span>D90B</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55564"></span>D90C</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55565"></span>D90D</td>
+<td class="instruction">LD ($A093),A</td>
+<td class="comment-1" rowspan="1">Save color attribute at <a href="41107.html">A093</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55568"></span>D910</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="2">Save width at <a href="41109.html">A095</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55569"></span>D911</td>
+<td class="instruction">LD ($A095),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55572"></span>D914</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Save <span class="register">BC</span> and <span class="register">HL</span> briefly</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55573"></span>D915</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55574"></span>D916</td>
+<td class="instruction">LD A,($A095)</td>
+<td class="comment-1" rowspan="2">Save width at <span class="register">B</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55577"></span>D919</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55578"></span>D91A</td>
+<td class="instruction">LD A,($A093)</td>
+<td class="comment-1" rowspan="2">Set color attribute into attribute file</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55581"></span>D91D</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55582"></span>D91E</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment pointer to the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55583"></span>D91F</td>
+<td class="instruction">DJNZ $D91D</td>
+<td class="comment-1" rowspan="1">Jump back while there are columns to fill</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55585"></span>D921</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55586"></span>D922</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="2">Increment pointer to attribute file to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55589"></span>D925</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55590"></span>D926</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55591"></span>D927</td>
+<td class="instruction">DJNZ $D914</td>
+<td class="comment-1" rowspan="1">Jump back while there are rows to fill</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55593"></span>D929</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="4">Restore <span class="register">HL</span>, <span class="register">BC</span>, <span class="register">DE</span> and <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55594"></span>D92A</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55595"></span>D92B</td>
+<td class="instruction">POP DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55596"></span>D92C</td>
+<td class="instruction">POP AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55597"></span>D92D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55488.html">D8C0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55561">Map</a></td>
+<td class="next">
+Next: <a href="55598.html">D92E</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

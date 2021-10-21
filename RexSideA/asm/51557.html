@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C965</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51546.html">C95A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51557">Map</a></td>
+<td class="next">
+Next: <a href="51576.html">C978</a>
+</td>
+</tr>
+</table>
+<div class="description">C965: Initialize train for the current room</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="43165.html">A89D</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51557"></span>C965</td>
+<td class="instruction">LD A,($A045)</td>
+<td class="comment-1" rowspan="3">Return if generating train in current room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51560"></span>C968</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51561"></span>C969</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51562"></span>C96A</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Set <a href="41032.html">A048</a> to the timer value for train to appears</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51563"></span>C96B</td>
+<td class="instruction">LD ($A048),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51566"></span>C96E</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment address to train data definition</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51567"></span>C96F</td>
+<td class="instruction">LD ($A046),HL</td>
+<td class="comment-1" rowspan="1">Set <a href="41030.html">A046</a> to the new address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51570"></span>C972</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set variable to train is generating in current room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51572"></span>C974</td>
+<td class="instruction">LD ($A045),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51575"></span>C977</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51546.html">C95A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51557">Map</a></td>
+<td class="next">
+Next: <a href="51576.html">C978</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

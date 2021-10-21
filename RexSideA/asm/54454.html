@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D4B6</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54444.html">D4AC</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54454">Map</a></td>
+<td class="next">
+Next: <a href="54688.html">D5A0</a>
+</td>
+</tr>
+</table>
+<div class="description">D4B6: Handle Rex takes question</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="53781.html">D215</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54454"></span>D4B6</td>
+<td class="instruction">LD (IX+$0C),$00</td>
+<td class="comment-1" rowspan="1">Set question to not visble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54458"></span>D4BA</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="2">Save <span class="register">IX</span> and <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54460"></span>D4BC</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54461"></span>D4BD</td>
+<td class="instruction">CALL <a href="54743.html">$D5D7</a></td>
+<td class="comment-1" rowspan="1">Reset sound volume chanels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54464"></span>D4C0</td>
+<td class="instruction">CALL <a href="55459.html">$D8A3</a></td>
+<td class="comment-1" rowspan="1">Copy screen display file into room graphic data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54467"></span>D4C3</td>
+<td class="instruction">LD BC,$4E20</td>
+<td class="comment-1" rowspan="1">SET <span class="register">BC</span> = 20.000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54470"></span>D4C6</td>
+<td class="instruction">CALL <a href="51419.html">$C8DB</a></td>
+<td class="comment-1" rowspan="1">Wait some time ~1s (128 t-states 20.000 times)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54473"></span>D4C9</td>
+<td class="instruction">LD IX,$AB41</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the text defintion for SPEED UP</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54477"></span>D4CD</td>
+<td class="instruction">LD B,$01</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of rows to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54479"></span>D4CF</td>
+<td class="instruction">CALL <a href="41278.html">$A13E</a></td>
+<td class="comment-1" rowspan="1">Draw the windows into the display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54482"></span>D4D2</td>
+<td class="instruction">LD HL,$1CE8</td>
+<td class="comment-1" rowspan="2">Set <a href="41085.html">A07D</a> the Bonus Windows Loop Counter (7200 loops)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54485"></span>D4D5</td>
+<td class="instruction">LD ($A07D),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54488"></span>D4D8</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="3">Set <span class="register">A</span> a random number between 1-4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54491"></span>D4DB</td>
+<td class="instruction">AND $03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54493"></span>D4DD</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54494"></span>D4DE</td>
+<td class="instruction">LD ($A06F),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41071.html">A06F</a> to the number of bonus screen to show (0-speed up 1-shield loss 2-1000 bonus 3-energy loss 4-100 rapid shots)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54497"></span>D4E1</td>
+<td class="instruction">SLA A</td>
+<td class="comment-1" rowspan="10">Set into <span class="register">IX</span> the address of the text defintion corresponding to the number of bonus</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54499"></span>D4E3</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54500"></span>D4E4</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54502"></span>D4E6</td>
+<td class="instruction">LD HL,$D4AC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54505"></span>D4E9</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54506"></span>D4EA</td>
+<td class="instruction">LD E,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54507"></span>D4EB</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54508"></span>D4EC</td>
+<td class="instruction">LD D,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54509"></span>D4ED</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54510"></span>D4EE</td>
+<td class="instruction">POP IX</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54512"></span>D4F0</td>
+<td class="instruction">CALL <a href="41695.html#41735">$A307</a></td>
+<td class="comment-1" rowspan="1">Print the line of text into the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54515"></span>D4F3</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Increment pointer for the next bonus line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54517"></span>D4F5</td>
+<td class="instruction">LD BC,($A07D)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to the Bonus Windows Counter</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54521"></span>D4F9</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54522"></span>D4FA</td>
+<td class="instruction">CALL <a href="42090.html#42103">$A477</a></td>
+<td class="comment-1" rowspan="1">Check FIRE pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54525"></span>D4FD</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54526"></span>D4FE</td>
+<td class="instruction">JP Z,$D52F</td>
+<td class="comment-1" rowspan="1">If FIRE key pressed jump to handle the bonus selected</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54529"></span>D501</td>
+<td class="instruction">DEC BC</td>
+<td class="comment-1" rowspan="1">Decrement counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54530"></span>D502</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="3">Jump back and wait for keypressed if counter has not reached zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54531"></span>D503</td>
+<td class="instruction">OR C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54532"></span>D504</td>
+<td class="instruction">JP NZ,$D4F9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54535"></span>D507</td>
+<td class="instruction">LD HL,($A07D)</td>
+<td class="comment-1" rowspan="5">Reset loop counter (substract 200 loops to the previous counter)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54538"></span>D50A</td>
+<td class="instruction">LD DE,$00C8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54541"></span>D50D</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54542"></span>D50E</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54544"></span>D510</td>
+<td class="instruction">LD ($A07D),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54547"></span>D513</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="3">If loop counter less than 256 then jump to handle the bonus on screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54548"></span>D514</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54549"></span>D515</td>
+<td class="instruction">JP Z,$D52F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54552"></span>D518</td>
+<td class="instruction">LD A,($A06F)</td>
+<td class="comment-1" rowspan="3">Increment the bonus windows number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54555"></span>D51B</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54556"></span>D51C</td>
+<td class="instruction">LD ($A06F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54559"></span>D51F</td>
+<td class="instruction">CP $05</td>
+<td class="comment-1" rowspan="5">if bonus number equals 5 then point to the first bonus</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54561"></span>D521</td>
+<td class="instruction">JP NZ,$D4F0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54564"></span>D524</td>
+<td class="instruction">LD IX,$AB41</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54568"></span>D528</td>
+<td class="instruction">XOR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54569"></span>D529</td>
+<td class="instruction">LD ($A06F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54572"></span>D52C</td>
+<td class="instruction">JP $D4F0</td>
+<td class="comment-1" rowspan="1">Jump back and show the next bonus</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54575"></span>
+<div class="comments">
+<div class="paragraph">
+handle bonus selected
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54575"></span>D52F</td>
+<td class="instruction">LD A,($A06F)</td>
+<td class="comment-1" rowspan="1">Check bonus slected</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54578"></span>D532</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is speed up?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54579"></span>D533</td>
+<td class="instruction">JP Z,$D55D</td>
+<td class="comment-1" rowspan="1">Jump to handle speed up bonus</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54582"></span>D536</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">is shield loss?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54584"></span>D538</td>
+<td class="instruction">JP Z,$D56D</td>
+<td class="comment-1" rowspan="1">Jump to handle shield loss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54587"></span>D53B</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">is 1000 bouns points?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54589"></span>D53D</td>
+<td class="instruction">JP Z,$D578</td>
+<td class="comment-1" rowspan="1">Jump to handle bonus points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54592"></span>D540</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="1">is energy loss?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54594"></span>D542</td>
+<td class="instruction">JP Z,$D584</td>
+<td class="comment-1" rowspan="1">handle energy loss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54597"></span>D545</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="1">is rapid shots?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54599"></span>D547</td>
+<td class="instruction">JP Z,$D590</td>
+<td class="comment-1" rowspan="1">handle rapid shots</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54602"></span>
+<div class="comments">
+<div class="paragraph">
+return to normal game
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54602"></span>D54A</td>
+<td class="instruction">LD BC,$4E20</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to 20.000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54605"></span>D54D</td>
+<td class="instruction">CALL <a href="51419.html">$C8DB</a></td>
+<td class="comment-1" rowspan="1">Wait some time ~1s (128 t-states 20.000 times)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54608"></span>D550</td>
+<td class="instruction">CALL <a href="54702.html">$D5AE</a></td>
+<td class="comment-1" rowspan="1">Reset sound data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54611"></span>D553</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">BC</span> and <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54612"></span>D554</td>
+<td class="instruction">POP IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54614"></span>D556</td>
+<td class="instruction">CALL <a href="41610.html">$A28A</a></td>
+<td class="comment-1" rowspan="1">Copy room graphic buffer to display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54617"></span>D559</td>
+<td class="instruction">CALL <a href="51391.html">$C8BF</a></td>
+<td class="comment-1" rowspan="1">Copy room color attribute buffer to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54620"></span>D55C</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54621"></span>
+<div class="comments">
+<div class="paragraph">
+handle speed up
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54621"></span>D55D</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set Rex fast speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54623"></span>D55F</td>
+<td class="instruction">LD ($A072),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54626"></span>D562</td>
+<td class="instruction">LD A,$C8</td>
+<td class="comment-1" rowspan="2">Set speed up duration to 200</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54628"></span>D564</td>
+<td class="instruction">LD ($A073),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54631"></span>D567</td>
+<td class="instruction">LD HL,$AB41</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to point to the bonus text definition address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54634"></span>D56A</td>
+<td class="instruction">JP $D54A</td>
+<td class="comment-1" rowspan="1">Jump back and return to normal game</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54637"></span>
+<div class="comments">
+<div class="paragraph">
+handle shield loss
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54637"></span>D56D</td>
+<td class="instruction">LD L,$14</td>
+<td class="comment-1" rowspan="1">loss quantity to <span class="register">L</span> = 20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54639"></span>D56F</td>
+<td class="instruction">CALL <a href="39374.html">$99CE</a></td>
+<td class="comment-1" rowspan="1">Handle shield loss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54642"></span>D572</td>
+<td class="instruction">LD HL,$AB54</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to point to the bonus text definition address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54645"></span>D575</td>
+<td class="instruction">JP $D54A</td>
+<td class="comment-1" rowspan="1">Jump back and return to normal game</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54648"></span>
+<div class="comments">
+<div class="paragraph">
+handle bonus points
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54648"></span>D578</td>
+<td class="instruction">LD DE,$000A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the bonus points obtained (*100)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54651"></span>D57B</td>
+<td class="instruction">CALL <a href="39463.html">$9A27</a></td>
+<td class="comment-1" rowspan="1">Increment score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54654"></span>D57E</td>
+<td class="instruction">LD HL,$AB67</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to point to the bonus text definition address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54657"></span>D581</td>
+<td class="instruction">JP $D54A</td>
+<td class="comment-1" rowspan="1">Jump back and return to normal game</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54660"></span>
+<div class="comments">
+<div class="paragraph">
+handle energy loss
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54660"></span>D584</td>
+<td class="instruction">CALL <a href="47677.html">$BA3D</a></td>
+<td class="comment-1" rowspan="1">Handle double weapon energy loss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54663"></span>D587</td>
+<td class="instruction">CALL <a href="41381.html">$A1A5</a></td>
+<td class="comment-1" rowspan="1">Draw HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54666"></span>D58A</td>
+<td class="instruction">LD HL,$AB7A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to point to the bonus text definition address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54669"></span>D58D</td>
+<td class="instruction">JP $D54A</td>
+<td class="comment-1" rowspan="1">Jump back and return to normal game</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54672"></span>
+<div class="comments">
+<div class="paragraph">
+handle rapid shots
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54672"></span>D590</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set rapid shots</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54674"></span>D592</td>
+<td class="instruction">LD ($A040),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54677"></span>D595</td>
+<td class="instruction">LD A,$64</td>
+<td class="comment-1" rowspan="2">Set number of rapid shots</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54679"></span>D597</td>
+<td class="instruction">LD ($A041),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54682"></span>D59A</td>
+<td class="instruction">LD HL,$AB8D</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to point to the bonus text definition address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54685"></span>D59D</td>
+<td class="instruction">JP $D54A</td>
+<td class="comment-1" rowspan="1">Jump back and return to normal game</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54444.html">D4AC</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54454">Map</a></td>
+<td class="next">
+Next: <a href="54688.html">D5A0</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

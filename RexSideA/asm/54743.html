@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D5D7</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54702.html">D5AE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54743">Map</a></td>
+<td class="next">
+Next: <a href="54759.html">D5E7</a>
+</td>
+</tr>
+</table>
+<div class="description">D5D7: Reset the 3 channel volumes of the AY-3-8912</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38851.html">97C3</a>, <a href="38890.html">97EA</a>, <a href="42215.html">A4E7</a>, <a href="51013.html">C745</a>, <a href="54702.html">D5AE</a> and <a href="55409.html">D871</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54743"></span>D5D7</td>
+<td class="instruction">LD E,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">E</span> to the volume value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54745"></span>D5D9</td>
+<td class="instruction">LD D,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">D</span> to the sound register for channel 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54747"></span>D5DB</td>
+<td class="instruction">CALL <a href="55129.html">$D759</a></td>
+<td class="comment-1" rowspan="1">Reset volume of channel 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54750"></span>D5DE</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Set <span class="register">D</span> to the sound register for channel 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54751"></span>D5DF</td>
+<td class="instruction">CALL <a href="55129.html">$D759</a></td>
+<td class="comment-1" rowspan="1">Reset volume of channel 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54754"></span>D5E2</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Set <span class="register">D</span> to the sound register for channel 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54755"></span>D5E3</td>
+<td class="instruction">CALL <a href="55129.html">$D759</a></td>
+<td class="comment-1" rowspan="1">Reset volume of channel 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54758"></span>D5E6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54702.html">D5AE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54743">Map</a></td>
+<td class="next">
+Next: <a href="54759.html">D5E7</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

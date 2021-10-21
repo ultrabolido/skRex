@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C620</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50685.html">C5FD</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50720">Map</a></td>
+<td class="next">
+Next: <a href="50882.html">C6C2</a>
+</td>
+</tr>
+</table>
+<div class="description">C620: Handler for enemies going up: SCANNER, POD, MINE LAYER and FOOTMAN Jumping</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="47708.html">BA5C</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50720"></span>C620</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50723"></span>C623</td>
+<td class="instruction">CP $FE</td>
+<td class="comment-1" rowspan="2">Return if bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50725"></span>C625</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50726"></span>C626</td>
+<td class="instruction">CP $FD</td>
+<td class="comment-1" rowspan="2">Return if smartbomb</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50728"></span>C628</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50729"></span>C629</td>
+<td class="instruction">CP $FC</td>
+<td class="comment-1" rowspan="2">Return if question</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50731"></span>C62B</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50732"></span>C62C</td>
+<td class="instruction">AND $7F</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50734"></span>C62E</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="1">is SCANNER?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50736"></span>C630</td>
+<td class="instruction">JP Z,<a href="49683.html">$C213</a></td>
+<td class="comment-1" rowspan="1">Jump to handle SCANNER - moves up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50739"></span>C633</td>
+<td class="instruction">CP $0C</td>
+<td class="comment-1" rowspan="1">is POD?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50741"></span>C635</td>
+<td class="instruction">JP Z,<a href="49242.html">$C05A</a></td>
+<td class="comment-1" rowspan="1">Jump to handle POD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50744"></span>C638</td>
+<td class="instruction">CP $0D</td>
+<td class="comment-1" rowspan="1">is MINE LAYER?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50746"></span>C63A</td>
+<td class="instruction">JP Z,<a href="49242.html">$C05A</a></td>
+<td class="comment-1" rowspan="1">Jump to handle MINE LAYER</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50749"></span>C63D</td>
+<td class="instruction">CP $0E</td>
+<td class="comment-1" rowspan="2">Return if MINE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50751"></span>C63F</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50752"></span>C640</td>
+<td class="instruction">CP $0F</td>
+<td class="comment-1" rowspan="2">Return if BLOB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50754"></span>C642</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50755"></span>C643</td>
+<td class="instruction">LD A,(IX+$03)</td>
+<td class="comment-1" rowspan="3">return if enemy is not FOOT MAN jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50758"></span>C646</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50759"></span>C647</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50760"></span>C648</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41135.html">A0AF</a> to the x-position of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50763"></span>C64B</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50766"></span>C64E</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">Set <a href="41136.html">A0B0</a> to the y-position of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50769"></span>C651</td>
+<td class="instruction">LD ($A0B0),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50772"></span>C654</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the direction of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50775"></span>C657</td>
+<td class="instruction">CALL <a href="42243.html">$A503</a></td>
+<td class="comment-1" rowspan="1">Set into <span class="register">HL</span> the address into tile type buffer of enemy position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50778"></span>C65A</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50779"></span>C65B</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="1">Check if tile type is a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50782"></span>C65E</td>
+<td class="instruction">JP Z,$C6A1</td>
+<td class="comment-1" rowspan="1">Jump if it's a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50785"></span>C661</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50786"></span>C662</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="1">Check if tile type is a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50789"></span>C665</td>
+<td class="instruction">JP Z,$C6A1</td>
+<td class="comment-1" rowspan="1">Jump if it's a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50792"></span>C668</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50795"></span>C66B</td>
+<td class="instruction">LD L,(IX+$04)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the address for jumping y-offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50798"></span>C66E</td>
+<td class="instruction">LD H,(IX+$05)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50801"></span>C671</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="2">Computes the new y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50802"></span>C672</td>
+<td class="instruction">SUB E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50803"></span>C673</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">if y-position is less than 8 then start falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50805"></span>C675</td>
+<td class="instruction">JP C,$C68B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50808"></span>C678</td>
+<td class="instruction">LD (IX+$01),A</td>
+<td class="comment-1" rowspan="1">Set the new y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50811"></span>C67B</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="3">Increment y-offset address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50812"></span>C67C</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50815"></span>C67F</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50818"></span>C682</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">if no end marker for y-offet then return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50819"></span>C683</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50821"></span>C685</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50822"></span>C686</td>
+<td class="instruction">LD (IX+$03),$00</td>
+<td class="comment-1" rowspan="1">Finish jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50826"></span>C68A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50827"></span>
+<div class="comments">
+<div class="paragraph">
+FOOT MAN start falling
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50827"></span>C68B</td>
+<td class="instruction">LD (IX+$03),$00</td>
+<td class="comment-1" rowspan="1">Set FOOT MAN not jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50831"></span>C68F</td>
+<td class="instruction">LD (IX+$06),$02</td>
+<td class="comment-1" rowspan="1">Set FOOT MAN falling (speed 2)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50835"></span>C693</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="5">if FOOT MAN is dying jump back and destroy it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50838"></span>C696</td>
+<td class="instruction">CP $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50840"></span>C698</td>
+<td class="instruction">JP Z,<a href="38943.html">$981F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50843"></span>C69B</td>
+<td class="instruction">CP $06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50845"></span>C69D</td>
+<td class="instruction">JP Z,<a href="38943.html">$981F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50848"></span>C6A0</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50849"></span>
+<div class="comments">
+<div class="paragraph">
+FOOT MAN start falling
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50849"></span>C6A1</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="5">if FOOT MAN is dying jump back and destroy it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50852"></span>C6A4</td>
+<td class="instruction">CP $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50854"></span>C6A6</td>
+<td class="instruction">JP Z,<a href="38943.html">$981F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50857"></span>C6A9</td>
+<td class="instruction">CP $06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50859"></span>C6AB</td>
+<td class="instruction">JP Z,<a href="38943.html">$981F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50862"></span>C6AE</td>
+<td class="instruction">LD (IX+$06),$02</td>
+<td class="comment-1" rowspan="1">Set FOOT MAN falling (speed 2)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50866"></span>C6B2</td>
+<td class="instruction">LD (IX+$03),$00</td>
+<td class="comment-1" rowspan="1">Set FOOT MAN not jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50870"></span>C6B6</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="5">if bits2-0 of y-position are 0 then stop falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50873"></span>C6B9</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50875"></span>C6BB</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50876"></span>C6BC</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50877"></span>C6BD</td>
+<td class="instruction">LD (IX+$06),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50881"></span>C6C1</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50685.html">C5FD</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50720">Map</a></td>
+<td class="next">
+Next: <a href="50882.html">C6C2</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

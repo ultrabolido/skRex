@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at CF3D</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53002.html">CF0A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53053">Map</a></td>
+<td class="next">
+Next: <a href="53102.html">CF6E</a>
+</td>
+</tr>
+</table>
+<div class="description">CF3D: Draw a 3x3 grid attribute color into attribute file if tile is background</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="53147.html">CF9B</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">C</td>
+<td class="register-desc">Attribute color</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address into the attribute file</td>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Address into the attribute buffer</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53053"></span>CF3D</td>
+<td class="instruction">CALL $CF47</td>
+<td class="comment-1" rowspan="1">Draw a row of attribute color to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53056"></span>CF40</td>
+<td class="instruction">CALL $CF47</td>
+<td class="comment-1" rowspan="1">Draw a row of attribute color to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53059"></span>CF43</td>
+<td class="instruction">CALL $CF47</td>
+<td class="comment-1" rowspan="1">Draw a row of attribute color to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53062"></span>CF46</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53063"></span>
+<div class="comments">
+<div class="paragraph">
+Draw a row of attribute color into attribute file
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53063"></span>CF47</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="2">Is attribute byte from attribute buffer a 'background' tile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53064"></span>CF48</td>
+<td class="instruction">CP $47</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53066"></span>CF4A</td>
+<td class="instruction">JP NZ,$CF4E</td>
+<td class="comment-1" rowspan="1">Jump and not draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53069"></span>CF4D</td>
+<td class="instruction">LD (HL),C</td>
+<td class="comment-1" rowspan="1">Save attribute color into attribute file</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53070"></span>CF4E</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Increment address into attribute file and buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53071"></span>CF4F</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53072"></span>CF50</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="2">Is attribute byte from attribute buffer a 'background' tile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53073"></span>CF51</td>
+<td class="instruction">CP $47</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53075"></span>CF53</td>
+<td class="instruction">JP NZ,$CF57</td>
+<td class="comment-1" rowspan="1">Jump and not draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53078"></span>CF56</td>
+<td class="instruction">LD (HL),C</td>
+<td class="comment-1" rowspan="1">Save attribute color into attribute file</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53079"></span>CF57</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Increment address into attribute file and buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53080"></span>CF58</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53081"></span>CF59</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="2">Is attribute byte from attribute buffer a 'background' tile?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53082"></span>CF5A</td>
+<td class="instruction">CP $47</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53084"></span>CF5C</td>
+<td class="instruction">JP NZ,$CF60</td>
+<td class="comment-1" rowspan="1">Jump and not draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53087"></span>CF5F</td>
+<td class="instruction">LD (HL),C</td>
+<td class="comment-1" rowspan="1">Save attribute color into attribute file</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53088"></span>CF60</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53089"></span>CF61</td>
+<td class="instruction">LD DE,$001E</td>
+<td class="comment-1" rowspan="8">Point address into attribute file and buffer to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53092"></span>CF64</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53093"></span>CF65</td>
+<td class="instruction">POP DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53094"></span>CF66</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53095"></span>CF67</td>
+<td class="instruction">LD HL,$001E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53098"></span>CF6A</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53099"></span>CF6B</td>
+<td class="instruction">EX DE,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53100"></span>CF6C</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53101"></span>CF6D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53002.html">CF0A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53053">Map</a></td>
+<td class="next">
+Next: <a href="53102.html">CF6E</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

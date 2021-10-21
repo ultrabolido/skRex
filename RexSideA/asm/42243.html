@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A503</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42228.html">A4F4</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42243">Map</a></td>
+<td class="next">
+Next: <a href="42293.html">A535</a>
+</td>
+</tr>
+</table>
+<div class="description">A503: Computes address position in tile type buffer based on (x,y) position on screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+X-position is stored in <a href="41135.html">A0AF</a> and y-position in <a href="41136.html">A0B0</a>. Used by the routines at <a href="38010.html">947A</a>, <a href="46661.html#46670">B64E</a>, <a href="49376.html">C0E0</a>, <a href="49917.html">C2FD</a>, <a href="50720.html">C620</a>, <a href="50987.html">C72B</a>, <a href="51658.html#51879">CAA7</a>, <a href="51971.html">CB03</a> and <a href="53581.html">D14D</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Tile position $00 Previous tile (x,y) - $01 Tile in (x,y)</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address position into tile type buffer</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42243"></span>A503</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42244"></span>A504</td>
+<td class="instruction">LD A,($A0B0)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42247"></span>A507</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="13">Computes the offset of the tile based on the y-position y-offset = (y-position / 8) * 32 (32 tiles per row and 8 pixels height per row)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42248"></span>A508</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42250"></span>A50A</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42252"></span>A50C</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42254"></span>A50E</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42256"></span>A510</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42258"></span>A512</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42260"></span>A514</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42262"></span>A516</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42263"></span>A517</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42264"></span>A518</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42265"></span>A519</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42266"></span>A51A</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42267"></span>A51B</td>
+<td class="instruction">LD A,($A0AF)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42270"></span>A51E</td>
+<td class="instruction">SRL A</td>
+<td class="comment-1" rowspan="3">Computes the offset of the tile based on the x-position x-offset = x-position / 8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42272"></span>A520</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42274"></span>A522</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42276"></span>A524</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="3">Adds the two offsets</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42277"></span>A525</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42279"></span>A527</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42280"></span>A528</td>
+<td class="instruction">LD DE,$E19F</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> the base address to the tile type buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42283"></span>A52B</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Recover <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42284"></span>A52C</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Is 0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42285"></span>A52D</td>
+<td class="instruction">JP NZ,$A533</td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42288"></span>A530</td>
+<td class="instruction">LD DE,$E19E</td>
+<td class="comment-1" rowspan="1">If it's 0 then change the base address of tilr type buffer to get the previous tile</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42291"></span>A533</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address of the location of the tile in tile buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42292"></span>A534</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42228.html">A4F4</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42243">Map</a></td>
+<td class="next">
+Next: <a href="42293.html">A535</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

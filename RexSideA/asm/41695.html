@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at A2DF</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41610.html">A28A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41695">Map</a></td>
+<td class="next">
+Next: <a href="41832.html">A368</a>
+</td>
+</tr>
+</table>
+<div class="description">A2DF: Print the text content of the windows</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="41278.html">A13E</a> and <a href="41381.html">A1A5</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">B</td>
+<td class="register-desc">Number of lines of text to print</td>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Address of the text definition data</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41695"></span>A2DF</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41696"></span>A2E0</td>
+<td class="instruction">CALL $A307</td>
+<td class="comment-1" rowspan="1">Print a line of text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41699"></span>A2E3</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the address of the first byte of the next line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41701"></span>A2E5</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41702"></span>A2E6</td>
+<td class="instruction">DJNZ $A2DF</td>
+<td class="comment-1" rowspan="1">Jump back while there are lines left to print</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41704"></span>A2E8</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41705"></span>
+<div class="comments">
+<div class="paragraph">
+Compute the address at the lookup table of the display file and the address of the graphic data for the character to display
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41705"></span>A2E9</td>
+<td class="instruction">LD A,($A097)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to the vertical position of the text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41708"></span>A2EC</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41709"></span>A2ED</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41711"></span>A2EF</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1">Vertical position is in bit 7-3 so it's only necessari multiply by two</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41712"></span>A2F0</td>
+<td class="instruction">LD DE,$ABDD</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the display file lookup table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41715"></span>A2F3</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41716"></span>A2F4</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41717"></span>A2F5</td>
+<td class="instruction">LD L,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the character to display</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41720"></span>A2F8</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41722"></span>A2FA</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="5">Computes the address of the graphic data of the character into the charset data tabla at $5FE0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41723"></span>A2FB</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41724"></span>A2FC</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41725"></span>A2FD</td>
+<td class="instruction">LD DE,$5FE0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41728"></span>A300</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41729"></span>A301</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41730"></span>A302</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41732"></span>A304</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span>=8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41734"></span>A306</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41735"></span>
+<div class="comments">
+<div class="paragraph">
+Prints a line of text
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41735"></span>A307</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Save color attribute of text at <a href="41107.html">A093</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41738"></span>A30A</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41741"></span>A30D</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">Save horizontal position of text at <a href="41109.html">A095</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41744"></span>A310</td>
+<td class="instruction">LD ($A095),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41747"></span>A313</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="2">Save vertical position of text at <a href="41111.html">A097</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41750"></span>A316</td>
+<td class="instruction">LD ($A097),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41753"></span>A319</td>
+<td class="instruction">LD DE,$0003</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IX</span> to the first character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41756"></span>A31C</td>
+<td class="instruction">ADD IX,DE</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41758"></span>A31E</td>
+<td class="instruction">CALL $A2E9</td>
+<td class="comment-1" rowspan="1">Computes addres into lookup table and address of the graphics data for the character</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41761"></span>
+<div class="comments">
+<div class="paragraph">
+Prints a character
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41761"></span>A321</td>
+<td class="instruction">LD L,(IY+$00)</td>
+<td class="comment-1" rowspan="2">Point at <span class="register">HL</span> the address into the display file from the lookup table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41764"></span>A324</td>
+<td class="instruction">LD H,(IY+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41767"></span>A327</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41768"></span>A328</td>
+<td class="instruction">LD A,($A095)</td>
+<td class="comment-1" rowspan="3">Save the horizontal position of text at <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41771"></span>A32B</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41772"></span>A32C</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41774"></span>A32E</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Adds the horizontal position to the address into the display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41775"></span>A32F</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41776"></span>A330</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Read the next byte of the graphic data for the character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41777"></span>A331</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Puts the byte in to the display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41778"></span>A332</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Points to the next byte of the graphic data for the character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41779"></span>A333</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="2">Points to the next address of the display file lookup table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41781"></span>A335</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41783"></span>A337</td>
+<td class="instruction">DJNZ $A321</td>
+<td class="comment-1" rowspan="1">Jump back until displayed all of the eight bytes of the character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41785"></span>A339</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">The character is an space ($20)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41788"></span>A33C</td>
+<td class="instruction">CP $20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41790"></span>A33E</td>
+<td class="instruction">JR Z,$A359</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41792"></span>
+<div class="comments">
+<div class="paragraph">
+Set the color attribute for the character if is not an SPACE ($20)
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41792"></span>A340</td>
+<td class="instruction">LD A,($A097)</td>
+<td class="comment-1" rowspan="4">Set <span class="register">HL</span> to the vertical position of the text (only bits 7-3)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41795"></span>A343</td>
+<td class="instruction">AND $F8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41797"></span>A345</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41798"></span>A346</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41800"></span>A348</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="2">And computes the patial offset to the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41801"></span>A349</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41802"></span>A34A</td>
+<td class="instruction">LD A,($A095)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">DE</span> to the horizontal position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41805"></span>A34D</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41806"></span>A34E</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41808"></span>A350</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">And computes the offset to the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41809"></span>A351</td>
+<td class="instruction">LD DE,$5800</td>
+<td class="comment-1" rowspan="2">Add the offset to the base address of the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41812"></span>A354</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41813"></span>A355</td>
+<td class="instruction">LD A,($A093)</td>
+<td class="comment-1" rowspan="1">Pick up the color attribute for the text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41816"></span>A358</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">And put this color attribute into the attribute file</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41817"></span>
+<div class="comments">
+<div class="paragraph">
+Prepares to print the next character until the end of marker (character $00)
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41817"></span>A359</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41819"></span>A35B</td>
+<td class="instruction">LD HL,$A095</td>
+<td class="comment-1" rowspan="2">Increment the horizontal position for the next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41822"></span>A35E</td>
+<td class="instruction">INC (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41823"></span>A35F</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="1">Pick up the next character</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41826"></span>A362</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is an end of marker ($00)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41827"></span>A363</td>
+<td class="instruction">JR Z,$A367</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41829"></span>A365</td>
+<td class="instruction">JR $A31E</td>
+<td class="comment-1" rowspan="1">Jump back and repeat for the next character</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41831"></span>A367</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41610.html">A28A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41695">Map</a></td>
+<td class="next">
+Next: <a href="41832.html">A368</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

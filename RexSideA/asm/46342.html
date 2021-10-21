@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at B506</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46314.html">B4EA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46342">Map</a></td>
+<td class="next">
+Next: <a href="46462.html">B57E</a>
+</td>
+</tr>
+</table>
+<div class="description">B506: Configure weapon sound and check for weapon free slot</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Configure Rex weapon sound. Used by the routines at <a href="45938.html">B372</a>, <a href="46166.html">B456</a> and <a href="46661.html#46670">B64E</a>.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">Address pointer into projectile configuration for new projectile</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46342"></span>B506</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set <a href="41083.html">A07B</a> to playing sound for Rex weapon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46343"></span>B507</td>
+<td class="instruction">LD ($A07B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46346"></span>B50A</td>
+<td class="instruction">LD IY,$5B60</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the address for the rex projectile configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46350"></span>B50E</td>
+<td class="instruction">LD E,$1E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">E</span> to the max number of projectiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46352"></span>B510</td>
+<td class="instruction">LD A,($A013)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the in use Rex weapon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46355"></span>B513</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is basic laser?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46356"></span>B514</td>
+<td class="instruction">JP Z,$B51F</td>
+<td class="comment-1" rowspan="1">Jump forward if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46359"></span>B517</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">is double fire?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46361"></span>B519</td>
+<td class="instruction">JP Z,$B51F</td>
+<td class="comment-1" rowspan="1">Jump forward if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46364"></span>B51C</td>
+<td class="instruction">JP $B528</td>
+<td class="comment-1" rowspan="1">Jump to play sound</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46367"></span>B51F</td>
+<td class="instruction">LD A,($A014)</td>
+<td class="comment-1" rowspan="5">Set <span class="register">E</span> to max number of Rex projectile based on weapon energy level max num. projectiles = weapon energy level * 4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46370"></span>B522</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46372"></span>B524</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46374"></span>B526</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46375"></span>B527</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46376"></span>
+<div class="comments">
+<div class="paragraph">
+Check if there is a free slot for projectile and configure sound
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46376"></span>B528</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> to the number of projectiles to check for sound play</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46377"></span>B529</td>
+<td class="instruction">LD B,E</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46378"></span>B52A</td>
+<td class="instruction">LD A,(IY+$06)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the projectile state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46381"></span>B52D</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is projectile slot free?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46382"></span>B52E</td>
+<td class="instruction">JP Z,$B53D</td>
+<td class="comment-1" rowspan="1">Jump to play sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46385"></span>B531</td>
+<td class="instruction">LD DE,$000F</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IY</span> to the next projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46388"></span>B534</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46390"></span>B536</td>
+<td class="instruction">DJNZ $B52A</td>
+<td class="comment-1" rowspan="1">Jump until all projectiles handled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46392"></span>B538</td>
+<td class="instruction">LD IY,$03E8</td>
+<td class="comment-1" rowspan="1">No slot available, point <span class="register">IY</span> to rom address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46396"></span>B53C</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46397"></span>
+<div class="comments">
+<div class="paragraph">
+Configure sound
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46397"></span>B53D</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46398"></span>B53E</td>
+<td class="instruction">LD A,($A07B)</td>
+<td class="comment-1" rowspan="2">playing sound for enemy weapon?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46401"></span>B541</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46402"></span>B542</td>
+<td class="instruction">JP NZ,$B562</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46405"></span>B545</td>
+<td class="instruction">LD DE,$D763</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the address sound data for basic laser, double fire and multiple</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46408"></span>B548</td>
+<td class="instruction">LD A,($A013)</td>
+<td class="comment-1" rowspan="2">weapon in use is laser?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46411"></span>B54B</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46413"></span>B54D</td>
+<td class="instruction">CALL Z,$B55A</td>
+<td class="comment-1" rowspan="1">Configure address for his sound data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46416"></span>B550</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="1">weapon in use is spray?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46418"></span>B552</td>
+<td class="instruction">CALL Z,$B55E</td>
+<td class="comment-1" rowspan="1">Configure address for his sound data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46421"></span>B555</td>
+<td class="instruction">CALL <a href="54759.html">$D5E7</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46424"></span>B558</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46425"></span>B559</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46426"></span>
+<div class="comments">
+<div class="paragraph">
+Configure address for laser sound data
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46426"></span>B55A</td>
+<td class="instruction">LD DE,$D775</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46429"></span>B55D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46430"></span>
+<div class="comments">
+<div class="paragraph">
+Configure address for spray sound data
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46430"></span>B55E</td>
+<td class="instruction">LD DE,$D77E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46433"></span>B561</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46434"></span>
+<div class="comments">
+<div class="paragraph">
+Configure address for enemy sound data
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46434"></span>B562</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46435"></span>B563</td>
+<td class="instruction">LD A,($D842)</td>
+<td class="comment-1" rowspan="2">sound channel 3 in use?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46438"></span>B566</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46440"></span>B568</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46441"></span>B569</td>
+<td class="instruction">LD DE,$D76C</td>
+<td class="comment-1" rowspan="1">Configure address for enemy sound data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46444"></span>B56C</td>
+<td class="instruction">CALL <a href="54759.html">$D5E7</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46447"></span>B56F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46448"></span>
+<div class="comments">
+<div class="paragraph">
+Check for slot to create a new projectile and play weapon sound if so Used by the routines at <a href="47708.html">BA5C</a>, <a href="47708.html#48349">BCDD</a> and <a href="49210.html">C03A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46448"></span>B570</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set <a href="41083.html">A07B</a> to playing enemy sound data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46450"></span>B572</td>
+<td class="instruction">LD ($A07B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46453"></span>B575</td>
+<td class="instruction">LD IY,$5D22</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the address for the enemy projectile configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46457"></span>B579</td>
+<td class="instruction">LD E,$14</td>
+<td class="comment-1" rowspan="1">Set <span class="register">E</span> to the max number of projectiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46459"></span>B57B</td>
+<td class="instruction">JP $B528</td>
+<td class="comment-1" rowspan="1">Jump back and check if sound need to be played</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46314.html">B4EA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46342">Map</a></td>
+<td class="next">
+Next: <a href="46462.html">B57E</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

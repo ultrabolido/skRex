@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at DBAE</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56000.html">DAC0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56238">Map</a></td>
+<td class="next">
+Next: <a href="56358.html">DC26</a>
+</td>
+</tr>
+</table>
+<div class="description">DBAE: Check for key pressed in the DEFINE keys windows</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Read all the ports to detect a key pressed
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Keycode of the key pressed</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56238"></span>DBAE</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-2"><span id="56240"></span>DBB0</td>
+<td class="instruction">LD IX,$E0E0</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the base address for the list of ports to read the keys</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56244"></span>DBB4</td>
+<td class="instruction">LD IY,$A9CC</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the address pointer of the charset for keypressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56248"></span>DBB8</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of ports to read the keys</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56250"></span>DBBA</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56251"></span>DBBB</td>
+<td class="instruction">LD C,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">BC</span> to the port pointed by <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56254"></span>DBBE</td>
+<td class="instruction">LD B,(IX+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56257"></span>DBC1</td>
+<td class="instruction">LD ($A0AB),BC</td>
+<td class="comment-1" rowspan="1">Save the port at <a href="41131.html">A0AB</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56261"></span>DBC5</td>
+<td class="instruction">IN A,(C)</td>
+<td class="comment-1" rowspan="1">Read the keys of the port into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56263"></span>DBC7</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of bits to read to check for key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56265"></span>DBC9</td>
+<td class="instruction">LD E,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">E</span> to the bit number to check</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56267"></span>DBCB</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">D</span> a copy of the result of the port reading</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56268"></span>DBCC</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotates right <span class="register">A</span> and check for the bit leaving on the right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56269"></span>DBCD</td>
+<td class="instruction">JP NC,$DBE2</td>
+<td class="comment-1" rowspan="1">jump forward if keypressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56272"></span>DBD0</td>
+<td class="instruction">INC E</td>
+<td class="comment-1" rowspan="1">Increment the bit number checked</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56273"></span>DBD1</td>
+<td class="instruction">DJNZ $DBCC</td>
+<td class="comment-1" rowspan="1">Jump back until all the five bits readed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56275"></span>DBD3</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56276"></span>DBD4</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="2">Point IX to the next port</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56278"></span>DBD6</td>
+<td class="instruction">INC IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56280"></span>DBD8</td>
+<td class="instruction">LD DE,$0005</td>
+<td class="comment-1" rowspan="2">Point IY to the next set of chars for the corresponding port</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56283"></span>DBDB</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56285"></span>DBDD</td>
+<td class="instruction">DJNZ $DBBA</td>
+<td class="comment-1" rowspan="1">Jump back until all the ports readed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56287"></span>DBDF</td>
+<td class="instruction">JP $DBB0</td>
+<td class="comment-1" rowspan="1">Jump back and repeat the process from the beginning</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56290"></span>
+<div class="comments">
+<div class="paragraph">
+Detected a key pressed
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56290"></span>DBE2</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56291"></span>DBE3</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-2"><span id="56292"></span>DBE4</td>
+<td class="instruction">LD C,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">BC</span> to the port pointed by <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56295"></span>DBE7</td>
+<td class="instruction">LD B,(IX+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56298"></span>DBEA</td>
+<td class="instruction">IN A,(C)</td>
+<td class="comment-1" rowspan="1">Read the keys of the port into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56300"></span>DBEC</td>
+<td class="instruction">CP D</td>
+<td class="comment-1" rowspan="1">Compare with the previously readed keys. Is the key still pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56301"></span>DBED</td>
+<td class="instruction">JP Z,$DBE4</td>
+<td class="comment-1" rowspan="1">Jump back if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56304"></span>DBF0</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the bit number of the key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56305"></span>DBF1</td>
+<td class="instruction">SLA A</td>
+<td class="comment-1" rowspan="5">Computes the opcode of BIT to read the corresponent bit number: $47 - BIT 0,a | $4F - BIT 1,a | $57 - BIT 2,a | ...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56307"></span>DBF3</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56309"></span>DBF5</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56311"></span>DBF7</td>
+<td class="instruction">LD D,$47</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56313"></span>DBF9</td>
+<td class="instruction">ADD A,D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56314"></span>DBFA</td>
+<td class="instruction">LD ($A0AD),A</td>
+<td class="comment-1" rowspan="1">Save corresponent opcode of BIT into <a href="41133.html">A0AD</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56317"></span>DBFD</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore in <span class="register">DE</span> the bit number of the pressed key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56318"></span>DBFE</td>
+<td class="instruction">LD D,$00</td>
+<td class="comment-1" rowspan="2">Set <span class="register">IY</span> to the corresponding address of the key pressed in the charset table at <a href="43468.html">A9CC</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56320"></span>DC00</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56322"></span>DC02</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the keycode of the key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56325"></span>DC05</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56327"></span>DC07</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="1">is SPACE the key pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56329"></span>DC09</td>
+<td class="instruction">JP Z,$DBAE</td>
+<td class="comment-1" rowspan="1">Jump back if so and check for another key reading</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56332"></span>DC0C</td>
+<td class="instruction">CP $48</td>
+<td class="comment-1" rowspan="1">is H the key pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56334"></span>DC0E</td>
+<td class="instruction">JP Z,$DBAE</td>
+<td class="comment-1" rowspan="1">Jump back if so and check for another key reading</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56337"></span>DC11</td>
+<td class="instruction">LD IY,$DD4E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the base address of the rex movement key defined</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56341"></span>DC15</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of keys to define</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56343"></span>DC17</td>
+<td class="instruction">CP (IY+$00)</td>
+<td class="comment-1" rowspan="1">Is the key pressed now equals to the key already defined?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56346"></span>DC1A</td>
+<td class="instruction">JP Z,$DBAE</td>
+<td class="comment-1" rowspan="1">Jump back if so and check for another key reading</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56349"></span>DC1D</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Points <span class="register">IY</span> to the next key alredy defined</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56351"></span>DC1F</td>
+<td class="instruction">DJNZ $DC17</td>
+<td class="comment-1" rowspan="1">Jump back while there are keys defined to check</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56353"></span>DC21</td>
+<td class="instruction">LD IY,$DD4E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the base address of the rex movement key defined</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56357"></span>DC25</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56000.html">DAC0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56238">Map</a></td>
+<td class="next">
+Next: <a href="56358.html">DC26</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

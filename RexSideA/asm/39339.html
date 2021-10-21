@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 99AB</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39314.html">9992</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39339">Map</a></td>
+<td class="next">
+Next: <a href="39355.html">99BB</a>
+</td>
+</tr>
+</table>
+<div class="description">99AB: Draw score on HUD</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="39463.html">9A27</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39339"></span>99AB</td>
+<td class="instruction">LD HL,($A03E)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39342"></span>99AE</td>
+<td class="instruction">CALL <a href="41986.html">$A402</a></td>
+<td class="comment-1" rowspan="1">Computes the charcode digit of the score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39345"></span>99B1</td>
+<td class="instruction">LD E,$10</td>
+<td class="comment-1" rowspan="1">Set <span class="register">E</span> to the horizontal position of the unit digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39347"></span>99B3</td>
+<td class="instruction">LD L,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">L</span> to the vertical position of the number to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39349"></span>99B5</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of digits to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39351"></span>99B7</td>
+<td class="instruction">CALL <a href="41928.html">$A3C8</a></td>
+<td class="comment-1" rowspan="1">Draw the score at HUD into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39354"></span>99BA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39314.html">9992</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39339">Map</a></td>
+<td class="next">
+Next: <a href="39355.html">99BB</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

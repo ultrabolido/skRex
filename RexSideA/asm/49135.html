@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at BFEF</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49127.html">BFE7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49135">Map</a></td>
+<td class="next">
+Next: <a href="49210.html">C03A</a>
+</td>
+</tr>
+</table>
+<div class="description">BFEF: Handle lateral movement for FOOTMAN, STOMPER, MINE, SCANNER, POD, MINE LAYER and BLOB</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="47708.html">BA5C</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49135"></span>BFEF</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49138"></span>BFF2</td>
+<td class="instruction">CP $FE</td>
+<td class="comment-1" rowspan="2">Return if bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49140"></span>BFF4</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49141"></span>BFF5</td>
+<td class="instruction">CP $FD</td>
+<td class="comment-1" rowspan="2">Return if smartbomb</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49143"></span>BFF7</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49144"></span>BFF8</td>
+<td class="instruction">CP $FC</td>
+<td class="comment-1" rowspan="2">Return if question</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49146"></span>BFFA</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49147"></span>BFFB</td>
+<td class="instruction">AND $7F</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49149"></span>BFFD</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="1">is SCANNER?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49151"></span>BFFF</td>
+<td class="instruction">JP Z,<a href="49790.html">$C27E</a></td>
+<td class="comment-1" rowspan="1">Jump to handle shot and lateral collision detection</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49154"></span>C002</td>
+<td class="instruction">CP $0C</td>
+<td class="comment-1" rowspan="1">is POD?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49156"></span>C004</td>
+<td class="instruction">JP Z,<a href="49610.html">$C1CA</a></td>
+<td class="comment-1" rowspan="1">Handle lateral collision detection for POD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49159"></span>C007</td>
+<td class="instruction">CP $0D</td>
+<td class="comment-1" rowspan="1">is MINE LAYER?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49161"></span>C009</td>
+<td class="instruction">JP Z,<a href="49610.html">$C1CA</a></td>
+<td class="comment-1" rowspan="1">Handle lateral collision detection and fire for MINE LAYER</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49164"></span>C00C</td>
+<td class="instruction">CP $0E</td>
+<td class="comment-1" rowspan="1">is MINE?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49166"></span>C00E</td>
+<td class="instruction">JP Z,<a href="49485.html#49488">$C150</a></td>
+<td class="comment-1" rowspan="1">Handle MINE movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49169"></span>C011</td>
+<td class="instruction">CP $0F</td>
+<td class="comment-1" rowspan="1">is BLOB?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49171"></span>C013</td>
+<td class="instruction">JP Z,<a href="49485.html">$C14D</a></td>
+<td class="comment-1" rowspan="1">Handle BLOB movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49174"></span>C016</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">Enemy type $02? Not exist!!!</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49176"></span>C018</td>
+<td class="instruction">JP Z,$C029</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49179"></span>C01B</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49180"></span>C01C</td>
+<td class="instruction">JP NZ,$C01F</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49183"></span>
+<div class="comments">
+<div class="paragraph">
+for the rest of enemies handle coliision detection and set direction to chase Rex
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49183"></span>C01F</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="3">jump to handle right collision detection if enemy moves right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49186"></span>C022</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49187"></span>C023</td>
+<td class="instruction">JP Z,<a href="50144.html">$C3E0</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49190"></span>C026</td>
+<td class="instruction">JP <a href="50342.html">$C4A6</a></td>
+<td class="comment-1" rowspan="1">Jump to handle left collision detection</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49193"></span>C029</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set face direction right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49194"></span>C02A</td>
+<td class="instruction">LD (IX+$02),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49197"></span>C02D</td>
+<td class="instruction">LD A,($A0B6)</td>
+<td class="comment-1" rowspan="3">if Rex x-position id greater then enemy x-position return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49200"></span>C030</td>
+<td class="instruction">CP (IX+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49203"></span>C033</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49204"></span>C034</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Change face direction to left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49206"></span>C036</td>
+<td class="instruction">LD (IX+$02),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49209"></span>C039</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49127.html">BFE7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49135">Map</a></td>
+<td class="next">
+Next: <a href="49210.html">C03A</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

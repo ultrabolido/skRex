@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D040</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53277.html">D01D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53312">Map</a></td>
+<td class="next">
+Next: <a href="53334.html">D056</a>
+</td>
+</tr>
+</table>
+<div class="description">D040: Handle Rex collision detection moving right</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="53267.html">D013</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53312"></span>D040</td>
+<td class="instruction">LD HL,($A019)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> the address into tile type buffer in front-up of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53315"></span>D043</td>
+<td class="instruction">LD DE,$0023</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53318"></span>D046</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53319"></span>D047</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="2">Return if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53322"></span>D04A</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53323"></span>D04B</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> the address into tile type buffer in front-bottom of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53326"></span>D04E</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53327"></span>D04F</td>
+<td class="instruction">CALL <a href="53356.html">$D06C</a></td>
+<td class="comment-1" rowspan="2">Return if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53330"></span>D052</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53331"></span>D053</td>
+<td class="instruction">JP <a href="53277.html">$D01D</a></td>
+<td class="comment-1" rowspan="1">Move Rex to the right</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53277.html">D01D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53312">Map</a></td>
+<td class="next">
+Next: <a href="53334.html">D056</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

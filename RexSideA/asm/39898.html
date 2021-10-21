@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at 9BDA</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39621.html">9AC5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39898">Map</a></td>
+<td class="next">
+Next: <a href="39941.html">9C05</a>
+</td>
+</tr>
+</table>
+<div class="description">9BDA: Handle Rex dead - Main routine</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="41156.html">A0C4</a>, <a href="53581.html">D14D</a>, <a href="53689.html">D1B9</a> and <a href="53781.html">D215</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39898"></span>9BDA</td>
+<td class="instruction">LD A,($A071)</td>
+<td class="comment-1" rowspan="3">Return if Rex is inmortal</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39901"></span>9BDD</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39902"></span>9BDE</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39903"></span>9BDF</td>
+<td class="instruction">CALL <a href="41267.html">$A133</a></td>
+<td class="comment-1" rowspan="1">Initialize time bar loop counters</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39906"></span>9BE2</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set Rex dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39908"></span>9BE4</td>
+<td class="instruction">LD ($A055),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39911"></span>9BE7</td>
+<td class="instruction">LD A,$32</td>
+<td class="comment-1" rowspan="2">Set Rex explosion counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39913"></span>9BE9</td>
+<td class="instruction">LD ($A056),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39916"></span>9BEC</td>
+<td class="instruction">LD HL,$9C05</td>
+<td class="comment-1" rowspan="2">Set address pointer for Rex explosion data to compute position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39919"></span>9BEF</td>
+<td class="instruction">LD ($A057),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39922"></span>9BF2</td>
+<td class="instruction">CALL <a href="38729.html">$9749</a></td>
+<td class="comment-1" rowspan="1">Destroy all enemy projectiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39925"></span>9BF5</td>
+<td class="instruction">CALL <a href="47677.html">$BA3D</a></td>
+<td class="comment-1" rowspan="1">Handle weapon energy loss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39928"></span>9BF8</td>
+<td class="instruction">LD A,$63</td>
+<td class="comment-1" rowspan="2">Reset shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39930"></span>9BFA</td>
+<td class="instruction">LD ($A04D),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39933"></span>9BFD</td>
+<td class="instruction">LD A,($A063)</td>
+<td class="comment-1" rowspan="3">Jump forward to configure teleporting Rex if lives &gt; 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39936"></span>9C00</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39937"></span>9C01</td>
+<td class="instruction">CALL NZ,<a href="40263.html">$9D47</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39940"></span>9C04</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39621.html">9AC5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39898">Map</a></td>
+<td class="next">
+Next: <a href="39941.html">9C05</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

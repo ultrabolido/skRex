@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at C12E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49376.html">C0E0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49454">Map</a></td>
+<td class="next">
+Next: <a href="49481.html">C149</a>
+</td>
+</tr>
+</table>
+<div class="description">C12E: Change x/y-delta for BLOB</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="49485.html">C14D</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49454"></span>C12E</td>
+<td class="instruction">CALL $C13B</td>
+<td class="comment-1" rowspan="1">Obtain random x-delta (0 or -1)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49457"></span>C131</td>
+<td class="instruction">LD (IX+$04),A</td>
+<td class="comment-1" rowspan="1">Set new x-delta to BLOB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49460"></span>C134</td>
+<td class="instruction">CALL $C13B</td>
+<td class="comment-1" rowspan="1">Obtain random y-delta (0 or -1)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49463"></span>C137</td>
+<td class="instruction">LD (IX+$05),A</td>
+<td class="comment-1" rowspan="1">Set new y-delta to BLOB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49466"></span>C13A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="49467"></span>C13B</td>
+<td class="instruction">CALL <a href="41845.html#41864">$A388</a></td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> a pseudo random number between 0-1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49470"></span>C13E</td>
+<td class="instruction">AND $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49472"></span>C140</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="5">Obtain delta for the data buffer of BLOB deltas</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49473"></span>C141</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49475"></span>C143</td>
+<td class="instruction">LD HL,$C149</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49478"></span>C146</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49479"></span>C147</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49480"></span>C148</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49376.html">C0E0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49454">Map</a></td>
+<td class="next">
+Next: <a href="49481.html">C149</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at E04F</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="57417.html">E049</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#57423">Map</a></td>
+<td class="next">
+Next: <a href="57447.html">E067</a>
+</td>
+</tr>
+</table>
+<div class="description">E04F: Draw the enemy sprite on title screen (2/2)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="55488.html">D8C0</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="57423"></span>E04F</td>
+<td class="instruction">LD HL,($A081)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address pointer for the enemy animation definition</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57426"></span>E052</td>
+<td class="instruction">LD DE,$000C</td>
+<td class="comment-1" rowspan="2">Points to the address poiner for the next enemy animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57429"></span>E055</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57430"></span>E056</td>
+<td class="instruction">LD ($A081),HL</td>
+<td class="comment-1" rowspan="1">Save the new address pointer to <a href="41089.html">A081</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="57433"></span>E059</td>
+<td class="instruction">LD A,($A07F)</td>
+<td class="comment-1" rowspan="2">Increment the animation frame number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57436"></span>E05C</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57437"></span>E05D</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="1">Is animation frame number $08?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57439"></span>E05F</td>
+<td class="instruction">JP NZ,$E063</td>
+<td class="comment-1" rowspan="1">Jump in not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="57442"></span>E062</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Reset animation frame number</td>
+</tr>
+<tr>
+<td class="address-2"><span id="57443"></span>E063</td>
+<td class="instruction">LD ($A07F),A</td>
+<td class="comment-1" rowspan="1">Save the new animation frame number to <a href="41087.html">A07F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="57446"></span>E066</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="57417.html">E049</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#57423">Map</a></td>
+<td class="next">
+Next: <a href="57447.html">E067</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D5E7</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54743.html">D5D7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54759">Map</a></td>
+<td class="next">
+Next: <a href="54914.html">D682</a>
+</td>
+</tr>
+</table>
+<div class="description">D5E7: Configure sound channel and mixer register</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38555.html">969B</a>, <a href="38943.html">981F</a>, <a href="39621.html">9AC5</a>, <a href="39995.html">9C3B</a>, <a href="40223.html">9D1F</a>, <a href="40263.html">9D47</a>, <a href="40799.html">9F5F</a>, <a href="46342.html">B506</a>, <a href="46342.html#46434">B562</a>, <a href="46661.html#46670">B64E</a>, <a href="53781.html">D215</a>, <a href="53781.html#54380">D46C</a> and <a href="53781.html#54420">D494</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Sound data address</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54759"></span>D5E7</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="3">Save <span class="register">IY</span>, <span class="register">IX</span> and <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54761"></span>D5E9</td>
+<td class="instruction">PUSH IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54763"></span>D5EB</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54764"></span>D5EC</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="2">Copy <span class="register">DE</span> into <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54765"></span>D5ED</td>
+<td class="instruction">POP IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54767"></span>D5EF</td>
+<td class="instruction">CALL $D5F8</td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54770"></span>D5F2</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="3">Restore <span class="register">IY</span>, <span class="register">IX</span> and <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54771"></span>D5F3</td>
+<td class="instruction">POP IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54773"></span>D5F5</td>
+<td class="instruction">POP IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54775"></span>D5F7</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54776"></span>
+<div class="comments">
+<div class="paragraph">
+Configure sound channel and mixer register
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54776"></span>D5F8</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="9">Set <span class="register">IX</span> to the base address for the channel to configure</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54779"></span>D5FB</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54780"></span>D5FC</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54782"></span>D5FE</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54784"></span>D600</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54786"></span>D602</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54787"></span>D603</td>
+<td class="instruction">LD B,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54789"></span>D605</td>
+<td class="instruction">LD IX,$D832</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54793"></span>D609</td>
+<td class="instruction">ADD IX,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54795"></span>D60B</td>
+<td class="instruction">LD A,(IY+$02)</td>
+<td class="comment-1" rowspan="2">Set number of tones</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54798"></span>D60E</td>
+<td class="instruction">LD (IX+$00),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54801"></span>D611</td>
+<td class="instruction">LD A,(IY+$06)</td>
+<td class="comment-1" rowspan="2">Set variation counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54804"></span>D614</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54807"></span>D617</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="6">Set address for sound data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54809"></span>D619</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54810"></span>D61A</td>
+<td class="instruction">LD BC,$0006</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54813"></span>D61D</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54814"></span>D61E</td>
+<td class="instruction">LD (IX+$02),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54817"></span>D621</td>
+<td class="instruction">LD (IX+$03),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54820"></span>D624</td>
+<td class="instruction">LD A,(IY+$04)</td>
+<td class="comment-1" rowspan="4">Set base fine and coarse pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54823"></span>D627</td>
+<td class="instruction">LD (IX+$04),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54826"></span>D62A</td>
+<td class="instruction">LD A,(IY+$05)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54829"></span>D62D</td>
+<td class="instruction">LD (IX+$05),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54832"></span>D630</td>
+<td class="instruction">LD A,(IY+$03)</td>
+<td class="comment-1" rowspan="2">Set channel volume</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54835"></span>D633</td>
+<td class="instruction">LD (IX+$07),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54838"></span>D636</td>
+<td class="instruction">LD A,(IY+$01)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the data mixer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54841"></span>D639</td>
+<td class="instruction">CP $00</td>
+<td class="comment-1" rowspan="2">Jump forward if not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54843"></span>D63B</td>
+<td class="instruction">JP NZ,$D651</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54846"></span>D63E</td>
+<td class="instruction">LD B,(IY+$00)</td>
+<td class="comment-1" rowspan="4">Disable noise for selected channel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54849"></span>D641</td>
+<td class="instruction">LD C,$04</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54851"></span>D643</td>
+<td class="instruction">SLA C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54853"></span>D645</td>
+<td class="instruction">DJNZ $D643</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54855"></span>D647</td>
+<td class="instruction">LD A,($D855)</td>
+<td class="comment-1" rowspan="3">Disable noise for the selected channel into the current data mixer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54858"></span>D64A</td>
+<td class="instruction">OR C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54859"></span>D64B</td>
+<td class="instruction">LD ($D855),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54862"></span>D64E</td>
+<td class="instruction">JP <a href="54914.html">$D682</a></td>
+<td class="comment-1" rowspan="1">Send this data to the mixer register</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54865"></span>D651</td>
+<td class="instruction">LD A,($D855)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> the current data mixer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54868"></span>D654</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54869"></span>D655</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="5">if channel 1 then disable tone in channel 1 and enable noise in channel 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54872"></span>D658</td>
+<td class="instruction">CP $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54874"></span>D65A</td>
+<td class="instruction">JP NZ,$D664</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54877"></span>D65D</td>
+<td class="instruction">RES 3,B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54879"></span>D65F</td>
+<td class="instruction">SET 0,B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54881"></span>D661</td>
+<td class="instruction">JP $D674</td>
+<td class="comment-1" rowspan="1">Jump to update data mixer</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54884"></span>D664</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="4">if channel 2 then disable tone in channel 2 and enable noise in channel 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54886"></span>D666</td>
+<td class="instruction">JP NZ,$D670</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54889"></span>D669</td>
+<td class="instruction">RES 4,B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54891"></span>D66B</td>
+<td class="instruction">SET 1,B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54893"></span>D66D</td>
+<td class="instruction">JP $D674</td>
+<td class="comment-1" rowspan="1">Jump to update data mixer</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54896"></span>D670</td>
+<td class="instruction">RES 5,B</td>
+<td class="comment-1" rowspan="2">if channel 3 then disable tone in channel 3 and enable noise in channel 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54898"></span>D672</td>
+<td class="instruction">SET 2,B</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54900"></span>D674</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Update data mixer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54901"></span>D675</td>
+<td class="instruction">LD ($D855),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54904"></span>D678</td>
+<td class="instruction">CALL <a href="54914.html">$D682</a></td>
+<td class="comment-1" rowspan="1">Send this data to the mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54907"></span>D67B</td>
+<td class="instruction">LD A,(IY+$01)</td>
+<td class="comment-1" rowspan="2">Copy noise/tone enable/disable</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54910"></span>D67E</td>
+<td class="instruction">LD (IX+$06),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54913"></span>D681</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54743.html">D5D7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54759">Map</a></td>
+<td class="next">
+Next: <a href="54914.html">D682</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

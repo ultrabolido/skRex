@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D871</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55384.html">D858</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55409">Map</a></td>
+<td class="next">
+Next: <a href="55459.html">D8A3</a>
+</td>
+</tr>
+</table>
+<div class="description">D871: Show weapon bonus windows</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="40799.html">9F5F</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55409"></span>D871</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Return if weapon has been collected previously</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55410"></span>D872</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55411"></span>D873</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55412"></span>D874</td>
+<td class="instruction">LD (HL),$FF</td>
+<td class="comment-1" rowspan="1">Set weapon collected in text definition buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55414"></span>D876</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> the number of lines to draw on windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55415"></span>D877</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55416"></span>D878</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to text definition data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55417"></span>D879</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="3">Save <span class="register">IX</span>, <span class="register">IY</span> and <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55419"></span>D87B</td>
+<td class="instruction">PUSH IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55421"></span>D87D</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55422"></span>D87E</td>
+<td class="instruction">CALL <a href="54743.html">$D5D7</a></td>
+<td class="comment-1" rowspan="1">Reset channel volumes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55425"></span>D881</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Copy <span class="register">HL</span> into <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55426"></span>D882</td>
+<td class="instruction">POP IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55428"></span>D884</td>
+<td class="instruction">CALL <a href="55459.html">$D8A3</a></td>
+<td class="comment-1" rowspan="1">Copy screen display file into room graphic data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55431"></span>D887</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> the number of lines to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55432"></span>D888</td>
+<td class="instruction">CALL <a href="41278.html">$A13E</a></td>
+<td class="comment-1" rowspan="1">Draw windows with weapon text</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55435"></span>D88B</td>
+<td class="instruction">LD BC,$2710</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> = 10.000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55438"></span>D88E</td>
+<td class="instruction">CALL <a href="51419.html">$C8DB</a></td>
+<td class="comment-1" rowspan="1">Wait some time ~0.5s (128 t-states 10.000 times)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55441"></span>D891</td>
+<td class="instruction">CALL <a href="38851.html">$97C3</a></td>
+<td class="comment-1" rowspan="1">Reset sound buffer, volume channels and check for FIRE key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55444"></span>D894</td>
+<td class="instruction">CALL <a href="41610.html">$A28A</a></td>
+<td class="comment-1" rowspan="1">Copy room graphic buffer to display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55447"></span>D897</td>
+<td class="instruction">CALL <a href="51391.html">$C8BF</a></td>
+<td class="comment-1" rowspan="1">Copy room color attribute buffer to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55450"></span>D89A</td>
+<td class="instruction">CALL <a href="54702.html">$D5AE</a></td>
+<td class="comment-1" rowspan="1">Reset sound data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55453"></span>D89D</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="3">Restore <span class="register">BC</span>, <span class="register">IY</span> and #rEGix</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55454"></span>D89E</td>
+<td class="instruction">POP IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55456"></span>D8A0</td>
+<td class="instruction">POP IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55458"></span>D8A2</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55384.html">D858</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55409">Map</a></td>
+<td class="next">
+Next: <a href="55459.html">D8A3</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

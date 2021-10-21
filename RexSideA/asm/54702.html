@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at D5AE</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54688.html">D5A0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54702">Map</a></td>
+<td class="next">
+Next: <a href="54743.html">D5D7</a>
+</td>
+</tr>
+</table>
+<div class="description">D5AE: Reset sound data channels</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a>, <a href="38851.html">97C3</a>, <a href="38890.html">97EA</a>, <a href="42215.html">A4E7</a>, <a href="51013.html">C745</a> and <a href="55409.html">D871</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54702"></span>D5AE</td>
+<td class="instruction">LD A,$38</td>
+<td class="comment-1" rowspan="2">Set sound data buffer to disable noise and tone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54704"></span>D5B0</td>
+<td class="instruction">LD ($D855),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54707"></span>D5B3</td>
+<td class="instruction">CALL <a href="54914.html">$D682</a></td>
+<td class="comment-1" rowspan="1">Send command to the mixer (disable noise and tone)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54710"></span>D5B6</td>
+<td class="instruction">LD HL,$D832</td>
+<td class="comment-1" rowspan="5">Reset channels data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54713"></span>D5B9</td>
+<td class="instruction">LD DE,$D833</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54716"></span>D5BC</td>
+<td class="instruction">LD BC,$001D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54719"></span>D5BF</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54721"></span>D5C1</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54723"></span>D5C3</td>
+<td class="instruction">LD IX,$D832</td>
+<td class="comment-1" rowspan="4">Initialise channels at <a href="55346.html">D832</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54727"></span>D5C7</td>
+<td class="instruction">LD (IX+$00),$FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54731"></span>D5CB</td>
+<td class="instruction">LD (IX+$08),$FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54735"></span>D5CF</td>
+<td class="instruction">LD (IX+$10),$FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54739"></span>D5D3</td>
+<td class="instruction">CALL <a href="54743.html">$D5D7</a></td>
+<td class="comment-1" rowspan="1">Reset sound volume channels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54742"></span>D5D6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54688.html">D5A0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54702">Map</a></td>
+<td class="next">
+Next: <a href="54743.html">D5D7</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

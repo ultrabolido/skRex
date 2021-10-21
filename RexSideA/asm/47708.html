@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex (Side A): Routine at BA5C</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47689.html">BA49</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47708">Map</a></td>
+<td class="next">
+Next: <a href="48723.html">BE53</a>
+</td>
+</tr>
+</table>
+<div class="description">BA5C: Draw enemies</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38010.html">947A</a> and <a href="43285.html">A915</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47708"></span>BA5C</td>
+<td class="instruction">LD IX,$5E66</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the base address for enemy configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47712"></span>BA60</td>
+<td class="instruction">LD A,($A092)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> to the max number of enemies in the current room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47715"></span>BA63</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47716"></span>BA64</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47717"></span>BA65</td>
+<td class="instruction">LD A,(IX+$0C)</td>
+<td class="comment-1" rowspan="1">Check enemy status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47720"></span>BA68</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Enemy is dead?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47721"></span>BA69</td>
+<td class="instruction">JP Z,$BB69</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47724"></span>BA6C</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47727"></span>BA6F</td>
+<td class="instruction">AND $7F</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47729"></span>BA71</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Enemy is FOOT MAN?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47730"></span>BA72</td>
+<td class="instruction">JP NZ,$BAD0</td>
+<td class="comment-1" rowspan="1">Jump forward if not</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47733"></span>
+<div class="comments">
+<div class="paragraph">
+Enemy is FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47733"></span>BA75</td>
+<td class="instruction">LD HL,$7F72</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to address pointer for FOOT MAN graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47736"></span>BA78</td>
+<td class="instruction">LD A,(IX+$03)</td>
+<td class="comment-1" rowspan="1">Check jumping state for FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47739"></span>BA7B</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is jumping?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47740"></span>BA7C</td>
+<td class="instruction">JP NZ,$BA86</td>
+<td class="comment-1" rowspan="1">Jump if so?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47743"></span>BA7F</td>
+<td class="instruction">LD A,(IX+$06)</td>
+<td class="comment-1" rowspan="1">Check falling state for FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47746"></span>BA82</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is falling?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47747"></span>BA83</td>
+<td class="instruction">JP Z,$BA89</td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47750"></span>BA86</td>
+<td class="instruction">LD HL,$6018</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to address pointer to graphic data for FOOTMAN falling or jumping</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47753"></span>BA89</td>
+<td class="instruction">LD (IX+$16),L</td>
+<td class="comment-1" rowspan="2">Set address for enemy graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47756"></span>BA8C</td>
+<td class="instruction">LD (IX+$17),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47759"></span>BA8F</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="2">FOOTMAN walker is crouched?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47762"></span>BA92</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47764"></span>BA94</td>
+<td class="instruction">JP Z,$BAD0</td>
+<td class="comment-1" rowspan="1">Jump forward and no fire?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47767"></span>BA97</td>
+<td class="instruction">BIT 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check type of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47771"></span>BA9B</td>
+<td class="instruction">JP Z,$BAA9</td>
+<td class="comment-1" rowspan="1">Jump if FOOT MAN Walking</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47774"></span>
+<div class="comments">
+<div class="paragraph">
+FOOT MAN is crouched and check if will fire the weapon
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47774"></span>BA9E</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Computes random number on <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47777"></span>BAA1</td>
+<td class="instruction">CP $F0</td>
+<td class="comment-1" rowspan="2">no fire weapon if random number is &lt; $F0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47779"></span>BAA3</td>
+<td class="instruction">JP C,$BAD0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47782"></span>BAA6</td>
+<td class="instruction">JP $BAB1</td>
+<td class="comment-1" rowspan="1">Jump to fire weapon</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47785"></span>
+<div class="comments">
+<div class="paragraph">
+FOOT MAN is walking and check if will fire the weapon
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47785"></span>BAA9</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Computes random number on <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47788"></span>BAAC</td>
+<td class="instruction">CP $FE</td>
+<td class="comment-1" rowspan="2">no fire weapon if random number is &lt; $FE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47790"></span>BAAE</td>
+<td class="instruction">JP C,$BAD0</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47793"></span>
+<div class="comments">
+<div class="paragraph">
+FOOT MAN fire the weapon
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47793"></span>BAB1</td>
+<td class="instruction">CALL <a href="46342.html#46448">$B570</a></td>
+<td class="comment-1" rowspan="1">Play enemy weapon sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47796"></span>BAB4</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set x-position of enemy in <a href="41107.html">A093</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47799"></span>BAB7</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47802"></span>BABA</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set <a href="41044.html">A054</a> to the type of projectile for the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47803"></span>BABB</td>
+<td class="instruction">LD ($A054),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47806"></span>BABE</td>
+<td class="instruction">LD A,$0E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the increment of y-position for the projectile of FOOT MAN walking</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47808"></span>BAC0</td>
+<td class="instruction">BIT 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">is FOOT MAN walking?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47812"></span>BAC4</td>
+<td class="instruction">JP Z,$BAC9</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47815"></span>BAC7</td>
+<td class="instruction">LD A,$11</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the increment of y-position for the projectile of FOOT MAN crouched</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47817"></span>BAC9</td>
+<td class="instruction">CALL <a href="46462.html#46478">$B58E</a></td>
+<td class="comment-1" rowspan="1">Create a new laser projectile for FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47820"></span>BACC</td>
+<td class="instruction">LD (IY+$05),$00</td>
+<td class="comment-1" rowspan="1">Set y-delta of projectile to $00</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47824"></span>
+<div class="comments">
+<div class="paragraph">
+Prepares to draw the enemy
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47824"></span>BAD0</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41135.html">A0AF</a> to the x-position of the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47827"></span>BAD3</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47830"></span>BAD6</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">Set <a href="41136.html">A0B0</a> to the y-position of the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47833"></span>BAD9</td>
+<td class="instruction">LD ($A0B0),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47836"></span>BADC</td>
+<td class="instruction">LD A,(IX+$0E)</td>
+<td class="comment-1" rowspan="2">Set <a href="41137.html">A0B1</a> to the width (in bytes) of the enemy sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47839"></span>BADF</td>
+<td class="instruction">LD ($A0B1),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47842"></span>BAE2</td>
+<td class="instruction">LD A,(IX+$0F)</td>
+<td class="comment-1" rowspan="2">Set <a href="41138.html">A0B2</a> to the height (in pixels) of the enemy sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47845"></span>BAE5</td>
+<td class="instruction">LD ($A0B2),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47848"></span>BAE8</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="2">Set <a href="41011.html">A033</a> to the enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47851"></span>BAEB</td>
+<td class="instruction">LD ($A033),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47854"></span>BAEE</td>
+<td class="instruction">LD L,(IX+$04)</td>
+<td class="comment-1" rowspan="3">Set #$A034 to the graphic data address for the enemy (static - not animated)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47857"></span>BAF1</td>
+<td class="instruction">LD H,(IX+$05)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47860"></span>BAF4</td>
+<td class="instruction">LD ($A034),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47863"></span>BAF7</td>
+<td class="instruction">LD L,(IX+$0A)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to address pointer of base address for animated sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47866"></span>BAFA</td>
+<td class="instruction">LD H,(IX+$0B)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47869"></span>BAFD</td>
+<td class="instruction">LD E,(IX+$16)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">DE</span> to address pointer for animation offset based on previous address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47872"></span>BB00</td>
+<td class="instruction">LD D,(IX+$17)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47875"></span>BB03</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47878"></span>BB06</td>
+<td class="instruction">AND $7F</td>
+<td class="comment-1" rowspan="7">is enemy type $01 - STOMPER or $08 - SCANNER set <span class="register">A</span> to enemy direction to $00 (right) and jump to draw the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47880"></span>BB08</td>
+<td class="instruction">CP $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47882"></span>BB0A</td>
+<td class="instruction">JP Z,$BB12</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47885"></span>BB0D</td>
+<td class="instruction">CP $08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47887"></span>BB0F</td>
+<td class="instruction">JP NZ,$BB16</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47890"></span>BB12</td>
+<td class="instruction">XOR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47891"></span>BB13</td>
+<td class="instruction">JP $BB19</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47894"></span>BB16</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to enemy direction</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47897"></span>BB19</td>
+<td class="instruction">CALL <a href="45656.html">$B258</a></td>
+<td class="comment-1" rowspan="1">Draw enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47900"></span>BB1C</td>
+<td class="instruction">CALL <a href="50614.html">$C5B6</a></td>
+<td class="comment-1" rowspan="1">Handle FOOT MAN walking/crouch state change</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47903"></span>BB1F</td>
+<td class="instruction">CALL <a href="50551.html">$C577</a></td>
+<td class="comment-1" rowspan="1">Handle FOOT MAN walking/stand-by state change</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47906"></span>BB22</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="2">Enemy destroyed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47909"></span>BB25</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47911"></span>BB27</td>
+<td class="instruction">JP Z,$BD6B</td>
+<td class="comment-1" rowspan="1">Handle explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47914"></span>BB2A</td>
+<td class="instruction">CP $06</td>
+<td class="comment-1" rowspan="1">Foot Man is dying?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47916"></span>BB2C</td>
+<td class="instruction">JP Z,$BD44</td>
+<td class="comment-1" rowspan="1">Handle dying Foot Man 6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47919"></span>BB2F</td>
+<td class="instruction">CP $05</td>
+<td class="comment-1" rowspan="1">is front train?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47921"></span>BB31</td>
+<td class="instruction">JP Z,$BC0F</td>
+<td class="comment-1" rowspan="1">check rear train for shot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47924"></span>BB34</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="1">is rear train?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47926"></span>BB36</td>
+<td class="instruction">JP Z,$BC30</td>
+<td class="comment-1" rowspan="1">check front train for shot</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47929"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="47708.html#48452">BD44</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47929"></span>BB39</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="2">Object type is bubble?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47932"></span>BB3C</td>
+<td class="instruction">CP $FE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47934"></span>BB3E</td>
+<td class="instruction">CALL Z,<a href="48851.html">$BED3</a></td>
+<td class="comment-1" rowspan="1">Handle bubble bouncing and burst</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47937"></span>BB41</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="2">Check object type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47940"></span>BB44</td>
+<td class="instruction">AND $7F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47942"></span>BB46</td>
+<td class="instruction">CP $09</td>
+<td class="comment-1" rowspan="1">is swing gun?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47944"></span>BB48</td>
+<td class="instruction">JP Z,$BCDD</td>
+<td class="comment-1" rowspan="1">Handle swing gun</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47947"></span>BB4B</td>
+<td class="instruction">CP $0A</td>
+<td class="comment-1" rowspan="1">is shooter?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47949"></span>BB4D</td>
+<td class="instruction">JP Z,$BC92</td>
+<td class="comment-1" rowspan="1">Handle shooter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47952"></span>BB50</td>
+<td class="instruction">CP $0B</td>
+<td class="comment-1" rowspan="1">is launcher?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47954"></span>BB52</td>
+<td class="instruction">JP Z,$BC65</td>
+<td class="comment-1" rowspan="1">Handle launcher</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47957"></span>BB55</td>
+<td class="instruction">CP $10</td>
+<td class="comment-1" rowspan="1">is boss?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47959"></span>BB57</td>
+<td class="instruction">JP Z,$BB74</td>
+<td class="comment-1" rowspan="1">Handle boss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47962"></span>BB5A</td>
+<td class="instruction">CALL <a href="50720.html">$C620</a></td>
+<td class="comment-1" rowspan="1">Handler for enemies going up: SCANNER, POD, MINE LAYER and FOOTMAN Jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47965"></span>BB5D</td>
+<td class="instruction">CALL <a href="50882.html">$C6C2</a></td>
+<td class="comment-1" rowspan="1">Handler for enemies going down: SCANNER and FOOTMAN falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47968"></span>BB60</td>
+<td class="instruction">CALL <a href="50987.html">$C72B</a></td>
+<td class="comment-1" rowspan="1">Obtain the tile type address pointer under the entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47971"></span>BB63</td>
+<td class="instruction">CALL <a href="49135.html">$BFEF</a></td>
+<td class="comment-1" rowspan="1">Handle lateral movement for FOOTMAN, STOMPER, MINE, SCANNER, POD, MINE LAYER and BLOB</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47974"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="47708.html#48349">BCDD</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47974"></span>BB66</td>
+<td class="instruction">CALL <a href="53781.html">$D215</a></td>
+<td class="comment-1" rowspan="1">Handle collision detection of enemy with Rex and projectiles</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47977"></span>
+<div class="comments">
+<div class="paragraph">
+Prepare to process the next enemy
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47977"></span>BB69</td>
+<td class="instruction">LD DE,$0018</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IX</span> to the next enemy configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47980"></span>BB6C</td>
+<td class="instruction">ADD IX,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47982"></span>BB6E</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47983"></span>BB6F</td>
+<td class="instruction">DEC B</td>
+<td class="comment-1" rowspan="1">Decrement enemy counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47984"></span>BB70</td>
+<td class="instruction">JP NZ,$BA64</td>
+<td class="comment-1" rowspan="1">If there are enemies on the room go back and draw them</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47987"></span>BB73</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return if not</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47988"></span>
+<div class="comments">
+<div class="paragraph">
+Handle boss
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47988"></span>BB74</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to y-pixel-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47991"></span>BB77</td>
+<td class="instruction">CP $90</td>
+<td class="comment-1" rowspan="1">is y-pixel-position greater than $90?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47993"></span>BB79</td>
+<td class="instruction">JP NC,$BBDB</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47996"></span>BB7C</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to Boss direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47999"></span>BB7F</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is boss moving down?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48000"></span>BB80</td>
+<td class="instruction">JP NZ,$BBA5</td>
+<td class="comment-1" rowspan="1">Jump if so and try to shot lasers</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48003"></span>BB83</td>
+<td class="instruction">LD A,(IX+$13)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to boss prepared to release a mine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48006"></span>BB86</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is boss prepared to release a mine?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48007"></span>BB87</td>
+<td class="instruction">JP NZ,$BBA5</td>
+<td class="comment-1" rowspan="1">Jump if not and try to shot lasers</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48010"></span>
+<div class="comments">
+<div class="paragraph">
+try to release a mine
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48010"></span>BB8A</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo-random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48013"></span>BB8D</td>
+<td class="instruction">CP $F0</td>
+<td class="comment-1" rowspan="1">is pseudo-random number less than $F0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48015"></span>BB8F</td>
+<td class="instruction">JP C,$BBA5</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48018"></span>BB92</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Set into <a href="41107.html">A093</a> the x-pixel-position of the mine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48021"></span>BB95</td>
+<td class="instruction">ADD A,$08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48023"></span>BB97</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48026"></span>BB9A</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Set into <a href="41109.html">A095</a> the y-pixel-poistion of the mine</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48029"></span>BB9D</td>
+<td class="instruction">ADD A,$30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48031"></span>BB9F</td>
+<td class="instruction">LD ($A095),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48034"></span>BBA2</td>
+<td class="instruction">CALL <a href="49610.html#49652">$C1F4</a></td>
+<td class="comment-1" rowspan="1">Configure a mine</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48037"></span>
+<div class="comments">
+<div class="paragraph">
+try to shot lasers
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48037"></span>BBA5</td>
+<td class="instruction">LD A,R</td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> a pseudo-random number from 0 to F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48039"></span>BBA7</td>
+<td class="instruction">AND $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48041"></span>BBA9</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is random number 0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48042"></span>BBAA</td>
+<td class="instruction">JP NZ,$BBDB</td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48045"></span>BBAD</td>
+<td class="instruction">LD HL,$BE53</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address for y-pixel-offset of laser positions for boss healed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48048"></span>BBB0</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the boss state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48051"></span>BBB3</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">is boss wounded?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48053"></span>BBB5</td>
+<td class="instruction">JP NZ,$BBBB</td>
+<td class="comment-1" rowspan="1">Jump if not?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48056"></span>BBB8</td>
+<td class="instruction">LD HL,$BE56</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the base address for y-pixel-offset of laser positions for boss wounded</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48059"></span>
+<div class="comments">
+<div class="paragraph">
+create new laser
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48059"></span>BBBB</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48060"></span>BBBC</td>
+<td class="instruction">CALL <a href="46342.html#46448">$B570</a></td>
+<td class="comment-1" rowspan="1">Play weapon sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48063"></span>BBBF</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48064"></span>BBC0</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Set <a href="41107.html">A093</a> the x-pixel-position of the laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48067"></span>BBC3</td>
+<td class="instruction">ADD A,$20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48069"></span>BBC5</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48072"></span>BBC8</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the y-pixel-offset of the laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48073"></span>BBC9</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">is end marker?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48075"></span>BBCB</td>
+<td class="instruction">JP Z,$BBDB</td>
+<td class="comment-1" rowspan="1">Jump is so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48078"></span>BBCE</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48079"></span>BBCF</td>
+<td class="instruction">CALL <a href="46462.html#46478">$B58E</a></td>
+<td class="comment-1" rowspan="1">Draw/create projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48082"></span>BBD2</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48083"></span>BBD3</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment address for laser y-pixel-offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48084"></span>BBD4</td>
+<td class="instruction">LD (IY+$0B),$00</td>
+<td class="comment-1" rowspan="1">Set the weapon type to projectile configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48088"></span>BBD8</td>
+<td class="instruction">JP $BBBB</td>
+<td class="comment-1" rowspan="1">Jump back and create new laser</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48091"></span>
+<div class="comments">
+<div class="paragraph">
+move boss
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48091"></span>BBDB</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="2">is Boss moving up?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48094"></span>BBDE</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48095"></span>BBDF</td>
+<td class="instruction">JP Z,$BBE5</td>
+<td class="comment-1" rowspan="1">Jump to move up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48098"></span>BBE2</td>
+<td class="instruction">JP $BBFA</td>
+<td class="comment-1" rowspan="1">Jump to move down</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48101"></span>
+<div class="comments">
+<div class="paragraph">
+move boss up
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48101"></span>BBE5</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Set the new y-pixel-position of Boss based on Boss speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48104"></span>BBE8</td>
+<td class="instruction">SUB (IX+$12)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48107"></span>BBEB</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48110"></span>BBEE</td>
+<td class="instruction">CP $40</td>
+<td class="comment-1" rowspan="1">is y-pixel-position greater than $40?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48112"></span>BBF0</td>
+<td class="instruction">JP NC,$BB66</td>
+<td class="comment-1" rowspan="1">Jump back and handle another enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48115"></span>BBF3</td>
+<td class="instruction">LD (IX+$11),$01</td>
+<td class="comment-1" rowspan="1">Set boss to move down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48119"></span>BBF7</td>
+<td class="instruction">JP $BB66</td>
+<td class="comment-1" rowspan="1">Jump back and handle another enemy</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48122"></span>
+<div class="comments">
+<div class="paragraph">
+move boss down
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48122"></span>BBFA</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Set the new y-pixel-position of Boss based on Boss speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48125"></span>BBFD</td>
+<td class="instruction">ADD A,(IX+$12)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48128"></span>BC00</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48131"></span>BC03</td>
+<td class="instruction">CP $78</td>
+<td class="comment-1" rowspan="1">is y-pixel-position less than $78?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48133"></span>BC05</td>
+<td class="instruction">JP C,$BB66</td>
+<td class="comment-1" rowspan="1">Jump back and handle another enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48136"></span>BC08</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Set boss to move up</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48140"></span>BC0C</td>
+<td class="instruction">JP $BB66</td>
+<td class="comment-1" rowspan="1">Jump back and handle another enemy</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48143"></span>
+<div class="comments">
+<div class="paragraph">
+check front train for shot
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48143"></span>BC0F</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48146"></span>BC12</td>
+<td class="instruction">CP $F0</td>
+<td class="comment-1" rowspan="1">is random number less than $F0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48148"></span>BC14</td>
+<td class="instruction">JP C,$BB39</td>
+<td class="comment-1" rowspan="1">Jump back and continue to process another enemy if it is</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48151"></span>BC17</td>
+<td class="instruction">CALL <a href="46342.html#46448">$B570</a></td>
+<td class="comment-1" rowspan="1">Play laser sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48154"></span>BC1A</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41107.html">A093</a> to x-position of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48157"></span>BC1D</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48160"></span>BC20</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set projectile type to $0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48161"></span>BC21</td>
+<td class="instruction">LD ($A054),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48164"></span>BC24</td>
+<td class="instruction">LD A,$0F</td>
+<td class="comment-1" rowspan="1">Set y-position-increment</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48166"></span>BC26</td>
+<td class="instruction">CALL <a href="46462.html#46478">$B58E</a></td>
+<td class="comment-1" rowspan="1">Create a new laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48169"></span>BC29</td>
+<td class="instruction">LD (IY+$05),$00</td>
+<td class="comment-1" rowspan="1">Set y-delta for projectile to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48173"></span>BC2D</td>
+<td class="instruction">JP $BB39</td>
+<td class="comment-1" rowspan="1">Jump back and continue to process another enemy</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48176"></span>
+<div class="comments">
+<div class="paragraph">
+check rear train for shot
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48176"></span>BC30</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48179"></span>BC33</td>
+<td class="instruction">CP $F0</td>
+<td class="comment-1" rowspan="1">is random number less than $F0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48181"></span>BC35</td>
+<td class="instruction">JP C,$BB39</td>
+<td class="comment-1" rowspan="1">Jump back and continue to process another enemy if it is</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48184"></span>BC38</td>
+<td class="instruction">CALL <a href="46342.html#46448">$B570</a></td>
+<td class="comment-1" rowspan="1">Play laser sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48187"></span>BC3B</td>
+<td class="instruction">LD (IX+$02),$00</td>
+<td class="comment-1" rowspan="1">Set sprite to no reverse temp.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48191"></span>BC3F</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41107.html">A093</a> to x-position of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48194"></span>BC42</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48197"></span>BC45</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set projectile type to $0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48198"></span>BC46</td>
+<td class="instruction">LD ($A054),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48201"></span>BC49</td>
+<td class="instruction">LD A,$0E</td>
+<td class="comment-1" rowspan="1">Set y-position-increment</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48203"></span>BC4B</td>
+<td class="instruction">CALL <a href="46462.html#46478">$B58E</a></td>
+<td class="comment-1" rowspan="1">Create a new laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48206"></span>BC4E</td>
+<td class="instruction">LD (IY+$05),$00</td>
+<td class="comment-1" rowspan="1">Set y-delta for projectile to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48210"></span>BC52</td>
+<td class="instruction">CALL <a href="46342.html#46448">$B570</a></td>
+<td class="comment-1" rowspan="1">Play laser sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48213"></span>BC55</td>
+<td class="instruction">LD A,$10</td>
+<td class="comment-1" rowspan="1">Set y-position-increment</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48215"></span>BC57</td>
+<td class="instruction">CALL <a href="46462.html#46478">$B58E</a></td>
+<td class="comment-1" rowspan="1">Create a new laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48218"></span>BC5A</td>
+<td class="instruction">LD (IY+$05),$00</td>
+<td class="comment-1" rowspan="1">Set y-delta for projectile to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48222"></span>BC5E</td>
+<td class="instruction">LD (IX+$02),$01</td>
+<td class="comment-1" rowspan="1">Set normal reverse for rear train</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48226"></span>BC62</td>
+<td class="instruction">JP $BB39</td>
+<td class="comment-1" rowspan="1">Jump back and continue to process another enemy</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48229"></span>
+<div class="comments">
+<div class="paragraph">
+handle launcher
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48229"></span>BC65</td>
+<td class="instruction">CALL <a href="41845.html#41864">$A388</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48232"></span>BC68</td>
+<td class="instruction">CP $64</td>
+<td class="comment-1" rowspan="1">is random number less than $64?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48234"></span>BC6A</td>
+<td class="instruction">JP C,$BB66</td>
+<td class="comment-1" rowspan="1">Jump back and process another enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48237"></span>BC6D</td>
+<td class="instruction">DEC (IX+$11)</td>
+<td class="comment-1" rowspan="1">Decrement launch counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48240"></span>BC70</td>
+<td class="instruction">JP NZ,$BB66</td>
+<td class="comment-1" rowspan="1">Jump back and process another enemy if counter ahs not reached 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48243"></span>BC73</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="2">Reset launch counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48246"></span>BC76</td>
+<td class="instruction">LD (IX+$11),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48249"></span>BC79</td>
+<td class="instruction">CALL <a href="46342.html#46448">$B570</a></td>
+<td class="comment-1" rowspan="1">Play weapon sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48252"></span>BC7C</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41107.html">A093</a> the x-pixel-position of projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48255"></span>BC7F</td>
+<td class="instruction">LD ($A093),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48258"></span>BC82</td>
+<td class="instruction">LD A,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the y-pixel-position increment</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48260"></span>BC84</td>
+<td class="instruction">CALL <a href="46462.html#46478">$B58E</a></td>
+<td class="comment-1" rowspan="1">Draw/create projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48263"></span>BC87</td>
+<td class="instruction">LD (IY+$0B),$87</td>
+<td class="comment-1" rowspan="1">Set type of projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48267"></span>BC8B</td>
+<td class="instruction">LD (IY+$0C),$00</td>
+<td class="comment-1" rowspan="1">Set projectile trajectory counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48271"></span>BC8F</td>
+<td class="instruction">JP $BB66</td>
+<td class="comment-1" rowspan="1">Jump back and process another enemy</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48274"></span>
+<div class="comments">
+<div class="paragraph">
+handle shooter
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48274"></span>BC92</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48277"></span>BC95</td>
+<td class="instruction">CP $64</td>
+<td class="comment-1" rowspan="1">is random number less than $64?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48279"></span>BC97</td>
+<td class="instruction">JP C,$BB66</td>
+<td class="comment-1" rowspan="1">Jump back and process another enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48282"></span>BC9A</td>
+<td class="instruction">DEC (IX+$11)</td>
+<td class="comment-1" rowspan="1">Decrement shot counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48285"></span>BC9D</td>
+<td class="instruction">JP NZ,$BB66</td>
+<td class="comment-1" rowspan="1">Jump back and process another enemy if counter ahs not reached 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48288"></span>BCA0</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="2">Reset shot counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48291"></span>BCA3</td>
+<td class="instruction">LD (IX+$11),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48294"></span>BCA6</td>
+<td class="instruction">CALL <a href="46342.html#46448">$B570</a></td>
+<td class="comment-1" rowspan="1">Play weapon sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48297"></span>BCA9</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Shot laser right direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48298"></span>BCAA</td>
+<td class="instruction">LD ($A097),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48301"></span>BCAD</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the x-pixel-position for laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48304"></span>BCB0</td>
+<td class="instruction">CALL $BCC6</td>
+<td class="comment-1" rowspan="1">Configure laser in right direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48307"></span>BCB3</td>
+<td class="instruction">CALL <a href="46342.html#46448">$B570</a></td>
+<td class="comment-1" rowspan="1">Play weapon sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48310"></span>BCB6</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Shot laser left direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48312"></span>BCB8</td>
+<td class="instruction">LD ($A097),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48315"></span>BCBB</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> the x-pixel-position for laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48318"></span>BCBE</td>
+<td class="instruction">SUB $08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48320"></span>BCC0</td>
+<td class="instruction">CALL $BCC6</td>
+<td class="comment-1" rowspan="1">Configure laser in left direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48323"></span>BCC3</td>
+<td class="instruction">JP $BB66</td>
+<td class="comment-1" rowspan="1">Jump back and process another enemy</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48326"></span>
+<div class="comments">
+<div class="paragraph">
+Configure laser for SHOOTER
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48326"></span>BCC6</td>
+<td class="instruction">LD ($A093),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41107.html">A093</a> the x-pixel-position for laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48329"></span>BCC9</td>
+<td class="instruction">LD A,$0F</td>
+<td class="comment-1" rowspan="2">Set <a href="41113.html">A099</a> the increment y-pixel-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48331"></span>BCCB</td>
+<td class="instruction">LD ($A099),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48334"></span>BCCE</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">Set <a href="41109.html">A095</a> the y-pixel-position for laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48337"></span>BCD1</td>
+<td class="instruction">LD ($A095),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48340"></span>BCD4</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set wepaon type to 0 (laser)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48341"></span>BCD5</td>
+<td class="instruction">CALL <a href="46462.html#46529">$B5C1</a></td>
+<td class="comment-1" rowspan="1">Draw/Create laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48344"></span>BCD8</td>
+<td class="instruction">LD (IY+$05),$00</td>
+<td class="comment-1" rowspan="1">Set y-delta of laser to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48348"></span>BCDC</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48349"></span>
+<div class="comments">
+<div class="paragraph">
+Handle swing gun
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48349"></span>BCDD</td>
+<td class="instruction">LD E,(IX+$11)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">DE</span> swing gun orientation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48352"></span>BCE0</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48354"></span>BCE2</td>
+<td class="instruction">LD HL,$BECB</td>
+<td class="comment-1" rowspan="6">Set <span class="register">HL</span> to graphic data address based on swing gun orientation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48357"></span>BCE5</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48358"></span>BCE6</td>
+<td class="instruction">LD E,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48359"></span>BCE7</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48361"></span>BCE9</td>
+<td class="instruction">LD HL,$8EAA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48364"></span>BCEC</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48365"></span>BCED</td>
+<td class="instruction">LD (IX+$04),L</td>
+<td class="comment-1" rowspan="2">Save this address to enemy configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48368"></span>BCF0</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48371"></span>BCF3</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the type of swing gun</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48374"></span>BCF6</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is mobile gun?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48375"></span>BCF7</td>
+<td class="instruction">JP Z,$BD02</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48378"></span>BCFA</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48381"></span>BCFD</td>
+<td class="instruction">CP $14</td>
+<td class="comment-1" rowspan="1">is number less than $14</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48383"></span>BCFF</td>
+<td class="instruction">JP NC,$BD2A</td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48386"></span>
+<div class="comments">
+<div class="paragraph">
+fire gun
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48386"></span>BD02</td>
+<td class="instruction">LD A,$04</td>
+<td class="comment-1" rowspan="2">Set <a href="41044.html">A054</a> the type of shot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48388"></span>BD04</td>
+<td class="instruction">LD ($A054),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48391"></span>BD07</td>
+<td class="instruction">CALL <a href="46342.html#46448">$B570</a></td>
+<td class="comment-1" rowspan="1">Play weapon sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48394"></span>BD0A</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="1">Check swing gun orientation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48397"></span>BD0D</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is 0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48398"></span>BD0E</td>
+<td class="instruction">CALL Z,<a href="48731.html">$BE5B</a></td>
+<td class="comment-1" rowspan="1">Configure projectile for swing gun left orientation.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48401"></span>BD11</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">is 1?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48403"></span>BD13</td>
+<td class="instruction">CALL Z,<a href="48731.html#48757">$BE75</a></td>
+<td class="comment-1" rowspan="1">Configure projectile for swing gun left bottom orientation.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48406"></span>BD16</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="1">is 3?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48408"></span>BD18</td>
+<td class="instruction">CALL Z,<a href="48731.html#48795">$BE9B</a></td>
+<td class="comment-1" rowspan="1">Configure projectile for swing gun right bottom orientation.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48411"></span>BD1B</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="1">is 4?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48413"></span>BD1D</td>
+<td class="instruction">CALL Z,<a href="48731.html#48819">$BEB3</a></td>
+<td class="comment-1" rowspan="1">Configure projectile for swing gun right orientation.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48416"></span>BD20</td>
+<td class="instruction">CP $05</td>
+<td class="comment-1" rowspan="1">is 5?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48418"></span>BD22</td>
+<td class="instruction">CALL Z,<a href="48731.html#48795">$BE9B</a></td>
+<td class="comment-1" rowspan="1">Configure projectile for swing gun right bottom orientation.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48421"></span>BD25</td>
+<td class="instruction">CP $07</td>
+<td class="comment-1" rowspan="1">is 7?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48423"></span>BD27</td>
+<td class="instruction">CALL Z,<a href="48731.html#48757">$BE75</a></td>
+<td class="comment-1" rowspan="1">Configure projectile for swing gun left bottom orientation.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48426"></span>
+<div class="comments">
+<div class="paragraph">
+check gun orientation
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48426"></span>BD2A</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the type of swing gun</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48429"></span>BD2D</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is mobile gun?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48430"></span>BD2E</td>
+<td class="instruction">JP NZ,$BB66</td>
+<td class="comment-1" rowspan="1">Jump back and process next enemy if fixed gun</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48433"></span>BD31</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="3">Increment orientation of gun</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48436"></span>BD34</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48437"></span>BD35</td>
+<td class="instruction">LD (IX+$11),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48440"></span>BD38</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="1">orientation is 8?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48442"></span>BD3A</td>
+<td class="instruction">JP NZ,$BB66</td>
+<td class="comment-1" rowspan="1">Jump back and process next enemy if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48445"></span>BD3D</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Reset orientation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48449"></span>BD41</td>
+<td class="instruction">JP $BB66</td>
+<td class="comment-1" rowspan="1">Jump back and process next enemy</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48452"></span>
+<div class="comments">
+<div class="paragraph">
+Handle Foot Man dying 6
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48452"></span>BD44</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48455"></span>BD47</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="1">counter is 4?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48457"></span>BD49</td>
+<td class="instruction">JP NZ,$BD5E</td>
+<td class="comment-1" rowspan="1">Jump if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48460"></span>BD4C</td>
+<td class="instruction">LD HL,$AE85</td>
+<td class="comment-1" rowspan="3">Set address for animation offsets of dying foot man</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48463"></span>BD4F</td>
+<td class="instruction">LD (IX+$0A),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48466"></span>BD52</td>
+<td class="instruction">LD (IX+$0B),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48469"></span>BD55</td>
+<td class="instruction">LD HL,$8692</td>
+<td class="comment-1" rowspan="3">Set graphic data for dying Foot man 7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48472"></span>BD58</td>
+<td class="instruction">LD (IX+$16),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48475"></span>BD5B</td>
+<td class="instruction">LD (IX+$17),H</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48478"></span>BD5E</td>
+<td class="instruction">DEC (IX+$11)</td>
+<td class="comment-1" rowspan="1">Decrement state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48481"></span>BD61</td>
+<td class="instruction">JP NZ,$BB39</td>
+<td class="comment-1" rowspan="1">If not zero jump back and continue to process other enemies</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48484"></span>BD64</td>
+<td class="instruction">LD (IX+$09),$07</td>
+<td class="comment-1" rowspan="1">Set enemy type to FOOT MAN dying 7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48488"></span>BD68</td>
+<td class="instruction">JP $BB39</td>
+<td class="comment-1" rowspan="1">Jump back and continue to process other enemies</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48491"></span>
+<div class="comments">
+<div class="paragraph">
+Handle explosion and configure gift: bubble, smartbomb or question
+</div>
+<div class="paragraph">
+Handle debris expansion
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48491"></span>BD6B</td>
+<td class="instruction">LD HL,$AA0E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset of positions for debris 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48494"></span>BD6E</td>
+<td class="instruction">CALL <a href="48998.html">$BF66</a></td>
+<td class="comment-1" rowspan="1">Handle debris movement and draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48497"></span>BD71</td>
+<td class="instruction">LD HL,$AA1E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset of positions for debris 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48500"></span>BD74</td>
+<td class="instruction">CALL <a href="48998.html">$BF66</a></td>
+<td class="comment-1" rowspan="1">Handle debris movement and draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48503"></span>BD77</td>
+<td class="instruction">LD HL,$AA2E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset of positions for debris 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48506"></span>BD7A</td>
+<td class="instruction">CALL <a href="48998.html">$BF66</a></td>
+<td class="comment-1" rowspan="1">Handle debris movement and draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48509"></span>BD7D</td>
+<td class="instruction">LD HL,$AA3E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset of positions for debris 4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48512"></span>BD80</td>
+<td class="instruction">CALL <a href="48998.html">$BF66</a></td>
+<td class="comment-1" rowspan="1">Handle debris movement and draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48515"></span>BD83</td>
+<td class="instruction">LD HL,$AA4E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset of positions for debris 5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48518"></span>BD86</td>
+<td class="instruction">CALL <a href="48998.html">$BF66</a></td>
+<td class="comment-1" rowspan="1">Handle debris movement and draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48521"></span>BD89</td>
+<td class="instruction">LD HL,$AA5E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset of positions for debris 6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48524"></span>BD8C</td>
+<td class="instruction">CALL <a href="48998.html">$BF66</a></td>
+<td class="comment-1" rowspan="1">Handle debris movement and draw it</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48527"></span>BD8F</td>
+<td class="instruction">INC (IX+$03)</td>
+<td class="comment-1" rowspan="1">Increment explosion debris counter</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48530"></span>
+<div class="comments">
+<div class="paragraph">
+Draw central explosion
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48530"></span>BD92</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41135.html">A0AF</a> the x-pixel-position of the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48533"></span>BD95</td>
+<td class="instruction">LD ($A0AF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48536"></span>BD98</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">Set <a href="41135.html">A0AF</a> the x-pixel-position of the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48539"></span>BD9B</td>
+<td class="instruction">LD ($A0B0),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48542"></span>BD9E</td>
+<td class="instruction">CALL <a href="53147.html">$CF9B</a></td>
+<td class="comment-1" rowspan="1">Draw random attribute color for explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48545"></span>BDA1</td>
+<td class="instruction">LD L,(IX+$04)</td>
+<td class="comment-1" rowspan="6">Increment the graphic data address for the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48548"></span>BDA4</td>
+<td class="instruction">LD H,(IX+$05)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48551"></span>BDA7</td>
+<td class="instruction">LD DE,$0048</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48554"></span>BDAA</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48555"></span>BDAB</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48558"></span>BDAE</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48561"></span>BDB1</td>
+<td class="instruction">DEC (IX+$0D)</td>
+<td class="comment-1" rowspan="1">Decrement explosion counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48564"></span>BDB4</td>
+<td class="instruction">JP NZ,$BB69</td>
+<td class="comment-1" rowspan="1">Jump to the next enemy configuration if not zero Explosion has ended, configure gift: bubble, smartbomb or question</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48567"></span>BDB7</td>
+<td class="instruction">LD HL,($A093)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address into the attribute file for the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48570"></span>BDBA</td>
+<td class="instruction">LD DE,($A095)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the address into the attribute buffer for the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48574"></span>BDBE</td>
+<td class="instruction">CALL <a href="53102.html">$CF6E</a></td>
+<td class="comment-1" rowspan="1">Reset attribute color when explosion ended</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48577"></span>BDC1</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">x-pixel-position of sprite is less than 24?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48580"></span>BDC4</td>
+<td class="instruction">CP $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48582"></span>BDC6</td>
+<td class="instruction">JP C,$BE2E</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48585"></span>BDC9</td>
+<td class="instruction">LD (IX+$09),$FE</td>
+<td class="comment-1" rowspan="1">Set Enemy configuration to energy bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48589"></span>BDCD</td>
+<td class="instruction">LD (IX+$0F),$10</td>
+<td class="comment-1" rowspan="1">Set sprite height</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48593"></span>BDD1</td>
+<td class="instruction">LD (IX+$0E),$02</td>
+<td class="comment-1" rowspan="1">Set sprite width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48597"></span>BDD5</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Add 8 pixels to y-pixel-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48600"></span>BDD8</td>
+<td class="instruction">ADD A,$08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48602"></span>BDDA</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48605"></span>
+<div class="comments">
+<div class="paragraph">
+configure big bubble
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48605"></span>BDDD</td>
+<td class="instruction">LD (IX+$03),$00</td>
+<td class="comment-1" rowspan="1">Reset configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48609"></span>BDE1</td>
+<td class="instruction">LD (IX+$06),$00</td>
+<td class="comment-1" rowspan="1">Reset configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48613"></span>BDE5</td>
+<td class="instruction">LD (IX+$11),$64</td>
+<td class="comment-1" rowspan="1">Set bubble counter to $64</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48617"></span>BDE9</td>
+<td class="instruction">LD (IX+$10),$00</td>
+<td class="comment-1" rowspan="1">Reset configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48621"></span>BDED</td>
+<td class="instruction">LD HL,$86F2</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to graphic data address for big bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48624"></span>BDF0</td>
+<td class="instruction">LD (IX+$12),L</td>
+<td class="comment-1" rowspan="4">Set graphic data address for bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48627"></span>BDF3</td>
+<td class="instruction">LD (IX+$13),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48630"></span>BDF6</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48633"></span>BDF9</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48636"></span>BDFC</td>
+<td class="instruction">LD A,(IX+$15)</td>
+<td class="comment-1" rowspan="1">Check bubble type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48639"></span>BDFF</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">No bubble?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48641"></span>BE01</td>
+<td class="instruction">JP Z,$BE2E</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48644"></span>BE04</td>
+<td class="instruction">CALL <a href="41845.html">$A375</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to a pseudo-random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48647"></span>BE07</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="1">is less than 3?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48649"></span>BE09</td>
+<td class="instruction">JP C,$BE35</td>
+<td class="comment-1" rowspan="1">you are lucky, you got an smartbomb</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48652"></span>BE0C</td>
+<td class="instruction">CP $06</td>
+<td class="comment-1" rowspan="1">is less than 6?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48654"></span>BE0E</td>
+<td class="instruction">JP C,$BE3F</td>
+<td class="comment-1" rowspan="1">you are lucky, you got a question mark (random gift)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48657"></span>BE11</td>
+<td class="instruction">LD A,(IX+$15)</td>
+<td class="comment-1" rowspan="2">is bubble type big?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48660"></span>BE14</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48661"></span>BE15</td>
+<td class="instruction">JP NZ,$BB69</td>
+<td class="comment-1" rowspan="1">Jump if so and process next obejct</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48664"></span>
+<div class="comments">
+<div class="paragraph">
+configure small bubble
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48664"></span>BE18</td>
+<td class="instruction">LD HL,$87B2</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to graphic data for small bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48667"></span>BE1B</td>
+<td class="instruction">LD (IX+$12),L</td>
+<td class="comment-1" rowspan="2">Set graphic data for the bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48670"></span>BE1E</td>
+<td class="instruction">LD (IX+$13),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48673"></span>BE21</td>
+<td class="instruction">LD (IX+$11),$8C</td>
+<td class="comment-1" rowspan="4">Set bubble counter to $8C {Set graphic data for the bubble } Jump to the next enemy configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48677"></span>BE25</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48680"></span>BE28</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48683"></span>BE2B</td>
+<td class="instruction">JP $BB69</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48686"></span>
+<div class="comments">
+<div class="paragraph">
+configure no bubble
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48686"></span>BE2E</td>
+<td class="instruction">LD (IX+$0C),$00</td>
+<td class="comment-1" rowspan="1">Set object live/visibility to dead/not visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48690"></span>BE32</td>
+<td class="instruction">JP $BB69</td>
+<td class="comment-1" rowspan="1">Jump to the next enemy configuration</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48693"></span>
+<div class="comments">
+<div class="paragraph">
+configure smartbomb
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48693"></span>BE35</td>
+<td class="instruction">LD (IX+$09),$FD</td>
+<td class="comment-1" rowspan="1">Set object type to smartbomb</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48697"></span>BE39</td>
+<td class="instruction">LD HL,$8CEA</td>
+<td class="comment-1" rowspan="1">Set graphic data for smartbomb</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48700"></span>BE3C</td>
+<td class="instruction">JP $BE46</td>
+<td class="comment-1" rowspan="1">Jump forward</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48703"></span>
+<div class="comments">
+<div class="paragraph">
+configure question
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48703"></span>BE3F</td>
+<td class="instruction">LD (IX+$09),$FC</td>
+<td class="comment-1" rowspan="1">Set object type to question</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48707"></span>BE43</td>
+<td class="instruction">LD HL,$8D0A</td>
+<td class="comment-1" rowspan="1">Set graphic data for question</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48710"></span>BE46</td>
+<td class="instruction">LD (IX+$04),L</td>
+<td class="comment-1" rowspan="2">Copy address to object configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48713"></span>BE49</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48716"></span>BE4C</td>
+<td class="instruction">LD (IX+$02),$01</td>
+<td class="comment-1" rowspan="1">Set sprite to reverse</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48720"></span>BE50</td>
+<td class="instruction">JP $BB69</td>
+<td class="comment-1" rowspan="1">Jump to the next enemy configuration</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47689.html">BA49</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47708">Map</a></td>
+<td class="next">
+Next: <a href="48723.html">BE53</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>
