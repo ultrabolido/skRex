@@ -1,0 +1,12 @@
+; tap2sna.py file for Rex (Side A). Run:
+;
+;   $ tap2sna.py @RexSideA.t2s
+;
+; to create a Z80 snapshot.
+
+https://www.worldofspectrum.org/pub/sinclair/games/r/RexSideA.tap.zip
+RexSideA.z80
+--ram load=4,$4000
+--ram load=6,$6018
+--ram poke=$6018-$60d7,0
+--start 38010

@@ -1,0 +1,1 @@
+skool2ctl.py -h ..\sources\RexSideA.skool > ..\rsc\RexSideA.ctl

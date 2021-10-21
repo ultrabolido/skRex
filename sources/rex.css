@@ -1,0 +1,21 @@
+th {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.125em 0.5em;
+    height: 20px;
+    /* acts as min-height */
+  }
+  td {
+    text-align: left;
+    vertical-align: baseline;
+    padding: 0.125em 0.5em;
+    height: 20px;
+    /* acts as min-height */
+  }
+
+  table.rex {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }

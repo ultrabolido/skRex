@@ -1,0 +1,1 @@
+sna2skool.py -H -c ..\rsc\RexSideA.ctl ..\rsc\RexSideA.z80 > ..\sources\RexSideA.skool
