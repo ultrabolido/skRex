@@ -54,10 +54,7 @@ Next: <a href="24550.html">5FE6</a>
 </tr>
 <tr>
 <td class="" colspan="1" rowspan="1">0x04 - 0x05</td>
-<td class="" colspan="1" rowspan="1">Address pointer to graphic data for static (non-animated) sprites or y-offset address pointer for FOOT MAN jumping</td>
-</tr>
-<tr>
-<td class="" colspan="1" rowspan="1">0x06</td>
+<td class="" colspan="1" rowspan="1">Address pointer to graphic data for static (non-animated) sprites - y-offset address pointer for FOOT MAN jumping - x-delta and y-delta for MINE and BLOB} { 0x06</td>
 <td class="" colspan="1" rowspan="1">FOOT MAN Falling speed? $00 Not falling  - $02 - $04</td>
 </tr>
 <tr>
@@ -92,11 +89,11 @@ Next: <a href="24550.html">5FE6</a>
 </tr>
 <tr>
 <td class="" colspan="1" rowspan="1">0x0E</td>
-<td class="" colspan="1" rowspan="1">Number of columns of the sprite (in bytes)</td>
+<td class="" colspan="1" rowspan="1">Width of the sprite (in bytes)</td>
 </tr>
 <tr>
 <td class="" colspan="1" rowspan="1">0x0F</td>
-<td class="" colspan="1" rowspan="1">Number of rows of the sprite (in pixels)</td>
+<td class="" colspan="1" rowspan="1">Height of the sprite (in pixels)</td>
 </tr>
 <tr>
 <td class="" colspan="1" rowspan="1">0x10</td>
@@ -128,7 +125,7 @@ Next: <a href="24550.html">5FE6</a>
 <td class="" colspan="1" rowspan="1">0x0E-0x0F (BLOB/MINE) State change counter</td>
 </tr>
 <tr>
-<td class="" colspan="1" rowspan="1">0xF9 (BUBBLE) Bubble duration counter</td>
+<td class="" colspan="1" rowspan="1">0xFE (BUBBLE) Bubble duration counter</td>
 </tr>
 <tr>
 <td class="" colspan="1" rowspan="9">0x12</td>
@@ -156,11 +153,11 @@ Next: <a href="24550.html">5FE6</a>
 <td class="" colspan="1" rowspan="1">0x0E (MINE) - Mine state $00 Continue with same x/y-delta $01 Change x/y-delta to chase Rex</td>
 </tr>
 <tr>
-<td class="" colspan="1" rowspan="1">0xF9 (BUBBLE) - MSB of address graphic data</td>
+<td class="" colspan="1" rowspan="1">0xFE (BUBBLE) - MSB of address graphic data</td>
 </tr>
 <tr>
 <td class="" colspan="1" rowspan="2">0x13</td>
-<td class="" colspan="1" rowspan="1">0xF9 (BUBBLE) LSB of address graphic data</td>
+<td class="" colspan="1" rowspan="1">0xFE (BUBBLE) LSB of address graphic data</td>
 </tr>
 <tr>
 <td class="" colspan="1" rowspan="1">0x10 (BOSS) Boss status $00 Good health $01 Wounded $02 Escape pod</td>
@@ -200,7 +197,7 @@ Next: <a href="24550.html">5FE6</a>
 </tr>
 </table>
 <footer>
-<div class="release">The complete Rex (Side A) RAM disassembly 20210825</div>
+<div class="release">The complete Rex (Side A) RAM disassembly 20211106</div>
 <div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
 </footer>
