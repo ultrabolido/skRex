@@ -1,1 +1,1 @@
-skool2html.py -d .\build\html -o .\sources\RexSideA.skool -T dark
+skool2html.py -d .\build\html -o .\sources\%1.skool -T dark

@@ -1,1 +1,1 @@
-skool2ctl.py -h ..\sources\RexSideA.skool > ..\rsc\RexSideA.ctl
+skool2ctl.py -h ..\sources\%1.skool > ..\rsc\%1.ctl
