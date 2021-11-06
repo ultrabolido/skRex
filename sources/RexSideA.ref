@@ -6,7 +6,7 @@ Game=Rex (Side A)
 Logo=#LOGO
 StyleSheet=skoolkit.css;rex.css
 Copyright=&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.
-Release=The complete Rex (Side A) RAM disassembly 20210825
+Release=The complete Rex (Side A) RAM disassembly 20211106
 
 [Titles]
 ScreenBuffers=Screen buffers

@@ -291,7 +291,7 @@ g$5E4E DEFS $18
 ; { 0x03 | $00 FOOT MAN not jumping - $01 FOOT MAN jumping ; For Enemy type $FF
 ; (EXPLOSION) debris expansion counter }
 ; { 0x04 - 0x05 | Address pointer to graphic data for static (non-animated)
-; sprites or y-offset address pointer for FOOT MAN jumping }
+; sprites - y-offset address pointer for FOOT MAN jumping - x-delta and y-delta for MINE and BLOB}
 ; { 0x06 | FOOT MAN Falling speed? $00 Not falling  - $02 - $04  }
 ; { 0x07 | $00 Not used }
 ; { 0x08 | $00 Not used }
@@ -305,8 +305,8 @@ g$5E4E DEFS $18
 ; { 0x0A - 0x0B | Address pointer to animation offset table }
 ; { 0x0C | Enemy status $00 dead / $01 alive }
 ; { 0x0D | Explosion counter (decrement)) }
-; { 0x0E | Number of columns of the sprite (in bytes) }
-; { 0x0F | Number of rows of the sprite (in pixels) }
+; { 0x0E | Width of the sprite (in bytes) }
+; { 0x0F | Height of the sprite (in pixels) }
 ; { 0x10 | Enemy speed velocity ($00 stopped). For Bubble: bubble y-position
 ; counter offset }
 ; { =r9 0x11 | Enemy type: }
@@ -320,7 +320,7 @@ g$5E4E DEFS $18
 ; { 0x09 (SWING GUN) - Gun orientation if fixed (0 - left, 1 - left bottom, 2 -
 ; bottom, 3 - right bottom, 4 - right) }
 ; { 0x0E-0x0F (BLOB/MINE) State change counter }
-; { 0xF9 (BUBBLE) Bubble duration counter }
+; { 0xFE (BUBBLE) Bubble duration counter }
 ; { =r9 0x12 | Enemy type: }
 ; { 0x00 (FOOTMAN): $00 walking - $01 crouched - $02 stand-by }
 ; { 0x08 (SCANNER): state change counter }
@@ -330,8 +330,8 @@ g$5E4E DEFS $18
 ; { 0x09 (SWING GUN) - $00 mobile - $01 fixed }
 ; { 0x0E (MINE) - Mine state $00 Continue with same x/y-delta $01 Change
 ; x/y-delta to chase Rex }
-; { 0xF9 (BUBBLE) - MSB of address graphic data }
-; { =r2 0x13 | 0xF9 (BUBBLE) LSB of address graphic data }
+; { 0xFE (BUBBLE) - MSB of address graphic data }
+; { =r2 0x13 | 0xFE (BUBBLE) LSB of address graphic data }
 ; { 0x10 (BOSS) Boss status $00 Good health $01 Wounded $02 Escape pod }
 ; { 0x14 | Enemy health }
 ; { 0x15 | Energy bubble $01 big / $00 small / $FF no bubble }
@@ -4555,7 +4555,7 @@ g$A0AB DEFS $02
 ;
 ; Is used to configure the routines at #R$A46A to check for key presses of the
 ; defined keys
-g$A0AD DEFB $00
+g$A0AD DEFS $01
 
 ; Input device type
 ;
@@ -4629,7 +4629,7 @@ g$A0C2 DEFS $01
 ; Loop counter for run the displayed room on attract-mode
 ;
 ; Value $C8 on init. Equals to 200 loops to run.
-g$A0C3 DEFB $00
+g$A0C3 DEFS $01
 
 ; Update timer bar in HUD
 ;
@@ -6995,13 +6995,13 @@ c$B57E LD A,(IX+$00)   ; {Set #REGa to the x-position for the laser
 ; Draw projectiles
 ;
 ; Draw Enemy projectiles. Used by the routines at #R$947A and #R$A915.
-c$B645 LD IX,$5D22     ; Set #REGix to the base address for enemy projectile
+c$B645 LD IX,$5D22     ; Set #REGix to the base address for enemy projectiles
                        ; configuration
  $B649 LD B,$14        ; Set #REGb to the max number of enemy projectiles on
                        ; screen
  $B64B JP $B654        ; Jump forward to read projectile data and draw
 ; Draw Rex projectiles. Used by the routine at #R$947A.
-*$B64E LD IX,$5B60     ; Set #REGix to the base addres for enemy projectile
+*$B64E LD IX,$5B60     ; Set #REGix to the base address for Rex projectiles
                        ; configuration
  $B652 LD B,$1E        ; Set #REGb to the max number of Rex projectiles
 ; Read configuration data and draw projectiles
@@ -7948,10 +7948,10 @@ c$BA5C LD IX,$5E66     ; Set #REGix to the base address for enemy configuration
  $BE18 LD HL,$87B2     ; Set #REGhl to graphic data for small bubble
  $BE1B LD (IX+$12),L   ; {Set graphic data for the bubble
  $BE1E LD (IX+$13),H   ; }
- $BE21 LD (IX+$11),$8C ; {Set bubble counter to $8C {Set graphic data for the
- $BE25 LD (IX+$04),L   ; bubble } Jump to the next enemy configuration
- $BE28 LD (IX+$05),H   ;
- $BE2B JP $BB69        ; }
+ $BE21 LD (IX+$11),$8C ; Set bubble counter to $8C 
+ $BE25 LD (IX+$04),L   ; {Set graphic data for the bubble
+ $BE28 LD (IX+$05),H   ; }
+ $BE2B JP $BB69        ; Jump to the next enemy configuration
 ; configure no bubble
 *$BE2E LD (IX+$0C),$00 ; Set object live/visibility to dead/not visible
  $BE32 JP $BB69        ; Jump to the next enemy configuration
@@ -10679,9 +10679,9 @@ c$D215 LD A,($A055)    ; {Return if Rex is dead
  $D273 LD A,$08        ; {Configure opcode ADD A at $D30F and $D320 to add $08
  $D275 LD ($D310),A    ;
  $D278 LD ($D321),A    ; }
-*$D27B LD A,($A060)    ;
+*$D27B LD A,($A060)    ; {Jump forward if Rex is teleporting
  $D27E OR A            ;
- $D27F JP NZ,$D2F6     ;
+ $D27F JP NZ,$D2F6     ; }
  $D282 LD HL,$A0B7     ; Set #REGhl the y-position of Rex
  $D285 LD A,(IX+$01)   ; {Check if y-position of enemy is in the range of
  $D288 SUB $10         ; collision with Rex and jump forward if not
@@ -11850,10 +11850,10 @@ c$DD54 CALL $DB96    ; Hidden the enemy windows of the title screen (if any)
  $DD97 CALL $DEFC    ; Draw the grahics data of character into display file
  $DD9A CALL $A4B5    ; Configure check UP key pressed routine
  $DD9D LD IX,$DFE2   ; Set #REGix to the address of the text definition data
-                     ; for higlighted DOWN text
+                     ; for higlighted UP text
  $DDA1 LD B,$01      ; Set #REGb to the number of lines
  $DDA3 PUSH IY       ; Save #REGiy
- $DDA5 CALL $A2DF    ; Draws the line of higlighted text DOWN
+ $DDA5 CALL $A2DF    ; Draws the line of higlighted text UP
  $DDA8 POP IY        ; Restore #REGiy
 ; Handles the DEFINE DOWN key
  $DDAA CALL $DBAE    ; Check for DOWN key pressed in the DEFINE keys windows
@@ -11921,19 +11921,19 @@ c$DD54 CALL $DB96    ; Hidden the enemy windows of the title screen (if any)
 *$DE20 CALL $DB96    ; Hide the current visible enemy animation windows
  $DE23 LD HL,$001F   ; {Set #R$A0AB to the port to read the inputs from
  $DE26 LD ($A0AB),HL ; Kempston joystick}
- $DE29 LD A,$67      ; {Set #R$A0AB to the BIT opcode corresponent to the FIRE
+ $DE29 LD A,$67      ; {Set #R$A0AD to the BIT opcode corresponent to the FIRE
  $DE2B LD ($A0AD),A  ; button}
  $DE2E CALL $A46A    ; Configure check FIRE button pressed routine
- $DE31 LD A,$5F      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DE31 LD A,$5F      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DE33 LD ($A0AD),A  ; joystick UP}
  $DE36 CALL $A4B5    ; Configure check joystick UP routine
- $DE39 LD A,$57      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DE39 LD A,$57      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DE3B LD ($A0AD),A  ; joystick DOWN}
  $DE3E CALL $A4CE    ; Configure check joystick DOWN routine
- $DE41 LD A,$47      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DE41 LD A,$47      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DE43 LD ($A0AD),A  ; joystick RIGHT}
  $DE46 CALL $A49C    ; Configure check joystick RIGHT routine
- $DE49 LD A,$4F      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DE49 LD A,$4F      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DE4B LD ($A0AD),A  ; joystick LEFT}
  $DE4E CALL $A483    ; Configure check joystick LEFT routine
  $DE51 LD A,$FF      ; {Set Kempston as input device type at #R$A0AE
@@ -11946,19 +11946,19 @@ c$DD54 CALL $DB96    ; Hidden the enemy windows of the title screen (if any)
 *$DE5D CALL $DB96    ; Hide the current visible enemy animation windows
  $DE60 LD HL,$EFFE   ; {Set #R$A0AB to the port to read the inputs from
  $DE63 LD ($A0AB),HL ; Sinclair joystick}
- $DE66 LD A,$47      ; {Set #R$A0AB to the BIT opcode corresponent to the FIRE
+ $DE66 LD A,$47      ; {Set #R$A0AD to the BIT opcode corresponent to the FIRE
  $DE68 LD ($A0AD),A  ; button}
  $DE6B CALL $A46A    ; Configure check FIRE button pressed routine
- $DE6E LD A,$4F      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DE6E LD A,$4F      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DE70 LD ($A0AD),A  ; joystick UP}
  $DE73 CALL $A4B5    ; Configure check joystick UP routine
- $DE76 LD A,$57      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DE76 LD A,$57      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DE78 LD ($A0AD),A  ; joystick DOWN}
  $DE7B CALL $A4CE    ; Configure check joystick DOWN routine
- $DE7E LD A,$5F      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DE7E LD A,$5F      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DE80 LD ($A0AD),A  ; joystick RIGHT}
  $DE83 CALL $A49C    ; Configure check joystick RIGHT routine
- $DE86 LD A,$67      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DE86 LD A,$67      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DE88 LD ($A0AD),A  ; joystick LEFT}
  $DE8B CALL $A483    ; Configure check joystick LEFT routine
  $DE8E LD IX,$DF45   ; Points #REGix to the text definition data for CONFIRM
@@ -11972,16 +11972,16 @@ c$DD54 CALL $DB96    ; Hidden the enemy windows of the title screen (if any)
 *$DE99 CALL $DB96    ; Hide the current visible enemy animation windows
  $DE9C LD HL,$EFFE   ; {Set #R$A0AB to the port to read the inputs FIRE, UP,
  $DE9F LD ($A0AB),HL ; DOWN and RIGHT from Sinclair joystick}
- $DEA2 LD A,$47      ; {Set #R$A0AB to the BIT opcode corresponent to the FIRE
+ $DEA2 LD A,$47      ; {Set #R$A0AD to the BIT opcode corresponent to the FIRE
  $DEA4 LD ($A0AD),A  ; button}
  $DEA7 CALL $A46A    ; Configure check FIRE button pressed routine
- $DEAA LD A,$57      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DEAA LD A,$57      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DEAC LD ($A0AD),A  ; joystick RIGHT}
  $DEAF CALL $A49C    ; Configure check joystick RIGHT routine
- $DEB2 LD A,$5F      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DEB2 LD A,$5F      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DEB4 LD ($A0AD),A  ; joystick UP}
  $DEB7 CALL $A4B5    ; Configure check joystick UP routine
- $DEBA LD A,$67      ; {Set #R$A0AB to the BIT opcode corresponent to the
+ $DEBA LD A,$67      ; {Set #R$A0AD to the BIT opcode corresponent to the
  $DEBC LD ($A0AD),A  ; joystick DOWN}
  $DEBF CALL $A4CE    ; Configure check joystick DOWN routine
  $DEC2 LD HL,$F7FE   ; {Set #R$A0AB to the port to read the input LEFT from
@@ -11999,7 +11999,7 @@ c$DD54 CALL $DB96    ; Hidden the enemy windows of the title screen (if any)
  $DEDC BIT 4,A       ; }
  $DEDE RET Z         ; Return if pressed. Jump to the start routine to init the
                      ; game
- $DEDF LD BC,$7FFE   ; Set #REGbc to port $DFFE for read keys SPACE-SYM-M-N-B
+ $DEDF LD BC,$7FFE   ; Set #REGbc to port $7FFE for read keys SPACE-SYM-M-N-B
  $DEE2 IN A,(C)      ; {Check if key N is pressed
  $DEE4 BIT 3,A       ; }
  $DEE6 JP Z,$DEEC    ; Jump forward if pressed
