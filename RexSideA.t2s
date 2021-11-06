@@ -9,4 +9,5 @@ RexSideA.z80
 --ram load=4,$4000
 --ram load=6,$6018
 --ram poke=$6018-$60d7,0
+--reg sp=$6000
 --start 38010
