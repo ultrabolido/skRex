@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at CDD2</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52664.html">CDB8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52690">Map</a></td>
+<td class="next">
+Next: <a href="52725.html">CDF5</a>
+</td>
+</tr>
+</table>
+<div class="description">CDD2: Handle Rex collision detection moving left</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="52619.html">CD8B</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52690"></span>CDD2</td>
+<td class="instruction">LD HL,($A1B2)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> the address into tile type buffer in front-up of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52693"></span>CDD5</td>
+<td class="instruction">LD DE,$0020</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52696"></span>CDD8</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52697"></span>CDD9</td>
+<td class="instruction">CALL <a href="52725.html">$CDF5</a></td>
+<td class="comment-1" rowspan="2">Return if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52700"></span>CDDC</td>
+<td class="instruction">JP Z,$CDEC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52703"></span>CDDF</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> the address into tile type buffer in front-bottom of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52706"></span>CDE2</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52707"></span>CDE3</td>
+<td class="instruction">CALL <a href="52725.html">$CDF5</a></td>
+<td class="comment-1" rowspan="2">Jump to check tile of death if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52710"></span>CDE6</td>
+<td class="instruction">JP Z,$CDEC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52713"></span>CDE9</td>
+<td class="instruction">JP <a href="52629.html">$CD95</a></td>
+<td class="comment-1" rowspan="1">Move Rex to the left</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52716"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="52664.html">CDB8</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52716"></span>CDEC</td>
+<td class="instruction">LD A,($A25D)</td>
+<td class="comment-1" rowspan="3">Jump to kill Rex if collides with tile of death</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52719"></span>CDEF</td>
+<td class="instruction">CP $03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52721"></span>CDF1</td>
+<td class="instruction">CALL Z,<a href="40133.html">$9CC5</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52724"></span>CDF4</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52664.html">CDB8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52690">Map</a></td>
+<td class="next">
+Next: <a href="52725.html">CDF5</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at B530</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46361.html">B519</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46384">Map</a></td>
+<td class="next">
+Next: <a href="46412.html">B54C</a>
+</td>
+</tr>
+</table>
+<div class="description">B530: Computes offset into the room graphic data based on projectile y-delta</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="46236.html">B49C</a>, <a href="46361.html">B519</a> and <a href="49473.html#49499">C15B</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Projectile y-delta</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46384"></span>B530</td>
+<td class="instruction">LD (IY+$05),A</td>
+<td class="comment-1" rowspan="1">Set y-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46387"></span>B533</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="10">Set offset into <span class="register">HL</span> based on y-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46388"></span>B534</td>
+<td class="instruction">LD L,E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46389"></span>B535</td>
+<td class="instruction">RL E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46391"></span>B537</td>
+<td class="instruction">SBC A,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46392"></span>B538</td>
+<td class="instruction">LD H,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46393"></span>B539</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46394"></span>B53A</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46395"></span>B53B</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46396"></span>B53C</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46397"></span>B53D</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46398"></span>B53E</td>
+<td class="instruction">LD E,(IY+$07)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">DE</span> to the base offset $FFFF left $0001 right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46401"></span>B541</td>
+<td class="instruction">LD D,(IY+$08)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46404"></span>B544</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Adds base offset to <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46405"></span>B545</td>
+<td class="instruction">LD (IY+$07),L</td>
+<td class="comment-1" rowspan="2">Set computed offset into enemy configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46408"></span>B548</td>
+<td class="instruction">LD (IY+$08),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46411"></span>B54B</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46361.html">B519</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46384">Map</a></td>
+<td class="next">
+Next: <a href="46412.html">B54C</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

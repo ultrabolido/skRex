@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Data at AFC2</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-b">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Data</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44930.html">AF82</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44994">Map</a></td>
+<td class="next">
+Next: <a href="45479.html">B1A7</a>
+</td>
+</tr>
+</table>
+<div class="description">AFC2: Enemy configuration for every room (26 rooms)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Every room spans 3 + 3*n + 1 ($FF) byte. The first 3 bytes defines the mobile enemies. The next block of 3 bytes repeats for every static enemy in the room. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Content</th>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="5">$00</td>
+<td class="" colspan="1" rowspan="1">Data for the mobile enemy</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">Bit 7: the enemy enters the room from the top</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">Bit 6: the enemy enters the room from the right</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">Bit 5: the enemy enters the room from the left</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">Bits 4-0: max number of enemies on room</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$01</td>
+<td class="" colspan="1" rowspan="1">Enemy enter counter</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="2">$02</td>
+<td class="" colspan="1" rowspan="1">Bits 7: if set, FOOT MAN enters randomly</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">Bits 6-0: type of enemy who enters room</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="3">$03</td>
+<td class="" colspan="1" rowspan="1">Bit 7: reverse sprite if set</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">Bit 6-0: type of static enemy</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">If the value of this byte is $FF there is no more static enemies on this room</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$04</td>
+<td class="" colspan="1" rowspan="1">Bits 7-3: horizontal position of sprite in tiles(bytes)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$05</td>
+<td class="" colspan="1" rowspan="1">Bits 3-0: vertical position of sprote in tiles(bytes)</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="44994"></span>AFC2</td>
+<td class="instruction">DEFB $4A,$05,$00,$05,$E8,$11,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45001"></span>AFC9</td>
+<td class="instruction">DEFB $47,$04,$00,$02,$20,$04,$02,$68,$04,$02,$E0,$04,$04,$88,$0A,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45017"></span>AFD9</td>
+<td class="instruction">DEFB $09,$06,$00,$09,$38,$08,$04,$A0,$05,$04,$A0,$07,$04,$A0,$09,$04,$A0,$0B,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45036"></span>AFEC</td>
+<td class="instruction">DEFB $09,$03,$00,$09,$20,$04,$02,$B0,$04,$04,$10,$05,$04,$10,$10,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45052"></span>AFFC</td>
+<td class="instruction">DEFB $0A,$05,$8E,$05,$40,$12,$09,$68,$04,$05,$70,$0D,$03,$28,$0A,$02,$20,$0D,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45071"></span>B00F</td>
+<td class="instruction">DEFB $09,$04,$0E,$09,$20,$04,$02,$B0,$04,$02,$B0,$04,$02,$B0,$04,$02,$B0,$04,$04,$78,$04,$04,$60,$04,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45096"></span>B028</td>
+<td class="instruction">DEFB $0A,$03,$0E,$05,$58,$0A,$04,$28,$05,$03,$A0,$0B,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45109"></span>B035</td>
+<td class="instruction">DEFB $09,$01,$0E,$04,$60,$0A,$04,$78,$05,$04,$A8,$0C,$04,$C0,$07,$03,$40,$0A,$03,$50,$07,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45131"></span>B04B</td>
+<td class="instruction">DEFB $0A,$04,$00,$01,$28,$0A,$01,$70,$0D,$09,$50,$04,$09,$08,$04,$06,$40,$07,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45150"></span>B05E</td>
+<td class="instruction">DEFB $0A,$03,$00,$09,$98,$04,$01,$68,$0D,$06,$68,$09,$01,$50,$06,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45166"></span>B06E</td>
+<td class="instruction">DEFB $0A,$05,$8E,$09,$68,$04,$09,$98,$04,$09,$C8,$04,$05,$C8,$0A,$05,$B0,$0A,$05,$98,$0A,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45188"></span>B084</td>
+<td class="instruction">DEFB $0A,$01,$00,$03,$A0,$0B,$03,$70,$0A,$04,$28,$0A,$04,$40,$05,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45204"></span>B094</td>
+<td class="instruction">DEFB $0A,$02,$00,$05,$28,$11,$09,$40,$08,$01,$60,$04,$01,$48,$0C,$05,$88,$04,$02,$88,$07,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45226"></span>B0AA</td>
+<td class="instruction">DEFB $0A,$02,$0E,$05,$50,$13,$05,$98,$13,$02,$40,$07,$02,$28,$0D,$01,$78,$03,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45245"></span>B0BD</td>
+<td class="instruction">DEFB $0B,$01,$00,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45249"></span>B0C1</td>
+<td class="instruction">DEFB $0A,$03,$0E,$02,$38,$09,$03,$28,$04,$04,$88,$02,$04,$80,$05,$04,$88,$08,$04,$80,$0B,$04,$88,$0E,$04,$80,$11,$04,$88,$14,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45280"></span>B0E0</td>
+<td class="instruction">DEFB $07,$02,$8E,$02,$40,$0A,$04,$B8,$0D,$04,$A0,$0A,$04,$40,$04,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45296"></span>B0F0</td>
+<td class="instruction">DEFB $0C,$01,$0E,$02,$A0,$09,$02,$A0,$09,$02,$A0,$09,$04,$C0,$09,$04,$C0,$0B,$04,$C0,$0D,$04,$C0,$0F,$04,$28,$0A,$86,$98,$04,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45327"></span>B10F</td>
+<td class="instruction">DEFB $0C,$03,$0E,$09,$50,$03,$05,$30,$0F,$05,$40,$0F,$03,$A8,$0D,$06,$40,$07,$86,$80,$0F,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45349"></span>B125</td>
+<td class="instruction">DEFB $0D,$01,$00,$02,$A0,$0C,$02,$58,$09,$04,$28,$0A,$06,$40,$0D,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45365"></span>B135</td>
+<td class="instruction">DEFB $0A,$02,$8E,$04,$80,$0E,$86,$C8,$06,$86,$98,$07,$86,$B0,$0A,$01,$50,$07,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45384"></span>B148</td>
+<td class="instruction">DEFB $08,$02,$00,$01,$B0,$06,$03,$58,$06,$05,$A0,$0D,$05,$58,$0D,$04,$D0,$05,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45403"></span>B15B</td>
+<td class="instruction">DEFB $0A,$04,$00,$02,$A0,$06,$02,$90,$10,$09,$58,$06,$86,$80,$0D,$86,$98,$0A,$81,$B8,$07,$01,$80,$07,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45428"></span>B174</td>
+<td class="instruction">DEFB $0E,$03,$00,$03,$B8,$04,$03,$B8,$07,$03,$B8,$0A,$01,$A0,$0D,$05,$58,$0A,$04,$A0,$09,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45450"></span>B18A</td>
+<td class="instruction">DEFB $0A,$03,$0E,$05,$A0,$09,$05,$B0,$09,$05,$C0,$09,$05,$D0,$09,$01,$50,$12,$01,$78,$12,$09,$40,$0D,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45475"></span>B1A3</td>
+<td class="instruction">DEFB $0F,$FF,$00,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="44930.html">AF82</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#44994">Map</a></td>
+<td class="next">
+Next: <a href="45479.html">B1A7</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

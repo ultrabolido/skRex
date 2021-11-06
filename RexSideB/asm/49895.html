@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C2E7</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49887.html">C2DF</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49895">Map</a></td>
+<td class="next">
+Next: <a href="49930.html">C30A</a>
+</td>
+</tr>
+</table>
+<div class="description">C2E7: Handle enemy lateral movement (1/2)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="48200.html">BC48</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49895"></span>C2E7</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49898"></span>C2EA</td>
+<td class="instruction">CP $FE</td>
+<td class="comment-1" rowspan="2">Return if bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49900"></span>C2EC</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49901"></span>C2ED</td>
+<td class="instruction">CP $FD</td>
+<td class="comment-1" rowspan="2">Return if smartbomb</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49903"></span>C2EF</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49904"></span>C2F0</td>
+<td class="instruction">CP $FC</td>
+<td class="comment-1" rowspan="2">Return if question</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49906"></span>C2F2</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49907"></span>C2F3</td>
+<td class="instruction">AND $7F</td>
+<td class="comment-1" rowspan="4">Jump forward to handle TRIANGLE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49909"></span>C2F5</td>
+<td class="instruction">CP $08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49911"></span>C2F7</td>
+<td class="instruction">CP $0E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49913"></span>C2F9</td>
+<td class="instruction">JP Z,<a href="50113.html">$C3C1</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49916"></span>C2FC</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Does nothing</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49917"></span>C2FD</td>
+<td class="instruction">JP NZ,$C300</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49920"></span>
+<div class="comments">
+<div class="paragraph">
+lateral movement for FOOT MAN and CATERPILLAR
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49920"></span>C300</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="3">Jump to handle right movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49923"></span>C303</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49924"></span>C304</td>
+<td class="instruction">JP Z,<a href="50227.html">$C433</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49927"></span>C307</td>
+<td class="instruction">JP <a href="50227.html#50435">$C503</a></td>
+<td class="comment-1" rowspan="1">Jump to handle left movement</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49887.html">C2DF</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49895">Map</a></td>
+<td class="next">
+Next: <a href="49930.html">C30A</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

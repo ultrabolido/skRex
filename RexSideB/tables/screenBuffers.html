@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Screen buffers</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="ScreenBuffers">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Screen buffers</td>
+</tr>
+</table>
+Initially, this memory is used to hold the graphic data and attributes of the title screen, some routines to handle the input selection and data
+for the enemy animation in the title screen. Once the game has started, this memory is overwritten by the screen buffers
+and other related data described in the table below.
+<br/>
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Address</th>
+<th colspan="1" rowspan="1">Length</th>
+<th colspan="1" rowspan="1">Description</th>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">D962</td>
+<td class="" colspan="1" rowspan="1">2109</td>
+<td class="" colspan="1" rowspan="1">Mapping table for tile graphics data and room graphic data buffer. Overwrites the data buffer at DE9F</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">DE9F</td>
+<td class="" colspan="1" rowspan="1">768</td>
+<td class="" colspan="1" rowspan="1">Tile counter buffer - Initialised but never used</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">E19F</td>
+<td class="" colspan="1" rowspan="1">96</td>
+<td class="" colspan="1" rowspan="1">Not used</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">E1FF</td>
+<td class="" colspan="1" rowspan="1">672</td>
+<td class="" colspan="1" rowspan="1">Tile type buffer</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">E49F</td>
+<td class="" colspan="1" rowspan="1">96</td>
+<td class="" colspan="1" rowspan="1">Not used</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">E4FF</td>
+<td class="" colspan="1" rowspan="1">96</td>
+<td class="" colspan="1" rowspan="1">Attribute buffer for HUD</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">E55F</td>
+<td class="" colspan="1" rowspan="1">672</td>
+<td class="" colspan="1" rowspan="1">Attribute buffer for room</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">E7FF</td>
+<td class="" colspan="1" rowspan="1">768</td>
+<td class="" colspan="1" rowspan="1">Graphic data for HUD</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">EAFF</td>
+<td class="" colspan="1" rowspan="1">5376</td>
+<td class="" colspan="1" rowspan="1">Graphics data for room</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

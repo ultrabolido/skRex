@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at B3B8</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45951.html">B37F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46008">Map</a></td>
+<td class="next">
+Next: <a href="46204.html">B47C</a>
+</td>
+</tr>
+</table>
+<div class="description">B3B8: Rex fires weapon</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46008"></span>B3B8</td>
+<td class="instruction">LD A,($A1AB)</td>
+<td class="comment-1" rowspan="3">Return if FIRE key is hold down</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46011"></span>B3BB</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46012"></span>B3BC</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46013"></span>B3BD</td>
+<td class="instruction">LD A,($A1F6)</td>
+<td class="comment-1" rowspan="3">Return if Rex not visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46016"></span>B3C0</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46017"></span>B3C1</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46018"></span>B3C2</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set FIRE key hold down active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46020"></span>B3C4</td>
+<td class="instruction">LD ($A1AB),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46023"></span>B3C7</td>
+<td class="instruction">CALL <a href="46412.html">$B54C</a></td>
+<td class="comment-1" rowspan="1">Configure weapon sound and check for weapon free slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46026"></span>B3CA</td>
+<td class="instruction">LD A,($A1AC)</td>
+<td class="comment-1" rowspan="1">Check Rex weapon type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46029"></span>B3CD</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is basic laser?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46030"></span>B3CE</td>
+<td class="instruction">JP Z,$B3D3</td>
+<td class="comment-1" rowspan="1">Jump forward if so (no energy loss on fire)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46033"></span>B3D1</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="1">Set energy loss quantity to 1</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46035"></span>B3D3</td>
+<td class="instruction">CALL <a href="47722.html">$BA6A</a></td>
+<td class="comment-1" rowspan="1">Handle weapon energy loss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46038"></span>B3D6</td>
+<td class="instruction">LD A,($A1D9)</td>
+<td class="comment-1" rowspan="3">Jump forward if not rapid shot active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46041"></span>B3D9</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46042"></span>B3DA</td>
+<td class="instruction">JP Z,$B3EC</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46045"></span>
+<div class="comments">
+<div class="paragraph">
+rapid shot active
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46045"></span>B3DD</td>
+<td class="instruction">LD A,($A1DA)</td>
+<td class="comment-1" rowspan="3">Decrement rapid shots quantity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46048"></span>B3E0</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46049"></span>B3E1</td>
+<td class="instruction">LD ($A1DA),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46052"></span>B3E4</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump forward if rapid shot not depleted</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46053"></span>B3E5</td>
+<td class="instruction">JP NZ,$B3EC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46056"></span>B3E8</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Rapid shots depleted, inactive rapid shots</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46057"></span>B3E9</td>
+<td class="instruction">LD ($A1D9),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46060"></span>
+<div class="comments">
+<div class="paragraph">
+check type of weapon
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46060"></span>B3EC</td>
+<td class="instruction">LD A,($A1AC)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the type of weapon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46063"></span>B3EF</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="1">is spray?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46065"></span>B3F1</td>
+<td class="instruction">JP Z,<a href="46236.html">$B49C</a></td>
+<td class="comment-1" rowspan="1">Jump to handle spray weapon fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46068"></span>B3F4</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">is laser?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46070"></span>B3F6</td>
+<td class="instruction">JP Z,$B463</td>
+<td class="comment-1" rowspan="1">Jump to handle laser fire</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46073"></span>
+<div class="comments">
+<div class="paragraph">
+create projectile for basic laser, double fire and multiple
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46073"></span>B3F9</td>
+<td class="instruction">CALL <a href="46548.html#46571">$B5EB</a></td>
+<td class="comment-1" rowspan="1">Create a new projectile for basic laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46076"></span>B3FC</td>
+<td class="instruction">LD (IY+$05),$00</td>
+<td class="comment-1" rowspan="1">Set projectile y-delta to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46080"></span>B400</td>
+<td class="instruction">LD A,($A1AC)</td>
+<td class="comment-1" rowspan="1">Check weapon type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46083"></span>B403</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">is double fire?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46085"></span>B405</td>
+<td class="instruction">JP Z,$B452</td>
+<td class="comment-1" rowspan="1">Jump to handle double fire weapon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46088"></span>B408</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="2">Return if weapon type is not multiple</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46090"></span>B40A</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46091"></span>B40B</td>
+<td class="instruction">LD A,($A1F9)</td>
+<td class="comment-1" rowspan="3">Return if Rex is teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46094"></span>B40E</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46095"></span>B40F</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46096"></span>
+<div class="comments">
+<div class="paragraph">
+handle fire for multiple
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46096"></span>B410</td>
+<td class="instruction">LD A,($A1AD)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">B</span> the number of drones based on weapon energy level</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46099"></span>B413</td>
+<td class="instruction">ADD A,$03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46101"></span>B415</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46102"></span>B416</td>
+<td class="instruction">LD HL,$5E4E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the address for the drone configuration data table</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46105"></span>B419</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46106"></span>B41A</td>
+<td class="instruction">CALL <a href="46412.html">$B54C</a></td>
+<td class="comment-1" rowspan="1">Configure weapon sound and check for weapon free slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46109"></span>B41D</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Set <a href="41516.html">A22C</a> the x-position of the drone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46110"></span>B41E</td>
+<td class="instruction">LD ($A22C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46113"></span>B421</td>
+<td class="instruction">LD A,($A254)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46116"></span>B424</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set <a href="41520.html">A230</a> direction of projectile left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46118"></span>B426</td>
+<td class="instruction">LD ($A230),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46121"></span>B429</td>
+<td class="instruction">LD A,($A24F)</td>
+<td class="comment-1" rowspan="5">If x-position of drone is greater than x-position of Rex then set projectile to move right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46124"></span>B42C</td>
+<td class="instruction">CP (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46125"></span>B42D</td>
+<td class="instruction">JP NC,$B434</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46128"></span>B430</td>
+<td class="instruction">XOR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46129"></span>B431</td>
+<td class="instruction">LD ($A230),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46132"></span>B434</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">if x-position of drone is greater than 240 or less than 16 then jump to process the next drone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46133"></span>B435</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46134"></span>B436</td>
+<td class="instruction">CP $F0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46136"></span>B438</td>
+<td class="instruction">JP NC,$B44A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46139"></span>B43B</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Set <a href="41518.html">A22E</a> the y-position of drone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46140"></span>B43C</td>
+<td class="instruction">LD ($A22E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46143"></span>B43F</td>
+<td class="instruction">LD A,$03</td>
+<td class="comment-1" rowspan="2">Set the y-position increment at <a href="41522.html">A232</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46145"></span>B441</td>
+<td class="instruction">LD ($A232),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46148"></span>B444</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the projectile type to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46149"></span>B445</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46150"></span>B446</td>
+<td class="instruction">CALL <a href="46548.html#46599">$B607</a></td>
+<td class="comment-1" rowspan="1">Create a new projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46153"></span>B449</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-2"><span id="46154"></span>B44A</td>
+<td class="instruction">LD DE,$0002</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the next drone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46157"></span>B44D</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46158"></span>B44E</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46159"></span>B44F</td>
+<td class="instruction">DJNZ $B419</td>
+<td class="comment-1" rowspan="1">Jump back and process next drone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46161"></span>B451</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46162"></span>
+<div class="comments">
+<div class="paragraph">
+Handle double fire weapon
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46162"></span>B452</td>
+<td class="instruction">CALL <a href="46412.html">$B54C</a></td>
+<td class="comment-1" rowspan="1">Configure weapon sound and check for weapon free slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46165"></span>B455</td>
+<td class="instruction">LD A,$13</td>
+<td class="comment-1" rowspan="2">Set into <a href="41522.html">A232</a> the increment (19) in y-position for the new projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46167"></span>B457</td>
+<td class="instruction">LD ($A232),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46170"></span>B45A</td>
+<td class="instruction">LD A,($A1AC)</td>
+<td class="comment-1" rowspan="2">Reset weapon projectile subtype</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46173"></span>B45D</td>
+<td class="instruction">RES 7,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46175"></span>B45F</td>
+<td class="instruction">CALL <a href="46548.html#46599">$B607</a></td>
+<td class="comment-1" rowspan="1">Create a new projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46178"></span>B462</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="46179"></span>
+<div class="comments">
+<div class="paragraph">
+Configure laser projectile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46179"></span>B463</td>
+<td class="instruction">CALL <a href="46548.html#46571">$B5EB</a></td>
+<td class="comment-1" rowspan="1">Create a new projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46182"></span>B466</td>
+<td class="instruction">LD (IY+$05),$00</td>
+<td class="comment-1" rowspan="1">Set y-delta to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46186"></span>B46A</td>
+<td class="instruction">LD (IY+$0C),$08</td>
+<td class="comment-1" rowspan="1">Set laser counter to create laser #6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46190"></span>B46E</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="2">Set x-position for laser #6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46193"></span>B471</td>
+<td class="instruction">LD (IY+$0D),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46196"></span>B474</td>
+<td class="instruction">LD A,($A201)</td>
+<td class="comment-1" rowspan="3">Set the laser duration counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46199"></span>B477</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46200"></span>B478</td>
+<td class="instruction">LD (IY+$0E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46203"></span>B47B</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45951.html">B37F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46008">Map</a></td>
+<td class="next">
+Next: <a href="46204.html">B47C</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

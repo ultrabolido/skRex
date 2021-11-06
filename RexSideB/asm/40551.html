@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 9E67</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40509.html">9E3D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40551">Map</a></td>
+<td class="next">
+Next: <a href="40676.html">9EE4</a>
+</td>
+</tr>
+</table>
+<div class="description">9E67: Handle Rex visibility during teleporting</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40551"></span>9E67</td>
+<td class="instruction">LD A,($A1F9)</td>
+<td class="comment-1" rowspan="3">Return if Rex is not teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40554"></span>9E6A</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40555"></span>9E6B</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40556"></span>9E6C</td>
+<td class="instruction">LD A,($A1F6)</td>
+<td class="comment-1" rowspan="3">Return if Rex not visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40559"></span>9E6F</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40560"></span>9E70</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40561"></span>9E71</td>
+<td class="instruction">LD A,($A250)</td>
+<td class="comment-1" rowspan="17">Computes into <span class="register">HL</span> the address pointer into room graphic data for Rex position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40564"></span>9E74</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40565"></span>9E75</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40567"></span>9E77</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40568"></span>9E78</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40569"></span>9E79</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40570"></span>9E7A</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40571"></span>9E7B</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40572"></span>9E7C</td>
+<td class="instruction">LD A,($A24F)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40575"></span>9E7F</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40577"></span>9E81</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40579"></span>9E83</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40581"></span>9E85</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40582"></span>9E86</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40584"></span>9E88</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40585"></span>9E89</td>
+<td class="instruction">LD DE,$E89F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40588"></span>9E8C</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40589"></span>9E8D</td>
+<td class="instruction">LD C,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">C</span> the graphic data to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40591"></span>9E8F</td>
+<td class="instruction">LD A,($A1F7)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> to the number of lines to hide from Rex sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40594"></span>9E92</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40595"></span>9E93</td>
+<td class="instruction">CALL <a href="40847.html">$9F8F</a></td>
+<td class="comment-1" rowspan="1">Hide a portion of Rex to simulate teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40598"></span>9E96</td>
+<td class="instruction">LD DE,$001D</td>
+<td class="comment-1" rowspan="14">Garble randomly the last three lines of the Rex sprite not hidden</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40601"></span>9E99</td>
+<td class="instruction">LD B,$03</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40603"></span>9E9B</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40604"></span>9E9C</td>
+<td class="instruction">LD B,$03</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40606"></span>9E9E</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40607"></span>9E9F</td>
+<td class="instruction">CALL <a href="42269.html">$A51D</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40610"></span>9EA2</td>
+<td class="instruction">AND (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40611"></span>9EA3</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40612"></span>9EA4</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40613"></span>9EA5</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40614"></span>9EA6</td>
+<td class="instruction">DJNZ $9E9E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40616"></span>9EA8</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40617"></span>9EA9</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40618"></span>9EAA</td>
+<td class="instruction">DJNZ $9E9B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40620"></span>9EAC</td>
+<td class="instruction">LD A,($A1FB)</td>
+<td class="comment-1" rowspan="3">Jump forward if teleporting Rex dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40623"></span>9EAF</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40624"></span>9EB0</td>
+<td class="instruction">JP NZ,$9EC4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40627"></span>9EB3</td>
+<td class="instruction">LD A,($A1F7)</td>
+<td class="comment-1" rowspan="3">Decrement number of lines to hide</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40630"></span>9EB6</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40631"></span>9EB7</td>
+<td class="instruction">LD ($A1F7),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40634"></span>9EBA</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return if number of lines is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40635"></span>9EBB</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40636"></span>9EBC</td>
+<td class="instruction">JP $9ED5</td>
+<td class="comment-1" rowspan="1">Jump to finish teleporting</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40639"></span>
+<div class="comments">
+<div class="paragraph">
+Code not reached
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40639"></span>9EBF</td>
+<td class="instruction">LD A,$64</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40641"></span>9EC1</td>
+<td class="instruction">LD ($A1FA),A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40644"></span>
+<div class="comments">
+<div class="paragraph">
+Handle teleporting Rex after dead.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40644"></span>9EC4</td>
+<td class="instruction">LD A,($A1F7)</td>
+<td class="comment-1" rowspan="3">Increment the number of lines to hide</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40647"></span>9EC7</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40648"></span>9EC8</td>
+<td class="instruction">LD ($A1F7),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40651"></span>9ECB</td>
+<td class="instruction">CP $12</td>
+<td class="comment-1" rowspan="2">Return if number of lines is not 18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40653"></span>9ECD</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40654"></span>9ECE</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set Rex invisible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40655"></span>9ECF</td>
+<td class="instruction">LD ($A1F6),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40658"></span>9ED2</td>
+<td class="instruction">JP $9EDE</td>
+<td class="comment-1" rowspan="1">Jump to reset teleporting counter</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40661"></span>
+<div class="comments">
+<div class="paragraph">
+Rex has teleported completely
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40661"></span>9ED5</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Stop teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40662"></span>9ED6</td>
+<td class="instruction">LD ($A1F9),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40665"></span>9ED9</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set Rex visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40667"></span>9EDB</td>
+<td class="instruction">LD ($A1F6),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40670"></span>
+<div class="comments">
+<div class="paragraph">
+Reset teleporting loop counter
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40670"></span>9EDE</td>
+<td class="instruction">LD A,$1E</td>
+<td class="comment-1" rowspan="2">Reset the teleporting loop counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40672"></span>9EE0</td>
+<td class="instruction">LD ($A1FA),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40675"></span>9EE3</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40509.html">9E3D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40551">Map</a></td>
+<td class="next">
+Next: <a href="40676.html">9EE4</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

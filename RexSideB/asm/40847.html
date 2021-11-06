@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 9F8F</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40725.html">9F15</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40847">Map</a></td>
+<td class="next">
+Next: <a href="40859.html">9F9B</a>
+</td>
+</tr>
+</table>
+<div class="description">9F8F: Hide a portion of Rex to simulate teleporting</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="40551.html">9E67</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40847"></span>9F8F</td>
+<td class="instruction">LD DE,$001E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the increment for point to the next line of pixels</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40850"></span>9F92</td>
+<td class="instruction">LD (HL),C</td>
+<td class="comment-1" rowspan="5">Copy the graphic data from <span class="register">C</span> into room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40851"></span>9F93</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40852"></span>9F94</td>
+<td class="instruction">LD (HL),C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40853"></span>9F95</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40854"></span>9F96</td>
+<td class="instruction">LD (HL),C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40855"></span>9F97</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> to the next line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40856"></span>9F98</td>
+<td class="instruction">DJNZ $9F92</td>
+<td class="comment-1" rowspan="1">Jump back until all the lines of Rex are hidden</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40858"></span>9F9A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40725.html">9F15</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40847">Map</a></td>
+<td class="next">
+Next: <a href="40859.html">9F9B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

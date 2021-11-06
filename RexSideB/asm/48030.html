@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at BB9E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47979.html">BB6B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#48030">Map</a></td>
+<td class="next">
+Next: <a href="48106.html">BBEA</a>
+</td>
+</tr>
+</table>
+<div class="description">BB9E: Draw a 3x3 grid attribute color into attribute file if tile is background</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="48151.html">BC17</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">C</td>
+<td class="register-desc">Attribute color</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address into the attribute file</td>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Address into the attribute buffer</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48030"></span>BB9E</td>
+<td class="instruction">CALL $BBA8</td>
+<td class="comment-1" rowspan="1">Draw a row of attribute color to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48033"></span>BBA1</td>
+<td class="instruction">CALL $BBA8</td>
+<td class="comment-1" rowspan="1">Draw a row of attribute color to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48036"></span>BBA4</td>
+<td class="instruction">CALL $BBA8</td>
+<td class="comment-1" rowspan="1">Draw a row of attribute color to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48039"></span>BBA7</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48040"></span>
+<div class="comments">
+<div class="paragraph">
+Draw a row of attribute color into attribute file
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48040"></span>BBA8</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="5">Is attribute byte from attribute buffer a 'background' tile (black background -&gt; $47 or blue background -&gt; $0F)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48041"></span>BBA9</td>
+<td class="instruction">CP $47</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48043"></span>BBAB</td>
+<td class="instruction">JP Z,$BBB3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48046"></span>BBAE</td>
+<td class="instruction">CP $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48048"></span>BBB0</td>
+<td class="instruction">JP NZ,$BBB8</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48051"></span>
+<div class="comments">
+<div class="paragraph">
+is a background tile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48051"></span>BBB3</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">Blend color attribute over background color</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48052"></span>BBB4</td>
+<td class="instruction">AND $38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48054"></span>BBB6</td>
+<td class="instruction">OR C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48055"></span>BBB7</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48056"></span>
+<div class="comments">
+<div class="paragraph">
+next tile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48056"></span>BBB8</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Increment address into attribute file and buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48057"></span>BBB9</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48058"></span>BBBA</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="5">Is attribute byte from attribute buffer a 'background'</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48059"></span>BBBB</td>
+<td class="instruction">CP $47</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48061"></span>BBBD</td>
+<td class="instruction">JP Z,$BBC5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48064"></span>BBC0</td>
+<td class="instruction">CP $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48066"></span>BBC2</td>
+<td class="instruction">JP NZ,$BBCA</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48069"></span>
+<div class="comments">
+<div class="paragraph">
+is background tile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48069"></span>BBC5</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">Blend color attribute over background color</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48070"></span>BBC6</td>
+<td class="instruction">AND $38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48072"></span>BBC8</td>
+<td class="instruction">OR C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48073"></span>BBC9</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48074"></span>
+<div class="comments">
+<div class="paragraph">
+next tile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48074"></span>BBCA</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Increment address into attribute file and buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48075"></span>BBCB</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48076"></span>BBCC</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="5">Is attribute byte from attribute buffer a 'background'</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48077"></span>BBCD</td>
+<td class="instruction">CP $47</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48079"></span>BBCF</td>
+<td class="instruction">JP Z,$BBD7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48082"></span>BBD2</td>
+<td class="instruction">CP $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48084"></span>BBD4</td>
+<td class="instruction">JP NZ,$BBDC</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48087"></span>
+<div class="comments">
+<div class="paragraph">
+is background tile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48087"></span>BBD7</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">Blend color attribute over background color</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48088"></span>BBD8</td>
+<td class="instruction">AND $38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48090"></span>BBDA</td>
+<td class="instruction">OR C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48091"></span>BBDB</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48092"></span>BBDC</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48093"></span>BBDD</td>
+<td class="instruction">LD DE,$001E</td>
+<td class="comment-1" rowspan="8">Point address into attribute file and buffer to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48096"></span>BBE0</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48097"></span>BBE1</td>
+<td class="instruction">POP DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48098"></span>BBE2</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48099"></span>BBE3</td>
+<td class="instruction">LD HL,$001E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48102"></span>BBE6</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48103"></span>BBE7</td>
+<td class="instruction">EX DE,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48104"></span>BBE8</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48105"></span>BBE9</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47979.html">BB6B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#48030">Map</a></td>
+<td class="next">
+Next: <a href="48106.html">BBEA</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

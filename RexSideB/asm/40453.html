@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 9E05</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40296.html">9D68</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40453">Map</a></td>
+<td class="next">
+Next: <a href="40469.html">9E15</a>
+</td>
+</tr>
+</table>
+<div class="description">9E05: Rex visibility active</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="40859.html#41072">A070</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40453"></span>9E05</td>
+<td class="instruction">LD A,($A1F6)</td>
+<td class="comment-1" rowspan="3">Return if Rex visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40456"></span>9E08</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40457"></span>9E09</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40458"></span>9E0A</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set Rex visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40460"></span>9E0C</td>
+<td class="instruction">LD ($A1F6),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40463"></span>9E0F</td>
+<td class="instruction">LD A,$12</td>
+<td class="comment-1" rowspan="2">Set teleporting hide lines counter to 18 (height of Rex)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40465"></span>9E11</td>
+<td class="instruction">LD ($A1F7),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40468"></span>9E14</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40296.html">9D68</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40453">Map</a></td>
+<td class="next">
+Next: <a href="40469.html">9E15</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

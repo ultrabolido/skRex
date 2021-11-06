@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at CF59</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52965.html">CEE5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53081">Map</a></td>
+<td class="next">
+Next: <a href="53173.html">CFB5</a>
+</td>
+</tr>
+</table>
+<div class="description">CF59: Handle enemy projectile collision with Rex</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53081"></span>CF59</td>
+<td class="instruction">LD A,($A1EE)</td>
+<td class="comment-1" rowspan="3">Return if Rex is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53084"></span>CF5C</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53085"></span>CF5D</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53086"></span>CF5E</td>
+<td class="instruction">LD A,($A1F9)</td>
+<td class="comment-1" rowspan="3">Return if Rex is teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53089"></span>CF61</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53090"></span>CF62</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53091"></span>CF63</td>
+<td class="instruction">LD IY,$5D22</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to base address for enemy projectiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53095"></span>CF67</td>
+<td class="instruction">LD B,$14</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of projectiles to check</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53097"></span>CF69</td>
+<td class="instruction">LD A,(IY+$06)</td>
+<td class="comment-1" rowspan="1">check projectile status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53100"></span>CF6C</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">is flying?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53102"></span>CF6E</td>
+<td class="instruction">JP NZ,$CFAB</td>
+<td class="comment-1" rowspan="1">Jump forward and check next projectile if not flying</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53105"></span>CF71</td>
+<td class="instruction">LD A,($A250)</td>
+<td class="comment-1" rowspan="7">Check if projectile y-position is in range of collision based on Rex y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53108"></span>CF74</td>
+<td class="instruction">ADD A,$05</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53110"></span>CF76</td>
+<td class="instruction">CP (IY+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53113"></span>CF79</td>
+<td class="instruction">JP NC,$CFAB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53116"></span>CF7C</td>
+<td class="instruction">ADD A,$11</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53118"></span>CF7E</td>
+<td class="instruction">CP (IY+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53121"></span>CF81</td>
+<td class="instruction">JP C,$CFAB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53124"></span>CF84</td>
+<td class="instruction">LD A,($A24F)</td>
+<td class="comment-1" rowspan="6">Check if projectile x-position is in range of collision based on Rex x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53127"></span>CF87</td>
+<td class="instruction">CP (IY+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53130"></span>CF8A</td>
+<td class="instruction">JP NC,$CFAB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53133"></span>CF8D</td>
+<td class="instruction">ADD A,$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53135"></span>CF8F</td>
+<td class="instruction">CP (IY+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53138"></span>CF92</td>
+<td class="instruction">JP C,$CFAB</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53141"></span>
+<div class="comments">
+<div class="paragraph">
+Impact with Rex
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53141"></span>CF95</td>
+<td class="instruction">LD (IY+$06),$02</td>
+<td class="comment-1" rowspan="1">Set projectile status to impact #1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53145"></span>CF99</td>
+<td class="instruction">LD A,($A1E2)</td>
+<td class="comment-1" rowspan="1">Check if Rex has the shield activated</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53148"></span>CF9C</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump to kill Rex if shield not active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53149"></span>CF9D</td>
+<td class="instruction">JP Z,$CFA8</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53152"></span>
+<div class="comments">
+<div class="paragraph">
+Shield activated
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53152"></span>CFA0</td>
+<td class="instruction">LD L,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">L</span> to the shield loss quantity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53154"></span>CFA2</td>
+<td class="instruction">CALL <a href="39148.html">$98EC</a></td>
+<td class="comment-1" rowspan="1">Handle shield loss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53157"></span>CFA5</td>
+<td class="instruction">JP $CFAB</td>
+<td class="comment-1" rowspan="1">Jump to handle next projectile</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53160"></span>
+<div class="comments">
+<div class="paragraph">
+Shield not activated
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53160"></span>CFA8</td>
+<td class="instruction">CALL <a href="40133.html">$9CC5</a></td>
+<td class="comment-1" rowspan="1">Kill Rex</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53163"></span>CFAB</td>
+<td class="instruction">LD DE,$000F</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IY</span> to the next projectile data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53166"></span>CFAE</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53168"></span>CFB0</td>
+<td class="instruction">DEC B</td>
+<td class="comment-1" rowspan="1">Decrement projectile counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53169"></span>CFB1</td>
+<td class="instruction">JP NZ,$CF69</td>
+<td class="comment-1" rowspan="1">Jump back and check next projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53172"></span>CFB4</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52965.html">CEE5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53081">Map</a></td>
+<td class="next">
+Next: <a href="53173.html">CFB5</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

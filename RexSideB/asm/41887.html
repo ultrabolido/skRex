@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A39F</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41881.html">A399</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41887">Map</a></td>
+<td class="next">
+Next: <a href="41898.html">A3AA</a>
+</td>
+</tr>
+</table>
+<div class="description">A39F: Draw the sprites for the smartbomb icons in HUD (2/2)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41887"></span>A39F</td>
+<td class="instruction">LD HL,$A39B</td>
+<td class="comment-1" rowspan="3">Increment the horizontal position in data buffer to point to the next icon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41890"></span>A3A2</td>
+<td class="instruction">INC (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41891"></span>A3A3</td>
+<td class="instruction">INC (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41892"></span>A3A4</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41893"></span>A3A5</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> to point the addres to the next graphics data offset at <a href="41898.html">A3AA</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41894"></span>A3A6</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41895"></span>A3A7</td>
+<td class="instruction">DJNZ <a href="41859.html#41866">$A38A</a></td>
+<td class="comment-1" rowspan="1">Jump back until all three smartbomb icons has been displayed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41897"></span>A3A9</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41881.html">A399</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41887">Map</a></td>
+<td class="next">
+Next: <a href="41898.html">A3AA</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

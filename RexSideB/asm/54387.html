@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at D473</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54308.html">D424</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54387">Map</a></td>
+<td class="next">
+Next: <a href="54492.html">D4DC</a>
+</td>
+</tr>
+</table>
+<div class="description">D473: Configure note for current channel</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="54308.html">D424</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">address pointer to channel data buffer</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54387"></span>D473</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Return if channel is not active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54390"></span>D476</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54392"></span>D478</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54393"></span>D479</td>
+<td class="instruction">CALL <a href="54492.html">$D4DC</a></td>
+<td class="comment-1" rowspan="1">Send channel volume command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54396"></span>D47C</td>
+<td class="instruction">CALL <a href="54513.html">$D4F1</a></td>
+<td class="comment-1" rowspan="1">Send channel volume command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54399"></span>D47F</td>
+<td class="instruction">LD L,(IX+$02)</td>
+<td class="comment-1" rowspan="4">Set <span class="register">IY</span> to the address pointer for the sound da</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54402"></span>D482</td>
+<td class="instruction">LD H,(IX+$03)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54405"></span>D485</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54406"></span>D486</td>
+<td class="instruction">POP IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54408"></span>D488</td>
+<td class="instruction">DEC (IX+$01)</td>
+<td class="comment-1" rowspan="1">Decrement variation counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54411"></span>D48B</td>
+<td class="instruction">JP Z,$D4AD</td>
+<td class="comment-1" rowspan="1">If counter is 0 jump to configure next note</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54414"></span>D48E</td>
+<td class="instruction">LD E,(IY+$01)</td>
+<td class="comment-1" rowspan="5">Set <span class="register">BC</span> value of pitch and coarse delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54417"></span>D491</td>
+<td class="instruction">LD C,E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54418"></span>D492</td>
+<td class="instruction">RL E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54420"></span>D494</td>
+<td class="instruction">SBC A,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54421"></span>D495</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54422"></span>D496</td>
+<td class="instruction">LD L,(IX+$04)</td>
+<td class="comment-1" rowspan="5">Increment pitch and coarse data for tone/noise</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54425"></span>D499</td>
+<td class="instruction">LD H,(IX+$05)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54428"></span>D49C</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54429"></span>D49D</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54432"></span>D4A0</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54435"></span>D4A3</td>
+<td class="instruction">LD A,(IX+$07)</td>
+<td class="comment-1" rowspan="3">Increment/decrement volume</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54438"></span>D4A6</td>
+<td class="instruction">ADD A,(IY+$02)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54441"></span>D4A9</td>
+<td class="instruction">LD (IX+$07),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54444"></span>D4AC</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54445"></span>
+<div class="comments">
+<div class="paragraph">
+check if there are more tones
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54445"></span>D4AD</td>
+<td class="instruction">DEC (IX+$00)</td>
+<td class="comment-1" rowspan="1">Decrement tones number?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54448"></span>D4B0</td>
+<td class="instruction">JP Z,$D4CB</td>
+<td class="comment-1" rowspan="1">if zero jump to disable channel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54451"></span>D4B3</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="3">Point <span class="register">IY</span> to the next tone data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54453"></span>D4B5</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54455"></span>D4B7</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54457"></span>D4B9</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="4">Update address pointer to tone data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54459"></span>D4BB</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54460"></span>D4BC</td>
+<td class="instruction">LD (IX+$02),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54463"></span>D4BF</td>
+<td class="instruction">LD (IX+$03),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54466"></span>D4C2</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="2">Set new variation counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54469"></span>D4C5</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54472"></span>D4C8</td>
+<td class="instruction">JP $D473</td>
+<td class="comment-1" rowspan="1">Configure next tone</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54475"></span>
+<div class="comments">
+<div class="paragraph">
+disable channel
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54475"></span>D4CB</td>
+<td class="instruction">LD A,($D5EF)</td>
+<td class="comment-1" rowspan="4">Set volume to zero for current channel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54478"></span>D4CE</td>
+<td class="instruction">ADD A,$07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54480"></span>D4D0</td>
+<td class="instruction">LD D,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54481"></span>D4D1</td>
+<td class="instruction">LD E,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54483"></span>D4D3</td>
+<td class="instruction">CALL <a href="54513.html">$D4F1</a></td>
+<td class="comment-1" rowspan="1">Send volume command</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54486"></span>D4D6</td>
+<td class="instruction">LD A,$FF</td>
+<td class="comment-1" rowspan="2">Disable current channel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54488"></span>D4D8</td>
+<td class="instruction">LD (IX+$00),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54491"></span>D4DB</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54308.html">D424</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54387">Map</a></td>
+<td class="next">
+Next: <a href="54492.html">D4DC</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at CE74</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52851.html">CE73</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52852">Map</a></td>
+<td class="next">
+Next: <a href="52965.html">CEE5</a>
+</td>
+</tr>
+</table>
+<div class="description">CE74: Handle Rex jumping</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52852"></span>CE74</td>
+<td class="instruction">LD A,($A256)</td>
+<td class="comment-1" rowspan="3">Return if Rex not jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52855"></span>CE77</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52856"></span>CE78</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52857"></span>CE79</td>
+<td class="instruction">LD HL,($A1B2)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> the address into tile type buffer pointing over Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52860"></span>CE7C</td>
+<td class="instruction">LD DE,$0021</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52863"></span>CE7F</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52864"></span>CE80</td>
+<td class="instruction">CALL <a href="52725.html">$CDF5</a></td>
+<td class="comment-1" rowspan="1">Check if tile type is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52867"></span>CE83</td>
+<td class="instruction">JP Z,$CEAA</td>
+<td class="comment-1" rowspan="1">Jump to start falling if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52870"></span>CE86</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52871"></span>CE87</td>
+<td class="instruction">CALL <a href="52725.html">$CDF5</a></td>
+<td class="comment-1" rowspan="1">Check if tile type is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52874"></span>CE8A</td>
+<td class="instruction">JP Z,$CEAA</td>
+<td class="comment-1" rowspan="1">Jump to start falling if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52877"></span>CE8D</td>
+<td class="instruction">LD A,($A250)</td>
+<td class="comment-1" rowspan="4">Substract to y-position of Rex the corresponding y-offset pointed by <a href="41561.html">A259</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52880"></span>CE90</td>
+<td class="instruction">LD HL,($A259)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52883"></span>CE93</td>
+<td class="instruction">LD E,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52884"></span>CE94</td>
+<td class="instruction">SUB E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52885"></span>CE95</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">If y-position of Rex is less than 8 then jump forward to stop jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52887"></span>CE97</td>
+<td class="instruction">JP C,$CEC7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52890"></span>CE9A</td>
+<td class="instruction">LD ($A250),A</td>
+<td class="comment-1" rowspan="1">Set the new y-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52893"></span>CE9D</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Increment address pointer into the y-offset table for jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52894"></span>CE9E</td>
+<td class="instruction">LD ($A259),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52897"></span>CEA1</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Return if not arrived to the end of the y-offset table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52898"></span>CEA2</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52900"></span>CEA4</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52901"></span>CEA5</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set Rex not jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52902"></span>CEA6</td>
+<td class="instruction">LD ($A256),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52905"></span>CEA9</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52906"></span>
+<div class="comments">
+<div class="paragraph">
+Rex start falling after wall collision
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52906"></span>CEAA</td>
+<td class="instruction">LD A,($A25D)</td>
+<td class="comment-1" rowspan="3">If Rex collides with tile type $03 (tile of death) then jump to kill Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52909"></span>CEAD</td>
+<td class="instruction">CP $03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52911"></span>CEAF</td>
+<td class="instruction">CALL Z,<a href="40133.html">$9CC5</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52914"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="41208.html">A0F8</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52914"></span>CEB2</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="2">Set falling speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52916"></span>CEB4</td>
+<td class="instruction">LD ($A255),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52919"></span>CEB7</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set not jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52920"></span>CEB8</td>
+<td class="instruction">LD ($A256),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52923"></span>CEBB</td>
+<td class="instruction">LD A,($A250)</td>
+<td class="comment-1" rowspan="4">Return if Rex y-position is not grid fixed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52926"></span>CEBE</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52928"></span>CEC0</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52929"></span>CEC1</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52930"></span>CEC2</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set Rex not falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52931"></span>CEC3</td>
+<td class="instruction">LD ($A255),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52934"></span>CEC6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52935"></span>
+<div class="comments">
+<div class="paragraph">
+Rex start falling after collision with top border room
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52935"></span>CEC7</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set not jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52936"></span>CEC8</td>
+<td class="instruction">LD ($A256),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52939"></span>CECB</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="2">Set falling speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52941"></span>CECD</td>
+<td class="instruction">LD ($A255),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52944"></span>CED0</td>
+<td class="instruction">LD A,($A227)</td>
+<td class="comment-1" rowspan="3">Return if no top room connection</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52947"></span>CED3</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52948"></span>CED4</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52949"></span>CED5</td>
+<td class="instruction">LD ($A251),A</td>
+<td class="comment-1" rowspan="1">Set the top room to be the current room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52952"></span>CED8</td>
+<td class="instruction">LD A,$A0</td>
+<td class="comment-1" rowspan="2">Set y-position of Rex to be 160</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52954"></span>CEDA</td>
+<td class="instruction">LD ($A250),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52957"></span>CEDD</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set Rex to not falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52958"></span>CEDE</td>
+<td class="instruction">LD ($A255),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52961"></span>CEE1</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52962"></span>CEE2</td>
+<td class="instruction">JP <a href="51661.html">$C9CD</a></td>
+<td class="comment-1" rowspan="1">Check for end game room</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52851.html">CE73</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52852">Map</a></td>
+<td class="next">
+Next: <a href="52965.html">CEE5</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C25E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49747.html">C253</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49758">Map</a></td>
+<td class="next">
+Next: <a href="49887.html">C2DF</a>
+</td>
+</tr>
+</table>
+<div class="description">C25E: Handle explosion debris movement and draw it</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="48975.html#49241">C059</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49758"></span>C25E</td>
+<td class="instruction">LD A,R</td>
+<td class="comment-1" rowspan="4">Border color to black?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49760"></span>C260</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49762"></span>C262</td>
+<td class="instruction">AND $F8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49764"></span>C264</td>
+<td class="instruction">OUT ($FE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49766"></span>C266</td>
+<td class="instruction">LD A,(IX+$03)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the explosion counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49769"></span>C269</td>
+<td class="instruction">SLA A</td>
+<td class="comment-1" rowspan="2">Save at <a href="41516.html">A22C</a> the position of the offset for the current explosion counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49771"></span>C26B</td>
+<td class="instruction">LD ($A22C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49774"></span>C26E</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="3">Point <span class="register">HL</span> to the corresponent address into offset of debris position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49775"></span>C26F</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49777"></span>C271</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49778"></span>C272</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="6">Computes the x-byte-position in room of the debris</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49781"></span>C275</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49783"></span>C277</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49785"></span>C279</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49787"></span>C27B</td>
+<td class="instruction">ADD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49788"></span>C27C</td>
+<td class="instruction">SUB $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49790"></span>C27E</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">Position is out of bounds of the screen-left border?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49792"></span>C280</td>
+<td class="instruction">JP C,$C2C7</td>
+<td class="comment-1" rowspan="1">Jump forward is so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49795"></span>C283</td>
+<td class="instruction">CP $1E</td>
+<td class="comment-1" rowspan="1">Position is out of bounds of the screen-right border?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49797"></span>C285</td>
+<td class="instruction">JP NC,$C2C7</td>
+<td class="comment-1" rowspan="1">Jump forward if so</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49800"></span>C288</td>
+<td class="instruction">LD ($A248),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41544.html">A248</a> the x-byte-position of the debris</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49803"></span>C28B</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="4">Computes the y-pixel-position in room of the debris</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49804"></span>C28C</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49805"></span>C28D</td>
+<td class="instruction">ADD A,(IX+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49808"></span>C290</td>
+<td class="instruction">SUB $30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49810"></span>C292</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="1">Position is out of bounds of the screen-top border?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49812"></span>C294</td>
+<td class="instruction">JP C,$C2D3</td>
+<td class="comment-1" rowspan="1">Jump forward is so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49815"></span>C297</td>
+<td class="instruction">CP $A0</td>
+<td class="comment-1" rowspan="1">Position is out of bounds of the screen-bottom border?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49817"></span>C299</td>
+<td class="instruction">JP NC,$C2D3</td>
+<td class="comment-1" rowspan="1">Jump forward is so</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49820"></span>C29C</td>
+<td class="instruction">LD ($A249),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41545.html">A249</a> the y-pixel-position of the debris</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49823"></span>C29F</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="13">Compute into <span class="register">HL</span> the address of the debris into the room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49824"></span>C2A0</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49826"></span>C2A2</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49827"></span>C2A3</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49828"></span>C2A4</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49829"></span>C2A5</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49830"></span>C2A6</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49831"></span>C2A7</td>
+<td class="instruction">LD A,($A248)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49834"></span>C2AA</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49835"></span>C2AB</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49837"></span>C2AD</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49838"></span>C2AE</td>
+<td class="instruction">LD DE,$EAFF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49841"></span>C2B1</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49842"></span>C2B2</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49843"></span>C2B3</td>
+<td class="instruction">LD A,($A22C)</td>
+<td class="comment-1" rowspan="8">Compute into <span class="register">DE</span> the address for the graphic data of the debris</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49846"></span>C2B6</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49848"></span>C2B8</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49850"></span>C2BA</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49851"></span>C2BB</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49853"></span>C2BD</td>
+<td class="instruction">LD HL,$AAB7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49856"></span>C2C0</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49857"></span>C2C1</td>
+<td class="instruction">EX DE,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49858"></span>C2C2</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49859"></span>C2C3</td>
+<td class="instruction">CALL <a href="42652.html">$A69C</a></td>
+<td class="comment-1" rowspan="1">Draw the debris</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49862"></span>C2C6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="49863"></span>C2C7</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49864"></span>C2C8</td>
+<td class="instruction">LD ($A248),A</td>
+<td class="comment-1" rowspan="1">Set x-byte-position of the debris to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49867"></span>C2CB</td>
+<td class="instruction">LD A,$20</td>
+<td class="comment-1" rowspan="2">Set y-pixel-position of the debris to $20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49869"></span>C2CD</td>
+<td class="instruction">LD ($A249),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49872"></span>C2D0</td>
+<td class="instruction">JP $C288</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49875"></span>C2D3</td>
+<td class="instruction">LD A,$20</td>
+<td class="comment-1" rowspan="2">Set y-pixel-position of the debris to $20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49877"></span>C2D5</td>
+<td class="instruction">LD ($A249),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49880"></span>C2D8</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49881"></span>C2D9</td>
+<td class="instruction">LD ($A248),A</td>
+<td class="comment-1" rowspan="1">Set x-byte-position of the debris to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49884"></span>C2DC</td>
+<td class="instruction">JP $C29C</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49747.html">C253</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49758">Map</a></td>
+<td class="next">
+Next: <a href="49887.html">C2DF</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

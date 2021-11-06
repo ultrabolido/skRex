@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at B9E6</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47550.html">B9BE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47590">Map</a></td>
+<td class="next">
+Next: <a href="47625.html">BA09</a>
+</td>
+</tr>
+</table>
+<div class="description">B9E6: Update color attribute for weapon icon on HUD</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47590"></span>B9E6</td>
+<td class="instruction">LD A,($A1DB)</td>
+<td class="comment-1" rowspan="3">Return if HDU flash active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47593"></span>B9E9</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47595"></span>B9EB</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47596"></span>B9EC</td>
+<td class="instruction">LD HL,($A1AE)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the pointer into attribute file for the weapon icon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47599"></span>B9EF</td>
+<td class="instruction">CALL $B9F9</td>
+<td class="comment-1" rowspan="1">Handle icon weapon color change</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47602"></span>B9F2</td>
+<td class="instruction">LD HL,($A1AE)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to the pointer into attribute buffer for the weapon icon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47605"></span>B9F5</td>
+<td class="instruction">LD DE,$8CFF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47608"></span>B9F8</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47609"></span>B9F9</td>
+<td class="instruction">LD A,($A1AD)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">A</span> the color attribute based on weapon energy level</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47612"></span>B9FC</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47613"></span>B9FD</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="47614"></span>
+<div class="comments">
+<div class="paragraph">
+Set weapon icon in HUD the color attribute at <span class="register">A</span>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47614"></span>B9FE</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="3">Set color attribute for first row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47615"></span>B9FF</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47616"></span>BA00</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47617"></span>BA01</td>
+<td class="instruction">LD DE,$001F</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47620"></span>BA04</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47621"></span>BA05</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="3">Set color attribute for the second row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47622"></span>BA06</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47623"></span>BA07</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47624"></span>BA08</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47550.html">B9BE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47590">Map</a></td>
+<td class="next">
+Next: <a href="47625.html">BA09</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

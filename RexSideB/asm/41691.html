@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A2DB</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41580.html">A26C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41691">Map</a></td>
+<td class="next">
+Next: <a href="41702.html">A2E6</a>
+</td>
+</tr>
+</table>
+<div class="description">A2DB: Initialize time bar loop counters</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="40133.html">9CC5</a> and <a href="43321.html">A939</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41691"></span>A2DB</td>
+<td class="instruction">LD A,$0C</td>
+<td class="comment-1" rowspan="2">Number of time slots availables</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41693"></span>A2DD</td>
+<td class="instruction">LD ($A200),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41696"></span>A2E0</td>
+<td class="instruction">LD A,$05</td>
+<td class="comment-1" rowspan="2">Loop counter for time bar - number of zig-zag updates to remove an slot</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41698"></span>A2E2</td>
+<td class="instruction">LD ($A1FE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41701"></span>A2E5</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41580.html">A26C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41691">Map</a></td>
+<td class="next">
+Next: <a href="41702.html">A2E6</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C3C1</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49930.html">C30A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50113">Map</a></td>
+<td class="next">
+Next: <a href="50227.html">C433</a>
+</td>
+</tr>
+</table>
+<div class="description">C3C1: Handle TRIANGLE</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="49895.html">C2E7</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50113"></span>C3C1</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Computes new TRIANGLE x-position based on x-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50116"></span>C3C4</td>
+<td class="instruction">ADD A,(IX+$04)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50119"></span>C3C7</td>
+<td class="instruction">LD (IX+$00),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50122"></span>C3CA</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Computes new TRIANGLE y-position based on y-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50125"></span>C3CD</td>
+<td class="instruction">ADD A,(IX+$05)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50128"></span>C3D0</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50131"></span>C3D3</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="3">Enemy type $0F not exist. Never jump</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50134"></span>C3D6</td>
+<td class="instruction">CP $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50136"></span>C3D8</td>
+<td class="instruction">JP Z,$C3EA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50139"></span>C3DB</td>
+<td class="instruction">LD HL,($A1B4)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the address of the tile type buffer under enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50142"></span>C3DE</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="4">Check if tile type buffer on enemy position is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50145"></span>C3E1</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50146"></span>C3E2</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50148"></span>C3E4</td>
+<td class="instruction">CALL <a href="52725.html">$CDF5</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50151"></span>C3E7</td>
+<td class="instruction">JP Z,<a href="38919.html">$9807</a></td>
+<td class="comment-1" rowspan="1">Jump to destroy enemy is tile is wall</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50154"></span>C3EA</td>
+<td class="instruction">DEC (IX+$11)</td>
+<td class="comment-1" rowspan="1">Decrement state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50157"></span>C3ED</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50158"></span>C3EE</td>
+<td class="instruction">LD A,R</td>
+<td class="comment-1" rowspan="3">Generate a random number between 2 and 5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50160"></span>C3F0</td>
+<td class="instruction">AND $03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50162"></span>C3F2</td>
+<td class="instruction">ADD A,$02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50164"></span>C3F4</td>
+<td class="instruction">LD (IX+$11),A</td>
+<td class="comment-1" rowspan="1">Set this number to state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50167"></span>C3F7</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="3">Enemy type $0F not exist. Never jump</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50170"></span>C3FA</td>
+<td class="instruction">CP $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50172"></span>C3FC</td>
+<td class="instruction">JP Z,$C409</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50175"></span>C3FF</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="3">Change movement state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50178"></span>C402</td>
+<td class="instruction">XOR $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50180"></span>C404</td>
+<td class="instruction">LD (IX+$12),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50183"></span>C407</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return if no movement change state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50184"></span>C408</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50185"></span>C409</td>
+<td class="instruction">LD A,R</td>
+<td class="comment-1" rowspan="3">Set <span class="register">A</span> a random number between 8 and 15</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50187"></span>C40B</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50189"></span>C40D</td>
+<td class="instruction">ADD A,$08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50191"></span>C40F</td>
+<td class="instruction">LD (IX+$11),A</td>
+<td class="comment-1" rowspan="1">Reset state change counter with this number</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50194"></span>
+<div class="comments">
+<div class="paragraph">
+Set x/y-delta
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50194"></span>C412</td>
+<td class="instruction">LD (IX+$04),$01</td>
+<td class="comment-1" rowspan="1">Set x-delta to 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50198"></span>C416</td>
+<td class="instruction">LD A,($A24F)</td>
+<td class="comment-1" rowspan="4">if x-position of Rex is less than x-position of TRIANGLE then set x-delta to -1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50201"></span>C419</td>
+<td class="instruction">CP (IX+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50204"></span>C41C</td>
+<td class="instruction">JP NC,$C423</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50207"></span>C41F</td>
+<td class="instruction">LD (IX+$04),$FF</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50211"></span>C423</td>
+<td class="instruction">LD (IX+$05),$01</td>
+<td class="comment-1" rowspan="1">Set y-delta to 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50215"></span>C427</td>
+<td class="instruction">LD A,($A250)</td>
+<td class="comment-1" rowspan="4">if y-position of Rex is less than y-position of TRIANGLE then set y-delta to -1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50218"></span>C42A</td>
+<td class="instruction">CP (IX+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50221"></span>C42D</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50222"></span>C42E</td>
+<td class="instruction">LD (IX+$05),$FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50226"></span>C432</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49930.html">C30A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50113">Map</a></td>
+<td class="next">
+Next: <a href="50227.html">C433</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

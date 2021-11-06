@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C66E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50795.html">C66B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50798">Map</a></td>
+<td class="next">
+Next: <a href="50833.html">C691</a>
+</td>
+</tr>
+</table>
+<div class="description">C66E: Enemy configuration for FOOT MAN jumping</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="50227.html#50435">C503</a> and <a href="50227.html#50599">C5A7</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50798"></span>C66E</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="3">Return if state change counter is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50801"></span>C671</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50802"></span>C672</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50803"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routines at <a href="50227.html">C433</a> and <a href="53173.html#53594">D15A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50803"></span>C673</td>
+<td class="instruction">LD A,(IX+$06)</td>
+<td class="comment-1" rowspan="3">Return if FOOT MAN falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50806"></span>C676</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50807"></span>C677</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50808"></span>C678</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Return if y-position less than $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50811"></span>C67B</td>
+<td class="instruction">CP $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50813"></span>C67D</td>
+<td class="instruction">RET C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50814"></span>C67E</td>
+<td class="instruction">LD A,(IX+$03)</td>
+<td class="comment-1" rowspan="3">Return if FOOT MAN is jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50817"></span>C681</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50818"></span>C682</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50819"></span>C683</td>
+<td class="instruction">LD (IX+$03),$01</td>
+<td class="comment-1" rowspan="1">Set FOOT MAN jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50823"></span>C687</td>
+<td class="instruction">LD HL,$CE68</td>
+<td class="comment-1" rowspan="3">Set y-offset for FOOT MAN jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50826"></span>C68A</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50829"></span>C68D</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50832"></span>C690</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50795.html">C66B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50798">Map</a></td>
+<td class="next">
+Next: <a href="50833.html">C691</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

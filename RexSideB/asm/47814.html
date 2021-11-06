@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at BAC6</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47800.html">BAB8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47814">Map</a></td>
+<td class="next">
+Next: <a href="47836.html">BADC</a>
+</td>
+</tr>
+</table>
+<div class="description">BAC6: Initialise weapon data (Laser)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47814"></span>BAC6</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="2">Set the current weapon of Rex (laser)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47816"></span>BAC8</td>
+<td class="instruction">LD ($A1AC),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47819"></span>BACB</td>
+<td class="instruction">LD A,$03</td>
+<td class="comment-1" rowspan="2">Set the weapon energy level</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47821"></span>BACD</td>
+<td class="instruction">LD ($A1AD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47824"></span>BAD0</td>
+<td class="instruction">LD HL,$5805</td>
+<td class="comment-1" rowspan="2">Point to the current weapon icon into attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47827"></span>BAD3</td>
+<td class="instruction">LD ($A1AE),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47830"></span>BAD6</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="2">Init the number of weapon thas has energy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47832"></span>BAD8</td>
+<td class="instruction">LD ($A207),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47835"></span>BADB</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47800.html">BAB8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47814">Map</a></td>
+<td class="next">
+Next: <a href="47836.html">BADC</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

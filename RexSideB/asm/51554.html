@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C962</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51547.html">C95B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51554">Map</a></td>
+<td class="next">
+Next: <a href="51661.html">C9CD</a>
+</td>
+</tr>
+</table>
+<div class="description">C962: Configure room connection and enemies of the room</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Copy the values of room connection and enemy entry from <a href="45479.html">B1A7</a> and corresponent enemy configuration data to the status variables. Used by the routine at <a href="43321.html">A939</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51554"></span>C962</td>
+<td class="instruction">LD A,($A251)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">DE</span> to the room number to diplay</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51557"></span>C965</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51558"></span>C966</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51560"></span>C968</td>
+<td class="instruction">LD B,$06</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the length in bytes of the room connections data for every room at <a href="45479.html">B1A7</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51562"></span>C96A</td>
+<td class="instruction">CALL <a href="51547.html">$C95B</a></td>
+<td class="comment-1" rowspan="1">Multiple room number by length of byte of the room connections</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51565"></span>C96D</td>
+<td class="instruction">LD DE,$B1A7</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the point to the first byte into the room connection data for the corresponent room number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51568"></span>C970</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51569"></span>C971</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Set #$A227 to the number of the top room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51570"></span>C972</td>
+<td class="instruction">LD ($A227),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51573"></span>C975</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Point to the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51574"></span>C976</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Set #$A226 to the number of the right room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51575"></span>C977</td>
+<td class="instruction">LD ($A226),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51578"></span>C97A</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Point to the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51579"></span>C97B</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Set #$A228 to the number of the bottom room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51580"></span>C97C</td>
+<td class="instruction">LD ($A228),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51583"></span>C97F</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Point to the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51584"></span>C980</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Set #$A229 to the number of the left room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51585"></span>C981</td>
+<td class="instruction">LD ($A229),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51588"></span>C984</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Point to the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51589"></span>C985</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="3">Copy to <span class="register">DE</span> the address pointer for the enemy configuration of this room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51590"></span>C986</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51591"></span>C987</td>
+<td class="instruction">LD D,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51592"></span>C988</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="3">Set <a href="41515.html">A22B</a> to the max number of enemies in the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51593"></span>C989</td>
+<td class="instruction">AND $1F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51595"></span>C98B</td>
+<td class="instruction">LD ($A22B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51598"></span>C98E</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51599"></span>C98F</td>
+<td class="instruction">LD ($A1C7),A</td>
+<td class="comment-1" rowspan="3">Initialise Enemy Entry From indicator, so by default no enemy enters the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51602"></span>C992</td>
+<td class="instruction">LD ($A1C6),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51605"></span>C995</td>
+<td class="instruction">LD ($A1C5),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51608"></span>C998</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="2">Reads bit 7 of first byte of the enemy configuration data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51609"></span>C999</td>
+<td class="instruction">BIT 7,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51611"></span>C99B</td>
+<td class="instruction">CALL NZ,$C9BB</td>
+<td class="comment-1" rowspan="1">If bit set, configure that enemy enters from the top</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51614"></span>C99E</td>
+<td class="instruction">BIT 6,A</td>
+<td class="comment-1" rowspan="1">Reads bit 6 of first byte of the enemy configuration data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51616"></span>C9A0</td>
+<td class="instruction">CALL NZ,$C9C1</td>
+<td class="comment-1" rowspan="1">If bit set, configure that enemy enters from the right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51619"></span>C9A3</td>
+<td class="instruction">BIT 5,A</td>
+<td class="comment-1" rowspan="1">Reads bit 5 of first byte of the enemy configuration data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51621"></span>C9A5</td>
+<td class="instruction">CALL NZ,$C9C7</td>
+<td class="comment-1" rowspan="1">If bit set, configure that enemy enters from the left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51624"></span>C9A8</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Point to the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51625"></span>C9A9</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="3">Set <a href="41436.html">A1DC</a> and <a href="41437.html">A1DD</a> to the counter for enemy enters the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51626"></span>C9AA</td>
+<td class="instruction">LD ($A1DC),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51629"></span>C9AD</td>
+<td class="instruction">LD ($A1DD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51632"></span>C9B0</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Point to the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51633"></span>C9B1</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="2">Set <a href="41505.html">A221</a> to the type of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51634"></span>C9B2</td>
+<td class="instruction">LD ($A221),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51637"></span>C9B5</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Point to the next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51638"></span>C9B6</td>
+<td class="instruction">LD ($A1B9),DE</td>
+<td class="comment-1" rowspan="1">Point <a href="41401.html">A1B9</a> to the address where begins the configuration for static enemies</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51642"></span>C9BA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51643"></span>
+<div class="comments">
+<div class="paragraph">
+Enemy enters the room from the top
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51643"></span>C9BB</td>
+<td class="instruction">LD HL,$A1C7</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51646"></span>C9BE</td>
+<td class="instruction">LD (HL),$FF</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51648"></span>C9C0</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51649"></span>
+<div class="comments">
+<div class="paragraph">
+Enemy enters the room from the right
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51649"></span>C9C1</td>
+<td class="instruction">LD HL,$A1C6</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51652"></span>C9C4</td>
+<td class="instruction">LD (HL),$FF</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51654"></span>C9C6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="51655"></span>
+<div class="comments">
+<div class="paragraph">
+Enemy enters room from the left
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51655"></span>C9C7</td>
+<td class="instruction">LD HL,$A1C5</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51658"></span>C9CA</td>
+<td class="instruction">LD (HL),$FF</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="51660"></span>C9CC</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51547.html">C95B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51554">Map</a></td>
+<td class="next">
+Next: <a href="51661.html">C9CD</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

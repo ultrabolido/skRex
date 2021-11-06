@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 9945</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39192.html">9918</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39237">Map</a></td>
+<td class="next">
+Next: <a href="39274.html">996A</a>
+</td>
+</tr>
+</table>
+<div class="description">9945: Increment score</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38919.html">9807</a>, <a href="53173.html#53594">D15A</a> and <a href="53173.html#53687">D1B7</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Points to increment</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39237"></span>9945</td>
+<td class="instruction">LD A,($A1EE)</td>
+<td class="comment-1" rowspan="3">Return if Rex is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39240"></span>9948</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39241"></span>9949</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39242"></span>994A</td>
+<td class="instruction">LD HL,($A1D7)</td>
+<td class="comment-1" rowspan="3">Increment score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39245"></span>994D</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39246"></span>994E</td>
+<td class="instruction">LD ($A1D7),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39249"></span>9951</td>
+<td class="instruction">LD HL,($A20F)</td>
+<td class="comment-1" rowspan="3">Increment lives score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39252"></span>9954</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39253"></span>9955</td>
+<td class="instruction">LD ($A20F),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39256"></span>9958</td>
+<td class="instruction">LD DE,$0064</td>
+<td class="comment-1" rowspan="4">If lives score greather than 100 then increment live</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39259"></span>995B</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39260"></span>995C</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39262"></span>995E</td>
+<td class="instruction">JP C,$9967</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39265"></span>9961</td>
+<td class="instruction">LD ($A20F),HL</td>
+<td class="comment-1" rowspan="1">Reset lives score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39268"></span>9964</td>
+<td class="instruction">CALL <a href="54072.html">$D338</a></td>
+<td class="comment-1" rowspan="1">Increment number of lives</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39271"></span>9967</td>
+<td class="instruction">JP <a href="39113.html">$98C9</a></td>
+<td class="comment-1" rowspan="1">Draw score on HUD</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39192.html">9918</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39237">Map</a></td>
+<td class="next">
+Next: <a href="39274.html">996A</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

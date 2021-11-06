@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 9BA7</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39757.html">9B4D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39847">Map</a></td>
+<td class="next">
+Next: <a href="40133.html">9CC5</a>
+</td>
+</tr>
+</table>
+<div class="description">9BA7: Handle Rex Dead - Last live explossion</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38531.html">9683</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39847"></span>9BA7</td>
+<td class="instruction">LD A,($A1FC)</td>
+<td class="comment-1" rowspan="3">Jump back if not the last live</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39850"></span>9BAA</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39851"></span>9BAB</td>
+<td class="instruction">JP NZ,<a href="38531.html#38543">$968F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39854"></span>9BAE</td>
+<td class="instruction">LD IY,$9CFD</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the address for explosion data position and index graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39858"></span>9BB2</td>
+<td class="instruction">LD B,$10</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> the number of explosions</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39860"></span>9BB4</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39861"></span>9BB5</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the index of explosion graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39864"></span>9BB8</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">if index = 0 jump forward to configure explosion position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39865"></span>9BB9</td>
+<td class="instruction">JP Z,$9C44</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39868"></span>9BBC</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="3">Multiply index number by 72 (length of graphic data explosion)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39869"></span>9BBD</td>
+<td class="instruction">LD DE,$0048</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39872"></span>9BC0</td>
+<td class="instruction">CALL <a href="51547.html">$C95B</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39875"></span>9BC3</td>
+<td class="instruction">LD DE,$8490</td>
+<td class="comment-1" rowspan="3">Set <a href="41421.html">A1CD</a> to the address point for the current graphic data explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39878"></span>9BC6</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39879"></span>9BC7</td>
+<td class="instruction">LD ($A1CD),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39882"></span>9BCA</td>
+<td class="instruction">LD A,(IY+$01)</td>
+<td class="comment-1" rowspan="2">Set <a href="41544.html">A248</a> the x-position for the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39885"></span>9BCD</td>
+<td class="instruction">LD ($A248),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39888"></span>9BD0</td>
+<td class="instruction">LD A,(IY+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the y-position for the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39891"></span>9BD3</td>
+<td class="instruction">CP $A8</td>
+<td class="comment-1" rowspan="4">Jump forward to configure (x-y) position if y-position is greater than 168 or less than 24</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39893"></span>9BD5</td>
+<td class="instruction">JP NC,$9C44</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39896"></span>9BD8</td>
+<td class="instruction">CP $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39898"></span>9BDA</td>
+<td class="instruction">JP C,$9C44</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39901"></span>9BDD</td>
+<td class="instruction">LD ($A249),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41545.html">A249</a> the y-position of explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39904"></span>9BE0</td>
+<td class="instruction">LD A,$03</td>
+<td class="comment-1" rowspan="2">Set <a href="41546.html">A24A</a> the width in bytes for the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39906"></span>9BE2</td>
+<td class="instruction">LD ($A24A),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39909"></span>9BE5</td>
+<td class="instruction">LD A,$18</td>
+<td class="comment-1" rowspan="2">Set <a href="41547.html">A24B</a> the height in pixels of the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39911"></span>9BE7</td>
+<td class="instruction">LD ($A24B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39914"></span>9BEA</td>
+<td class="instruction">LD A,$FF</td>
+<td class="comment-1" rowspan="2">Set <a href="41420.html">A1CC</a> the entity type for explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39916"></span>9BEC</td>
+<td class="instruction">LD ($A1CC),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39919"></span>9BEF</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the facing direction to right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39920"></span>9BF0</td>
+<td class="instruction">CALL <a href="45718.html">$B296</a></td>
+<td class="comment-1" rowspan="1">Draw the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39923"></span>9BF3</td>
+<td class="instruction">LD A,(IY+$01)</td>
+<td class="comment-1" rowspan="2">Set <a href="41544.html">A248</a> the x-position for the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39926"></span>9BF6</td>
+<td class="instruction">LD ($A248),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39929"></span>9BF9</td>
+<td class="instruction">LD A,(IY+$02)</td>
+<td class="comment-1" rowspan="2">Set <a href="41545.html">A249</a> the y-position of explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39932"></span>9BFC</td>
+<td class="instruction">LD ($A249),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39935"></span>9BFF</td>
+<td class="instruction">CALL <a href="48151.html">$BC17</a></td>
+<td class="comment-1" rowspan="1">Compute address into attribute file based on (x,y) position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39938"></span>9C02</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="3">Increment index of explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39941"></span>9C05</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39942"></span>9C06</td>
+<td class="instruction">LD (IY+$00),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39945"></span>9C09</td>
+<td class="instruction">CP $09</td>
+<td class="comment-1" rowspan="2">Jump forward and process next explosion if index is less than 9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39947"></span>9C0B</td>
+<td class="instruction">JP NZ,$9C1C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39950"></span>9C0E</td>
+<td class="instruction">LD (IY+$00),$00</td>
+<td class="comment-1" rowspan="1">Set index to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39954"></span>9C12</td>
+<td class="instruction">LD HL,($A22C)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address into the attribute file for the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39957"></span>9C15</td>
+<td class="instruction">LD DE,($A22E)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the address into the attribute buffer for the explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39961"></span>9C19</td>
+<td class="instruction">CALL <a href="48106.html">$BBEA</a></td>
+<td class="comment-1" rowspan="1">Reset attribute color when explosion ended</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39964"></span>
+<div class="comments">
+<div class="paragraph">
+handle next explosion
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39964"></span>9C1C</td>
+<td class="instruction">LD DE,$0003</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IY</span> to the next explosion data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39967"></span>9C1F</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39969"></span>9C21</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39970"></span>9C22</td>
+<td class="instruction">DJNZ $9BB4</td>
+<td class="comment-1" rowspan="1">Jump back and process next explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39972"></span>9C24</td>
+<td class="instruction">LD A,($A1EF)</td>
+<td class="comment-1" rowspan="3">Decrement explosion counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39975"></span>9C27</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39976"></span>9C28</td>
+<td class="instruction">LD ($A1EF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39979"></span>9C2B</td>
+<td class="instruction">CP $2F</td>
+<td class="comment-1" rowspan="4">If explosion counter is 47 or 34 jump to change offset pair</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39981"></span>9C2D</td>
+<td class="instruction">CALL Z,$9CAA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39984"></span>9C30</td>
+<td class="instruction">CP $22</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39986"></span>9C32</td>
+<td class="instruction">CALL Z,$9CAA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39989"></span>9C35</td>
+<td class="instruction">CP $19</td>
+<td class="comment-1" rowspan="4">If explosion counter is 25 or 23 jump to change offset pair</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39991"></span>9C37</td>
+<td class="instruction">CALL Z,$9CB3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39994"></span>9C3A</td>
+<td class="instruction">CP $17</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39996"></span>9C3C</td>
+<td class="instruction">CALL Z,$9CB3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39999"></span>9C3F</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">If counter is zero jump to handle finish game</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40000"></span>9C40</td>
+<td class="instruction">JP Z,<a href="40296.html">$9D68</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40003"></span>9C43</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40004"></span>
+<div class="comments">
+<div class="paragraph">
+configure explosion position
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40004"></span>9C44</td>
+<td class="instruction">LD A,($A1EF)</td>
+<td class="comment-1" rowspan="3">If counter equals 16 jump to process next explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40007"></span>9C47</td>
+<td class="instruction">CP $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40009"></span>9C49</td>
+<td class="instruction">JP C,$9C1C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40012"></span>9C4C</td>
+<td class="instruction">CALL <a href="42269.html">$A51D</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40015"></span>9C4F</td>
+<td class="instruction">CP $96</td>
+<td class="comment-1" rowspan="2">If number is less than $96 then jump to process next explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40017"></span>9C51</td>
+<td class="instruction">JP C,$9C1C</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40020"></span>
+<div class="comments">
+<div class="paragraph">
+computes x-position of explosion
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40020"></span>9C54</td>
+<td class="instruction">LD HL,($A1F0)</td>
+<td class="comment-1" rowspan="3">Substract offset to x-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40023"></span>9C57</td>
+<td class="instruction">LD A,($A24F)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40026"></span>9C5A</td>
+<td class="instruction">SUB (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40027"></span>9C5B</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">E</span> the x-position for explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40028"></span>9C5C</td>
+<td class="instruction">CALL <a href="42269.html#42288">$A530</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40031"></span>9C5F</td>
+<td class="instruction">LD HL,($A1F0)</td>
+<td class="comment-1" rowspan="2">Increment address into explosion data offsets</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40034"></span>9C62</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40035"></span>9C63</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">And pattern for random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40036"></span>9C64</td>
+<td class="instruction">SLA A</td>
+<td class="comment-1" rowspan="4">Multiply by 8 this number and add to the previous partial computed position x-position of explosion = x-position of Rex - offset #1 + (random &amp; offset #2)*8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40038"></span>9C66</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40040"></span>9C68</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40042"></span>9C6A</td>
+<td class="instruction">ADD A,E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40043"></span>9C6B</td>
+<td class="instruction">AND $F8</td>
+<td class="comment-1" rowspan="1">Set new position grid fixed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40045"></span>9C6D</td>
+<td class="instruction">CP $F0</td>
+<td class="comment-1" rowspan="2">If x-position of explosion is greater than 230 jump forward and handle next explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40047"></span>9C6F</td>
+<td class="instruction">JP NC,$9C1C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40050"></span>9C72</td>
+<td class="instruction">LD (IY+$01),A</td>
+<td class="comment-1" rowspan="1">Set the new x-position into explosion data buffer</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40053"></span>
+<div class="comments">
+<div class="paragraph">
+computes y-position of explosion
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40053"></span>9C75</td>
+<td class="instruction">LD A,($A250)</td>
+<td class="comment-1" rowspan="3">Substract offset to y-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40056"></span>9C78</td>
+<td class="instruction">LD HL,($A1F0)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40059"></span>9C7B</td>
+<td class="instruction">SUB (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40060"></span>9C7C</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">E</span> the x-position for explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40061"></span>9C7D</td>
+<td class="instruction">CALL <a href="42269.html#42288">$A530</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40064"></span>9C80</td>
+<td class="instruction">LD HL,($A1F0)</td>
+<td class="comment-1" rowspan="2">Increment address into explosion data offsets</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40067"></span>9C83</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40068"></span>9C84</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">And pattern for random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40069"></span>9C85</td>
+<td class="instruction">SLA A</td>
+<td class="comment-1" rowspan="4">Multiply by 8 this number and add to the previous partial computed position y-position of explosion = y-position of Rex - offset #1 + (random &amp; offset #2)*8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40071"></span>9C87</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40073"></span>9C89</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40075"></span>9C8B</td>
+<td class="instruction">ADD A,E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40076"></span>9C8C</td>
+<td class="instruction">AND $F8</td>
+<td class="comment-1" rowspan="1">Set new position grid fixed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40078"></span>9C8E</td>
+<td class="instruction">LD (IY+$02),A</td>
+<td class="comment-1" rowspan="1">Set the new y-position into explosion data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40081"></span>9C91</td>
+<td class="instruction">LD (IY+$00),$01</td>
+<td class="comment-1" rowspan="1">Increment graphic data index of explosion</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40085"></span>
+<div class="comments">
+<div class="paragraph">
+configure sound explosion
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40085"></span>9C95</td>
+<td class="instruction">CALL <a href="42269.html">$A51D</a></td>
+<td class="comment-1" rowspan="4">Generate a random number between 1 and 3 for channel sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40088"></span>9C98</td>
+<td class="instruction">AND $03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40090"></span>9C9A</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40091"></span>9C9B</td>
+<td class="instruction">JP Z,$9C95</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40094"></span>9C9E</td>
+<td class="instruction">LD ($D528),A</td>
+<td class="comment-1" rowspan="1">Set the random channel used for explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40097"></span>9CA1</td>
+<td class="instruction">LD DE,$D528</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to address for explosion sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40100"></span>9CA4</td>
+<td class="instruction">CALL <a href="54143.html">$D37F</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40103"></span>9CA7</td>
+<td class="instruction">JP $9C1C</td>
+<td class="comment-1" rowspan="1">Jump back and process next explosion</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40106"></span>
+<div class="comments">
+<div class="paragraph">
+Increment address into data pairs for Rex explosion
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40106"></span>9CAA</td>
+<td class="instruction">LD HL,($A1F0)</td>
+<td class="comment-1" rowspan="4">Point <a href="41456.html">A1F0</a> to the next pair of data to compute position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40109"></span>9CAD</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40110"></span>9CAE</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40111"></span>9CAF</td>
+<td class="instruction">LD ($A1F0),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40114"></span>9CB2</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40115"></span>
+<div class="comments">
+<div class="paragraph">
+Decrement address into data pairs for Rex explosion
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40115"></span>9CB3</td>
+<td class="instruction">LD HL,($A1F0)</td>
+<td class="comment-1" rowspan="4">Point <a href="41456.html">A1F0</a> to the previous pair of data to compute position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40118"></span>9CB6</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40119"></span>9CB7</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40120"></span>9CB8</td>
+<td class="instruction">LD ($A1F0),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40123"></span>9CBB</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40124"></span>
+<div class="comments">
+<div class="paragraph">
+Decrement address into data pairs for FINAL BOSS explosion Used by the routine at <a href="39395.html">99E3</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40124"></span>9CBC</td>
+<td class="instruction">LD HL,($A26A)</td>
+<td class="comment-1" rowspan="4">Point <a href="41578.html">A26A</a> to the previous pair of data to compute position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40127"></span>9CBF</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40128"></span>9CC0</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40129"></span>9CC1</td>
+<td class="instruction">LD ($A26A),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40132"></span>9CC4</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39757.html">9B4D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39847">Map</a></td>
+<td class="next">
+Next: <a href="40133.html">9CC5</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

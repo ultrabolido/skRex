@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at CDF5</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52690.html">CDD2</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52725">Map</a></td>
+<td class="next">
+Next: <a href="52770.html">CE22</a>
+</td>
+</tr>
+</table>
+<div class="description">CDF5: Check if a tile is a wall or a background</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Check if a tile is a wall. Used by the routines at <a href="50113.html">C3C1</a>, <a href="50227.html">C433</a>, <a href="50227.html#50435">C503</a>, <a href="50833.html">C691</a>, <a href="52664.html">CDB8</a>, <a href="52690.html">CDD2</a> and <a href="52852.html">CE74</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address pointer of tile in the tile type buffer</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">F</td>
+<td class="register-desc">Return Z:1 if tile type is in the list  Z:0 if tile type is not in the list</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Return A=&lt;tile type&gt; if found ; A=0 if not found</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52725"></span>CDF5</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Save <span class="register">HL</span> and <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52726"></span>CDF6</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52727"></span>CDF7</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the tile type pointed by <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52728"></span>CDF8</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of tiles of type 'wall'</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52730"></span>CDFA</td>
+<td class="instruction">LD HL,$CE22</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address pointer of the list of tiles 'wall'</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52733"></span>
+<div class="comments">
+<div class="paragraph">
+Check if the tile type in <span class="register">A</span> is in the list of <span class="register">B</span> elements pointed by <span class="register">HL</span>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52733"></span>CDFD</td>
+<td class="instruction">LD C,$FF</td>
+<td class="comment-1" rowspan="2">Check if <span class="register">A</span> is equal to (<span class="register">HL</span>)</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52735"></span>CDFF</td>
+<td class="instruction">CPI</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52737"></span>CE01</td>
+<td class="instruction">JP Z,$CE0E</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52740"></span>CE04</td>
+<td class="instruction">DJNZ $CDFF</td>
+<td class="comment-1" rowspan="1">Jump back and check next element</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52742"></span>
+<div class="comments">
+<div class="paragraph">
+is not in the list
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52742"></span>CE06</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52743"></span>CE07</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52744"></span>CE08</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set flag Z=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52746"></span>CE0A</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52747"></span>CE0B</td>
+<td class="instruction">LD A,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> = $00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52749"></span>CE0D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52750"></span>
+<div class="comments">
+<div class="paragraph">
+is in the list
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52750"></span>CE0E</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set flag Z=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52751"></span>CE0F</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> to the tile type found</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52752"></span>CE10</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52753"></span>CE11</td>
+<td class="instruction">LD ($A25D),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41565.html">A25D</a> the tile type found</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52756"></span>CE14</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">BC</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52757"></span>CE15</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52758"></span>CE16</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52759"></span>
+<div class="comments">
+<div class="paragraph">
+Check into the list of background tiles. Used by the routines at <a href="46731.html#46740">B694</a>, <a href="48200.html">BC48</a>, <a href="50977.html">C721</a>, <a href="51958.html">CAF6</a> and <a href="52965.html">CEE5</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52759"></span>CE17</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Save <span class="register">HL</span> and <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52760"></span>CE18</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52761"></span>CE19</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the tile type pointed by <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52762"></span>CE1A</td>
+<td class="instruction">LD B,$09</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of tiles of type 'background'</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52764"></span>CE1C</td>
+<td class="instruction">LD HL,$CE27</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address pointer of the list of tiles 'background'</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52767"></span>CE1F</td>
+<td class="instruction">JP $CDFD</td>
+<td class="comment-1" rowspan="1">Jump to check tile</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52690.html">CDD2</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52725">Map</a></td>
+<td class="next">
+Next: <a href="52770.html">CE22</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

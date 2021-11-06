@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at BADC</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47814.html">BAC6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47836">Map</a></td>
+<td class="next">
+Next: <a href="47979.html">BB6B</a>
+</td>
+</tr>
+</table>
+<div class="description">BADC: Draw the windows borders in the display file</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="41702.html">A2E6</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Address of the text definition data</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Color attribute for the windows border</td>
+</tr>
+<tr>
+<td class="register">C</td>
+<td class="register-desc">Color attribute for the windows body</td>
+</tr>
+<tr>
+<td class="register">H</td>
+<td class="register-desc">Horizontal position</td>
+</tr>
+<tr>
+<td class="register">L</td>
+<td class="register-desc">Vertical position</td>
+</tr>
+<tr>
+<td class="register">D</td>
+<td class="register-desc">Length of the longest line</td>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">Number of lines</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47836"></span>BADC</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47838"></span>BADE</td>
+<td class="instruction">LD ($A22C),A</td>
+<td class="comment-1" rowspan="1">Save color attribute for the windows border at <a href="41516.html">A22C</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47841"></span>BAE1</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="2">Save the length of the longest line at <a href="41411.html">A1C3</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47842"></span>BAE2</td>
+<td class="instruction">LD ($A1C3),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47845"></span>BAE5</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="2">Save number of lines at <a href="41412.html">A1C4</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47846"></span>BAE6</td>
+<td class="instruction">LD ($A1C4),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47849"></span>BAE9</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="2">Save horizontal position at <a href="41409.html">A1C1</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47850"></span>BAEA</td>
+<td class="instruction">LD ($A1C1),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47853"></span>BAED</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="2">Save vertical position at <a href="41410.html">A1C2</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47854"></span>BAEE</td>
+<td class="instruction">LD ($A1C2),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47857"></span>BAF1</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="2">Save color attribute for the windows body at <a href="41528.html">A238</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47858"></span>BAF2</td>
+<td class="instruction">LD ($A238),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47861"></span>BAF5</td>
+<td class="instruction">LD A,($A1C2)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to the vertical position of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47864"></span>BAF8</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47865"></span>BAF9</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47867"></span>BAFB</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="5">Computes the offset of the horizontal position into the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47868"></span>BAFC</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47869"></span>BAFD</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47870"></span>BAFE</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47871"></span>BAFF</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47872"></span>BB00</td>
+<td class="instruction">LD A,($A1C1)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">DE</span> to the horizontal position of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47875"></span>BB03</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47876"></span>BB04</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47878"></span>BB06</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Add the vertical position to the offset previously computed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47879"></span>BB07</td>
+<td class="instruction">LD DE,$5802</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the address of the windows location into the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47882"></span>BB0A</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47883"></span>BB0B</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47884"></span>BB0C</td>
+<td class="instruction">LD A,($A1C4)</td>
+<td class="comment-1" rowspan="1">Pick up the number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47887"></span>BB0F</td>
+<td class="instruction">ADD A,$02</td>
+<td class="comment-1" rowspan="1">Adds two to the number of lines (border top and bottom) to obtain the height of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47889"></span>BB11</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the height of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47890"></span>BB12</td>
+<td class="instruction">LD A,($A1C3)</td>
+<td class="comment-1" rowspan="1">Pick up the length of the longest line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47893"></span>BB15</td>
+<td class="instruction">ADD A,$02</td>
+<td class="comment-1" rowspan="1">Adds two to the height of the longest line (border left and right) to obtain the height of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47895"></span>BB17</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">E</span> to the width of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47896"></span>BB18</td>
+<td class="instruction">LD A,($A22C)</td>
+<td class="comment-1" rowspan="1">Pick up the color attribute for the windows border</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47899"></span>BB1B</td>
+<td class="instruction">CALL <a href="54945.html">$D6A1</a></td>
+<td class="comment-1" rowspan="1">Fill the windows (border included) with the color attribute of the borders</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47902"></span>BB1E</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47903"></span>BB1F</td>
+<td class="instruction">LD DE,$0021</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the address of the first line of the windows into the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47906"></span>BB22</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47907"></span>BB23</td>
+<td class="instruction">LD A,($A1C4)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> to the number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47910"></span>BB26</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47911"></span>BB27</td>
+<td class="instruction">LD A,($A1C3)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">E</span> to the length of the longest line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47914"></span>BB2A</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47915"></span>BB2B</td>
+<td class="instruction">LD A,($A238)</td>
+<td class="comment-1" rowspan="1">Pick up the color attribute for the windows body</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47918"></span>BB2E</td>
+<td class="instruction">CALL <a href="54945.html">$D6A1</a></td>
+<td class="comment-1" rowspan="1">Fill the windows (only body) with the color attribute of the body</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47921"></span>BB31</td>
+<td class="instruction">LD A,($A1C2)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to the vertical position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47924"></span>BB34</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47925"></span>BB35</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47927"></span>BB37</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="4">Computes the pixel of the vertical position (x8)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47928"></span>BB38</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47929"></span>BB39</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47930"></span>BB3A</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47931"></span>BB3B</td>
+<td class="instruction">LD DE,$AC9A</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the display file lookup table corresponding to this vertical pixel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47934"></span>BB3E</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47935"></span>BB3F</td>
+<td class="instruction">LD IX,$6346</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the graphics data of the top-left border windows tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47939"></span>BB43</td>
+<td class="instruction">LD IY,$6366</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IY</span> to the graphics data of the top-middle border windows tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47943"></span>BB47</td>
+<td class="instruction">CALL <a href="47979.html">$BB6B</a></td>
+<td class="comment-1" rowspan="1">Draw the top border of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47946"></span>BB4A</td>
+<td class="instruction">LD A,($A1C4)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> to the number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47949"></span>BB4D</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47950"></span>BB4E</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47951"></span>BB4F</td>
+<td class="instruction">LD IX,$63DE</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the graphics data of the left border windows tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47955"></span>BB53</td>
+<td class="instruction">LD IY,$63EE</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IY</span> to the graphics data of the middle border windows tile (black tile)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47959"></span>BB57</td>
+<td class="instruction">CALL <a href="47979.html">$BB6B</a></td>
+<td class="comment-1" rowspan="1">Draw the middle border of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47962"></span>BB5A</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47963"></span>BB5B</td>
+<td class="instruction">DJNZ $BB4E</td>
+<td class="comment-1" rowspan="1">Jump back while there are lines to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47965"></span>BB5D</td>
+<td class="instruction">LD IX,$6356</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the graphics data of the bottom-left border windows tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47969"></span>BB61</td>
+<td class="instruction">LD IY,$637E</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IY</span> to the graphics data of the bottom-middle border windows tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47973"></span>BB65</td>
+<td class="instruction">CALL <a href="47979.html">$BB6B</a></td>
+<td class="comment-1" rowspan="1">Draw the bottom border of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47976"></span>BB68</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47978"></span>BB6A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47814.html">BAC6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47836">Map</a></td>
+<td class="next">
+Next: <a href="47979.html">BB6B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

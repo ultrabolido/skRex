@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 98B0</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39062.html">9896</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39088">Map</a></td>
+<td class="next">
+Next: <a href="39113.html">98C9</a>
+</td>
+</tr>
+</table>
+<div class="description">98B0: Update attribute color for score points in HUD</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39088"></span>98B0</td>
+<td class="instruction">LD HL,$5840</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the base address into attribute file to score points in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39091"></span>98B3</td>
+<td class="instruction">LD B,$1E</td>
+<td class="comment-1" rowspan="1">Set the number of color attributes to modify</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39093"></span>98B5</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the color attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39094"></span>98B6</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrement color attribute</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39095"></span>98B7</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="2">If color attribute is black then jump forward</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39097"></span>98B9</td>
+<td class="instruction">JP Z,$98BD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39100"></span>98BC</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Set the new color attribute</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39101"></span>98BD</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment address into attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39102"></span>98BE</td>
+<td class="instruction">DJNZ $98B5</td>
+<td class="comment-1" rowspan="1">Jump back and update color attribute for next byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39104"></span>98C0</td>
+<td class="instruction">LD HL,($A1D2)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address into attribute file for the current score points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39107"></span>98C3</td>
+<td class="instruction">LD (HL),$07</td>
+<td class="comment-1" rowspan="3">Set color attribute to white for this</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39109"></span>98C5</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39110"></span>98C6</td>
+<td class="instruction">LD (HL),$07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39112"></span>98C8</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39062.html">9896</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39088">Map</a></td>
+<td class="next">
+Next: <a href="39113.html">98C9</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

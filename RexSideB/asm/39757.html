@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 9B4D</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39653.html">9AE5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39757">Map</a></td>
+<td class="next">
+Next: <a href="39847.html">9BA7</a>
+</td>
+</tr>
+</table>
+<div class="description">9B4D: Draw random attribute color for FINAL BOSS explosion</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="39395.html">99E3</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39757"></span>9B4D</td>
+<td class="instruction">CALL <a href="42717.html">$A6DD</a></td>
+<td class="comment-1" rowspan="1">Computes into <span class="register">HL</span> the address into the attribute file for the explosion position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39760"></span>9B50</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="2">Set this address to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39763"></span>9B53</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39764"></span>9B54</td>
+<td class="instruction">LD ($A22C),HL</td>
+<td class="comment-1" rowspan="1">Save at <a href="41516.html">A22C</a> the address into the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39767"></span>9B57</td>
+<td class="instruction">LD DE,$5800</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> the base address for the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39770"></span>9B5A</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Reset carry flag</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39771"></span>9B5B</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="3">Computes the equivalent address of the attribute file into the attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39773"></span>9B5D</td>
+<td class="instruction">LD DE,$E4FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39776"></span>9B60</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39777"></span>9B61</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="2">Point <a href="41518.html">A22E</a> to the address into the attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39778"></span>9B62</td>
+<td class="instruction">LD ($A22E),DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39782"></span>9B66</td>
+<td class="instruction">LD A,R</td>
+<td class="comment-1" rowspan="4">Set into <span class="register">DE</span> a pseudo-random number from 0 to 7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39784"></span>9B68</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39786"></span>9B6A</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39787"></span>9B6B</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39789"></span>9B6D</td>
+<td class="instruction">LD HL,$C2DF</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the address into attribute color for explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39792"></span>9B70</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39793"></span>9B71</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">C</span> to the attribute color</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39794"></span>9B72</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39795"></span>9B73</td>
+<td class="instruction">LD HL,($A22C)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address into the attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39798"></span>9B76</td>
+<td class="instruction">LD DE,($A22E)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the address into the attribute buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39802"></span>9B7A</td>
+<td class="instruction">CALL $9B7E</td>
+<td class="comment-1" rowspan="1">Draw attribute color for explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39805"></span>9B7D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39806"></span>
+<div class="comments">
+<div class="paragraph">
+Draw attribute color for explosion
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39806"></span>9B7E</td>
+<td class="instruction">CALL $9B88</td>
+<td class="comment-1" rowspan="1">Draw a row of attribute color to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39809"></span>9B81</td>
+<td class="instruction">CALL $9B88</td>
+<td class="comment-1" rowspan="1">Draw a row of attribute color to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39812"></span>9B84</td>
+<td class="instruction">CALL $9B88</td>
+<td class="comment-1" rowspan="1">Draw a row of attribute color to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39815"></span>9B87</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39816"></span>
+<div class="comments">
+<div class="paragraph">
+Draw a row of attribute color to attribute file
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39816"></span>9B88</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">Set the attribute (INK) color over (PAPER) color</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39817"></span>9B89</td>
+<td class="instruction">AND $38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39819"></span>9B8B</td>
+<td class="instruction">OR C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39820"></span>9B8C</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39821"></span>9B8D</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increase address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39822"></span>9B8E</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">Set the attribute (INK) color over (PAPER) color</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39823"></span>9B8F</td>
+<td class="instruction">AND $38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39825"></span>9B91</td>
+<td class="instruction">OR C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39826"></span>9B92</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39827"></span>9B93</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increase address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39828"></span>9B94</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">Set the attribute (INK) color over (PAPER) color</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39829"></span>9B95</td>
+<td class="instruction">AND $38</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39831"></span>9B97</td>
+<td class="instruction">OR C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39832"></span>9B98</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39833"></span>9B99</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39834"></span>9B9A</td>
+<td class="instruction">LD DE,$001E</td>
+<td class="comment-1" rowspan="8">Point address into attribute file and buffer to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39837"></span>9B9D</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39838"></span>9B9E</td>
+<td class="instruction">POP DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39839"></span>9B9F</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39840"></span>9BA0</td>
+<td class="instruction">LD HL,$001E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39843"></span>9BA3</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39844"></span>9BA4</td>
+<td class="instruction">EX DE,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39845"></span>9BA5</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39846"></span>9BA6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39653.html">9AE5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39757">Map</a></td>
+<td class="next">
+Next: <a href="39847.html">9BA7</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 9731</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38531.html">9683</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38705">Map</a></td>
+<td class="next">
+Next: <a href="38713.html">9739</a>
+</td>
+</tr>
+</table>
+<div class="description">9731: Destroy all enemy projectiles</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="40133.html">9CC5</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38705"></span>9731</td>
+<td class="instruction">LD A,($A1C9)</td>
+<td class="comment-1" rowspan="3">Return if not destroy all enemies active</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38708"></span>9734</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38709"></span>9735</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38710"></span>9736</td>
+<td class="instruction">JP <a href="38713.html#38731">$974B</a></td>
+<td class="comment-1" rowspan="1">Destroy all enemy projectiles</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38531.html">9683</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38705">Map</a></td>
+<td class="next">
+Next: <a href="38713.html">9739</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

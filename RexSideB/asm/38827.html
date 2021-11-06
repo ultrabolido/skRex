@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 97AB</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38766.html">976E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38827">Map</a></td>
+<td class="next">
+Next: <a href="38866.html">97D2</a>
+</td>
+</tr>
+</table>
+<div class="description">97AB: Reset sound buffer, volume channels and check for FIRE key</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38827"></span>97AB</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Reset temporal buffer at <a href="41516.html">A22C</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="38828"></span>97AC</td>
+<td class="instruction">LD ($A22C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38831"></span>97AF</td>
+<td class="instruction">CALL <a href="54127.html">$D36F</a></td>
+<td class="comment-1" rowspan="1">Reset channel volumes of the AY-3-8912</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38834"></span>97B2</td>
+<td class="instruction">LD DE,$C350</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to count 50.000 loops</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38837"></span>97B5</td>
+<td class="instruction">DEC DE</td>
+<td class="comment-1" rowspan="1">Decrement counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38838"></span>97B6</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="2">Counter is 0?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38839"></span>97B7</td>
+<td class="instruction">OR E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38840"></span>97B8</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38841"></span>97B9</td>
+<td class="instruction">LD B,$1E</td>
+<td class="comment-1" rowspan="2">Wait some time</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38843"></span>97BB</td>
+<td class="instruction">DJNZ $97BB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38845"></span>97BD</td>
+<td class="instruction">CALL <a href="42514.html#42527">$A61F</a></td>
+<td class="comment-1" rowspan="1">Check for FIRE key press</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38848"></span>97C0</td>
+<td class="instruction">JP NZ,$97B5</td>
+<td class="comment-1" rowspan="1">Jump back if not pressed</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38851"></span>97C3</td>
+<td class="instruction">CALL <a href="42514.html#42527">$A61F</a></td>
+<td class="comment-1" rowspan="1">Check for FIRE key press</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38854"></span>97C6</td>
+<td class="instruction">JP Z,$97C3</td>
+<td class="comment-1" rowspan="1">Jump back until FIRE key not pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38857"></span>97C9</td>
+<td class="instruction">CALL <a href="54086.html">$D346</a></td>
+<td class="comment-1" rowspan="1">Reset sound data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38860"></span>97CC</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set $01 to temporal buffer at <a href="41516.html">A22C</a> meaning fire pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38862"></span>97CE</td>
+<td class="instruction">LD ($A22C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38865"></span>97D1</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38766.html">976E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38827">Map</a></td>
+<td class="next">
+Next: <a href="38866.html">97D2</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

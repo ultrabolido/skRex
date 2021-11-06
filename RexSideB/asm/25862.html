@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Data at 6506</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-b">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Data</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="25350.html">6306</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#25862">Map</a></td>
+<td class="next">
+Next: <a href="26118.html">6606</a>
+</td>
+</tr>
+</table>
+<div class="description">6506: Tile collision behaviour</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Every tile has an associated byte value, indicating the action to execute if Rex, an enemy or a shot collides with it. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Action</th>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x00</td>
+<td class="" colspan="1" rowspan="1">Decorative tile. Anyone can pass trough it. The tile is drawn over Rex or the enemy</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x01</td>
+<td class="" colspan="1" rowspan="1">Platform tile. Anyone can walk over it and pass trought it if jumped from below</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x02</td>
+<td class="" colspan="1" rowspan="1">Wall tile (solid). Nobody can move trough this tile</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x03</td>
+<td class="" colspan="1" rowspan="1">Rex or enemy killed on contact</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x04</td>
+<td class="" colspan="1" rowspan="1">FINAL BOSS tile - Hit this tile to destroy FINAL BOSS</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x05</td>
+<td class="" colspan="1" rowspan="1">Used in game but no special behaviour</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x06</td>
+<td class="" colspan="1" rowspan="1">Used in game but no special behaviour</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x07</td>
+<td class="" colspan="1" rowspan="1">Respawn activated</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x08</td>
+<td class="" colspan="1" rowspan="1">Shield recharging</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x09</td>
+<td class="" colspan="1" rowspan="1">Not used in game</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0A</td>
+<td class="" colspan="1" rowspan="1">Not used in game</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0B</td>
+<td class="" colspan="1" rowspan="1">Not used in game</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0C</td>
+<td class="" colspan="1" rowspan="1">Not used in game</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0D</td>
+<td class="" colspan="1" rowspan="1">Not used in game</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0E</td>
+<td class="" colspan="1" rowspan="1">Not used in game</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0F</td>
+<td class="" colspan="1" rowspan="1">Enemy always jump (J)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x10</td>
+<td class="" colspan="1" rowspan="1">Enemy can crouch and fire (RD)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x11</td>
+<td class="" colspan="1" rowspan="1">Enemy can jump (RJ)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x12</td>
+<td class="" colspan="1" rowspan="1">Elevator</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x13</td>
+<td class="" colspan="1" rowspan="1">Not used in game</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x14</td>
+<td class="" colspan="1" rowspan="1">Not used in game</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x15</td>
+<td class="" colspan="1" rowspan="1">Random teleporting of FOOT MAN out of the room</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x16</td>
+<td class="" colspan="1" rowspan="1">Forced teleporting of FOOT MAN out of the room</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="25862"></span>6506</td>
+<td class="instruction">DEFB $00,$00,$03,$03,$03,$03,$02,$02</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25870"></span>650E</td>
+<td class="instruction">DEFB $02,$01,$01,$01,$01,$01,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25878"></span>6516</td>
+<td class="instruction">DEFB $10,$00,$03,$03,$03,$03,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25886"></span>651E</td>
+<td class="instruction">DEFB $01,$01,$01,$00,$03,$01,$01,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25894"></span>6526</td>
+<td class="instruction">DEFB $00,$01,$03,$03,$03,$03,$03,$12</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25902"></span>652E</td>
+<td class="instruction">DEFB $01,$01,$01,$00,$03,$01,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25910"></span>6536</td>
+<td class="instruction">DEFB $00,$00,$00,$00,$00,$03,$02,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25918"></span>653E</td>
+<td class="instruction">DEFB $00,$00,$01,$03,$03,$01,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25926"></span>6546</td>
+<td class="instruction">DEFB $00,$03,$03,$03,$00,$03,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25934"></span>654E</td>
+<td class="instruction">DEFB $03,$01,$07,$07,$01,$03,$03,$01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25942"></span>6556</td>
+<td class="instruction">DEFB $03,$03,$03,$03,$03,$03,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25950"></span>655E</td>
+<td class="instruction">DEFB $03,$03,$00,$00,$00,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25958"></span>6566</td>
+<td class="instruction">DEFB $01,$00,$03,$00,$00,$03,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25966"></span>656E</td>
+<td class="instruction">DEFB $03,$03,$03,$01,$00,$00,$05,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25974"></span>6576</td>
+<td class="instruction">DEFB $03,$01,$03,$03,$02,$04,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25982"></span>657E</td>
+<td class="instruction">DEFB $03,$00,$12,$00,$12,$00,$00,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25990"></span>6586</td>
+<td class="instruction">DEFB $02,$0F,$03,$00,$00,$03,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="25998"></span>658E</td>
+<td class="instruction">DEFB $03,$03,$03,$06,$02,$03,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26006"></span>6596</td>
+<td class="instruction">DEFB $02,$12,$03,$01,$00,$15,$16,$01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26014"></span>659E</td>
+<td class="instruction">DEFB $03,$03,$03,$03,$02,$03,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26022"></span>65A6</td>
+<td class="instruction">DEFB $02,$02,$02,$02,$02,$01,$02,$01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26030"></span>65AE</td>
+<td class="instruction">DEFB $03,$03,$03,$03,$00,$03,$03,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26038"></span>65B6</td>
+<td class="instruction">DEFB $03,$02,$02,$02,$00,$02,$01,$04</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26046"></span>65BE</td>
+<td class="instruction">DEFB $03,$03,$03,$03,$00,$03,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26054"></span>65C6</td>
+<td class="instruction">DEFB $02,$02,$02,$02,$02,$03,$0F,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26062"></span>65CE</td>
+<td class="instruction">DEFB $03,$03,$03,$03,$03,$03,$03,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26070"></span>65D6</td>
+<td class="instruction">DEFB $02,$02,$03,$02,$03,$03,$11,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26078"></span>65DE</td>
+<td class="instruction">DEFB $03,$03,$03,$03,$03,$03,$01,$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26086"></span>65E6</td>
+<td class="instruction">DEFB $01,$01,$01,$02,$03,$03,$02,$02</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26094"></span>65EE</td>
+<td class="instruction">DEFB $02,$03,$03,$03,$03,$03,$01,$01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26102"></span>65F6</td>
+<td class="instruction">DEFB $01,$01,$01,$01,$01,$01,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="26110"></span>65FE</td>
+<td class="instruction">DEFB $00,$00,$08,$08,$00,$00,$00,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="25350.html">6306</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#25862">Map</a></td>
+<td class="next">
+Next: <a href="26118.html">6606</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

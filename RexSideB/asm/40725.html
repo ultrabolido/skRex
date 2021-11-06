@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 9F15</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40715.html">9F0B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40725">Map</a></td>
+<td class="next">
+Next: <a href="40847.html">9F8F</a>
+</td>
+</tr>
+</table>
+<div class="description">9F15: Handle FOOT MAN teleporting</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="48200.html">BC48</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40725"></span>9F15</td>
+<td class="instruction">LD A,(IX+$18)</td>
+<td class="comment-1" rowspan="3">Return if enemy is not teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40728"></span>9F18</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40729"></span>9F19</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40730"></span>9F1A</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="17">Computes in <span class="register">HL</span> the address into room graphic data buffer for the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40733"></span>9F1D</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40734"></span>9F1E</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40736"></span>9F20</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40737"></span>9F21</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40738"></span>9F22</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40739"></span>9F23</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40740"></span>9F24</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40741"></span>9F25</td>
+<td class="instruction">LD A,(IX+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40744"></span>9F28</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40746"></span>9F2A</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40748"></span>9F2C</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40750"></span>9F2E</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40751"></span>9F2F</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40753"></span>9F31</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40754"></span>9F32</td>
+<td class="instruction">LD DE,$E8FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40757"></span>9F35</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40758"></span>9F36</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="3">Check enemy direction and jump forward if facing right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40761"></span>9F39</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40762"></span>9F3A</td>
+<td class="instruction">JP Z,$9F3E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40765"></span>9F3D</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increase address into room graphic data buffer if enemy facing left</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40766"></span>9F3E</td>
+<td class="instruction">LD C,$00</td>
+<td class="comment-1" rowspan="2">Remnant code. <span class="register">B</span> overwritten in next instructions</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40768"></span>9F40</td>
+<td class="instruction">LD B,(IX+$19)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40771"></span>9F43</td>
+<td class="instruction">LD IY,$9F0B</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to point to the address for teleporting mask data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40775"></span>9F47</td>
+<td class="instruction">LD A,(IX+$19)</td>
+<td class="comment-1" rowspan="4">Set <span class="register">IY</span> to point to the correspondent mask based on mask index from enemy configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40778"></span>9F4A</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40779"></span>9F4B</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40781"></span>9F4D</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40783"></span>
+<div class="comments">
+<div class="paragraph">
+scramble FOOT MAN graphic data to simulate teleporting
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40783"></span>9F4F</td>
+<td class="instruction">LD B,(IX+$0F)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the height of the sprite</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40786"></span>9F52</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40787"></span>9F53</td>
+<td class="instruction">LD B,(IX+$0E)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the width of the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40790"></span>9F56</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Save <span class="register">HL</span> and <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-2"><span id="40791"></span>9F57</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40792"></span>9F58</td>
+<td class="instruction">CALL <a href="42269.html#42288">$A530</a></td>
+<td class="comment-1" rowspan="3">Scramble graphic data deom FOOT MAN sprite based on pseudo random number and mask</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40795"></span>9F5B</td>
+<td class="instruction">AND (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40796"></span>9F5C</td>
+<td class="instruction">AND (IY+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40799"></span>9F5F</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Set the new scrambled data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40800"></span>9F60</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Point to the next address into room graphic data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40801"></span>9F61</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40802"></span>9F62</td>
+<td class="instruction">DJNZ $9F57</td>
+<td class="comment-1" rowspan="1">Jump back until all the width of the sprite scrambled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40804"></span>9F64</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40805"></span>9F65</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the next row</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40808"></span>9F68</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40809"></span>9F69</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40810"></span>9F6A</td>
+<td class="instruction">DJNZ $9F52</td>
+<td class="comment-1" rowspan="1">Jump back until all the height of the sprite scrambled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40812"></span>9F6C</td>
+<td class="instruction">LD A,(IX+$1A)</td>
+<td class="comment-1" rowspan="2">Check type of teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40815"></span>9F6F</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40816"></span>9F70</td>
+<td class="instruction">JP NZ,$9F80</td>
+<td class="comment-1" rowspan="1">Jump forward if teleporting into the room</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40819"></span>
+<div class="comments">
+<div class="paragraph">
+teleporting out of the room
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40819"></span>9F73</td>
+<td class="instruction">DEC (IX+$19)</td>
+<td class="comment-1" rowspan="1">Decrement teleporting index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40822"></span>9F76</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if teleporting index is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40823"></span>9F77</td>
+<td class="instruction">LD (IX+$18),$00</td>
+<td class="comment-1" rowspan="1">End teleporting out of the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40827"></span>9F7B</td>
+<td class="instruction">LD (IX+$0C),$00</td>
+<td class="comment-1" rowspan="1">Set sprite not visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40831"></span>9F7F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40832"></span>
+<div class="comments">
+<div class="paragraph">
+teleporting into the room
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40832"></span>9F80</td>
+<td class="instruction">LD A,(IX+$19)</td>
+<td class="comment-1" rowspan="3">Increase teleporting index</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40835"></span>9F83</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40836"></span>9F84</td>
+<td class="instruction">LD (IX+$19),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40839"></span>9F87</td>
+<td class="instruction">CP $0A</td>
+<td class="comment-1" rowspan="2">Return if teleporting has not finished</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40841"></span>9F89</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40842"></span>9F8A</td>
+<td class="instruction">LD (IX+$18),$00</td>
+<td class="comment-1" rowspan="1">End teleporting into the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40846"></span>9F8E</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40715.html">9F0B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40725">Map</a></td>
+<td class="next">
+Next: <a href="40847.html">9F8F</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

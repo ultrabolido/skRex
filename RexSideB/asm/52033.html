@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at CB41</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51958.html">CAF6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52033">Map</a></td>
+<td class="next">
+Next: <a href="52087.html">CB77</a>
+</td>
+</tr>
+</table>
+<div class="description">CB41: Configure static enemies for the current room</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="43321.html">A939</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52033"></span>CB41</td>
+<td class="instruction">LD HL,$5E66</td>
+<td class="comment-1" rowspan="5">Reset enemy configuration buffer for the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52036"></span>CB44</td>
+<td class="instruction">LD DE,$5E67</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52039"></span>CB47</td>
+<td class="instruction">LD BC,$0179</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52042"></span>CB4A</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52044"></span>CB4C</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52046"></span>CB4E</td>
+<td class="instruction">LD B,$0E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the max. number of static enemies per room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52048"></span>CB50</td>
+<td class="instruction">LD IX,$5E66</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to the base addres for the enemy configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52052"></span>CB54</td>
+<td class="instruction">LD IY,($A1B9)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the address for the static enemy definition of the current room</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52056"></span>CB58</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52057"></span>CB59</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="1">Pick up the first byte of the static enemy defintion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52060"></span>CB5C</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">is end of marker - no more enemies?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52062"></span>CB5E</td>
+<td class="instruction">JP Z,$CB75</td>
+<td class="comment-1" rowspan="1">Jump forward and return</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52065"></span>CB61</td>
+<td class="instruction">CALL <a href="52087.html">$CB77</a></td>
+<td class="comment-1" rowspan="1">Configure the current enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52068"></span>CB64</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="3">Point <span class="register">IY</span> to the next enemy defintion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52070"></span>CB66</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52072"></span>CB68</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52074"></span>CB6A</td>
+<td class="instruction">LD DE,$001B</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IX</span> to the next address for the enemy configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52077"></span>CB6D</td>
+<td class="instruction">ADD IX,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52079"></span>CB6F</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="2">Recover and decrement counter at <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52080"></span>CB70</td>
+<td class="instruction">DEC B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52081"></span>CB71</td>
+<td class="instruction">JP NZ,$CB58</td>
+<td class="comment-1" rowspan="1">Jump while there are static enemies to configure</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52084"></span>CB74</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="52085"></span>CB75</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Recover <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52086"></span>CB76</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51958.html">CAF6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52033">Map</a></td>
+<td class="next">
+Next: <a href="52087.html">CB77</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

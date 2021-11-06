@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C5E8</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50622.html">C5BE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50664">Map</a></td>
+<td class="next">
+Next: <a href="50727.html">C627</a>
+</td>
+</tr>
+</table>
+<div class="description">C5E8: Handle FOOT MAN walking/stand-by state change</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="48200.html">BC48</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50664"></span>C5E8</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="3">Return if enemy type is not FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50667"></span>C5EB</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50668"></span>C5EC</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50669"></span>C5ED</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="3">Jump forward if FOOT MAN is facing left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50672"></span>C5F0</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50673"></span>C5F1</td>
+<td class="instruction">JP NZ,$C5FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50676"></span>C5F4</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="4">FOOT MAN is facing right. Return if x-position of bits2-0 of FOOTMAN is not $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50679"></span>C5F7</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50681"></span>C5F9</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50683"></span>C5FB</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50684"></span>C5FC</td>
+<td class="instruction">JP $C607</td>
+<td class="comment-1" rowspan="1">Jump to check for change state</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50687"></span>C5FF</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="4">FOOT MAN is facing left. Return if x-position of bits2-0 of FOOTMAN is not $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50690"></span>C602</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50692"></span>C604</td>
+<td class="instruction">CP $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50694"></span>C606</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50695"></span>C607</td>
+<td class="instruction">CALL <a href="42269.html">$A51D</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo-random number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50698"></span>C60A</td>
+<td class="instruction">CP $FA</td>
+<td class="comment-1" rowspan="2">Return if pseudo-random number if smaller than $FA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50700"></span>C60C</td>
+<td class="instruction">RET C</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50701"></span>
+<div class="comments">
+<div class="paragraph">
+Configure FOOT MAN for stand-by position
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50701"></span>C60D</td>
+<td class="instruction">LD A,(IX+$06)</td>
+<td class="comment-1" rowspan="3">Return if FOOT MAN is falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50704"></span>C610</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50705"></span>C611</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50706"></span>C612</td>
+<td class="instruction">LD A,(IX+$03)</td>
+<td class="comment-1" rowspan="3">Return if FOOT MAN is jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50709"></span>C615</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50710"></span>C616</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50711"></span>C617</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="3">Return if state change counter is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50714"></span>C61A</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50715"></span>C61B</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50716"></span>C61C</td>
+<td class="instruction">LD HL,$8338</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address pointer for the graphic data of FOOT MAN stand-by</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50719"></span>C61F</td>
+<td class="instruction">CALL <a href="50622.html#50631">$C5C7</a></td>
+<td class="comment-1" rowspan="1">Set enemy configuration for FOOT MAN stand-by</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50722"></span>C622</td>
+<td class="instruction">LD (IX+$12),$02</td>
+<td class="comment-1" rowspan="1">Set FOOT MAN to type Stand-by</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50726"></span>C626</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50622.html">C5BE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50664">Map</a></td>
+<td class="next">
+Next: <a href="50727.html">C627</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

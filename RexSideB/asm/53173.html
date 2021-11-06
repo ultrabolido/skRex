@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at CFB5</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53081.html">CF59</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53173">Map</a></td>
+<td class="next">
+Next: <a href="53828.html">D244</a>
+</td>
+</tr>
+</table>
+<div class="description">CFB5: Handle collision detection of enemy with Rex and projectiles</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="48200.html">BC48</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53173"></span>CFB5</td>
+<td class="instruction">LD A,($A1EE)</td>
+<td class="comment-1" rowspan="3">Return if Rex is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53176"></span>CFB8</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53177"></span>CFB9</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53178"></span>
+<div class="comments">
+<div class="paragraph">
+Configure opcodes for collision box according to enemy type
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53178"></span>CFBA</td>
+<td class="instruction">LD A,$1E</td>
+<td class="comment-1" rowspan="2">Configure opcode ADD A at $D00E to add $1E (y-position height range)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53180"></span>CFBC</td>
+<td class="instruction">LD ($D00F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53183"></span>CFBF</td>
+<td class="instruction">LD A,$16</td>
+<td class="comment-1" rowspan="2">Configure opcode ADD A at $D01E to add $1E (x-position width range)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53185"></span>CFC1</td>
+<td class="instruction">LD ($D01F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53188"></span>CFC4</td>
+<td class="instruction">LD A,$10</td>
+<td class="comment-1" rowspan="3">Configure opcode ADD A at $D0A7 and $D0B8 to add $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53190"></span>CFC6</td>
+<td class="instruction">LD ($D0A8),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53193"></span>CFC9</td>
+<td class="instruction">LD ($D0B9),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53196"></span>CFCC</td>
+<td class="instruction">LD A,$10</td>
+<td class="comment-1" rowspan="2">Configure opcode SUB at $D019 to substract $10 (x-position width range)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53198"></span>CFCE</td>
+<td class="instruction">LD ($D01A),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53201"></span>CFD1</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="3">Jump forward if enemy moving left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53204"></span>CFD4</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53205"></span>CFD5</td>
+<td class="instruction">JP Z,$CFDD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53208"></span>CFD8</td>
+<td class="instruction">LD A,$08</td>
+<td class="comment-1" rowspan="2">Enemy moving right, configure opcode SUB at $D019 to substract $08 (x-position width range)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53210"></span>CFDA</td>
+<td class="instruction">LD ($D01A),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53213"></span>CFDD</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="2">Check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53216"></span>CFE0</td>
+<td class="instruction">AND $7F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53218"></span>CFE2</td>
+<td class="instruction">CP $0E</td>
+<td class="comment-1" rowspan="1">is TRIANGLE?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53220"></span>CFE4</td>
+<td class="instruction">JP Z,$CFEA</td>
+<td class="comment-1" rowspan="1">Jump to reconfigure opcodes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53223"></span>CFE7</td>
+<td class="instruction">JP $CFFC</td>
+<td class="comment-1" rowspan="1">Jump forward and check for collision</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53226"></span>
+<div class="comments">
+<div class="paragraph">
+reconfigure opcodes for TRIANGLE
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53226"></span>CFEA</td>
+<td class="instruction">LD A,$16</td>
+<td class="comment-1" rowspan="2">Configure opcode ADD A at $D00E to add $16 (y-position height range)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53228"></span>CFEC</td>
+<td class="instruction">LD ($D00F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53231"></span>CFEF</td>
+<td class="instruction">LD A,$0E</td>
+<td class="comment-1" rowspan="2">Configure opcode ADD A at $D01E to add $0E (x-position width range)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53233"></span>CFF1</td>
+<td class="instruction">LD ($D01F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53236"></span>CFF4</td>
+<td class="instruction">LD A,$08</td>
+<td class="comment-1" rowspan="3">Configure opcode ADD A at $D0A7 and $D0B8 to add $08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53238"></span>CFF6</td>
+<td class="instruction">LD ($D0A8),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53241"></span>CFF9</td>
+<td class="instruction">LD ($D0B9),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53244"></span>CFFC</td>
+<td class="instruction">LD A,($A1F9)</td>
+<td class="comment-1" rowspan="3">Jump forward if Rex is teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53247"></span>CFFF</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53248"></span>D000</td>
+<td class="instruction">JP NZ,$D07E</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53251"></span>
+<div class="comments">
+<div class="paragraph">
+check collision with Rex
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53251"></span>D003</td>
+<td class="instruction">LD HL,$A250</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the y-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53254"></span>D006</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="7">Check if y-position of enemy is in the range of collision with Rex and jump forward if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53257"></span>D009</td>
+<td class="instruction">SUB $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53259"></span>D00B</td>
+<td class="instruction">CP (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53260"></span>D00C</td>
+<td class="instruction">JR NC,$D07E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53262"></span>D00E</td>
+<td class="instruction">ADD A,$1E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53264"></span>D010</td>
+<td class="instruction">CP (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53265"></span>D011</td>
+<td class="instruction">JR C,$D07E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53267"></span>D013</td>
+<td class="instruction">LD HL,$A24F</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> the x-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53270"></span>D016</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="7">Check if x-position of enemy is in the range of collision with Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53273"></span>D019</td>
+<td class="instruction">SUB $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53275"></span>D01B</td>
+<td class="instruction">CP (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53276"></span>D01C</td>
+<td class="instruction">JR NC,$D07E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53278"></span>D01E</td>
+<td class="instruction">ADD A,$16</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53280"></span>D020</td>
+<td class="instruction">CP (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53281"></span>D021</td>
+<td class="instruction">JR C,$D07E</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53283"></span>
+<div class="comments">
+<div class="paragraph">
+collision with Rex detected and shield activated
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53283"></span>D023</td>
+<td class="instruction">LD A,($A1E2)</td>
+<td class="comment-1" rowspan="3">Jump forward if shield not activated</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53286"></span>D026</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53287"></span>D027</td>
+<td class="instruction">JP Z,$D04D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53290"></span>D02A</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="7">Jump forward if entity is bubble, smartbomb or question</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53293"></span>D02D</td>
+<td class="instruction">CP $FE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53295"></span>D02F</td>
+<td class="instruction">JP Z,$D04D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53298"></span>D032</td>
+<td class="instruction">CP $FD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53300"></span>D034</td>
+<td class="instruction">JP Z,$D04D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53303"></span>D037</td>
+<td class="instruction">CP $FC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53305"></span>D039</td>
+<td class="instruction">JP Z,$D04D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53308"></span>D03C</td>
+<td class="instruction">CALL <a href="38919.html">$9807</a></td>
+<td class="comment-1" rowspan="1">Destroy enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53311"></span>D03F</td>
+<td class="instruction">LD A,(IX+$14)</td>
+<td class="comment-1" rowspan="4">Computes shield loss into <span class="register">L</span> shield loss = enemy health * 4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53314"></span>D042</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53316"></span>D044</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53318"></span>D046</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53319"></span>D047</td>
+<td class="instruction">CALL <a href="39148.html">$98EC</a></td>
+<td class="comment-1" rowspan="1">Handle shield loss</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53322"></span>D04A</td>
+<td class="instruction">JP $D069</td>
+<td class="comment-1" rowspan="1">Jump forward</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53325"></span>
+<div class="comments">
+<div class="paragraph">
+collision with Rex detected and shield not activated
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53325"></span>D04D</td>
+<td class="instruction">LD A,(IX+$18)</td>
+<td class="comment-1" rowspan="3">Jump forward if enemy is teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53328"></span>D050</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53329"></span>D051</td>
+<td class="instruction">JP NZ,$D07E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53332"></span>D054</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="7">Jump forward if entity is bubble, smartbomb or question</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53335"></span>D057</td>
+<td class="instruction">CP $FE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53337"></span>D059</td>
+<td class="instruction">JP Z,$D069</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53340"></span>D05C</td>
+<td class="instruction">CP $FD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53342"></span>D05E</td>
+<td class="instruction">JP Z,$D069</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53345"></span>D061</td>
+<td class="instruction">CP $FC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53347"></span>D063</td>
+<td class="instruction">JP Z,$D069</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53350"></span>D066</td>
+<td class="instruction">CALL <a href="40133.html">$9CC5</a></td>
+<td class="comment-1" rowspan="1">Handle Rex dead</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53353"></span>
+<div class="comments">
+<div class="paragraph">
+Rex takes bubble, smartbombs or question
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53353"></span>D069</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">check enemy?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53356"></span>D06C</td>
+<td class="instruction">CP $FE</td>
+<td class="comment-1" rowspan="1">is bubble?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53358"></span>D06E</td>
+<td class="instruction">CALL Z,$D204</td>
+<td class="comment-1" rowspan="1">Jump to handles Rex takes bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53361"></span>D071</td>
+<td class="instruction">CP $FD</td>
+<td class="comment-1" rowspan="1">is smartbomb?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53363"></span>D073</td>
+<td class="instruction">CALL Z,$D22C</td>
+<td class="comment-1" rowspan="1">Jump to handle Rex takes smartbomb</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53366"></span>D076</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53369"></span>D079</td>
+<td class="instruction">CP $FC</td>
+<td class="comment-1" rowspan="1">is question?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53371"></span>D07B</td>
+<td class="instruction">CALL Z,<a href="53838.html">$D24E</a></td>
+<td class="comment-1" rowspan="1">Jump to handle question</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53374"></span>
+<div class="comments">
+<div class="paragraph">
+No collision with Rex - Check collision with Rex projectiles
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53374"></span>D07E</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="3">Return if enemy is DROP</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53377"></span>D081</td>
+<td class="instruction">CP $82</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53379"></span>D083</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53380"></span>D084</td>
+<td class="instruction">CP $84</td>
+<td class="comment-1" rowspan="2">Jump forward if enemy is not PINE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53382"></span>D086</td>
+<td class="instruction">JP NZ,$D08E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53385"></span>D089</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="3">Return if PINE animation state is stand-by</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53388"></span>D08C</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53389"></span>D08D</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53390"></span>D08E</td>
+<td class="instruction">LD IY,$5B60</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the base address for Rex projectiles configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53394"></span>D092</td>
+<td class="instruction">LD B,$1E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of projectiles to check</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53396"></span>D094</td>
+<td class="instruction">LD A,(IY+$06)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the projectile status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53399"></span>D097</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">is flying?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53401"></span>D099</td>
+<td class="instruction">JP NZ,$D13F</td>
+<td class="comment-1" rowspan="1">Jump to check another projectile if not flying</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53404"></span>D09C</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="7">Jump to check another projectile if y-position of projectile is not in range of collision with the enemy y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53407"></span>D09F</td>
+<td class="instruction">ADD A,$05</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53409"></span>D0A1</td>
+<td class="instruction">CP (IY+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53412"></span>D0A4</td>
+<td class="instruction">JP NC,$D13F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53415"></span>D0A7</td>
+<td class="instruction">ADD A,$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53417"></span>D0A9</td>
+<td class="instruction">CP (IY+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53420"></span>D0AC</td>
+<td class="instruction">JP C,$D13F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53423"></span>D0AF</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="6">Jump to check another projectile if x-position of projectile is not in range collision with then enemy x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53426"></span>D0B2</td>
+<td class="instruction">CP (IY+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53429"></span>D0B5</td>
+<td class="instruction">JP NC,$D13F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53432"></span>D0B8</td>
+<td class="instruction">ADD A,$10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53434"></span>D0BA</td>
+<td class="instruction">CP (IY+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53437"></span>D0BD</td>
+<td class="instruction">JP C,$D13F</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53440"></span>
+<div class="comments">
+<div class="paragraph">
+handle projectile collision with entity
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53440"></span>D0C0</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check for entity type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53443"></span>D0C3</td>
+<td class="instruction">CP $FE</td>
+<td class="comment-1" rowspan="2">Jump to check another projectile if entity is bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53445"></span>D0C5</td>
+<td class="instruction">JP Z,$D13F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53448"></span>D0C8</td>
+<td class="instruction">CP $FD</td>
+<td class="comment-1" rowspan="2">Jump to check another projectile if entity is smartbomb</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53450"></span>D0CA</td>
+<td class="instruction">JP Z,$D13F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53453"></span>D0CD</td>
+<td class="instruction">CP $FC</td>
+<td class="comment-1" rowspan="2">Jump to handle another projectile if entity is question</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53455"></span>D0CF</td>
+<td class="instruction">JP Z,$D13F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53458"></span>D0D2</td>
+<td class="instruction">LD A,($A1AC)</td>
+<td class="comment-1" rowspan="3">Jump forward if weapon type is laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53461"></span>D0D5</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53463"></span>D0D7</td>
+<td class="instruction">JP NZ,$D0E1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53466"></span>D0DA</td>
+<td class="instruction">LD (IY+$06),$00</td>
+<td class="comment-1" rowspan="1">Destroy laser projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53470"></span>D0DE</td>
+<td class="instruction">JP $D0F3</td>
+<td class="comment-1" rowspan="1">Jump forward</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53473"></span>
+<div class="comments">
+<div class="paragraph">
+non laser impact
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53473"></span>D0E1</td>
+<td class="instruction">LD (IY+$06),$02</td>
+<td class="comment-1" rowspan="1">Set projectile status to impact #1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53477"></span>D0E5</td>
+<td class="instruction">LD A,($D5DA)</td>
+<td class="comment-1" rowspan="1">Check channel 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53480"></span>D0E8</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="2">Jump forward if channel in use</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53482"></span>D0EA</td>
+<td class="instruction">JP NZ,$D0F3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53485"></span>D0ED</td>
+<td class="instruction">LD DE,$D51F</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to base address for projectile impact sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53488"></span>D0F0</td>
+<td class="instruction">CALL <a href="54143.html">$D37F</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53491"></span>
+<div class="comments">
+<div class="paragraph">
+handle enemy behaviour on projectile impact
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53491"></span>D0F3</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53494"></span>D0F6</td>
+<td class="instruction">CP $06</td>
+<td class="comment-1" rowspan="2">Handle collision if enemy type FOOT MAN DYING 6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53496"></span>D0F8</td>
+<td class="instruction">CALL Z,$D1B7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53499"></span>D0FB</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53502"></span>D0FE</td>
+<td class="instruction">CP $06</td>
+<td class="comment-1" rowspan="2">Jump to handle next projectile if enemy type is FOOT MAN DYING 6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53504"></span>D100</td>
+<td class="instruction">JP Z,$D13F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53507"></span>D103</td>
+<td class="instruction">LD A,(IX+$14)</td>
+<td class="comment-1" rowspan="3">Jump forward to handle next projectile if enemy health is zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53510"></span>D106</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53511"></span>D107</td>
+<td class="instruction">JP Z,$D13F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53514"></span>D10A</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="2">Decrement enemy health</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53515"></span>D10B</td>
+<td class="instruction">LD (IX+$14),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53518"></span>D10E</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="2">Jump forward if enemy health &lt;&gt; 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53520"></span>D110</td>
+<td class="instruction">JP NZ,$D149</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53523"></span>
+<div class="comments">
+<div class="paragraph">
+enemy health is equal to 1
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53523"></span>D113</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="4">Jump forward and destroy enemy if enemy type is not FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53526"></span>D116</td>
+<td class="instruction">AND $7F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53528"></span>D118</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53529"></span>D119</td>
+<td class="instruction">JP NZ,$D13C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53532"></span>D11C</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="3">Jump forward to check projectile direction if FOOT MAN is facing left</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53535"></span>D11F</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53536"></span>D120</td>
+<td class="instruction">JP NZ,$D12E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53539"></span>D123</td>
+<td class="instruction">LD A,(IY+$04)</td>
+<td class="comment-1" rowspan="2">check projectile direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53542"></span>D126</td>
+<td class="instruction">BIT 7,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53544"></span>D128</td>
+<td class="instruction">JP NZ,$D136</td>
+<td class="comment-1" rowspan="1">Jump forward and FOOT MAN dying #6 animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53547"></span>D12B</td>
+<td class="instruction">JP $D13C</td>
+<td class="comment-1" rowspan="1">Jump to destroy enemy</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53550"></span>D12E</td>
+<td class="instruction">LD A,(IY+$04)</td>
+<td class="comment-1" rowspan="2">check projectile direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53553"></span>D131</td>
+<td class="instruction">BIT 7,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53555"></span>D133</td>
+<td class="instruction">JP NZ,$D13C</td>
+<td class="comment-1" rowspan="1">Jump to destroy enemy if projectile is facing left</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53558"></span>D136</td>
+<td class="instruction">CALL $D15A</td>
+<td class="comment-1" rowspan="1">Handle FOOT MAN dying #6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53561"></span>D139</td>
+<td class="instruction">JP $D13F</td>
+<td class="comment-1" rowspan="1">Jump to handle next projectile</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53564"></span>D13C</td>
+<td class="instruction">CALL <a href="38919.html">$9807</a></td>
+<td class="comment-1" rowspan="1">Destroy enemy</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53567"></span>
+<div class="comments">
+<div class="paragraph">
+check for the next projectile if any
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53567"></span>D13F</td>
+<td class="instruction">LD DE,$000F</td>
+<td class="comment-1" rowspan="2">Set <span class="register">IY</span> point to the next projectile configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53570"></span>D142</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53572"></span>D144</td>
+<td class="instruction">DEC B</td>
+<td class="comment-1" rowspan="1">Decrement projectile counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53573"></span>D145</td>
+<td class="instruction">JP NZ,$D094</td>
+<td class="comment-1" rowspan="1">Jump back and handle next projectil until there are projectiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53576"></span>D148</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53577"></span>
+<div class="comments">
+<div class="paragraph">
+Enemy health is &lt;&gt; 1
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53577"></span>D149</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="4">Jump and handle next projectile. Enemy type $08 doesn't exist</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53580"></span>D14C</td>
+<td class="instruction">AND $7F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53582"></span>D14E</td>
+<td class="instruction">CP $08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53584"></span>D150</td>
+<td class="instruction">JP NZ,$D13F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53587"></span>D153</td>
+<td class="instruction">LD (IX+$10),$04</td>
+<td class="comment-1" rowspan="2">Code not executed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53591"></span>D157</td>
+<td class="instruction">JP $D13F</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53594"></span>
+<div class="comments">
+<div class="paragraph">
+Handle FOOT MAN dying #6
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53594"></span>D15A</td>
+<td class="instruction">LD A,($A1AC)</td>
+<td class="comment-1" rowspan="1">Check weapon type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53597"></span>D15D</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="2">Jump to destroy enemy if weapon type is laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53599"></span>D15F</td>
+<td class="instruction">JP Z,<a href="38919.html">$9807</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53602"></span>D162</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="2">Configure FOOT MAN jumping if weapon type is spray</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53604"></span>D164</td>
+<td class="instruction">CALL Z,<a href="50798.html#50803">$C673</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53607"></span>D167</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="3">Change direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53610"></span>D16A</td>
+<td class="instruction">XOR $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53612"></span>D16C</td>
+<td class="instruction">LD (IX+$02),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53615"></span>D16F</td>
+<td class="instruction">LD A,$04</td>
+<td class="comment-1" rowspan="2">Set speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53617"></span>D171</td>
+<td class="instruction">LD (IX+$10),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53620"></span>D174</td>
+<td class="instruction">LD HL,$AF7A</td>
+<td class="comment-1" rowspan="3">Set address of table offsets for FOOT MAN dying animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53623"></span>D177</td>
+<td class="instruction">LD (IX+$0A),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53626"></span>D17A</td>
+<td class="instruction">LD (IX+$0B),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53629"></span>D17D</td>
+<td class="instruction">LD HL,$8258</td>
+<td class="comment-1" rowspan="3">Set address for graphic data of FOOT MAN dying</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53632"></span>D180</td>
+<td class="instruction">LD (IX+$16),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53635"></span>D183</td>
+<td class="instruction">LD (IX+$17),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53638"></span>D186</td>
+<td class="instruction">LD (IX+$09),$06</td>
+<td class="comment-1" rowspan="1">Set enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53642"></span>D18A</td>
+<td class="instruction">LD (IX+$11),$06</td>
+<td class="comment-1" rowspan="1">Set counter for state change</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53646"></span>D18E</td>
+<td class="instruction">LD (IX+$14),$02</td>
+<td class="comment-1" rowspan="1">Set health</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53650"></span>D192</td>
+<td class="instruction">LD (IX+$0E),$03</td>
+<td class="comment-1" rowspan="1">Set sprite width</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53654"></span>D196</td>
+<td class="instruction">LD A,($A1AC)</td>
+<td class="comment-1" rowspan="5">Return if weapon type is spray or laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53657"></span>D199</td>
+<td class="instruction">CP $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53659"></span>D19B</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53660"></span>D19C</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53662"></span>D19E</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53663"></span>D19F</td>
+<td class="instruction">LD HL,$5843</td>
+<td class="comment-1" rowspan="2">Set base address to attribute file for score points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53666"></span>D1A2</td>
+<td class="instruction">LD ($A1D2),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53669"></span>D1A5</td>
+<td class="instruction">LD A,$09</td>
+<td class="comment-1" rowspan="2">Init counter for score points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53671"></span>D1A7</td>
+<td class="instruction">LD ($A1D4),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53674"></span>D1AA</td>
+<td class="instruction">LD HL,$0002</td>
+<td class="comment-1" rowspan="2">Set next score points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53677"></span>D1AD</td>
+<td class="instruction">LD ($A1D5),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53680"></span>D1B0</td>
+<td class="instruction">LD DE,$0001</td>
+<td class="comment-1" rowspan="1">Set actual score points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53683"></span>D1B3</td>
+<td class="instruction">CALL <a href="39237.html">$9945</a></td>
+<td class="comment-1" rowspan="1">Increment score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53686"></span>D1B6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53687"></span>
+<div class="comments">
+<div class="paragraph">
+handle projectile collision with FOOT MAN dying 6
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53687"></span>D1B7</td>
+<td class="instruction">LD A,($A1AC)</td>
+<td class="comment-1" rowspan="3">Return if projectile type is spray</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53690"></span>D1BA</td>
+<td class="instruction">CP $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53692"></span>D1BC</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53693"></span>D1BD</td>
+<td class="instruction">LD A,$04</td>
+<td class="comment-1" rowspan="2">Set enemy speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53695"></span>D1BF</td>
+<td class="instruction">LD (IX+$10),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53698"></span>D1C2</td>
+<td class="instruction">LD HL,$AF7A</td>
+<td class="comment-1" rowspan="3">Set address pointer for offsets animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53701"></span>D1C5</td>
+<td class="instruction">LD (IX+$0A),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53704"></span>D1C8</td>
+<td class="instruction">LD (IX+$0B),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53707"></span>D1CB</td>
+<td class="instruction">LD HL,$8258</td>
+<td class="comment-1" rowspan="3">Set address pointer of graphic data for FOOTMAN dying</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53710"></span>D1CE</td>
+<td class="instruction">LD (IX+$16),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53713"></span>D1D1</td>
+<td class="instruction">LD (IX+$17),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53716"></span>D1D4</td>
+<td class="instruction">LD (IX+$09),$06</td>
+<td class="comment-1" rowspan="1">Set entity type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53720"></span>D1D8</td>
+<td class="instruction">LD (IX+$11),$06</td>
+<td class="comment-1" rowspan="1">Set counter for state change</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53724"></span>D1DC</td>
+<td class="instruction">LD (IX+$14),$02</td>
+<td class="comment-1" rowspan="1">Set enemy health</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53728"></span>D1E0</td>
+<td class="instruction">LD A,($A1D4)</td>
+<td class="comment-1" rowspan="3">Decrement score points counter and return if zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53731"></span>D1E3</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53732"></span>D1E4</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53733"></span>D1E5</td>
+<td class="instruction">LD ($A1D4),A</td>
+<td class="comment-1" rowspan="1">Set the new score point counter value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53736"></span>D1E8</td>
+<td class="instruction">LD DE,($A1D5)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> bonus score points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53740"></span>D1EC</td>
+<td class="instruction">CALL <a href="39237.html">$9945</a></td>
+<td class="comment-1" rowspan="1">Increment score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53743"></span>D1EF</td>
+<td class="instruction">LD HL,($A1D5)</td>
+<td class="comment-1" rowspan="4">Increment bonus score points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53746"></span>D1F2</td>
+<td class="instruction">LD DE,$0001</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53749"></span>D1F5</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53750"></span>D1F6</td>
+<td class="instruction">LD ($A1D5),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53753"></span>D1F9</td>
+<td class="instruction">LD HL,($A1D2)</td>
+<td class="comment-1" rowspan="4">Increment base address into attribute file pointing to bonus points icon in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53756"></span>D1FC</td>
+<td class="instruction">LD DE,$0003</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53759"></span>D1FF</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53760"></span>D200</td>
+<td class="instruction">LD ($A1D2),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53763"></span>D203</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53764"></span>
+<div class="comments">
+<div class="paragraph">
+handle Rex takes bubble
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53764"></span>D204</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53765"></span>D205</td>
+<td class="instruction">LD DE,$D573</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> sound buffer for catching small bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53768"></span>D208</td>
+<td class="instruction">CALL <a href="54143.html">$D37F</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53771"></span>D20B</td>
+<td class="instruction">LD (IX+$0C),$00</td>
+<td class="comment-1" rowspan="1">Set bubble not visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53775"></span>D20F</td>
+<td class="instruction">LD A,$26</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the quantity of energy to increase</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53777"></span>D211</td>
+<td class="instruction">CALL <a href="47625.html">$BA09</a></td>
+<td class="comment-1" rowspan="1">Handle weapon energy increase</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53780"></span>D214</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Active HDU flash</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53781"></span>D215</td>
+<td class="instruction">LD ($A1DB),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53784"></span>D218</td>
+<td class="instruction">LD A,(IX+$15)</td>
+<td class="comment-1" rowspan="3">Jump forward and return if bubble small</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53787"></span>D21B</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53788"></span>D21C</td>
+<td class="instruction">JP Z,$D22A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53791"></span>D21F</td>
+<td class="instruction">LD A,$26</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the quantity of energy to increase</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53793"></span>D221</td>
+<td class="instruction">CALL <a href="47625.html">$BA09</a></td>
+<td class="comment-1" rowspan="1">Handle weapon energy increase</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53796"></span>D224</td>
+<td class="instruction">LD DE,$D55E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> sound buffer for catching big bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53799"></span>D227</td>
+<td class="instruction">CALL <a href="54143.html">$D37F</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53802"></span>D22A</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="53803"></span>D22B</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="53804"></span>
+<div class="comments">
+<div class="paragraph">
+handle Rex takes smartbomb
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="53804"></span>D22C</td>
+<td class="instruction">LD (IX+$0C),$00</td>
+<td class="comment-1" rowspan="1">Set smartbomb to not visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53808"></span>D230</td>
+<td class="instruction">LD A,($A205)</td>
+<td class="comment-1" rowspan="2">Increase number of smartbombs</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53811"></span>D233</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53812"></span>D234</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="2">Return if number of smartbombs is qual to 4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53814"></span>D236</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53815"></span>D237</td>
+<td class="instruction">LD ($A205),A</td>
+<td class="comment-1" rowspan="1">Set the new number of smartbombs</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53818"></span>D23A</td>
+<td class="instruction">CALL <a href="41805.html#41841">$A371</a></td>
+<td class="comment-1" rowspan="1">Draw smartbombs</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53821"></span>D23D</td>
+<td class="instruction">LD DE,$D588</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the address for the smartbomb take sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53824"></span>D240</td>
+<td class="instruction">CALL <a href="54143.html">$D37F</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="53827"></span>D243</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="53081.html">CF59</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#53173">Map</a></td>
+<td class="next">
+Next: <a href="53828.html">D244</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

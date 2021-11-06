@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at BB6B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47836.html">BADC</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47979">Map</a></td>
+<td class="next">
+Next: <a href="48030.html">BB9E</a>
+</td>
+</tr>
+</table>
+<div class="description">BB6B: Draw a row of borders for the windows</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Computes the pointer on display file and draw a row of borders for the windows. Used by the routine at <a href="47836.html">BADC</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Point to the address of the graphics data for the left border tile</td>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">point to the address of the graphics data for the middle border tile</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Point to the addres into the display file look up table corresponding to the row of pixels to draw</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47979"></span>BB6B</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span>=8</td>
+</tr>
+<tr>
+<td class="address-2"><span id="47981"></span>BB6D</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">DE</span> to point to the address on the display file to draw the corner</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47982"></span>BB6E</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47983"></span>BB6F</td>
+<td class="instruction">LD D,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47984"></span>BB70</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="2">Increment the pointer by 2. All the windows has a margin of 2 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47985"></span>BB71</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47986"></span>BB72</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span> briefly</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47987"></span>BB73</td>
+<td class="instruction">LD A,($A1C1)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to the horizontal position of the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47990"></span>BB76</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47991"></span>BB77</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47993"></span>BB79</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the address of this location in display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47994"></span>BB7A</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> with <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47995"></span>BB7B</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="47996"></span>BB7C</td>
+<td class="instruction">CALL $BB82</td>
+<td class="comment-1" rowspan="1">Draw one row of pixels for this border</td>
+</tr>
+<tr>
+<td class="address-1"><span id="47999"></span>BB7F</td>
+<td class="instruction">DJNZ $BB6D</td>
+<td class="comment-1" rowspan="1">Jump back while there are remaining pixels to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48001"></span>BB81</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="48002"></span>
+<div class="comments">
+<div class="paragraph">
+This routine draws the corresponding pixels of the tiles borders into display file
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48002"></span>BB82</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48003"></span>BB83</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Put the byte of the left border tile into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48006"></span>BB86</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48007"></span>BB87</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment the pointer to the display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48008"></span>BB88</td>
+<td class="instruction">LD A,($A1C3)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">B</span> to the length of the longest line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48011"></span>BB8B</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="48012"></span>BB8C</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="2">Put the byte of the middle border tile into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48015"></span>BB8F</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48016"></span>BB90</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment the pointer to the display files</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48017"></span>BB91</td>
+<td class="instruction">DJNZ $BB8C</td>
+<td class="comment-1" rowspan="1">Jump back while there are middle borders to show</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48019"></span>BB93</td>
+<td class="instruction">LD A,(IX+$08)</td>
+<td class="comment-1" rowspan="2">Put the byte of the right border tile into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48022"></span>BB96</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48023"></span>BB97</td>
+<td class="instruction">INC IY</td>
+<td class="comment-1" rowspan="1">Point to the next byte of the middle border tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48025"></span>BB99</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Point to the next byte of the left border tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48027"></span>BB9B</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Point to the next address into the display file lookup table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="48028"></span>BB9C</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Recover <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="48029"></span>BB9D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="47836.html">BADC</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#47979">Map</a></td>
+<td class="next">
+Next: <a href="48030.html">BB9E</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

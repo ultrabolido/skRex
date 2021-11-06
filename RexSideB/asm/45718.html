@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at B296</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45635.html">B243</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45718">Map</a></td>
+<td class="next">
+Next: <a href="45951.html">B37F</a>
+</td>
+</tr>
+</table>
+<div class="description">B296: Draw an entity (enemy, object or player)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38531.html">9683</a>, <a href="39847.html">9BA7</a> and <a href="48200.html">BC48</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45718"></span>B296</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45719"></span>B297</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is entity facing left?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45720"></span>B298</td>
+<td class="instruction">JP NZ,$B303</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="45723"></span>
+<div class="comments">
+<div class="paragraph">
+Entity facing right. Computes address of graphic data for entity and address destination on room buffer
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45723"></span>B29B</td>
+<td class="instruction">LD A,($A248)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the x-position of entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45726"></span>B29E</td>
+<td class="instruction">AND $07</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the bit position of the entity (bits2-0)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45728"></span>B2A0</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to the address pointer of offset for sprite movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45729"></span>B2A1</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45731"></span>B2A3</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45732"></span>B2A4</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">DE</span> to the corresponding offset based on the position of the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45733"></span>B2A5</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45735"></span>B2A7</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Recover <span class="register">HL</span> (graphics data of the sprite)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45736"></span>B2A8</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the address of the corresponding sprite based on the offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45737"></span>B2A9</td>
+<td class="instruction">LD A,($A248)</td>
+<td class="comment-1" rowspan="20">Computes at <span class="register">HL</span> the address into room graphic data buffer for the entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45740"></span>B2AC</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45742"></span>B2AE</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45744"></span>B2B0</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45746"></span>B2B2</td>
+<td class="instruction">LD ($A248),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45749"></span>B2B5</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45750"></span>B2B6</td>
+<td class="instruction">LD A,($A249)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45753"></span>B2B9</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45754"></span>B2BA</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45756"></span>B2BC</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45757"></span>B2BD</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45758"></span>B2BE</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45759"></span>B2BF</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45760"></span>B2C0</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45761"></span>B2C1</td>
+<td class="instruction">LD DE,$E8FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45764"></span>B2C4</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45765"></span>B2C5</td>
+<td class="instruction">LD A,($A248)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45768"></span>B2C8</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45769"></span>B2C9</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45771"></span>B2CB</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45772"></span>B2CC</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45773"></span>B2CD</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Recover <span class="register">HL</span> (the address of the corresponding sprite based on the offset)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45774"></span>B2CE</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45775"></span>B2CF</td>
+<td class="instruction">LD A,($A24A)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the width of the sprite (in bytes)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45778"></span>B2D2</td>
+<td class="instruction">LD ($B2F2),A</td>
+<td class="comment-1" rowspan="1">Configure LD opcode at B2F1 to set <span class="register">B</span> register to the width of the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45781"></span>B2D5</td>
+<td class="instruction">LD A,($A24B)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the height of the sprite (in pixels)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45784"></span>B2D8</td>
+<td class="instruction">LD ($B2EE),A</td>
+<td class="comment-1" rowspan="1">Configure LD opcode at B2ED to set <span class="register">B</span> register to the height of the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45787"></span>B2DB</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45788"></span>B2DC</td>
+<td class="instruction">LD A,($A1CC)</td>
+<td class="comment-1" rowspan="2">Check bit for Graphic Data Select</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45791"></span>B2DF</td>
+<td class="instruction">BIT 7,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45793"></span>B2E1</td>
+<td class="instruction">JP Z,$B2E8</td>
+<td class="comment-1" rowspan="1">Jump if graphic data is based in animation offsets</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45796"></span>B2E4</td>
+<td class="instruction">LD DE,($A1CD)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the graphic data for static (non animated) sprite</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="45800"></span>
+<div class="comments">
+<div class="paragraph">
+Entity facing right. Draw entity (enemy, object or Rex)
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45800"></span>B2E8</td>
+<td class="instruction">LD ($A25E),DE</td>
+<td class="comment-1" rowspan="1">Set the address for the graphic data of the entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45804"></span>B2EC</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45805"></span>B2ED</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the width of the sprite</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45807"></span>B2EF</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Save <span class="register">BC</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45808"></span>B2F0</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45809"></span>B2F1</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the height of the sprite</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45811"></span>B2F3</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the graphic data to copy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45812"></span>B2F4</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Blend the graphic data with the graphic data on the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45813"></span>B2F5</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Copy graphics data to the room buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45814"></span>B2F6</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="2">Increment sprite graphic data and room graphic data destination</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45815"></span>B2F7</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45816"></span>B2F8</td>
+<td class="instruction">DJNZ $B2F3</td>
+<td class="comment-1" rowspan="1">Jump back if the are more sprite rows o draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45818"></span>B2FA</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45819"></span>B2FB</td>
+<td class="instruction">LD BC,$0020</td>
+<td class="comment-1" rowspan="2">Increment one row for the room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45822"></span>B2FE</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45823"></span>B2FF</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45824"></span>B300</td>
+<td class="instruction">DJNZ $B2EF</td>
+<td class="comment-1" rowspan="1">Jump back until all rows drawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45826"></span>B302</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="45827"></span>
+<div class="comments">
+<div class="paragraph">
+Entity facing left. Computes address of graphic data for entity and address destination on room buffer
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45827"></span>B303</td>
+<td class="instruction">LD A,($A248)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45830"></span>B306</td>
+<td class="instruction">LD DE,$0007</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to point to the last byte of the offset animation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45833"></span>B309</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45834"></span>B30A</td>
+<td class="instruction">AND $07</td>
+<td class="comment-1" rowspan="5">And substract the position bit2-0 for the sprite x-position to point to the correspondent offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45836"></span>B30C</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45837"></span>B30D</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45839"></span>B30F</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45840"></span>B310</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45842"></span>B312</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">DE</span> to the offset animation value</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45843"></span>B313</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45845"></span>B315</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Recover <span class="register">HL</span> (address pointer for graphic data of sprite)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45846"></span>B316</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">And adds the offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45847"></span>B317</td>
+<td class="instruction">LD A,($A248)</td>
+<td class="comment-1" rowspan="20">Computes at <span class="register">HL</span> the address into room graphic data buffer for the entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45850"></span>B31A</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45852"></span>B31C</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45854"></span>B31E</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45856"></span>B320</td>
+<td class="instruction">LD ($A248),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45859"></span>B323</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45860"></span>B324</td>
+<td class="instruction">LD A,($A249)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45863"></span>B327</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45864"></span>B328</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45866"></span>B32A</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45867"></span>B32B</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45868"></span>B32C</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45869"></span>B32D</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45870"></span>B32E</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45871"></span>B32F</td>
+<td class="instruction">LD DE,$E8FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45874"></span>B332</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45875"></span>B333</td>
+<td class="instruction">LD A,($A248)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45878"></span>B336</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45879"></span>B337</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45881"></span>B339</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45882"></span>B33A</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> an <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45883"></span>B33B</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45884"></span>B33C</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45885"></span>B33D</td>
+<td class="instruction">LD A,($A24A)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the width of the sprite (in bytes)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45888"></span>B340</td>
+<td class="instruction">LD ($B362),A</td>
+<td class="comment-1" rowspan="1">Configure LD opcode at B361 to set <span class="register">B</span> register to the width of the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45891"></span>B343</td>
+<td class="instruction">LD A,($A24B)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the height of the sprite (in pixels)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45894"></span>B346</td>
+<td class="instruction">LD ($B35E),A</td>
+<td class="comment-1" rowspan="1">Configure LD opcode at B35D to set <span class="register">B</span> register to the height of the sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45897"></span>B349</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45898"></span>B34A</td>
+<td class="instruction">LD A,($A1CC)</td>
+<td class="comment-1" rowspan="2">Check bit for Graphic Data Select</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45901"></span>B34D</td>
+<td class="instruction">BIT 7,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45903"></span>B34F</td>
+<td class="instruction">JP Z,$B356</td>
+<td class="comment-1" rowspan="1">Jump if graphic data is based in animation offsets</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45906"></span>B352</td>
+<td class="instruction">LD DE,($A1CD)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the graphic data for static (non animated) sprite</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="45910"></span>
+<div class="comments">
+<div class="paragraph">
+Entity facing left. Draw entity (enemy, object or Rex)
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45910"></span>B356</td>
+<td class="instruction">LD ($A25E),DE</td>
+<td class="comment-1" rowspan="1">Set the address for the graphic data of the entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45914"></span>B35A</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> (address pointer to room graphic buffer)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45915"></span>B35B</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Increment address pointer to draw backwards from here</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45916"></span>B35C</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45917"></span>B35D</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the width of the sprite</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45919"></span>B35F</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Save <span class="register">BC</span> and REGhl</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45920"></span>B360</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45921"></span>B361</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the height of the sprite</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45923"></span>B363</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the byte of the graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45924"></span>B364</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="2">Save <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45925"></span>B365</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45926"></span>B366</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="4">Point graphic value into Invert byte lookup table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45927"></span>B367</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45929"></span>B369</td>
+<td class="instruction">LD HL,$AE52</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45932"></span>B36C</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45933"></span>B36D</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the corresponent inverted byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45934"></span>B36E</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">HL</span> and <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45935"></span>B36F</td>
+<td class="instruction">POP DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45936"></span>B370</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Blend byte with graphic data of room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45937"></span>B371</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Set graphic data into room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45938"></span>B372</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment address to graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45939"></span>B373</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Decrement address to room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45940"></span>B374</td>
+<td class="instruction">DJNZ $B363</td>
+<td class="comment-1" rowspan="1">Jump back until the row is completed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45942"></span>B376</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45943"></span>B377</td>
+<td class="instruction">LD BC,$0020</td>
+<td class="comment-1" rowspan="2">Add one row to the address pointer for the room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45946"></span>B37A</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45947"></span>B37B</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45948"></span>B37C</td>
+<td class="instruction">DJNZ $B35F</td>
+<td class="comment-1" rowspan="1">Jump back until all the rows has been draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45950"></span>B37E</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45635.html">B243</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45718">Map</a></td>
+<td class="next">
+Next: <a href="45951.html">B37F</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

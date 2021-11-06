@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A8F6</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43190.html">A8B6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43254">Map</a></td>
+<td class="next">
+Next: <a href="43284.html">A914</a>
+</td>
+</tr>
+</table>
+<div class="description">A8F6: Update weapon in inventory (HUD)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Double fire weapon. Used by the routine at <a href="41208.html">A0F8</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43254"></span>A8F6</td>
+<td class="instruction">LD HL,$A1E9</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the variable address for inventory indicator</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43257"></span>A8F9</td>
+<td class="instruction">JP $A90B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43260"></span>
+<div class="comments">
+<div class="paragraph">
+Laser. This entry point is used by the routine at <a href="41208.html">A0F8</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43260"></span>A8FC</td>
+<td class="instruction">LD HL,$A1EA</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the variable address for inventory indicator</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43263"></span>A8FF</td>
+<td class="instruction">JP $A90B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43266"></span>
+<div class="comments">
+<div class="paragraph">
+Multiple. This entry point is used by the routine at <a href="41208.html">A0F8</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43266"></span>A902</td>
+<td class="instruction">LD HL,$A1EB</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the variable address for inventory indicator</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43269"></span>A905</td>
+<td class="instruction">JP $A90B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="43272"></span>
+<div class="comments">
+<div class="paragraph">
+Spray. This entry point is used by the routine at <a href="41208.html">A0F8</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43272"></span>A908</td>
+<td class="instruction">LD HL,$A1EC</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the variable address for inventory indicator</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43275"></span>A90B</td>
+<td class="instruction">LD (HL),$01</td>
+<td class="comment-1" rowspan="1">Set weapon available</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43277"></span>A90D</td>
+<td class="instruction">CALL <a href="41914.html">$A3BA</a></td>
+<td class="comment-1" rowspan="1">Draw weapon icon in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43280"></span>A910</td>
+<td class="instruction">CALL <a href="47625.html#47698">$BA52</a></td>
+<td class="comment-1" rowspan="1">Change the current weapon of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43283"></span>A913</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43190.html">A8B6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43254">Map</a></td>
+<td class="next">
+Next: <a href="43284.html">A914</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

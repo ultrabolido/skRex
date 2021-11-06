@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at CB77</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52033.html">CB41</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52087">Map</a></td>
+<td class="next">
+Next: <a href="52548.html">CD44</a>
+</td>
+</tr>
+</table>
+<div class="description">CB77: Configure entity for the current room</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="51683.html">C9E3</a> and <a href="52033.html">CB41</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">Address for the object definition of the current room</td>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Address for the enemy/object configuration buffer</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52087"></span>CB77</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the type of static enemy (with reverse bit)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52090"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="51765.html#51817">CA69</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52090"></span>CB7A</td>
+<td class="instruction">LD (IX+$0E),$03</td>
+<td class="comment-1" rowspan="1">Initialize the width of the sprite (in bytes) to $03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52094"></span>CB7E</td>
+<td class="instruction">LD (IX+$0F),$10</td>
+<td class="comment-1" rowspan="1">Initialize the height of the sprite (in pixels) to $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52098"></span>CB82</td>
+<td class="instruction">LD (IX+$10),$02</td>
+<td class="comment-1" rowspan="1">Initialize speed to $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52102"></span>CB86</td>
+<td class="instruction">LD (IX+$15),$00</td>
+<td class="comment-1" rowspan="1">Initialize bubble energy to $00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52106"></span>CB8A</td>
+<td class="instruction">AND $7F</td>
+<td class="comment-1" rowspan="1">Set to 0 the reverse bit of the type of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52108"></span>CB8C</td>
+<td class="instruction">LD (IX+$09),A</td>
+<td class="comment-1" rowspan="1">Initialize the enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52111"></span>CB8F</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">enemy type = $00?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52112"></span>CB90</td>
+<td class="instruction">CALL Z,$CC05</td>
+<td class="comment-1" rowspan="1">Configure FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52115"></span>CB93</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="1">enemy type = $01?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52117"></span>CB95</td>
+<td class="instruction">CALL Z,$CC40</td>
+<td class="comment-1" rowspan="1">Configure CATERPILLAR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52120"></span>CB98</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">enemy type = $02?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52122"></span>CB9A</td>
+<td class="instruction">CALL Z,$CC75</td>
+<td class="comment-1" rowspan="1">Configure DROP</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52125"></span>CB9D</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="1">enemy type = $03?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52127"></span>CB9F</td>
+<td class="instruction">CALL Z,$CC53</td>
+<td class="comment-1" rowspan="1">Configure BRAIN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52130"></span>CBA2</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="1">enemy type = $04?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52132"></span>CBA4</td>
+<td class="instruction">CALL Z,$CC9D</td>
+<td class="comment-1" rowspan="1">Configure PINE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52135"></span>CBA7</td>
+<td class="instruction">CP $05</td>
+<td class="comment-1" rowspan="1">enemy type = $05?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52137"></span>CBA9</td>
+<td class="instruction">CALL Z,$CCF3</td>
+<td class="comment-1" rowspan="1">Configure PLANT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52140"></span>CBAC</td>
+<td class="instruction">CP $09</td>
+<td class="comment-1" rowspan="1">enemy type = $09?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52142"></span>CBAE</td>
+<td class="instruction">CALL Z,$CCD1</td>
+<td class="comment-1" rowspan="1">Configure BULB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52145"></span>CBB1</td>
+<td class="instruction">CP $06</td>
+<td class="comment-1" rowspan="1">enemy type = $06?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52147"></span>CBB3</td>
+<td class="instruction">CALL Z,$CC18</td>
+<td class="comment-1" rowspan="1">Confgiure FOOT MAN CROUCHED</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52150"></span>CBB6</td>
+<td class="instruction">CP $0E</td>
+<td class="comment-1" rowspan="1">enemy type = $0E?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52152"></span>CBB8</td>
+<td class="instruction">CALL Z,$CD15</td>
+<td class="comment-1" rowspan="1">Configure TRIANGLE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52155"></span>CBBB</td>
+<td class="instruction">CP $7C</td>
+<td class="comment-1" rowspan="1">enemy type = $7C?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52157"></span>CBBD</td>
+<td class="instruction">CALL Z,$CCBF</td>
+<td class="comment-1" rowspan="1">Configure QUESTION</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52160"></span>CBC0</td>
+<td class="instruction">LD (IX+$16),E</td>
+<td class="comment-1" rowspan="2">Save address for graphic data of animated sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52163"></span>CBC3</td>
+<td class="instruction">LD (IX+$17),D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52166"></span>CBC6</td>
+<td class="instruction">LD (IX+$0A),L</td>
+<td class="comment-1" rowspan="2">Save address for animation offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52169"></span>CBC9</td>
+<td class="instruction">LD (IX+$0B),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52172"></span>CBCC</td>
+<td class="instruction">LD A,(IY+$01)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the x-position of sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52175"></span>CBCF</td>
+<td class="instruction">LD (IX+$00),A</td>
+<td class="comment-1" rowspan="1">Save x-position into enemy configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52178"></span>CBD2</td>
+<td class="instruction">LD A,(IY+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the y-position of sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52181"></span>CBD5</td>
+<td class="instruction">SLA A</td>
+<td class="comment-1" rowspan="4">Copy bits 7-3 to the y-position for the enemy configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52183"></span>CBD7</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52185"></span>CBD9</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52187"></span>CBDB</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52190"></span>CBDE</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="10">If bit 7 of enemy type is set then set the reverse sprite indicator in enemy configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52193"></span>CBE1</td>
+<td class="instruction">AND $80</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52195"></span>CBE3</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52197"></span>CBE5</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52199"></span>CBE7</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52201"></span>CBE9</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52203"></span>CBEB</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52205"></span>CBED</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52207"></span>CBEF</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52209"></span>CBF1</td>
+<td class="instruction">LD (IX+$02),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52212"></span>CBF4</td>
+<td class="instruction">LD (IX+$03),$00</td>
+<td class="comment-1" rowspan="1">Reset FOOT MAN jumping or explosion debris expansion counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52216"></span>CBF8</td>
+<td class="instruction">LD (IX+$06),$00</td>
+<td class="comment-1" rowspan="1">Reset FOOT MAN falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52220"></span>CBFC</td>
+<td class="instruction">LD (IX+$0C),$01</td>
+<td class="comment-1" rowspan="1">Set sprite active (alive)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52224"></span>CC00</td>
+<td class="instruction">LD (IX+$0D),$00</td>
+<td class="comment-1" rowspan="1">Reset explosion counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52228"></span>CC04</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52229"></span>
+<div class="comments">
+<div class="paragraph">
+Configure FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52229"></span>CC05</td>
+<td class="instruction">LD HL,$AF52</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset animation table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52232"></span>CC08</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Set state counter to $00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52236"></span>CC0C</td>
+<td class="instruction">LD (IX+$12),$00</td>
+<td class="comment-1" rowspan="1">Set FOOT MAN walking</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52240"></span>CC10</td>
+<td class="instruction">LD (IX+$14),$02</td>
+<td class="comment-1" rowspan="1">Set health to $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52244"></span>CC14</td>
+<td class="instruction">LD DE,$8198</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the graphics data for the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52247"></span>CC17</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52248"></span>
+<div class="comments">
+<div class="paragraph">
+Configure FOOT MAN CROUCHED
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52248"></span>CC18</td>
+<td class="instruction">LD HL,$8318</td>
+<td class="comment-1" rowspan="3">Set address of graphic data for crouched FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52251"></span>CC1B</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52254"></span>CC1E</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52257"></span>CC21</td>
+<td class="instruction">LD (IX+$11),$C8</td>
+<td class="comment-1" rowspan="1">Set state counter to fixed FOOT MAN crouched</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52261"></span>CC25</td>
+<td class="instruction">LD (IX+$12),$01</td>
+<td class="comment-1" rowspan="1">Set FOOT MAN crouched</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52265"></span>CC29</td>
+<td class="instruction">LD (IX+$10),$00</td>
+<td class="comment-1" rowspan="1">Set enemy stopped</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52269"></span>CC2D</td>
+<td class="instruction">LD (IX+$0E),$02</td>
+<td class="comment-1" rowspan="1">Set width of the sprite (in bytes)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52273"></span>CC31</td>
+<td class="instruction">LD (IX+$09),$80</td>
+<td class="comment-1" rowspan="1">Set graphic data from static sprite &amp; enemy type FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52277"></span>CC35</td>
+<td class="instruction">LD (IX+$14),$02</td>
+<td class="comment-1" rowspan="1">Set health</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52281"></span>CC39</td>
+<td class="instruction">LD HL,$AF52</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset animation table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52284"></span>CC3C</td>
+<td class="instruction">LD DE,$8198</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the graphics data for the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52287"></span>CC3F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52288"></span>
+<div class="comments">
+<div class="paragraph">
+Configure CATERPILLAR
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52288"></span>CC40</td>
+<td class="instruction">LD (IX+$10),$02</td>
+<td class="comment-1" rowspan="1">Set enemy speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52292"></span>CC44</td>
+<td class="instruction">LD (IX+$14),$0A</td>
+<td class="comment-1" rowspan="1">Set health to $0A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52296"></span>CC48</td>
+<td class="instruction">LD (IX+$15),$01</td>
+<td class="comment-1" rowspan="1">Set big energy bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52300"></span>CC4C</td>
+<td class="instruction">LD HL,$AF52</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset animation table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52303"></span>CC4F</td>
+<td class="instruction">LD DE,$8F00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to the graphics data for the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52306"></span>CC52</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52307"></span>
+<div class="comments">
+<div class="paragraph">
+Configure BRAIN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52307"></span>CC53</td>
+<td class="instruction">LD (IX+$14),$02</td>
+<td class="comment-1" rowspan="1">Set health to $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52311"></span>CC57</td>
+<td class="instruction">LD (IX+$15),$01</td>
+<td class="comment-1" rowspan="1">Set big energy bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52315"></span>CC5B</td>
+<td class="instruction">LD (IX+$0E),$02</td>
+<td class="comment-1" rowspan="1">Set sprite width to 2 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52319"></span>CC5F</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Set wound state</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52323"></span>CC63</td>
+<td class="instruction">LD HL,$8BE0</td>
+<td class="comment-1" rowspan="3">Set address of graphic data for BRAIN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52326"></span>CC66</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52329"></span>CC69</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52332"></span>CC6C</td>
+<td class="instruction">LD (IX+$12),$05</td>
+<td class="comment-1" rowspan="1">Set recover counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52336"></span>CC70</td>
+<td class="instruction">SET 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set graphics data from static sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52340"></span>CC74</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52341"></span>
+<div class="comments">
+<div class="paragraph">
+Configure DROP
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52341"></span>CC75</td>
+<td class="instruction">LD (IX+$14),$02</td>
+<td class="comment-1" rowspan="1">Set health to $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52345"></span>CC79</td>
+<td class="instruction">LD (IX+$15),$01</td>
+<td class="comment-1" rowspan="1">Set big energy bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52349"></span>CC7D</td>
+<td class="instruction">LD (IX+$0E),$02</td>
+<td class="comment-1" rowspan="1">Set sprite width to 2 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52353"></span>CC81</td>
+<td class="instruction">LD HL,$8D20</td>
+<td class="comment-1" rowspan="3">Set address of graphic data for DROP</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52356"></span>CC84</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52359"></span>CC87</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52362"></span>CC8A</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Set enemy state to stand-by in ceil</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52366"></span>CC8E</td>
+<td class="instruction">CALL <a href="42269.html#42288">$A530</a></td>
+<td class="comment-1" rowspan="4">Set status change counter a random number between 100 and 227</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52369"></span>CC91</td>
+<td class="instruction">AND $7F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52371"></span>CC93</td>
+<td class="instruction">ADD A,$64</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52373"></span>CC95</td>
+<td class="instruction">LD (IX+$12),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52376"></span>CC98</td>
+<td class="instruction">LD (IX+$09),$82</td>
+<td class="comment-1" rowspan="1">Set graphics data from static sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52380"></span>CC9C</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52381"></span>
+<div class="comments">
+<div class="paragraph">
+Configure PINE
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52381"></span>CC9D</td>
+<td class="instruction">LD (IX+$14),$08</td>
+<td class="comment-1" rowspan="1">Set health to $08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52385"></span>CCA1</td>
+<td class="instruction">LD (IX+$15),$01</td>
+<td class="comment-1" rowspan="1">Set big energy bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52389"></span>CCA5</td>
+<td class="instruction">LD (IX+$0E),$02</td>
+<td class="comment-1" rowspan="1">Set sprite width to 2 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52393"></span>CCA9</td>
+<td class="instruction">LD HL,$8FC0</td>
+<td class="comment-1" rowspan="3">Set address of graphic data for PINE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52396"></span>CCAC</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52399"></span>CCAF</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52402"></span>CCB2</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Set movement downwards</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52406"></span>CCB6</td>
+<td class="instruction">LD (IX+$12),$00</td>
+<td class="comment-1" rowspan="1">Set animation state to stand-by</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52410"></span>CCBA</td>
+<td class="instruction">SET 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set graphics data from static sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52414"></span>CCBE</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52415"></span>
+<div class="comments">
+<div class="paragraph">
+Configure QUESTION
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52415"></span>CCBF</td>
+<td class="instruction">LD HL,$8BC0</td>
+<td class="comment-1" rowspan="3">Set address of graphic data for QUESTION</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52418"></span>CCC2</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52421"></span>CCC5</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52424"></span>CCC8</td>
+<td class="instruction">LD (IX+$0E),$02</td>
+<td class="comment-1" rowspan="1">Set sprite width to 2 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52428"></span>CCCC</td>
+<td class="instruction">SET 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set graphics data from static sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52432"></span>CCD0</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52433"></span>
+<div class="comments">
+<div class="paragraph">
+Configure BULB
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52433"></span>CCD1</td>
+<td class="instruction">LD HL,$9040</td>
+<td class="comment-1" rowspan="3">Set address of graphic data for BULB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52436"></span>CCD4</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52439"></span>CCD7</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52442"></span>CCDA</td>
+<td class="instruction">LD (IX+$0E),$02</td>
+<td class="comment-1" rowspan="1">Set sprite width to 2 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52446"></span>CCDE</td>
+<td class="instruction">LD (IX+$14),$0E</td>
+<td class="comment-1" rowspan="1">Set health to $0E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52450"></span>CCE2</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Set state to stand-by</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52454"></span>CCE6</td>
+<td class="instruction">LD (IX+$15),$01</td>
+<td class="comment-1" rowspan="1">Set big energy bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52458"></span>CCEA</td>
+<td class="instruction">LD (IX+$12),$05</td>
+<td class="comment-1" rowspan="1">Set state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52462"></span>CCEE</td>
+<td class="instruction">SET 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set graphics data from static sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52466"></span>CCF2</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52467"></span>
+<div class="comments">
+<div class="paragraph">
+Configure PLANT
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52467"></span>CCF3</td>
+<td class="instruction">LD HL,$8E20</td>
+<td class="comment-1" rowspan="3">Set address of graphic data for PLANT</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52470"></span>CCF6</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52473"></span>CCF9</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52476"></span>CCFC</td>
+<td class="instruction">LD (IX+$0E),$02</td>
+<td class="comment-1" rowspan="1">Set sprite width to 2 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52480"></span>CD00</td>
+<td class="instruction">LD (IX+$14),$0C</td>
+<td class="comment-1" rowspan="1">Set health to $0C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52484"></span>CD04</td>
+<td class="instruction">LD (IX+$11),$00</td>
+<td class="comment-1" rowspan="1">Set enemy state to stand-by</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52488"></span>CD08</td>
+<td class="instruction">LD (IX+$15),$01</td>
+<td class="comment-1" rowspan="1">Set big energy bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52492"></span>CD0C</td>
+<td class="instruction">LD (IX+$12),$05</td>
+<td class="comment-1" rowspan="1">Set state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52496"></span>CD10</td>
+<td class="instruction">SET 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set graphics data from static sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52500"></span>CD14</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="52501"></span>
+<div class="comments">
+<div class="paragraph">
+Configure TRIANGLE
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52501"></span>CD15</td>
+<td class="instruction">LD (IX+$14),$02</td>
+<td class="comment-1" rowspan="1">Set health to $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52505"></span>CD19</td>
+<td class="instruction">LD (IX+$06),$00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="52509"></span>CD1D</td>
+<td class="instruction">LD (IX+$0E),$02</td>
+<td class="comment-1" rowspan="1">Set sprite width to 2 bytes</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52513"></span>CD21</td>
+<td class="instruction">LD (IX+$0F),$08</td>
+<td class="comment-1" rowspan="1">Set sprite height to 8 pixels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52517"></span>CD25</td>
+<td class="instruction">LD (IX+$10),$01</td>
+<td class="comment-1" rowspan="1">Set enemy speed to 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52521"></span>CD29</td>
+<td class="instruction">LD (IX+$04),$00</td>
+<td class="comment-1" rowspan="2">Reset x-delta and y-delta for enemy movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52525"></span>CD2D</td>
+<td class="instruction">LD (IX+$05),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52529"></span>CD31</td>
+<td class="instruction">LD (IX+$11),$10</td>
+<td class="comment-1" rowspan="1">Set state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52533"></span>CD35</td>
+<td class="instruction">LD (IX+$12),$00</td>
+<td class="comment-1" rowspan="1">Set to not change movement</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52537"></span>CD39</td>
+<td class="instruction">LD (IX+$15),$FF</td>
+<td class="comment-1" rowspan="1">Set no bubble bonus</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52541"></span>CD3D</td>
+<td class="instruction">LD HL,$AF6A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the offset animation table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52544"></span>CD40</td>
+<td class="instruction">LD DE,$9100</td>
+<td class="comment-1" rowspan="1">Set graphic data for sprite</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52547"></span>CD43</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52033.html">CB41</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52087">Map</a></td>
+<td class="next">
+Next: <a href="52548.html">CD44</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

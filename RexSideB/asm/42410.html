@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A5AA</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42352.html">A570</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42410">Map</a></td>
+<td class="next">
+Next: <a href="42514.html">A612</a>
+</td>
+</tr>
+</table>
+<div class="description">A5AA: Convert a number into a list of digits charcodes</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Computes the charcode of the number in <span class="register">HL</span> and puts every digit charcode into $A23F-$A243 (in reverse order) $A23F units, $A240 tens, $A241 hundreds, $A242 thousands and $A243 ten thousands. Used by the routines at <a href="39113.html">98C9</a>, <a href="39129.html">98D9</a>, <a href="39192.html">9918</a> and <a href="40296.html">9D68</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Number to convert</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42410"></span>A5AA</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42412"></span>A5AC</td>
+<td class="instruction">LD ($A23D),HL</td>
+<td class="comment-1" rowspan="1">Save the number into $A23D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42415"></span>A5AF</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42416"></span>A5B0</td>
+<td class="instruction">LD ($A243),A</td>
+<td class="comment-1" rowspan="5">Init the charcode buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42419"></span>A5B3</td>
+<td class="instruction">LD ($A242),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42422"></span>A5B6</td>
+<td class="instruction">LD ($A241),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42425"></span>A5B9</td>
+<td class="instruction">LD ($A240),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42428"></span>A5BC</td>
+<td class="instruction">LD ($A23F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42431"></span>A5BF</td>
+<td class="instruction">LD DE,$2710</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span>=10.000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42434"></span>A5C2</td>
+<td class="instruction">CALL $A5EF</td>
+<td class="comment-1" rowspan="1">Computes the charcode for the digit in the ten thousands</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42437"></span>A5C5</td>
+<td class="instruction">LD ($A243),A</td>
+<td class="comment-1" rowspan="1">Set this charcode into $A243</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42440"></span>A5C8</td>
+<td class="instruction">LD DE,$03E8</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span>=1.000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42443"></span>A5CB</td>
+<td class="instruction">CALL $A5EF</td>
+<td class="comment-1" rowspan="1">Computes the charcode for the digit in the thousands</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42446"></span>A5CE</td>
+<td class="instruction">LD ($A242),A</td>
+<td class="comment-1" rowspan="1">Set this charcode into $A242</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42449"></span>A5D1</td>
+<td class="instruction">LD DE,$0064</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span>=100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42452"></span>A5D4</td>
+<td class="instruction">CALL $A5EF</td>
+<td class="comment-1" rowspan="1">Computes the charcode for the digit in the hundreds</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42455"></span>A5D7</td>
+<td class="instruction">LD ($A241),A</td>
+<td class="comment-1" rowspan="1">Set this charcode into $A241</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42458"></span>A5DA</td>
+<td class="instruction">LD DE,$000A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span>=10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42461"></span>A5DD</td>
+<td class="instruction">CALL $A5EF</td>
+<td class="comment-1" rowspan="1">Computes the charcode for the digit in the tens</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42464"></span>A5E0</td>
+<td class="instruction">LD ($A240),A</td>
+<td class="comment-1" rowspan="1">Set this charcode into $A240</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42467"></span>A5E3</td>
+<td class="instruction">LD DE,$0001</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span>=1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42470"></span>A5E6</td>
+<td class="instruction">CALL $A5EF</td>
+<td class="comment-1" rowspan="1">Computes the charcode for the digit in the units</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42473"></span>A5E9</td>
+<td class="instruction">LD ($A23F),A</td>
+<td class="comment-1" rowspan="1">Set this charcode into $A23F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42476"></span>A5EC</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42478"></span>A5EE</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42479"></span>
+<div class="comments">
+<div class="paragraph">
+Computes the charcode for the digit in the units, tens, hundreds, thousands o ten toushands
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42479"></span>A5EF</td>
+<td class="instruction">LD HL,($A23D)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the number to convert</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42482"></span>A5F2</td>
+<td class="instruction">LD IX,$0000</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span>=0. The part of the number that has been converted [ x0.000, x.000, x00, x0 or x ]</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42486"></span>A5F6</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span>=0. The digit number that we need to convert to charcode [x]</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42488"></span>A5F8</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Reset carry bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42489"></span>A5F9</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Substract <span class="register">DE</span> [10.000, 1.000, 100, 10 or 1] to <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42491"></span>A5FB</td>
+<td class="instruction">JR C,$A602</td>
+<td class="comment-1" rowspan="1">Jump if the result in <span class="register">HL</span> is a negative number (<span class="register">DE</span> is greater than the number to convert)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42493"></span>A5FD</td>
+<td class="instruction">ADD IX,DE</td>
+<td class="comment-1" rowspan="1">Add <span class="register">DE</span> to <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42495"></span>A5FF</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">Increment the digit number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42496"></span>A600</td>
+<td class="instruction">JR $A5F8</td>
+<td class="comment-1" rowspan="1">Jump back and repeat the process until obtain the digit number</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42498"></span>A602</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="2">Copy in <span class="register">DE</span> the value of <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42500"></span>A604</td>
+<td class="instruction">POP DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42501"></span>A605</td>
+<td class="instruction">LD HL,($A23D)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the number to convert</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42504"></span>A608</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Reset carry bit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42505"></span>A609</td>
+<td class="instruction">SBC HL,DE</td>
+<td class="comment-1" rowspan="1">Substract to the number to convert the part just converted</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42507"></span>A60B</td>
+<td class="instruction">LD ($A23D),HL</td>
+<td class="comment-1" rowspan="1">Set into $A23D the remaining number to convert</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42510"></span>A60E</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1">Copy into <span class="register">A</span> the digit number to convert</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42511"></span>A60F</td>
+<td class="instruction">ADD A,$30</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the charcode of the digit ($30 is the base charcode for digit, i.e. is the 0 digit charcode)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42513"></span>A611</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42352.html">A570</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42410">Map</a></td>
+<td class="next">
+Next: <a href="42514.html">A612</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Game status buffer entry at 5E66</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-g">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Game status buffer</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="24142.html">5E4E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#24166">Map</a></td>
+<td class="next">
+Next: <a href="24550.html">5FE6</a>
+</td>
+</tr>
+</table>
+<div class="description">5E66: Data buffer for the state of every enemy on screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Bytes</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x00</td>
+<td class="" colspan="1" rowspan="1">X position</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x01</td>
+<td class="" colspan="1" rowspan="1">Y position</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x02</td>
+<td class="" colspan="1" rowspan="1">Bit 0: reverse sprite if set - Enemy direction $00 left $01 right</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x03</td>
+<td class="" colspan="1" rowspan="1">$00 FOOT MAN not jumping - $01 FOOT MAN jumping ; For Enemy type $FF (EXPLOSION) debris expansion counter</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x04 - 0x05</td>
+<td class="" colspan="1" rowspan="1">Address pointer to graphic data for static (non-animated) sprites - y-offset address pointer for FOOT MAN jumping - x-delta and y-delta for TRIANGLE movement</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x06</td>
+<td class="" colspan="1" rowspan="1">FOOT MAN Falling speed? $00 Not falling  - $02 - $04</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x07</td>
+<td class="" colspan="1" rowspan="1">$00 Not used</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x08</td>
+<td class="" colspan="1" rowspan="1">$00 Not used</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="3">0x09</td>
+<td class="" colspan="1" rowspan="1">Bit 7: 1 - graphic data for fixed (non animated) sprite. Computed by: address at 0x04-0x05</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0 - graphic data from animated sprite. Computed by: base graphic data address at 0x0A-0x0B + offset of animation from base address at 0x16-0x17</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">Bit 6-0: enemy type -&gt; $00 FOOT MAN , $FF Explosion, $FE Bubble, $FD Smartbomb, $FC Question</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0A - 0x0B</td>
+<td class="" colspan="1" rowspan="1">Address pointer to animation offset table</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0C</td>
+<td class="" colspan="1" rowspan="1">Enemy status $00 dead / $01 alive</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0D</td>
+<td class="" colspan="1" rowspan="1">Explosion counter (decrement))</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0E</td>
+<td class="" colspan="1" rowspan="1">Width of the sprite (in bytes)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0F</td>
+<td class="" colspan="1" rowspan="1">Height of the sprite (in pixels)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x10</td>
+<td class="" colspan="1" rowspan="1">Enemy speed velocity ($00 stopped). For Bubble: bubble y-position counter offset</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="9">0x11</td>
+<td class="" colspan="1" rowspan="1">Enemy type:</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x00 (FOOTMAN) - Counter for state change duration: $C8 fixed crouched</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x02 (DROP) - Drop state: $00 standing on ceil $01 hanging from ceil $02 free falling $03 impacting ground $04 on ground</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x03 (BRAIN) - Wound counter: $00 100% health</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x04 (PINE) - Movement direction: $00 Downwards $01 upwards</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x05 (PLANT) - PLANT state: $00 standing-by $01 opening $02 closing</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x09 (BULB) - State indicator $00 stand-by $01 expanding $02 retracting</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0E (TRIANGLE) - State change counter</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0xFE (BUBBLE) - Bubble duration counter</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="9">0x12</td>
+<td class="" colspan="1" rowspan="1">Enemy type:</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x00 (FOOTMAN): $00 walking - $01 crouched - $02 stand-by</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x02 (DROP) - State change counter</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x03 (BRAIN) - Recover counter</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x04 (PINE) - Animation state: $00 stand-by $02 expanding $03 retracting $04 holding</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x05 (PLANT) - State change counter</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x09 (BULB) - State change counter</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0E (TRIANGLE) - Change movement direction: $00 no change $01 change direction</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0xFE (BUBBLE) - MSB of address graphic data</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="2">0x13</td>
+<td class="" colspan="1" rowspan="1">0xFE (BUBBLE) LSB of address graphic data</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x04 (PINE) state change counter</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x14</td>
+<td class="" colspan="1" rowspan="1">Enemy health</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x15</td>
+<td class="" colspan="1" rowspan="1">Energy bubble $01 big / $00 small / $FF no bubble</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x16 - 0x17</td>
+<td class="" colspan="1" rowspan="1">Address pointer to graphic data for animated sprites</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x18</td>
+<td class="" colspan="1" rowspan="1">Teleporting status for FOOT MAN: $00 teleporting inactive $01 teleporting active</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x19</td>
+<td class="" colspan="1" rowspan="1">Teleporting index into table of mask teleporting data</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x1A</td>
+<td class="" colspan="1" rowspan="1">Teleporting type: $00 Teleporting out of the room $01 teleporting into the room</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="24166"></span>5E66</td>
+<td class="instruction">DEFS $0180</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="24142.html">5E4E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#24166">Map</a></td>
+<td class="next">
+Next: <a href="24550.html">5FE6</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

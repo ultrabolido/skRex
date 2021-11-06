@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C794</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50977.html">C721</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51092">Map</a></td>
+<td class="next">
+Next: <a href="51118.html">C7AE</a>
+</td>
+</tr>
+</table>
+<div class="description">C794: Obtain the tile type address pointer under the entity</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="48200.html">BC48</a> and <a href="50977.html">C721</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51092"></span>C794</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <a href="41544.html">A248</a> the x-position of entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51095"></span>C797</td>
+<td class="instruction">LD ($A248),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51098"></span>C79A</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="2">Set <a href="41545.html">A249</a> the y-position of entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51101"></span>C79D</td>
+<td class="instruction">LD ($A249),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51104"></span>C7A0</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the direction of entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51107"></span>C7A3</td>
+<td class="instruction">CALL <a href="42667.html">$A6AB</a></td>
+<td class="comment-1" rowspan="3">Point <span class="register">HL</span> to the address into tile buffer of the tile under the entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51110"></span>C7A6</td>
+<td class="instruction">LD DE,$0061</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51113"></span>C7A9</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51114"></span>C7AA</td>
+<td class="instruction">LD ($A1B4),HL</td>
+<td class="comment-1" rowspan="1">Save at <a href="41396.html">A1B4</a> to the address into tile buffer of the tile under the entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51117"></span>C7AD</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50977.html">C721</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51092">Map</a></td>
+<td class="next">
+Next: <a href="51118.html">C7AE</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at B37F</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45718.html">B296</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45951">Map</a></td>
+<td class="next">
+Next: <a href="46008.html">B3B8</a>
+</td>
+</tr>
+</table>
+<div class="description">B37F: Copy tile graphic into room graphic data</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="45951.html#45956">B384</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45951"></span>B37F</td>
+<td class="instruction">LD SP,($A22E)</td>
+<td class="comment-1" rowspan="1">Recover <span class="register">SP</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45955"></span>B383</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="45956"></span>
+<div class="comments">
+<div class="paragraph">
+Copy tile graphic into room graphic data. Used by the routines at <a href="38000.html">9470</a> and <a href="43321.html">A939</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45956"></span>B384</td>
+<td class="instruction">LD ($A22E),SP</td>
+<td class="comment-1" rowspan="1">Save <span class="register">SP</span> to temporal variable <a href="40859.html#41109">A095</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="45960"></span>B388</td>
+<td class="instruction">LD SP,$D962</td>
+<td class="comment-1" rowspan="1">Set <span class="register">SP</span> to point to base address for mapping table of tile graphics and room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-2"><span id="45963"></span>B38B</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the address in the room graphic buffer for the tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45964"></span>B38C</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Point <span class="register">DE</span> to the tile graphics address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45965"></span>B38D</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="3">Jump back and return from routine if LSB of HL is $FF (end marker)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45966"></span>B38E</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45967"></span>B38F</td>
+<td class="instruction">JP Z,$B37F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45970"></span>B392</td>
+<td class="instruction">LD BC,$0020</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to the increment in room graphics buffer of every byte copied Copy the eight bytes of the tile graphics data to the corresponent room graphic buffer location</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45973"></span>B395</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="4">Copy byte 1, increment tile graphics address and room graphics address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45974"></span>B396</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45975"></span>B397</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45976"></span>B398</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45977"></span>B399</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="4">Copy byte 2, increment tile graphics address and room graphics address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45978"></span>B39A</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45979"></span>B39B</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45980"></span>B39C</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45981"></span>B39D</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="4">Copy byte 3, increment tile graphics address and room graphics address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45982"></span>B39E</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45983"></span>B39F</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45984"></span>B3A0</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45985"></span>B3A1</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="4">Copy byte 4, increment tile graphics address and room graphics address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45986"></span>B3A2</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45987"></span>B3A3</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45988"></span>B3A4</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45989"></span>B3A5</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="4">Copy byte 5, increment tile graphics address and room graphics address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45990"></span>B3A6</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45991"></span>B3A7</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45992"></span>B3A8</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45993"></span>B3A9</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="4">Copy byte 6, increment tile graphics address and room graphics address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45994"></span>B3AA</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45995"></span>B3AB</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45996"></span>B3AC</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45997"></span>B3AD</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="4">Copy byte 7, increment tile graphics address and room graphics address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45998"></span>B3AE</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="45999"></span>B3AF</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46000"></span>B3B0</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46001"></span>B3B1</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="4">Copy byte 8, increment tile graphics address and room graphics address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46002"></span>B3B2</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46003"></span>B3B3</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46004"></span>B3B4</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46005"></span>B3B5</td>
+<td class="instruction">JP $B38B</td>
+<td class="comment-1" rowspan="1">Jump back and copy the next tile</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="45718.html">B296</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#45951">Map</a></td>
+<td class="next">
+Next: <a href="46008.html">B3B8</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

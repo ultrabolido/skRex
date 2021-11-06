@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A69C</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42639.html">A68F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42652">Map</a></td>
+<td class="next">
+Next: <a href="42667.html">A6AB</a>
+</td>
+</tr>
+</table>
+<div class="description">A69C: Draw explosion debris</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="49758.html">C25E</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42652"></span>A69C</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of bytes to copy</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42654"></span>A69E</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the graphic data byte</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42655"></span>A69F</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1">Blend graphic data of debris with graphic data of room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42656"></span>A6A0</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Copy graphic data to room graphic data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42657"></span>A6A1</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment graphic data address</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42658"></span>A6A2</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42659"></span>A6A3</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="2">Increment address room graphic data to the next line</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42662"></span>A6A6</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42663"></span>A6A7</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42664"></span>A6A8</td>
+<td class="instruction">DJNZ $A69E</td>
+<td class="comment-1" rowspan="1">Jump back until all bytes copied</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42666"></span>A6AA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42639.html">A68F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42652">Map</a></td>
+<td class="next">
+Next: <a href="42667.html">A6AB</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

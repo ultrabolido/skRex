@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A7A4</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42899.html">A793</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42916">Map</a></td>
+<td class="next">
+Next: <a href="43062.html">A836</a>
+</td>
+</tr>
+</table>
+<div class="description">A7A4: Draw drones for multiple weapon</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42916"></span>A7A4</td>
+<td class="instruction">LD A,($A1EE)</td>
+<td class="comment-1" rowspan="3">Return if Rex is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42919"></span>A7A7</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42920"></span>A7A8</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42921"></span>A7A9</td>
+<td class="instruction">LD A,($A1AC)</td>
+<td class="comment-1" rowspan="3">Return is weapon of Rex isn't multiple</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42924"></span>A7AC</td>
+<td class="instruction">CP $03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42926"></span>A7AE</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42927"></span>A7AF</td>
+<td class="instruction">LD A,($A1F9)</td>
+<td class="comment-1" rowspan="3">Return if Rex is teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42930"></span>A7B2</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42931"></span>A7B3</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42932"></span>A7B4</td>
+<td class="instruction">LD IY,$5E4E</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> the base address for drone configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42936"></span>A7B8</td>
+<td class="instruction">LD A,($A1AD)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">B</span> the number of drones. Number of drones = 3 + multiple weapon energy level</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42939"></span>A7BB</td>
+<td class="instruction">ADD A,$03</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42941"></span>A7BD</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42942"></span>A7BE</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42943"></span>A7BF</td>
+<td class="instruction">LD A,(IY+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the index into the offset position for drones</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42946"></span>A7C2</td>
+<td class="instruction">SLA A</td>
+<td class="comment-1" rowspan="5">Point <span class="register">HL</span> to the address for the offset position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42948"></span>A7C4</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42949"></span>A7C5</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42951"></span>A7C7</td>
+<td class="instruction">LD HL,$A836</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42954"></span>A7CA</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42955"></span>A7CB</td>
+<td class="instruction">LD A,($A24F)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the x-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42958"></span>A7CE</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="2">Computes x-position of drone based on x-offset and x-position of Rex Drone x-position = Rex x-position + x-offset - 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42959"></span>A7CF</td>
+<td class="instruction">ADD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42960"></span>A7D0</td>
+<td class="instruction">LD (IY+$00),A</td>
+<td class="comment-1" rowspan="1">Set x-position of drone in table configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42963"></span>A7D3</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment address into offset position table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42964"></span>A7D4</td>
+<td class="instruction">LD A,($A250)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the y-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42967"></span>A7D7</td>
+<td class="instruction">ADD A,$02</td>
+<td class="comment-1" rowspan="2">Computes y-position of drone based on x-offset and y-position of Rex Drone y-position = Rex y-position + y-offset + 2</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42969"></span>A7D9</td>
+<td class="instruction">ADD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42970"></span>A7DA</td>
+<td class="instruction">LD (IY+$01),A</td>
+<td class="comment-1" rowspan="1">Set y-position of drone in table configuration buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42973"></span>A7DD</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="15">Computes in <span class="register">HL</span> the address into room graphic data for the drone position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42974"></span>A7DE</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42976"></span>A7E0</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42977"></span>A7E1</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42978"></span>A7E2</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42979"></span>A7E3</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42980"></span>A7E4</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42981"></span>A7E5</td>
+<td class="instruction">LD DE,$E7FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42984"></span>A7E8</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42985"></span>A7E9</td>
+<td class="instruction">LD E,(IY+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42988"></span>A7EC</td>
+<td class="instruction">SRL E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42990"></span>A7EE</td>
+<td class="instruction">SRL E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42992"></span>A7F0</td>
+<td class="instruction">SRL E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42994"></span>A7F2</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42996"></span>A7F4</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42997"></span>A7F5</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42998"></span>A7F6</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="10">Computes in <span class="register">DE</span> the graphic data of drone based on his x-position (x-position &amp; 0x7) * 8 = index into graphic data table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43001"></span>A7F9</td>
+<td class="instruction">AND $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43003"></span>A7FB</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43005"></span>A7FD</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43007"></span>A7FF</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43009"></span>A801</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43010"></span>A802</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43012"></span>A804</td>
+<td class="instruction">LD HL,$A8B6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43015"></span>A807</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43016"></span>A808</td>
+<td class="instruction">EX DE,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43017"></span>A809</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43018"></span>A80A</td>
+<td class="instruction">LD B,$04</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the height of the drone sprite</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43020"></span>A80C</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43021"></span>A80D</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="3">Copy into room graphic data the drone graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43022"></span>A80E</td>
+<td class="instruction">OR (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43023"></span>A80F</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43024"></span>A810</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="2">Increase address for graphic data of drone and room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43025"></span>A811</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43026"></span>A812</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="3">Copy into room graphic data the drone graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43027"></span>A813</td>
+<td class="instruction">OR (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43028"></span>A814</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43029"></span>A815</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment address for graphic data of drone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43030"></span>A816</td>
+<td class="instruction">LD BC,$001F</td>
+<td class="comment-1" rowspan="2">Point <span class="register">HL</span> to the next row in room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43033"></span>A819</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43034"></span>A81A</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43035"></span>A81B</td>
+<td class="instruction">DJNZ $A80C</td>
+<td class="comment-1" rowspan="1">Jump until drone is drawn</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43037"></span>A81D</td>
+<td class="instruction">LD A,(IY+$02)</td>
+<td class="comment-1" rowspan="3">Increment index into the offset position table for the drone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43040"></span>A820</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43041"></span>A821</td>
+<td class="instruction">LD (IY+$02),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43044"></span>A824</td>
+<td class="instruction">CP $40</td>
+<td class="comment-1" rowspan="3">Reset the index position if has reached to the end</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43046"></span>A826</td>
+<td class="instruction">JP NZ,$A82D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43049"></span>A829</td>
+<td class="instruction">LD (IY+$02),$00</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43053"></span>A82D</td>
+<td class="instruction">LD DE,$0003</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IY</span> to the next drone configuration</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43056"></span>A830</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43058"></span>A832</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43059"></span>A833</td>
+<td class="instruction">DJNZ $A7BE</td>
+<td class="comment-1" rowspan="1">Jump back and process next drone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43061"></span>A835</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42899.html">A793</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42916">Map</a></td>
+<td class="next">
+Next: <a href="43062.html">A836</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A570</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42326.html">A556</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42352">Map</a></td>
+<td class="next">
+Next: <a href="42410.html">A5AA</a>
+</td>
+</tr>
+</table>
+<div class="description">A570: Draw the number saved in charcode buffer at $A23D into display file</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="39113.html">98C9</a>, <a href="39129.html">98D9</a>, <a href="39192.html">9918</a> and <a href="40296.html">9D68</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">Horizontal position of the unit digit</td>
+</tr>
+<tr>
+<td class="register">L</td>
+<td class="register-desc">Vertical position of the number to draw</td>
+</tr>
+<tr>
+<td class="register">B</td>
+<td class="register-desc">Number of digits to draw</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42352"></span>A570</td>
+<td class="instruction">PUSH IX</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42354"></span>A572</td>
+<td class="instruction">LD IX,$A23F</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the unit charcode to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42358"></span>A576</td>
+<td class="instruction">LD H,$00</td>
+<td class="comment-1" rowspan="2">Computes offset for vertical position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42360"></span>A578</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42361"></span>A579</td>
+<td class="instruction">LD D,$00</td>
+<td class="comment-1" rowspan="2">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42363"></span>A57B</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42364"></span>A57C</td>
+<td class="instruction">LD DE,$AC9A</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to point to address of first digit into display file lookup table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42367"></span>A57F</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42368"></span>A580</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">DE</span> to the corresponding address into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42369"></span>A581</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42370"></span>A582</td>
+<td class="instruction">LD D,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42371"></span>A583</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42372"></span>A584</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1">Adds horizontal position to address on display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42373"></span>A585</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">DE</span> and <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-2"><span id="42374"></span>A586</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42375"></span>A587</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42376"></span>A588</td>
+<td class="instruction">LD L,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to the charcode digit pointed by <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42379"></span>A58B</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42381"></span>A58D</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="5">Computes offset of the charcode into charset table to set <span class="register">HL</span> to the graphics data for the digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42382"></span>A58E</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42383"></span>A58F</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42384"></span>A590</td>
+<td class="instruction">LD BC,$6206</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42387"></span>A593</td>
+<td class="instruction">ADD HL,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42388"></span>A594</td>
+<td class="instruction">CALL $A5A1</td>
+<td class="comment-1" rowspan="1">Draw digit into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42391"></span>A597</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the next charcode digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42393"></span>A599</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42394"></span>A59A</td>
+<td class="instruction">DEC DE</td>
+<td class="comment-1" rowspan="1">Point <span class="register">DE</span> to the position of the previous digit into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42395"></span>A59B</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42396"></span>A59C</td>
+<td class="instruction">DJNZ $A586</td>
+<td class="comment-1" rowspan="1">Jump back until all digits copied</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42398"></span>A59E</td>
+<td class="instruction">POP IX</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IX</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42400"></span>A5A0</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42401"></span>
+<div class="comments">
+<div class="paragraph">
+Draw digit into display file
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42401"></span>A5A1</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of bytes to draw</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42403"></span>A5A3</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="2">Copy graphics data from <span class="register">HL</span> to display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42404"></span>A5A4</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42405"></span>A5A5</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment address of graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42406"></span>A5A6</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment address of display file (next line)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42407"></span>A5A7</td>
+<td class="instruction">DJNZ $A5A3</td>
+<td class="comment-1" rowspan="1">Jump back until the digit is draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42409"></span>A5A9</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42326.html">A556</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42352">Map</a></td>
+<td class="next">
+Next: <a href="42410.html">A5AA</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C433</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50113.html">C3C1</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50227">Map</a></td>
+<td class="next">
+Next: <a href="50622.html">C5BE</a>
+</td>
+</tr>
+</table>
+<div class="description">C433: Handle enemy lateral movement (2/2)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="49895.html">C2E7</a>.
+</div>
+<div class="paragraph">
+Handle movement to the right for CATERPILLAR and FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50227"></span>C433</td>
+<td class="instruction">LD HL,($A1B4)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the tile address under entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50230"></span>C436</td>
+<td class="instruction">LD DE,$0040</td>
+<td class="comment-1" rowspan="5">Set <span class="register">HL</span> point to tile in front-upper of entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50233"></span>C439</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50234"></span>C43A</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50236"></span>C43C</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50237"></span>C43D</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50238"></span>C43E</td>
+<td class="instruction">CALL <a href="52725.html">$CDF5</a></td>
+<td class="comment-1" rowspan="1">Check if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50241"></span>C441</td>
+<td class="instruction">JP Z,$C4C6</td>
+<td class="comment-1" rowspan="1">Jump if tile is wall and change direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50244"></span>C444</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> point to tile in front-lower of entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50247"></span>C447</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50248"></span>C448</td>
+<td class="instruction">CALL <a href="52725.html">$CDF5</a></td>
+<td class="comment-1" rowspan="1">Check if tile is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50251"></span>C44B</td>
+<td class="instruction">JP Z,$C4C6</td>
+<td class="comment-1" rowspan="1">Jump if tile is wall and change direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50254"></span>C44E</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="3">Jump forward if enemy is FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50257"></span>C451</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50258"></span>C452</td>
+<td class="instruction">JP Z,$C463</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50261"></span>C455</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Computes new x-position based on speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50264"></span>C458</td>
+<td class="instruction">ADD A,(IX+$10)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50267"></span>C45B</td>
+<td class="instruction">CP $E8</td>
+<td class="comment-1" rowspan="2">Jump to handle collision with right border if x-position greater than 232</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50269"></span>C45D</td>
+<td class="instruction">JP NC,$C4F9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50272"></span>C460</td>
+<td class="instruction">JP $C46E</td>
+<td class="comment-1" rowspan="1">Jump to continue the movement</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50275"></span>
+<div class="comments">
+<div class="paragraph">
+check collision with border for FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50275"></span>C463</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Computes new x-position based on speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50278"></span>C466</td>
+<td class="instruction">ADD A,(IX+$10)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50281"></span>C469</td>
+<td class="instruction">CP $F8</td>
+<td class="comment-1" rowspan="2">Jump to handle collision with right border if x-position greater than 248</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50283"></span>C46B</td>
+<td class="instruction">JP NC,$C4F9</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50286"></span>
+<div class="comments">
+<div class="paragraph">
+no collision, continue movement
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50286"></span>C46E</td>
+<td class="instruction">LD (IX+$00),A</td>
+<td class="comment-1" rowspan="1">Set the new x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50289"></span>C471</td>
+<td class="instruction">LD (IX+$02),$00</td>
+<td class="comment-1" rowspan="1">Set direction to right</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50293"></span>C475</td>
+<td class="instruction">LD A,(IX+$03)</td>
+<td class="comment-1" rowspan="3">Return if FOOT MAN jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50296"></span>C478</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50297"></span>C479</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50298"></span>C47A</td>
+<td class="instruction">LD A,(IX+$06)</td>
+<td class="comment-1" rowspan="3">Return if FOOT MAN falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50301"></span>C47D</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50302"></span>C47E</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50303"></span>C47F</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="3">Jump forward if enemy is not FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50306"></span>C482</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50307"></span>C483</td>
+<td class="instruction">JP NZ,$C4AE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50310"></span>C486</td>
+<td class="instruction">LD HL,($A1B4)</td>
+<td class="comment-1" rowspan="4">Set <span class="register">HL</span> to the address of the tile buffer in front of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50313"></span>C489</td>
+<td class="instruction">LD DE,$001E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50316"></span>C48C</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50317"></span>C48D</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50319"></span>C48F</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">if tile type is $0F then jump to handle jump of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50320"></span>C490</td>
+<td class="instruction">CP $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50322"></span>C492</td>
+<td class="instruction">JP Z,<a href="50798.html#50803">$C673</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50325"></span>C495</td>
+<td class="instruction">CP $0E</td>
+<td class="comment-1" rowspan="2">if tile type is $0E then jump to handle force crouch of FOOT MAN - Not used in Rex (Side B)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50327"></span>C497</td>
+<td class="instruction">JP Z,<a href="50622.html#50623">$C5BF</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50330"></span>C49A</td>
+<td class="instruction">CP $10</td>
+<td class="comment-1" rowspan="2">if tile type is $10 then jump to handle random crouch of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50332"></span>C49C</td>
+<td class="instruction">CALL Z,$C598</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50335"></span>C49F</td>
+<td class="instruction">CP $11</td>
+<td class="comment-1" rowspan="2">if tile type is $10 then jump to handle random jump of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50337"></span>C4A1</td>
+<td class="instruction">CALL Z,$C5A7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50340"></span>C4A4</td>
+<td class="instruction">CP $15</td>
+<td class="comment-1" rowspan="2">if tile type is $10 then jump to handle random telporting of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50342"></span>C4A6</td>
+<td class="instruction">CALL Z,$C5B4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50345"></span>C4A9</td>
+<td class="instruction">CP $16</td>
+<td class="comment-1" rowspan="2">if tile type is $10 then jump to handle forced telporting of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50347"></span>C4AB</td>
+<td class="instruction">CALL Z,$C5BA</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50350"></span>
+<div class="comments">
+<div class="paragraph">
+check the next tile under the foots of enemy
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50350"></span>C4AE</td>
+<td class="instruction">LD HL,($A1B4)</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to the next tile under foots</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50353"></span>C4B1</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50354"></span>C4B2</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50355"></span>C4B3</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Return if tile is not background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50356"></span>C4B4</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50357"></span>C4B5</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50358"></span>C4B6</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="4">Return if enemy is FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50361"></span>C4B9</td>
+<td class="instruction">AND $7F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50363"></span>C4BB</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50364"></span>C4BC</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50365"></span>C4BD</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="6">Remnant code. No enemies with this type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50367"></span>C4BF</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50368"></span>C4C0</td>
+<td class="instruction">CP $0C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50370"></span>C4C2</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50371"></span>C4C3</td>
+<td class="instruction">CP $0D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50373"></span>C4C5</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50374"></span>C4C6</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="5">Return if FOOT MAN dying</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50377"></span>C4C9</td>
+<td class="instruction">CP $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50379"></span>C4CB</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50380"></span>C4CC</td>
+<td class="instruction">CP $06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50382"></span>C4CE</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50383"></span>
+<div class="comments">
+<div class="paragraph">
+change direction of enemy
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50383"></span>C4CF</td>
+<td class="instruction">LD A,(IX+$02)</td>
+<td class="comment-1" rowspan="3">change enemy direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50386"></span>C4D2</td>
+<td class="instruction">XOR $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50388"></span>C4D4</td>
+<td class="instruction">LD (IX+$02),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50391"></span>
+<div class="comments">
+<div class="paragraph">
+special case for FOOT MAN dying
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50391"></span>C4D7</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="5">if FOOT MAN dying then generate explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50394"></span>C4DA</td>
+<td class="instruction">CP $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50396"></span>C4DC</td>
+<td class="instruction">JP Z,<a href="38919.html">$9807</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50399"></span>C4DF</td>
+<td class="instruction">CP $06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50401"></span>C4E1</td>
+<td class="instruction">JP Z,<a href="38919.html">$9807</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50404"></span>C4E4</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="7">Remnant code for train of Rex (Side A). Nou used in game</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50406"></span>C4E6</td>
+<td class="instruction">JP Z,$C4F4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50409"></span>C4E9</td>
+<td class="instruction">CP $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50411"></span>C4EB</td>
+<td class="instruction">JP Z,$C4F4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50414"></span>C4EE</td>
+<td class="instruction">CP $05</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50416"></span>C4F0</td>
+<td class="instruction">JP Z,$C4F4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50419"></span>C4F3</td>
+<td class="instruction">RET</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50420"></span>
+<div class="comments">
+<div class="paragraph">
+Set enemy to not visible
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50420"></span>C4F4</td>
+<td class="instruction">LD (IX+$0C),$00</td>
+<td class="comment-1" rowspan="1">Enemy not visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50424"></span>C4F8</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50425"></span>
+<div class="comments">
+<div class="paragraph">
+Handle collision with room border
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50425"></span>C4F9</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="3">if enemy type is FOOT MAN then jump to make FOOT MAN invisible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50428"></span>C4FC</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50429"></span>C4FD</td>
+<td class="instruction">JP Z,$C4F4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50432"></span>C500</td>
+<td class="instruction">JP $C4CF</td>
+<td class="comment-1" rowspan="1">if not change enemy direction</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50435"></span>
+<div class="comments">
+<div class="paragraph">
+Handle movement to the left for CATERPILLAR and FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50435"></span>C503</td>
+<td class="instruction">LD HL,($A1B4)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the tile address under entity</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50438"></span>C506</td>
+<td class="instruction">LD DE,$0040</td>
+<td class="comment-1" rowspan="4">Set <span class="register">HL</span> to the tile address in front-upper of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50441"></span>C509</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50442"></span>C50A</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50444"></span>C50C</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50445"></span>C50D</td>
+<td class="instruction">CALL <a href="52725.html">$CDF5</a></td>
+<td class="comment-1" rowspan="1">Check if tile type is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50448"></span>C510</td>
+<td class="instruction">JP Z,$C588</td>
+<td class="comment-1" rowspan="1">Jump if it's a wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50451"></span>C513</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="2">Increment address to tile in front-lower of enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50454"></span>C516</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50455"></span>C517</td>
+<td class="instruction">CALL <a href="52725.html">$CDF5</a></td>
+<td class="comment-1" rowspan="1">Check if tile type is wall</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50458"></span>C51A</td>
+<td class="instruction">JP Z,$C588</td>
+<td class="comment-1" rowspan="1">Jump if it's a wall and change direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50461"></span>C51D</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Computes new x-position based on speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50464"></span>C520</td>
+<td class="instruction">SUB (IX+$10)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50467"></span>C523</td>
+<td class="instruction">CP $E8</td>
+<td class="comment-1" rowspan="2">if x-position is less than 24 then jump and handle left collision with room border</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50469"></span>C525</td>
+<td class="instruction">JP NC,$C4F9</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50472"></span>
+<div class="comments">
+<div class="paragraph">
+no collision, continue moving
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50472"></span>C528</td>
+<td class="instruction">LD (IX+$00),A</td>
+<td class="comment-1" rowspan="1">Set the new x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50475"></span>C52B</td>
+<td class="instruction">LD (IX+$02),$01</td>
+<td class="comment-1" rowspan="1">Continue in the same direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50479"></span>C52F</td>
+<td class="instruction">LD A,(IX+$03)</td>
+<td class="comment-1" rowspan="3">Return if jumping</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50482"></span>C532</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50483"></span>C533</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50484"></span>C534</td>
+<td class="instruction">LD A,(IX+$06)</td>
+<td class="comment-1" rowspan="3">Return if falling</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50487"></span>C537</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50488"></span>C538</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50489"></span>C539</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50492"></span>C53C</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Jump forward if enemy type is not FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50493"></span>C53D</td>
+<td class="instruction">JP NZ,$C568</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50496"></span>
+<div class="comments">
+<div class="paragraph">
+handle special behavior of FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50496"></span>C540</td>
+<td class="instruction">LD HL,($A1B4)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to the tile address under FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50499"></span>C543</td>
+<td class="instruction">LD DE,$0021</td>
+<td class="comment-1" rowspan="3">Check tile type where is FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50502"></span>C546</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50503"></span>C547</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50505"></span>C549</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">if tile type is $0F then jump to handle jump of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50506"></span>C54A</td>
+<td class="instruction">CP $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50508"></span>C54C</td>
+<td class="instruction">JP Z,<a href="50798.html">$C66E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50511"></span>C54F</td>
+<td class="instruction">CP $0E</td>
+<td class="comment-1" rowspan="2">if tile type is $0E then jump to handle force crouch of FOOT MAN - Not used in Rex (Side B)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50513"></span>C551</td>
+<td class="instruction">JP Z,<a href="50622.html#50623">$C5BF</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50516"></span>C554</td>
+<td class="instruction">CP $10</td>
+<td class="comment-1" rowspan="2">if tile type is $10 then jump to handle random crouch of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50518"></span>C556</td>
+<td class="instruction">CALL Z,$C598</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50521"></span>C559</td>
+<td class="instruction">CP $11</td>
+<td class="comment-1" rowspan="2">if tile type is $10 then jump to handle random jump of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50523"></span>C55B</td>
+<td class="instruction">CALL Z,$C5A7</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50526"></span>C55E</td>
+<td class="instruction">CP $15</td>
+<td class="comment-1" rowspan="2">if tile type is $10 then jump to handle random telporting of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50528"></span>C560</td>
+<td class="instruction">CALL Z,$C5B4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50531"></span>C563</td>
+<td class="instruction">CP $16</td>
+<td class="comment-1" rowspan="2">if tile type is $10 then jump to handle forced telporting of FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50533"></span>C565</td>
+<td class="instruction">CALL Z,$C5BA</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50536"></span>
+<div class="comments">
+<div class="paragraph">
+check for space under the feet in next tile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50536"></span>C568</td>
+<td class="instruction">LD HL,($A1B4)</td>
+<td class="comment-1" rowspan="5">Return if next tile under a feet is not space</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50539"></span>C56B</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50540"></span>C56C</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50541"></span>C56D</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50542"></span>C56E</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50543"></span>C56F</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50546"></span>C572</td>
+<td class="instruction">AND $7F</td>
+<td class="comment-1" rowspan="3">Return if FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50548"></span>C574</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50549"></span>C575</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50550"></span>C576</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="6">Remant code for train of Rex (Side A)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50552"></span>C578</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50553"></span>C579</td>
+<td class="instruction">CP $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50555"></span>C57B</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50556"></span>C57C</td>
+<td class="instruction">CP $05</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50558"></span>C57E</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50559"></span>C57F</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="6">Remnant code. No enemies with this type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50561"></span>C581</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50562"></span>C582</td>
+<td class="instruction">CP $0C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50564"></span>C584</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50565"></span>C585</td>
+<td class="instruction">CP $0D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50567"></span>C587</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50568"></span>
+<div class="comments">
+<div class="paragraph">
+change direction
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50568"></span>C588</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="5">Return if FOOT MAN dying</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50571"></span>C58B</td>
+<td class="instruction">CP $06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50573"></span>C58D</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50574"></span>C58E</td>
+<td class="instruction">CP $07</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50576"></span>C590</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50577"></span>C591</td>
+<td class="instruction">LD (IX+$02),$00</td>
+<td class="comment-1" rowspan="1">Change enemy direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50581"></span>C595</td>
+<td class="instruction">JP $C4D7</td>
+<td class="comment-1" rowspan="1">Jump to handle special case for FOOT MAN dying</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50584"></span>
+<div class="comments">
+<div class="paragraph">
+Handle random crouch for FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50584"></span>C598</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50585"></span>C599</td>
+<td class="instruction">CALL <a href="42269.html">$A51D</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random nummber</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50588"></span>C59C</td>
+<td class="instruction">CP $80</td>
+<td class="comment-1" rowspan="1">is less than 128?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50590"></span>C59E</td>
+<td class="instruction">JP C,<a href="50622.html">$C5BE</a></td>
+<td class="comment-1" rowspan="1">Jump to crouch FOOT MAN if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50593"></span>C5A1</td>
+<td class="instruction">LD (IX+$11),$04</td>
+<td class="comment-1" rowspan="1">Reset state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50597"></span>C5A5</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="50598"></span>C5A6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50599"></span>
+<div class="comments">
+<div class="paragraph">
+Handle random jump for FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50599"></span>C5A7</td>
+<td class="instruction">CALL <a href="42269.html">$A51D</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random nummber</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50602"></span>C5AA</td>
+<td class="instruction">CP $80</td>
+<td class="comment-1" rowspan="1">is less than 128?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50604"></span>C5AC</td>
+<td class="instruction">JP C,<a href="50798.html">$C66E</a></td>
+<td class="comment-1" rowspan="1">Jump to make FOOT MAN jump</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50607"></span>C5AF</td>
+<td class="instruction">LD (IX+$11),$04</td>
+<td class="comment-1" rowspan="1">Reset state change counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50611"></span>C5B3</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50612"></span>
+<div class="comments">
+<div class="paragraph">
+Handle random teleporting out of the room for FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50612"></span>C5B4</td>
+<td class="instruction">CALL <a href="42269.html">$A51D</a></td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> a pseudo random nummber</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50615"></span>C5B7</td>
+<td class="instruction">CP $80</td>
+<td class="comment-1" rowspan="1">is less than 128?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50617"></span>C5B9</td>
+<td class="instruction">RET C</td>
+<td class="comment-1" rowspan="1">Return if so</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50618"></span>
+<div class="comments">
+<div class="paragraph">
+Handle forced teleporting out of the room for FOOT MAN
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50618"></span>C5BA</td>
+<td class="instruction">CALL <a href="40689.html">$9EF1</a></td>
+<td class="comment-1" rowspan="1">Configure teleporting out of the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50621"></span>C5BD</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50113.html">C3C1</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50227">Map</a></td>
+<td class="next">
+Next: <a href="50622.html">C5BE</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at CD44</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52087.html">CB77</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52548">Map</a></td>
+<td class="next">
+Next: <a href="52562.html">CD52</a>
+</td>
+</tr>
+</table>
+<div class="description">CD44: Handle speed up duration</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="52562.html">CD52</a> and <a href="52590.html">CD6E</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="52548"></span>CD44</td>
+<td class="instruction">LD A,($A20C)</td>
+<td class="comment-1" rowspan="3">Decrement speed up counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52551"></span>CD47</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52552"></span>CD48</td>
+<td class="instruction">LD ($A20C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52555"></span>CD4B</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return if not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52556"></span>CD4C</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52557"></span>CD4D</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Reset speed mode to normal if counter is zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52558"></span>CD4E</td>
+<td class="instruction">LD ($A20B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52561"></span>CD51</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="52087.html">CB77</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#52548">Map</a></td>
+<td class="next">
+Next: <a href="52562.html">CD52</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

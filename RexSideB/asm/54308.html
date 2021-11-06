@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at D424</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54143.html">D37F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54308">Map</a></td>
+<td class="next">
+Next: <a href="54387.html">D473</a>
+</td>
+</tr>
+</table>
+<div class="description">D424: Play sound channels</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54308"></span>D424</td>
+<td class="instruction">LD B,$03</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> the number of channels to play</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54310"></span>D426</td>
+<td class="instruction">LD IX,$D5CA</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to address for channel #1 sound data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54314"></span>D42A</td>
+<td class="instruction">LD D,$00</td>
+<td class="comment-1" rowspan="1">Set sound register for fine pitch on channel #1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54316"></span>D42C</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set channel volume #1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54318"></span>D42E</td>
+<td class="instruction">LD ($D5EF),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54321"></span>D431</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Save <span class="register">BC</span> and <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54322"></span>D432</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54323"></span>D433</td>
+<td class="instruction">CALL <a href="54387.html">$D473</a></td>
+<td class="comment-1" rowspan="1">Configure next tone/noise data for current channel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54326"></span>D436</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54327"></span>D437</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54328"></span>D438</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Jump to next channel if this channel is disabled</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54331"></span>D43B</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54333"></span>D43D</td>
+<td class="instruction">JP Z,$D460</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54336"></span>D440</td>
+<td class="instruction">LD A,(IX+$06)</td>
+<td class="comment-1" rowspan="3">Jump forward if noise sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54339"></span>D443</td>
+<td class="instruction">CP $00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54341"></span>D445</td>
+<td class="instruction">JP NZ,$D458</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54344"></span>
+<div class="comments">
+<div class="paragraph">
+play note
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54344"></span>D448</td>
+<td class="instruction">LD E,(IX+$04)</td>
+<td class="comment-1" rowspan="2">Send command for fine pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54347"></span>D44B</td>
+<td class="instruction">CALL <a href="54513.html">$D4F1</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54350"></span>D44E</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increase register number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54351"></span>D44F</td>
+<td class="instruction">LD E,(IX+$05)</td>
+<td class="comment-1" rowspan="2">Send command for coarse pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54354"></span>D452</td>
+<td class="instruction">CALL <a href="54513.html">$D4F1</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54357"></span>D455</td>
+<td class="instruction">JP $D460</td>
+<td class="comment-1" rowspan="1">Jump forward and play next channel</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54360"></span>
+<div class="comments">
+<div class="paragraph">
+play noise
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54360"></span>D458</td>
+<td class="instruction">LD E,(IX+$04)</td>
+<td class="comment-1" rowspan="3">Send command for noise pitch</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54363"></span>D45B</td>
+<td class="instruction">LD D,$06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54365"></span>D45D</td>
+<td class="instruction">CALL <a href="54513.html">$D4F1</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="54368"></span>
+<div class="comments">
+<div class="paragraph">
+play next channel
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="54368"></span>D460</td>
+<td class="instruction">LD BC,$0008</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IX</span> to the next channel data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54371"></span>D463</td>
+<td class="instruction">ADD IX,BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54373"></span>D465</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">DE</span> and <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="54374"></span>D466</td>
+<td class="instruction">POP BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54375"></span>D467</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="2">Increment register for next channel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54376"></span>D468</td>
+<td class="instruction">INC D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54377"></span>D469</td>
+<td class="instruction">LD A,($D5EF)</td>
+<td class="comment-1" rowspan="3">Increment volume channel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54380"></span>D46C</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54381"></span>D46D</td>
+<td class="instruction">LD ($D5EF),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54384"></span>D470</td>
+<td class="instruction">DJNZ $D431</td>
+<td class="comment-1" rowspan="1">Jump back and play next channel</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54386"></span>D472</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54143.html">D37F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54308">Map</a></td>
+<td class="next">
+Next: <a href="54387.html">D473</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

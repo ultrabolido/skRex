@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A6DD</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42667.html">A6AB</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42717">Map</a></td>
+<td class="next">
+Next: <a href="42758.html">A706</a>
+</td>
+</tr>
+</table>
+<div class="description">A6DD: Computes address into attribute file based of (x,y)-pixel-position on screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="39757.html">9B4D</a> and <a href="48151.html">BC17</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">$A248</td>
+<td class="register-desc">x-pixel-position</td>
+</tr>
+<tr>
+<td class="register">$A249</td>
+<td class="register-desc">y-pixel-position</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address into attribute file</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42717"></span>A6DD</td>
+<td class="instruction">LD A,($A249)</td>
+<td class="comment-1" rowspan="14">Computes into <span class="register">HL</span> the address offset for the y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42720"></span>A6E0</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42721"></span>A6E1</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42723"></span>A6E3</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42725"></span>A6E5</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42727"></span>A6E7</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42729"></span>A6E9</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42731"></span>A6EB</td>
+<td class="instruction">SRL H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42733"></span>A6ED</td>
+<td class="instruction">RR L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42735"></span>A6EF</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42736"></span>A6F0</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42737"></span>A6F1</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42738"></span>A6F2</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42739"></span>A6F3</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42740"></span>A6F4</td>
+<td class="instruction">LD A,($A248)</td>
+<td class="comment-1" rowspan="6">Computes into <span class="register">DE</span> the address offset for the x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42743"></span>A6F7</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42745"></span>A6F9</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42747"></span>A6FB</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42749"></span>A6FD</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42750"></span>A6FE</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42752"></span>A700</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to the address into attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42753"></span>A701</td>
+<td class="instruction">LD DE,$5800</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42756"></span>A704</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42757"></span>A705</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42667.html">A6AB</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42717">Map</a></td>
+<td class="next">
+Next: <a href="42758.html">A706</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

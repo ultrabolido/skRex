@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 98D9</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39113.html">98C9</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39129">Map</a></td>
+<td class="next">
+Next: <a href="39148.html">98EC</a>
+</td>
+</tr>
+</table>
+<div class="description">98D9: Draws lives number on HUD</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38000.html">9470</a>, <a href="40296.html">9D68</a> and <a href="54072.html">D338</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39129"></span>98D9</td>
+<td class="instruction">LD A,($A1FC)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the number of lives of rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39132"></span>98DC</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="2">Copy number of lives to <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39133"></span>98DD</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39135"></span>98DF</td>
+<td class="instruction">CALL <a href="42410.html">$A5AA</a></td>
+<td class="comment-1" rowspan="1">Computes the charcode digit of the number of lives</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39138"></span>98E2</td>
+<td class="instruction">LD E,$17</td>
+<td class="comment-1" rowspan="1">Set <span class="register">E</span> to the horizontal position of the unit digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39140"></span>98E4</td>
+<td class="instruction">LD L,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">L</span> to the vertical position of the number to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39142"></span>98E6</td>
+<td class="instruction">LD B,$01</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of digits to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39144"></span>98E8</td>
+<td class="instruction">CALL <a href="42352.html">$A570</a></td>
+<td class="comment-1" rowspan="1">Draw the number at lives at HUD into display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39147"></span>98EB</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="39113.html">98C9</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#39129">Map</a></td>
+<td class="next">
+Next: <a href="39148.html">98EC</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

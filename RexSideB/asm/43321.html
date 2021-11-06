@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A939</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43301.html">A925</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43321">Map</a></td>
+<td class="next">
+Next: <a href="43398.html">A986</a>
+</td>
+</tr>
+</table>
+<div class="description">A939: Configure current room</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43321"></span>A939</td>
+<td class="instruction">LD A,$03</td>
+<td class="comment-1" rowspan="2">Reset channel 3 for explosion sound (modified in Rex explosion at routine <a href="39395.html">99E3</a>)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43323"></span>A93B</td>
+<td class="instruction">LD ($D528),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43326"></span>A93E</td>
+<td class="instruction">CALL <a href="41691.html">$A2DB</a></td>
+<td class="comment-1" rowspan="1">Initialise time bar loops counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43329"></span>A941</td>
+<td class="instruction">LD HL,$E9FF</td>
+<td class="comment-1" rowspan="1">Set <a href="41426.html">A1D2</a> to the base address of attribute buffer for score points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43332"></span>A944</td>
+<td class="instruction">LD ($A1D2),HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43335"></span>A947</td>
+<td class="instruction">CALL <a href="51554.html">$C962</a></td>
+<td class="comment-1" rowspan="1">Configure room connections and enemies of the room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43338"></span>A94A</td>
+<td class="instruction">LD HL,$5B60</td>
+<td class="comment-1" rowspan="5">Reset projectiles configuration data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43341"></span>A94D</td>
+<td class="instruction">LD DE,$5B61</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43344"></span>A950</td>
+<td class="instruction">LD BC,$02ED</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43347"></span>A953</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43349"></span>A955</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43351"></span>A957</td>
+<td class="instruction">CALL <a href="51118.html">$C7AE</a></td>
+<td class="comment-1" rowspan="1">Initialize graphic and attribute data buffers for current room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43354"></span>A95A</td>
+<td class="instruction">LD HL,$5860</td>
+<td class="comment-1" rowspan="5">Reset attribute file for room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43357"></span>A95D</td>
+<td class="instruction">LD DE,$5861</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43360"></span>A960</td>
+<td class="instruction">LD BC,$029F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43363"></span>A963</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43365"></span>A965</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43367"></span>A967</td>
+<td class="instruction">CALL <a href="45635.html">$B243</a></td>
+<td class="comment-1" rowspan="1">Reset room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43370"></span>A96A</td>
+<td class="instruction">CALL <a href="45951.html#45956">$B384</a></td>
+<td class="comment-1" rowspan="1">Copy tile graphic into room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43373"></span>A96D</td>
+<td class="instruction">CALL <a href="42034.html">$A432</a></td>
+<td class="comment-1" rowspan="1">Copy room graphic buffer to display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43376"></span>A970</td>
+<td class="instruction">CALL <a href="51506.html">$C932</a></td>
+<td class="comment-1" rowspan="1">Copy room color attribute buffer to attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43379"></span>A973</td>
+<td class="instruction">CALL <a href="52033.html">$CB41</a></td>
+<td class="comment-1" rowspan="1">Configure static enemies for the current room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43382"></span>A976</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43383"></span>A977</td>
+<td class="instruction">LD ($A1B0),A</td>
+<td class="comment-1" rowspan="1">Set tilt #0 for arrow keys in room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43386"></span>A97A</td>
+<td class="instruction">LD ($A1DE),A</td>
+<td class="comment-1" rowspan="1">No train generating on room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43389"></span>A97D</td>
+<td class="instruction">CALL <a href="39192.html">$9918</a></td>
+<td class="comment-1" rowspan="1">Draw shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43392"></span>A980</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set current room configured</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43394"></span>A982</td>
+<td class="instruction">LD ($A1F5),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43397"></span>A985</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43301.html">A925</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43321">Map</a></td>
+<td class="next">
+Next: <a href="43398.html">A986</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

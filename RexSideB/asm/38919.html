@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 9807</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38885.html">97E5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38919">Map</a></td>
+<td class="next">
+Next: <a href="39062.html">9896</a>
+</td>
+</tr>
+</table>
+<div class="description">9807: Destroy enemy</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38766.html">976E</a>, <a href="50113.html">C3C1</a>, <a href="50227.html">C433</a>, <a href="50833.html">C691</a>, <a href="50977.html">C721</a>, <a href="50977.html#51084">C78C</a>, <a href="53173.html">CFB5</a> and <a href="53173.html#53594">D15A</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="38919"></span>9807</td>
+<td class="instruction">LD HL,$E9FF</td>
+<td class="comment-1" rowspan="2">Set <a href="41426.html">A1D2</a> the base address for attribute buffer pointing to score points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38922"></span>980A</td>
+<td class="instruction">LD ($A1D2),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38925"></span>980D</td>
+<td class="instruction">LD HL,$0000</td>
+<td class="comment-1" rowspan="2">Set <a href="41429.html">A1D5</a> the score points for enemy dying</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38928"></span>9810</td>
+<td class="instruction">LD ($A1D5),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38931"></span>9813</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check enemy type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38934"></span>9816</td>
+<td class="instruction">CP $83</td>
+<td class="comment-1" rowspan="1">is BRAIN?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38936"></span>9818</td>
+<td class="instruction">CALL Z,$9876</td>
+<td class="comment-1" rowspan="1">Handle BRAIN destruction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38939"></span>981B</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="3">Return if y-position of enemy is greater than $B0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38942"></span>981E</td>
+<td class="instruction">CP $B0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38944"></span>9820</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38945"></span>9821</td>
+<td class="instruction">CP $10</td>
+<td class="comment-1" rowspan="2">Return if y-position of enemy is less than $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38947"></span>9823</td>
+<td class="instruction">RET C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38948"></span>9824</td>
+<td class="instruction">LD HL,$84D8</td>
+<td class="comment-1" rowspan="3">Set base address for explosion graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38951"></span>9827</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38954"></span>982A</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38957"></span>982D</td>
+<td class="instruction">LD (IX+$0D),$08</td>
+<td class="comment-1" rowspan="1">Set explosion counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38961"></span>9831</td>
+<td class="instruction">LD (IX+$0F),$18</td>
+<td class="comment-1" rowspan="1">Set height of explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38965"></span>9835</td>
+<td class="instruction">LD (IX+$0E),$03</td>
+<td class="comment-1" rowspan="1">Set width of explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38969"></span>9839</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Check enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38972"></span>983C</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Increment dead counter if not FOOT MAN</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38973"></span>983D</td>
+<td class="instruction">CALL NZ,$986E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38976"></span>9840</td>
+<td class="instruction">AND $0F</td>
+<td class="comment-1" rowspan="5">Set into <span class="register">HL</span> to the address into the enemy points table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38978"></span>9842</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38979"></span>9843</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38981"></span>9845</td>
+<td class="instruction">LD HL,$9896</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38984"></span>9848</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38985"></span>9849</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="2">Set <span class="register">DE</span> to the points obtained</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38986"></span>984A</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38988"></span>984C</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="2">Check number of points</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38989"></span>984D</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38990"></span>984E</td>
+<td class="instruction">CALL NZ,<a href="39237.html">$9945</a></td>
+<td class="comment-1" rowspan="1">if points greater than 0 then increment score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38993"></span>9851</td>
+<td class="instruction">LD DE,$D528</td>
+<td class="comment-1" rowspan="1">Set address for explosion sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38996"></span>9854</td>
+<td class="instruction">CALL <a href="54143.html">$D37F</a></td>
+<td class="comment-1" rowspan="1">Configure sound channel and mixer register</td>
+</tr>
+<tr>
+<td class="address-1"><span id="38999"></span>9857</td>
+<td class="instruction">LD (IX+$09),$FF</td>
+<td class="comment-1" rowspan="1">Set entity type explosion</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39003"></span>985B</td>
+<td class="instruction">LD (IX+$02),$00</td>
+<td class="comment-1" rowspan="1">Reset sprite direction</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39007"></span>985F</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-1" rowspan="4">Set explosion y-position (fixed grid)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39010"></span>9862</td>
+<td class="instruction">SUB $08</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39012"></span>9864</td>
+<td class="instruction">AND $F8</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39014"></span>9866</td>
+<td class="instruction">LD (IX+$01),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39017"></span>9869</td>
+<td class="instruction">LD (IX+$03),$00</td>
+<td class="comment-1" rowspan="1">Reset explosion debris expansion counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39021"></span>986D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39022"></span>
+<div class="comments">
+<div class="paragraph">
+Increment enemy dead counter
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39022"></span>986E</td>
+<td class="instruction">LD HL,($A222)</td>
+<td class="comment-1" rowspan="3">Increment BIO GROWTH DEATH counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39025"></span>9871</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39026"></span>9872</td>
+<td class="instruction">LD ($A222),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39029"></span>9875</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="39030"></span>
+<div class="comments">
+<div class="paragraph">
+Handle the destroy of Brain enemy
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="39030"></span>9876</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="3">Increase wound counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39033"></span>9879</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39034"></span>987A</td>
+<td class="instruction">LD (IX+$11),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39037"></span>987D</td>
+<td class="instruction">CP $0A</td>
+<td class="comment-1" rowspan="2">Return if counter is 10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39039"></span>987F</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39040"></span>9880</td>
+<td class="instruction">LD L,(IX+$04)</td>
+<td class="comment-1" rowspan="6">Point to the next BRAIN graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39043"></span>9883</td>
+<td class="instruction">LD H,(IX+$05)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39046"></span>9886</td>
+<td class="instruction">LD DE,$0020</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39049"></span>9889</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39050"></span>988A</td>
+<td class="instruction">LD (IX+$04),L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39053"></span>988D</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39056"></span>9890</td>
+<td class="instruction">LD (IX+$14),$02</td>
+<td class="comment-1" rowspan="1">Reset BRAIN health</td>
+</tr>
+<tr>
+<td class="address-1"><span id="39060"></span>9894</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="39061"></span>9895</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="38885.html">97E5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#38919">Map</a></td>
+<td class="next">
+Next: <a href="39062.html">9896</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

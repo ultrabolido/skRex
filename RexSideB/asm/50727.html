@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C627</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50664.html">C5E8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50727">Map</a></td>
+<td class="next">
+Next: <a href="50795.html">C66B</a>
+</td>
+</tr>
+</table>
+<div class="description">C627: Handle FOOT MAN walking/crouching state change</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="48200.html">BC48</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50727"></span>C627</td>
+<td class="instruction">LD A,(IX+$09)</td>
+<td class="comment-1" rowspan="3">Entity type is FOOT MAN?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50730"></span>C62A</td>
+<td class="instruction">AND $7F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50732"></span>C62C</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50733"></span>C62D</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if it isn't</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50734"></span>C62E</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="2">FOOT MAN is walking?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50737"></span>C631</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50738"></span>C632</td>
+<td class="instruction">JP Z,$C660</td>
+<td class="comment-1" rowspan="1">Jump to decrement state counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50741"></span>C635</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="1">SEt <span class="register">A</span> to state counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50744"></span>C638</td>
+<td class="instruction">CP $C8</td>
+<td class="comment-1" rowspan="1">is for fixed crouch foot man?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50746"></span>C63A</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50747"></span>C63B</td>
+<td class="instruction">DEC (IX+$11)</td>
+<td class="comment-1" rowspan="1">Decrement state counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50750"></span>C63E</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if no 0</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="50751"></span>
+<div class="comments">
+<div class="paragraph">
+State counter reached 0: change state to walking
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50751"></span>C63F</td>
+<td class="instruction">LD (IX+$10),$02</td>
+<td class="comment-1" rowspan="1">Set footman speed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50755"></span>C643</td>
+<td class="instruction">RES 7,(IX+$09)</td>
+<td class="comment-1" rowspan="1">Set footman walking type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50759"></span>C647</td>
+<td class="instruction">LD (IX+$0E),$03</td>
+<td class="comment-1" rowspan="1">Set width of sprite (in bytes)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50763"></span>C64B</td>
+<td class="instruction">LD (IX+$11),$09</td>
+<td class="comment-1" rowspan="1">Set state counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50767"></span>C64F</td>
+<td class="instruction">LD A,(IX+$12)</td>
+<td class="comment-1" rowspan="2">is footman stand-by?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50770"></span>C652</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50772"></span>C654</td>
+<td class="instruction">JP NZ,$C65B</td>
+<td class="comment-1" rowspan="1">Jump if walking or crouched</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50775"></span>C657</td>
+<td class="instruction">LD (IX+$11),$01</td>
+<td class="comment-1" rowspan="1">Set state counter</td>
+</tr>
+<tr>
+<td class="address-2"><span id="50779"></span>C65B</td>
+<td class="instruction">LD (IX+$12),$00</td>
+<td class="comment-1" rowspan="1">Set footman walking</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50783"></span>C65F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="50784"></span>C660</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="5">Decrement counter if counter &gt; 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50787"></span>C663</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50788"></span>C664</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50790"></span>C666</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50791"></span>C667</td>
+<td class="instruction">LD (IX+$11),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="50794"></span>C66A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="50664.html">C5E8</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#50727">Map</a></td>
+<td class="next">
+Next: <a href="50795.html">C66B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

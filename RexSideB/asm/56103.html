@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at DB27</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56000.html">DAC0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56103">Map</a></td>
+<td class="next">
+Next: <a href="56487.html">DCA7</a>
+</td>
+</tr>
+</table>
+<div class="description">DB27: Enter and decode password</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="56000.html">DAC0</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56103"></span>DB27</td>
+<td class="instruction">CALL <a href="56607.html">$DD1F</a></td>
+<td class="comment-1" rowspan="1">Handle passsword code input</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56106"></span>
+<div class="comments">
+<div class="paragraph">
+Decode entered password into text definition at <a href="56487.html#56590">DD0E</a>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56106"></span>DB2A</td>
+<td class="instruction">LD A,($DD01)</td>
+<td class="comment-1" rowspan="2">Set first figure of score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56109"></span>DB2D</td>
+<td class="instruction">LD ($DD0E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56112"></span>DB30</td>
+<td class="instruction">LD A,($DCF6)</td>
+<td class="comment-1" rowspan="2">Set second figure of score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56115"></span>DB33</td>
+<td class="instruction">LD ($DD0F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56118"></span>DB36</td>
+<td class="instruction">LD A,($DCFA)</td>
+<td class="comment-1" rowspan="2">Set third figure of score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56121"></span>DB39</td>
+<td class="instruction">LD ($DD10),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56124"></span>DB3C</td>
+<td class="instruction">LD A,($DCFE)</td>
+<td class="comment-1" rowspan="2">Set fourth figure of score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56127"></span>DB3F</td>
+<td class="instruction">LD ($DD11),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56130"></span>DB42</td>
+<td class="instruction">LD A,($DCFC)</td>
+<td class="comment-1" rowspan="2">Set fifth figure of score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56133"></span>DB45</td>
+<td class="instruction">LD ($DD12),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56136"></span>DB48</td>
+<td class="instruction">LD A,($DCF8)</td>
+<td class="comment-1" rowspan="2">Set number of lives</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56139"></span>DB4B</td>
+<td class="instruction">LD ($DD13),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56142"></span>DB4E</td>
+<td class="instruction">LD A,($DCF5)</td>
+<td class="comment-1" rowspan="2">Set weapon available for double fire</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56145"></span>DB51</td>
+<td class="instruction">LD ($DD14),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56148"></span>DB54</td>
+<td class="instruction">LD A,($DCF9)</td>
+<td class="comment-1" rowspan="2">Set weapon available for laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56151"></span>DB57</td>
+<td class="instruction">LD ($DD15),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56154"></span>DB5A</td>
+<td class="instruction">LD A,($DCFB)</td>
+<td class="comment-1" rowspan="2">Set weapon available for multiple</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56157"></span>DB5D</td>
+<td class="instruction">LD ($DD16),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56160"></span>DB60</td>
+<td class="instruction">LD A,($DCF7)</td>
+<td class="comment-1" rowspan="2">Set weapon available for spray</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56163"></span>DB63</td>
+<td class="instruction">LD ($DD17),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56166"></span>DB66</td>
+<td class="instruction">LD A,($DD00)</td>
+<td class="comment-1" rowspan="2">Set first figure for shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56169"></span>DB69</td>
+<td class="instruction">LD ($DD18),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56172"></span>DB6C</td>
+<td class="instruction">LD A,($DCFD)</td>
+<td class="comment-1" rowspan="2">Set second figure for shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56175"></span>DB6F</td>
+<td class="instruction">LD ($DD19),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56178"></span>DB72</td>
+<td class="instruction">LD A,($DCFF)</td>
+<td class="comment-1" rowspan="2">Set number of smartbombs</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56181"></span>DB75</td>
+<td class="instruction">LD ($DD1A),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56184"></span>DB78</td>
+<td class="instruction">LD A,($DD03)</td>
+<td class="comment-1" rowspan="2">Set first figure of checksum</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56187"></span>DB7B</td>
+<td class="instruction">LD ($DD1B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56190"></span>DB7E</td>
+<td class="instruction">LD A,($DD04)</td>
+<td class="comment-1" rowspan="2">Set second figure of checksum</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56193"></span>DB81</td>
+<td class="instruction">LD ($DD1C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56196"></span>DB84</td>
+<td class="instruction">LD A,($DD02)</td>
+<td class="comment-1" rowspan="2">Set third figure of checksum</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56199"></span>DB87</td>
+<td class="instruction">LD ($DD1D),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56202"></span>DB8A</td>
+<td class="instruction">LD B,$0D</td>
+<td class="comment-1" rowspan="9">For every charcode in the password substract the current number to 9. So 9 =&gt; 0 8 =&gt; 1 7 =&gt; 2 ...</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56204"></span>DB8C</td>
+<td class="instruction">LD E,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56206"></span>DB8E</td>
+<td class="instruction">LD ($A22C),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56209"></span>DB91</td>
+<td class="instruction">LD HL,$DD0E</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56212"></span>DB94</td>
+<td class="instruction">LD C,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56213"></span>DB95</td>
+<td class="instruction">LD A,$39</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56215"></span>DB97</td>
+<td class="instruction">SUB C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56216"></span>DB98</td>
+<td class="instruction">ADD A,$30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56218"></span>DB9A</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56219"></span>DB9B</td>
+<td class="instruction">SUB $30</td>
+<td class="comment-1" rowspan="3">Set into <span class="register">E</span> the protection code (checksum) Checksum will be the sum of all the digits of the code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56221"></span>DB9D</td>
+<td class="instruction">ADD A,E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56222"></span>DB9E</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56223"></span>DB9F</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment address for the next charcode</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56224"></span>DBA0</td>
+<td class="instruction">DJNZ $DB94</td>
+<td class="comment-1" rowspan="1">Jump until all charcodes processed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56226"></span>DBA2</td>
+<td class="instruction">LD HL,$DCF5</td>
+<td class="comment-1" rowspan="9">Computes checksum code into <span class="register">E</span> for the entered password</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56229"></span>DBA5</td>
+<td class="instruction">LD B,$0D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56231"></span>DBA7</td>
+<td class="instruction">LD DE,$0000</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56234"></span>DBAA</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56235"></span>DBAB</td>
+<td class="instruction">SUB $30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56237"></span>DBAD</td>
+<td class="instruction">ADD A,E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56238"></span>DBAE</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56239"></span>DBAF</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56240"></span>DBB0</td>
+<td class="instruction">DJNZ $DBAA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56242"></span>DBB2</td>
+<td class="instruction">LD ($A261),DE</td>
+<td class="comment-1" rowspan="1">Save checksum code into <a href="41569.html">A261</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56246"></span>DBB6</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="3">Jump to show invalid code windows if checksum == 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56247"></span>DBB7</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56248"></span>DBB8</td>
+<td class="instruction">JP Z,$DC59</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56251"></span>DBBB</td>
+<td class="instruction">LD A,$30</td>
+<td class="comment-1" rowspan="9">Set into charcode buffer at <a href="41533.html#41535">A23F</a> the checksum code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56253"></span>DBBD</td>
+<td class="instruction">LD ($A23F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56256"></span>DBC0</td>
+<td class="instruction">LD ($A240),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56259"></span>DBC3</td>
+<td class="instruction">LD A,($DD1D)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56262"></span>DBC6</td>
+<td class="instruction">LD ($A243),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56265"></span>DBC9</td>
+<td class="instruction">LD A,($DD1B)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56268"></span>DBCC</td>
+<td class="instruction">LD ($A241),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56271"></span>DBCF</td>
+<td class="instruction">LD A,($DD1C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56274"></span>DBD2</td>
+<td class="instruction">LD ($A242),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56277"></span>DBD5</td>
+<td class="instruction">CALL $DC69</td>
+<td class="comment-1" rowspan="1">Computes into <span class="register">HL</span> the corresponent checksum number</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56280"></span>DBD8</td>
+<td class="instruction">LD DE,($A261)</td>
+<td class="comment-1" rowspan="4">Test if checksum number computed is equal to checksum number of the code and jump to show invalid code if both number are diferent</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56284"></span>DBDC</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56285"></span>DBDD</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56287"></span>DBDF</td>
+<td class="instruction">JP NZ,$DC59</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56290"></span>DBE2</td>
+<td class="instruction">LD A,($DD0E)</td>
+<td class="comment-1" rowspan="10">Set into charcode buffer at <a href="41533.html#41535">A23F</a> th score</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56293"></span>DBE5</td>
+<td class="instruction">LD ($A23F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56296"></span>DBE8</td>
+<td class="instruction">LD A,($DD0F)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56299"></span>DBEB</td>
+<td class="instruction">LD ($A240),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56302"></span>DBEE</td>
+<td class="instruction">LD A,($DD10)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56305"></span>DBF1</td>
+<td class="instruction">LD ($A241),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56308"></span>DBF4</td>
+<td class="instruction">LD A,($DD11)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56311"></span>DBF7</td>
+<td class="instruction">LD ($A242),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56314"></span>DBFA</td>
+<td class="instruction">LD A,($DD12)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56317"></span>DBFD</td>
+<td class="instruction">LD ($A243),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56320"></span>DC00</td>
+<td class="instruction">CALL $DC69</td>
+<td class="comment-1" rowspan="2">Computes the score number and set into <a href="41571.html">A263</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56323"></span>DC03</td>
+<td class="instruction">LD ($A263),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56326"></span>DC06</td>
+<td class="instruction">LD A,($DD13)</td>
+<td class="comment-1" rowspan="3">Computes the lives of Rex from password code and set into <a href="41575.html">A267</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56329"></span>DC09</td>
+<td class="instruction">SUB $30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56331"></span>DC0B</td>
+<td class="instruction">LD ($A267),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56334"></span>DC0E</td>
+<td class="instruction">LD A,($DD14)</td>
+<td class="comment-1" rowspan="12">For every weapon set if weapon is available or not based on password</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56337"></span>DC11</td>
+<td class="instruction">SUB $30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56339"></span>DC13</td>
+<td class="instruction">LD ($A1E9),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56342"></span>DC16</td>
+<td class="instruction">LD A,($DD15)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56345"></span>DC19</td>
+<td class="instruction">SUB $30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56347"></span>DC1B</td>
+<td class="instruction">LD ($A1EA),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56350"></span>DC1E</td>
+<td class="instruction">LD A,($DD16)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56353"></span>DC21</td>
+<td class="instruction">SUB $30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56355"></span>DC23</td>
+<td class="instruction">LD ($A1EB),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56358"></span>DC26</td>
+<td class="instruction">LD A,($DD17)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56361"></span>DC29</td>
+<td class="instruction">SUB $30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56363"></span>DC2B</td>
+<td class="instruction">LD ($A1EC),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56366"></span>DC2E</td>
+<td class="instruction">LD A,$30</td>
+<td class="comment-1" rowspan="8">Set into charcode buffer the shield power</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56368"></span>DC30</td>
+<td class="instruction">LD ($A23F),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56371"></span>DC33</td>
+<td class="instruction">LD ($A240),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56374"></span>DC36</td>
+<td class="instruction">LD ($A241),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56377"></span>DC39</td>
+<td class="instruction">LD A,($DD18)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56380"></span>DC3C</td>
+<td class="instruction">LD ($A242),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56383"></span>DC3F</td>
+<td class="instruction">LD A,($DD19)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56386"></span>DC42</td>
+<td class="instruction">LD ($A243),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56389"></span>DC45</td>
+<td class="instruction">CALL $DC69</td>
+<td class="comment-1" rowspan="2">Computes shield power number and set into <a href="41573.html">A265</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56392"></span>DC48</td>
+<td class="instruction">LD ($A265),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56395"></span>DC4B</td>
+<td class="instruction">LD A,($DD1A)</td>
+<td class="comment-1" rowspan="3">Computes smartbombs number and set into <a href="41574.html">A266</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56398"></span>DC4E</td>
+<td class="instruction">SUB $30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56400"></span>DC50</td>
+<td class="instruction">LD ($A266),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56403"></span>DC53</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="2">if smartbomb is greater than 3 then jump to show invalid code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56405"></span>DC55</td>
+<td class="instruction">JP NC,$DC59</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56408"></span>DC58</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56409"></span>
+<div class="comments">
+<div class="paragraph">
+Show invalid code windows
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56409"></span>DC59</td>
+<td class="instruction">LD IX,$DCA7</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the address for text definition of invalid code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56413"></span>DC5D</td>
+<td class="instruction">LD B,$02</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> the number of lines</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56415"></span>DC5F</td>
+<td class="instruction">CALL <a href="41702.html">$A2E6</a></td>
+<td class="comment-1" rowspan="1">Draws a windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56418"></span>DC62</td>
+<td class="instruction">CALL <a href="56607.html#56731">$DD9B</a></td>
+<td class="comment-1" rowspan="1">Wait for a keypress and set into <span class="register">A</span> the charcode for the key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56421"></span>DC65</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56422"></span>DC66</td>
+<td class="instruction">JP <a href="56000.html#56035">$DAE3</a></td>
+<td class="comment-1" rowspan="1">Jump back to handle password input</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56425"></span>
+<div class="comments">
+<div class="paragraph">
+Convert the digit charcode buffer to the equivalent number and save it into <span class="register">HL</span>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56425"></span>DC69</td>
+<td class="instruction">LD HL,$A23F</td>
+<td class="comment-1" rowspan="1">Point <span class="register">HL</span> to the digit charcode buffer for checksum code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56428"></span>DC6C</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="6">Convert charcode buffer to number buffer number = charcode - $30</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56430"></span>DC6E</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56431"></span>DC6F</td>
+<td class="instruction">SUB $30</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56433"></span>DC71</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56434"></span>DC72</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56435"></span>DC73</td>
+<td class="instruction">DJNZ $DC6E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56437"></span>DC75</td>
+<td class="instruction">LD HL,$0000</td>
+<td class="comment-1" rowspan="1">Reset number value to 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56440"></span>DC78</td>
+<td class="instruction">LD IX,$A23E</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the address previous to the ten thousands figure</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56444"></span>DC7C</td>
+<td class="instruction">LD DE,$2710</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to 10.000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56447"></span>DC7F</td>
+<td class="instruction">CALL $DC9B</td>
+<td class="comment-1" rowspan="1">Jump to compute the equivalent number in the figure of ten thousands</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56450"></span>DC82</td>
+<td class="instruction">LD DE,$03E8</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to 1.000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56453"></span>DC85</td>
+<td class="instruction">CALL $DC9B</td>
+<td class="comment-1" rowspan="1">Jump to compute the equivalent number in the figure of thousands</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56456"></span>DC88</td>
+<td class="instruction">LD DE,$0064</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to 100</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56459"></span>DC8B</td>
+<td class="instruction">CALL $DC9B</td>
+<td class="comment-1" rowspan="1">Jump to compute the equivalent number in the figure of hundreds</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56462"></span>DC8E</td>
+<td class="instruction">LD DE,$000A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to 10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56465"></span>DC91</td>
+<td class="instruction">CALL $DC9B</td>
+<td class="comment-1" rowspan="1">Jump to compute the equivalent number in the figure of tens</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56468"></span>DC94</td>
+<td class="instruction">LD DE,$0001</td>
+<td class="comment-1" rowspan="1">Set <span class="register">DE</span> to 1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56471"></span>DC97</td>
+<td class="instruction">CALL $DC9B</td>
+<td class="comment-1" rowspan="1">Jump to compute the equivalent number in the figure of units</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56474"></span>DC9A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56475"></span>
+<div class="comments">
+<div class="paragraph">
+Compute the equivalent number based in the figure of the digit
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56475"></span>DC9B</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="1">Point to the next figure</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56477"></span>DC9D</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Return if digit is 0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56480"></span>DCA0</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56481"></span>DCA1</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56482"></span>DCA2</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="3">Compute the equivalent figure x =&gt; x0.000 for ten thousands, x =&gt; x.000 for thousands ...</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56483"></span>DCA3</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56484"></span>DCA4</td>
+<td class="instruction">DJNZ $DCA3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56486"></span>DCA6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56000.html">DAC0</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56103">Map</a></td>
+<td class="next">
+Next: <a href="56487.html">DCA7</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

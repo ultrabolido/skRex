@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at DD1F</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56487.html">DCA7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56607">Map</a></td>
+<td class="next">
+Next: <a href="56851.html">DE13</a>
+</td>
+</tr>
+</table>
+<div class="description">DD1F: Handle passsword code input</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="56103.html">DB27</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56607"></span>DD1F</td>
+<td class="instruction">LD HL,$DCF4</td>
+<td class="comment-1" rowspan="5">Reset charcode for password</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56610"></span>DD22</td>
+<td class="instruction">LD DE,$DCF5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56613"></span>DD25</td>
+<td class="instruction">LD BC,$0010</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56616"></span>DD28</td>
+<td class="instruction">LD (HL),$20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56618"></span>DD2A</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56620"></span>DD2C</td>
+<td class="instruction">LD HL,$DCF4</td>
+<td class="comment-1" rowspan="6">Set cursor graphic into windows for insert password code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56623"></span>DD2F</td>
+<td class="instruction">LD (HL),$20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56625"></span>DD31</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56626"></span>DD32</td>
+<td class="instruction">LD (HL),$3F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56628"></span>DD34</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56629"></span>DD35</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56631"></span>DD37</td>
+<td class="instruction">LD IX,$DCC7</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the text definition data for input code windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56635"></span>DD3B</td>
+<td class="instruction">LD B,$03</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of lines to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56637"></span>DD3D</td>
+<td class="instruction">CALL <a href="41702.html">$A2E6</a></td>
+<td class="comment-1" rowspan="1">Draws windows for input code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56640"></span>DD40</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Reset the number of digits inputs in password code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56641"></span>DD41</td>
+<td class="instruction">LD ($A260),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56644"></span>DD44</td>
+<td class="instruction">LD HL,$DCF5</td>
+<td class="comment-1" rowspan="2">Point <a href="41528.html">A238</a> to the first character of the password code</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56647"></span>DD47</td>
+<td class="instruction">LD ($A238),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56650"></span>DD4A</td>
+<td class="instruction">JR $DD77</td>
+<td class="comment-1" rowspan="1">Jump to check for key pressed</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56652"></span>DD4C</td>
+<td class="instruction">LD A,($A260)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the number of digits entered</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56655"></span>DD4F</td>
+<td class="instruction">CP $10</td>
+<td class="comment-1" rowspan="1">16 digits entered ?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56657"></span>DD51</td>
+<td class="instruction">JP Z,$DD77</td>
+<td class="comment-1" rowspan="1">Jump to check for key pressed if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56660"></span>DD54</td>
+<td class="instruction">LD A,($A236)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the charcode of the key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56663"></span>DD57</td>
+<td class="instruction">LD HL,($A238)</td>
+<td class="comment-1" rowspan="2">Set charcode into address for text defintion windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56666"></span>DD5A</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56667"></span>DD5B</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Increment address into text definition</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56668"></span>DD5C</td>
+<td class="instruction">LD ($A238),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56671"></span>DD5F</td>
+<td class="instruction">LD HL,$A260</td>
+<td class="comment-1" rowspan="2">Increment number of entered digits</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56674"></span>DD62</td>
+<td class="instruction">INC (HL)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56675"></span>
+<div class="comments">
+<div class="paragraph">
+Reset cursor and draw password
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56675"></span>DD63</td>
+<td class="instruction">LD HL,($A238)</td>
+<td class="comment-1" rowspan="6">Reset cursor position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56678"></span>DD66</td>
+<td class="instruction">LD (HL),$3F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56680"></span>DD68</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56681"></span>DD69</td>
+<td class="instruction">LD (HL),$20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56683"></span>DD6B</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56684"></span>DD6C</td>
+<td class="instruction">LD (HL),$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56686"></span>DD6E</td>
+<td class="instruction">LD IX,$DCF1</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the text definition data for the entered password</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56690"></span>DD72</td>
+<td class="instruction">LD B,$01</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> the number of lines to draw</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56692"></span>DD74</td>
+<td class="instruction">CALL <a href="42119.html">$A487</a></td>
+<td class="comment-1" rowspan="1">Print the password</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56695"></span>
+<div class="comments">
+<div class="paragraph">
+Check for key pressed
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56695"></span>DD77</td>
+<td class="instruction">CALL $DD9B</td>
+<td class="comment-1" rowspan="1">Wait for a keypress and set into <span class="register">A</span> the charcode for the key</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56698"></span>DD7A</td>
+<td class="instruction">CP $2D</td>
+<td class="comment-1" rowspan="1">is - (CAPS key)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56700"></span>DD7C</td>
+<td class="instruction">JR Z,$DD87</td>
+<td class="comment-1" rowspan="1">Jump to erase a digit</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56702"></span>DD7E</td>
+<td class="instruction">CP $2B</td>
+<td class="comment-1" rowspan="1">is + (ENTER key)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56704"></span>DD80</td>
+<td class="instruction">JR Z,$DD9A</td>
+<td class="comment-1" rowspan="1">Jump to check the code input</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56706"></span>DD82</td>
+<td class="instruction">LD ($A236),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41526.html">A236</a> the charcode for the key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56709"></span>DD85</td>
+<td class="instruction">JR $DD4C</td>
+<td class="comment-1" rowspan="1">Jump to draw the charcode</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56711"></span>
+<div class="comments">
+<div class="paragraph">
+Erase a digit
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56711"></span>DD87</td>
+<td class="instruction">LD A,($A260)</td>
+<td class="comment-1" rowspan="3">Jump to reset cursor if no digit entered</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56714"></span>DD8A</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56715"></span>DD8B</td>
+<td class="instruction">JR Z,$DD63</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56717"></span>DD8D</td>
+<td class="instruction">LD HL,($A238)</td>
+<td class="comment-1" rowspan="3">Decrement pointer to the address for the input password</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56720"></span>DD90</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56721"></span>DD91</td>
+<td class="instruction">LD ($A238),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56724"></span>DD94</td>
+<td class="instruction">LD HL,$A260</td>
+<td class="comment-1" rowspan="2">Decrement the number of digit entered for the password</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56727"></span>DD97</td>
+<td class="instruction">DEC (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56728"></span>DD98</td>
+<td class="instruction">JR $DD63</td>
+<td class="comment-1" rowspan="1">Jump to reset cursor</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56730"></span>DD9A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56731"></span>
+<div class="comments">
+<div class="paragraph">
+Detect a key pressed and set key charcode into <span class="register">A</span>. This entry point is used by the routines at <a href="56103.html">DB27</a> and <a href="56857.html">DE19</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56731"></span>DD9B</td>
+<td class="instruction">PUSH IY</td>
+<td class="comment-1" rowspan="1">Save <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-2"><span id="56733"></span>DD9D</td>
+<td class="instruction">LD IX,$AE1A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IX</span> to point to address of port list for keys read</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56737"></span>DDA1</td>
+<td class="instruction">LD IY,$AE2A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to point to the list of charcodes for the keys read</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56741"></span>DDA5</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> the number of ports to read</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56743"></span>DDA7</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">B</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56744"></span>DDA8</td>
+<td class="instruction">LD C,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Set <a href="41540.html">A244</a> the port to read</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56747"></span>DDAB</td>
+<td class="instruction">LD B,(IX+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56750"></span>DDAE</td>
+<td class="instruction">LD ($A244),BC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56754"></span>DDB2</td>
+<td class="instruction">IN A,(C)</td>
+<td class="comment-1" rowspan="1">Read keys into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56756"></span>DDB4</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="7">Read the status for the 5 keys of this port and jump to handle the read if pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56758"></span>DDB6</td>
+<td class="instruction">LD E,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56760"></span>DDB8</td>
+<td class="instruction">LD D,A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56761"></span>DDB9</td>
+<td class="instruction">RRCA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56762"></span>DDBA</td>
+<td class="instruction">JP NC,$DDCF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56765"></span>DDBD</td>
+<td class="instruction">INC E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56766"></span>DDBE</td>
+<td class="instruction">DJNZ $DDB9</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56768"></span>
+<div class="comments">
+<div class="paragraph">
+key not pressed for this port
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56768"></span>DDC0</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">B</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56769"></span>DDC1</td>
+<td class="instruction">INC IX</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IX</span> to the next port</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56771"></span>DDC3</td>
+<td class="instruction">INC IX</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56773"></span>DDC5</td>
+<td class="instruction">LD DE,$0005</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IY</span> to the next list of charcodes of keys</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56776"></span>DDC8</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56778"></span>DDCA</td>
+<td class="instruction">DJNZ $DDA7</td>
+<td class="comment-1" rowspan="1">Jump until all ports read</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56780"></span>DDCC</td>
+<td class="instruction">JP $DD9D</td>
+<td class="comment-1" rowspan="1">Jump back and continue with the first port</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56783"></span>
+<div class="comments">
+<div class="paragraph">
+handle key pressed
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56783"></span>DDCF</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56784"></span>DDD0</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Save <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-2"><span id="56785"></span>DDD1</td>
+<td class="instruction">LD C,(IX+$00)</td>
+<td class="comment-1" rowspan="5">Loop until key not pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56788"></span>DDD4</td>
+<td class="instruction">LD B,(IX+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56791"></span>DDD7</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56793"></span>DDD9</td>
+<td class="instruction">CP D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56794"></span>DDDA</td>
+<td class="instruction">JP Z,$DDD1</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56797"></span>DDDD</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-1" rowspan="7">Computes into <a href="41542.html">A246</a> the opcode of the corresponent BIT operation to check key presses</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56798"></span>DDDE</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56800"></span>DDE0</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56802"></span>DDE2</td>
+<td class="instruction">SLA A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56804"></span>DDE4</td>
+<td class="instruction">LD D,$47</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56806"></span>DDE6</td>
+<td class="instruction">ADD A,D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56807"></span>DDE7</td>
+<td class="instruction">LD ($A246),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56810"></span>DDEA</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56811"></span>DDEB</td>
+<td class="instruction">LD D,$00</td>
+<td class="comment-1" rowspan="3">Set <span class="register">A</span> to the corresponding charcode for the key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56813"></span>DDED</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56815"></span>DDEF</td>
+<td class="instruction">LD A,(IY+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56818"></span>DDF2</td>
+<td class="instruction">POP IY</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">IY</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56820"></span>DDF4</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="1">is SPACE charcode ?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56822"></span>DDF6</td>
+<td class="instruction">JP Z,$DD9B</td>
+<td class="comment-1" rowspan="1">Jump back and begin to check for the first port</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56825"></span>DDF9</td>
+<td class="instruction">CP $48</td>
+<td class="comment-1" rowspan="1">is H charcode ?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56827"></span>DDFB</td>
+<td class="instruction">JP Z,$DD9B</td>
+<td class="comment-1" rowspan="1">Jump back and begin to check for the first port</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56830"></span>DDFE</td>
+<td class="instruction">LD IY,$DE13</td>
+<td class="comment-1" rowspan="6">Compare if key read has been assigned previously. Jump back and begin to check for the first port if is the case</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56834"></span>DE02</td>
+<td class="instruction">LD B,$05</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56836"></span>DE04</td>
+<td class="instruction">CP (IY+$00)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56839"></span>DE07</td>
+<td class="instruction">JP Z,$DD9B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56842"></span>DE0A</td>
+<td class="instruction">INC IY</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56844"></span>DE0C</td>
+<td class="instruction">DJNZ $DE04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56846"></span>DE0E</td>
+<td class="instruction">LD IY,$DE13</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the base address for assigned keys</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56850"></span>DE12</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56487.html">DCA7</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56607">Map</a></td>
+<td class="next">
+Next: <a href="56851.html">DE13</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

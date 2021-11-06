@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at DAC0</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55650.html">D962</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56000">Map</a></td>
+<td class="next">
+Next: <a href="56103.html">DB27</a>
+</td>
+</tr>
+</table>
+<div class="description">DAC0: Main loop for the tile screen</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56000"></span>DAC0</td>
+<td class="instruction">LD A,$00</td>
+<td class="comment-1" rowspan="2">Set screen border color to black</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56002"></span>DAC2</td>
+<td class="instruction">OUT ($FE),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56004"></span>DAC4</td>
+<td class="instruction">LD DE,$4000</td>
+<td class="comment-1" rowspan="4">Copy the contents of the screen buffer to the display and attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56007"></span>DAC7</td>
+<td class="instruction">LD HL,$E4FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56010"></span>DACA</td>
+<td class="instruction">LD BC,$1B00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56013"></span>DACD</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56015"></span>DACF</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the number of lines for the windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56017"></span>DAD1</td>
+<td class="instruction">LD IX,$DFC6</td>
+<td class="comment-1" rowspan="1">Point <span class="register">IX</span> to the input select text definition windows</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56021"></span>DAD5</td>
+<td class="instruction">CALL <a href="41702.html">$A2E6</a></td>
+<td class="comment-1" rowspan="1">Draws the windows for input select</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56024"></span>DAD8</td>
+<td class="instruction">LD DE,$E4FF</td>
+<td class="comment-1" rowspan="4">Copy display and attribute file to screen buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56027"></span>DADB</td>
+<td class="instruction">LD HL,$4000</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56030"></span>DADE</td>
+<td class="instruction">LD BC,$1B00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56033"></span>DAE1</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56035"></span>
+<div class="comments">
+<div class="paragraph">
+Handle password input
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56035"></span>DAE3</td>
+<td class="instruction">LD DE,$4000</td>
+<td class="comment-1" rowspan="4">Copy screen buffer to display and attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56038"></span>DAE6</td>
+<td class="instruction">LD HL,$E4FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56041"></span>DAE9</td>
+<td class="instruction">LD BC,$1B00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56044"></span>DAEC</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56046"></span>DAEE</td>
+<td class="instruction">CALL <a href="56103.html">$DB27</a></td>
+<td class="comment-1" rowspan="1">Enter and decode password</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56049"></span>
+<div class="comments">
+<div class="paragraph">
+Check input key methods
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56049"></span>DAF1</td>
+<td class="instruction">LD DE,$4000</td>
+<td class="comment-1" rowspan="4">Copy screen buffer to display and attribute file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56052"></span>DAF4</td>
+<td class="instruction">LD HL,$E4FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56055"></span>DAF7</td>
+<td class="instruction">LD BC,$1B00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56058"></span>DAFA</td>
+<td class="instruction">LDIR</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56060"></span>DAFC</td>
+<td class="instruction">LD BC,$F7FE</td>
+<td class="comment-1" rowspan="2">Read keys 1-2-3-4-5 into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56063"></span>DAFF</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56065"></span>DB01</td>
+<td class="instruction">BIT 3,A</td>
+<td class="comment-1" rowspan="1">Key 4 is pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56067"></span>DB03</td>
+<td class="instruction">JP Z,<a href="56857.html#57120">$DF20</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56070"></span>DB06</td>
+<td class="instruction">LD BC,$F7FE</td>
+<td class="comment-1" rowspan="2">Read keys 1-2-3-4-5 into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56073"></span>DB09</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56075"></span>DB0B</td>
+<td class="instruction">BIT 2,A</td>
+<td class="comment-1" rowspan="1">Key 3 is pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56077"></span>DB0D</td>
+<td class="instruction">JP Z,<a href="56857.html#57177">$DF59</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56080"></span>DB10</td>
+<td class="instruction">LD BC,$F7FE</td>
+<td class="comment-1" rowspan="2">Read keys 1-2-3-4-5 into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56083"></span>DB13</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56085"></span>DB15</td>
+<td class="instruction">BIT 1,A</td>
+<td class="comment-1" rowspan="1">Key 2 is pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56087"></span>DB17</td>
+<td class="instruction">JP Z,<a href="56857.html#57062">$DEE6</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56090"></span>DB1A</td>
+<td class="instruction">LD BC,$F7FE</td>
+<td class="comment-1" rowspan="2">Read keys 1-2-3-4-5 into <span class="register">A</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56093"></span>DB1D</td>
+<td class="instruction">IN A,(C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56095"></span>DB1F</td>
+<td class="instruction">BIT 0,A</td>
+<td class="comment-1" rowspan="1">Key 1 is pressed?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56097"></span>DB21</td>
+<td class="instruction">JP Z,<a href="56857.html">$DE19</a></td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56100"></span>DB24</td>
+<td class="instruction">JP $DAFC</td>
+<td class="comment-1" rowspan="1">Jump back and continue to check for input key method</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55650.html">D962</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56000">Map</a></td>
+<td class="next">
+Next: <a href="56103.html">DB27</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

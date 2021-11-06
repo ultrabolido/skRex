@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Data at A3AA</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-b">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Data</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41887.html">A39F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41898">Map</a></td>
+<td class="next">
+Next: <a href="41914.html">A3BA</a>
+</td>
+</tr>
+</table>
+<div class="description">A3AA: Offsets graphics data for smartbombs in HUD</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Values $A0 and $C0 are added to $8C0A to obtain the corresponent smartbomb icon. Value $A0 is for empty smartbomb icon Value $C0 is for smartbomb icon
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41898"></span>A3AA</td>
+<td class="instruction">DEFB $A0,$A0,$A0,$00</td>
+<td class="comment-1" rowspan="1">No smartbomb available in inventory</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41902"></span>A3AE</td>
+<td class="instruction">DEFB $C0,$A0,$A0,$00</td>
+<td class="comment-1" rowspan="1">One smartbomb available in inventory</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41906"></span>A3B2</td>
+<td class="instruction">DEFB $C0,$C0,$A0,$00</td>
+<td class="comment-1" rowspan="1">Two smartbomb available in inventory</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41910"></span>A3B6</td>
+<td class="instruction">DEFB $C0,$C0,$C0,$00</td>
+<td class="comment-1" rowspan="1">Three smartbomb available in inventory</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41887.html">A39F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41898">Map</a></td>
+<td class="next">
+Next: <a href="41914.html">A3BA</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

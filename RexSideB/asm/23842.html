@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Game status buffer entry at 5D22</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-g">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Game status buffer</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="23392.html">5B60</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#23842">Map</a></td>
+<td class="next">
+Next: <a href="24142.html">5E4E</a>
+</td>
+</tr>
+</table>
+<div class="description">5D22: Enemy projectiles configuration for the current room</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Initialized at routine <a href="38000.html">9470</a>. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x00</td>
+<td class="" colspan="1" rowspan="1">x-position (in pixels)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x01</td>
+<td class="" colspan="1" rowspan="1">y-position (in pixels)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x02 - 0x03</td>
+<td class="" colspan="1" rowspan="1">Address of the location into the room graphic buffer</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x04</td>
+<td class="" colspan="1" rowspan="1">x-delta (in pixels)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x05</td>
+<td class="" colspan="1" rowspan="1">y-delta (in pixels)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x06</td>
+<td class="" colspan="1" rowspan="1">Projectile status: $00 Destroyed - $01 Flying - $02 Impact 1 - $03 Impact 2</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x07 - 0x08</td>
+<td class="" colspan="1" rowspan="1">Precomputed offset to add to address pointer into room graphic buffer every frame</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0B</td>
+<td class="" colspan="1" rowspan="1">Projectile type: $00-$01 basic laser , $02 laser, $03 multiple, $04 spray, $07 seed plant # Bit 7: subtype</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0C</td>
+<td class="" colspan="1" rowspan="1">For $07: Seed plant trajectory index - For $02: Number of laser type $06 to create</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">0x0D</td>
+<td class="" colspan="1" rowspan="1">x-position for laser type $06</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="2">0x0E</td>
+<td class="" colspan="1" rowspan="1">For projectile type $00 (laser): Laser duration counter - Destroy laser at $00</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">projectile type $07 (seed plant): Seed Plant index into address for trajectories at <a href="43591.html">AA47</a></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="23842"></span>5D22</td>
+<td class="instruction">DEFS $012C</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="23392.html">5B60</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#23842">Map</a></td>
+<td class="next">
+Next: <a href="24142.html">5E4E</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

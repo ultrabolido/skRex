@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A793</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42877.html">A77D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42899">Map</a></td>
+<td class="next">
+Next: <a href="42916.html">A7A4</a>
+</td>
+</tr>
+</table>
+<div class="description">A793: Initialise drones configuration data buffer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="38000.html">9470</a> and <a href="47625.html">BA09</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42899"></span>A793</td>
+<td class="instruction">LD HL,$5E50</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to point to index byte for drone configuration data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42902"></span>A796</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-1" rowspan="1">Set <span class="register">B</span> to the max number of drones to configure</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42904"></span>A798</td>
+<td class="instruction">LD A,$00</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the initial index into offset position table for this drone</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42906"></span>A79A</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Copy value of <span class="register">A</span> to address pointed by <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42907"></span>A79B</td>
+<td class="instruction">LD DE,$0003</td>
+<td class="comment-1" rowspan="2">Increment address pointer by 3</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42910"></span>A79E</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42911"></span>A79F</td>
+<td class="instruction">ADD A,$08</td>
+<td class="comment-1" rowspan="1">Increment by 8 the index into offset position table for the next drone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42913"></span>A7A1</td>
+<td class="instruction">DJNZ $A79A</td>
+<td class="comment-1" rowspan="1">Jump back and init data for next drone</td>
+</tr>
+<tr>
+<td class="address-1"><span id="42915"></span>A7A3</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42877.html">A77D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42899">Map</a></td>
+<td class="next">
+Next: <a href="42916.html">A7A4</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A51D</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42256.html">A510</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42269">Map</a></td>
+<td class="next">
+Next: <a href="42326.html">A556</a>
+</td>
+</tr>
+</table>
+<div class="description">A51D: Pseudo-random number generator</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Seed from $A23A, $A23B and $A23C. Used by the routines at <a href="38531.html">9683</a>, <a href="39395.html">99E3</a>, <a href="39847.html">9BA7</a>, <a href="40551.html">9E67</a>, <a href="48200.html">BC48</a>, <a href="48200.html#48813">BEAD</a>, <a href="48200.html#48881">BEF1</a>, <a href="48975.html#49045">BF95</a>, <a href="48975.html#49064">BFA8</a>, <a href="48975.html#49241">C059</a>, <a href="50227.html#50584">C598</a>, <a href="50227.html#50599">C5A7</a>, <a href="50227.html#50612">C5B4</a>, <a href="50622.html">C5BE</a>, <a href="50664.html">C5E8</a> and <a href="51765.html#51817">CA69</a>.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Pseudo-random number</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42269"></span>A51D</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42270"></span>A51E</td>
+<td class="instruction">LD A,($A23A)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42273"></span>A521</td>
+<td class="instruction">SLA A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42275"></span>A523</td>
+<td class="instruction">SLA A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42277"></span>A525</td>
+<td class="instruction">LD HL,$A23A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42280"></span>A528</td>
+<td class="instruction">ADD A,(HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42281"></span>A529</td>
+<td class="instruction">ADD A,$15</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42283"></span>A52B</td>
+<td class="instruction">LD ($A23A),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42286"></span>A52E</td>
+<td class="instruction">POP HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42287"></span>A52F</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="42288"></span>
+<div class="comments">
+<div class="paragraph">
+Used by the routines at <a href="39395.html">99E3</a>, <a href="39847.html">9BA7</a>, <a href="40725.html">9F15</a>, <a href="40859.html#40995">A023</a>, <a href="48200.html#48881">BEF1</a>, <a href="51765.html#51817">CA69</a> and <a href="52087.html#52341">CC75</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="42288"></span>A530</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42289"></span>A531</td>
+<td class="instruction">LD ($A22C),BC</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42293"></span>A535</td>
+<td class="instruction">LD B,$08</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="42295"></span>A537</td>
+<td class="instruction">LD A,($A23A)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42298"></span>A53A</td>
+<td class="instruction">AND $48</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42300"></span>A53C</td>
+<td class="instruction">ADC A,$38</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42302"></span>A53E</td>
+<td class="instruction">RLA</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42303"></span>A53F</td>
+<td class="instruction">RLA</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42304"></span>A540</td>
+<td class="instruction">LD HL,$A23C</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42307"></span>A543</td>
+<td class="instruction">RL (HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42309"></span>A545</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42310"></span>A546</td>
+<td class="instruction">RL (HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42312"></span>A548</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42313"></span>A549</td>
+<td class="instruction">RL (HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42315"></span>A54B</td>
+<td class="instruction">DJNZ $A537</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42317"></span>A54D</td>
+<td class="instruction">LD A,($A23A)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42320"></span>A550</td>
+<td class="instruction">LD BC,($A22C)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42324"></span>A554</td>
+<td class="instruction">POP HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="42325"></span>A555</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="42256.html">A510</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#42269">Map</a></td>
+<td class="next">
+Next: <a href="42326.html">A556</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

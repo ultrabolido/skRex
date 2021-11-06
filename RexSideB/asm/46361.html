@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at B519</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46236.html">B49C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46361">Map</a></td>
+<td class="next">
+Next: <a href="46384.html">B530</a>
+</td>
+</tr>
+</table>
+<div class="description">B519: Configure Rex spray weapon projectile</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="46236.html">B49C</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Address pointer to the configuration data for projectiles</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="46361"></span>B519</td>
+<td class="instruction">LD E,(HL)</td>
+<td class="comment-1" rowspan="5">Set into projectile configuration the offset for the address pointer of the room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46362"></span>B51A</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46363"></span>B51B</td>
+<td class="instruction">LD D,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46364"></span>B51C</td>
+<td class="instruction">LD (IY+$07),E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46367"></span>B51F</td>
+<td class="instruction">LD (IY+$08),D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46370"></span>B522</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="3">Set into projectile configuration the x-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46371"></span>B523</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46372"></span>B524</td>
+<td class="instruction">LD (IY+$04),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46375"></span>B527</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="2">Set into <span class="register">A</span> the y-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46376"></span>B528</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46377"></span>B529</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46378"></span>B52A</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Save <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46379"></span>B52B</td>
+<td class="instruction">CALL <a href="46384.html">$B530</a></td>
+<td class="comment-1" rowspan="1">Computes offset into room graphic data based on projectile y-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="46382"></span>B52E</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="46383"></span>B52F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="46236.html">B49C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#46361">Map</a></td>
+<td class="next">
+Next: <a href="46384.html">B530</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

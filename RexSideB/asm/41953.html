@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A3E1</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41947.html">A3DB</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41953">Map</a></td>
+<td class="next">
+Next: <a href="41972.html">A3F4</a>
+</td>
+</tr>
+</table>
+<div class="description">A3E1: Draw the sprites for the weapon icons in HUD (2/2)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41953"></span>A3E1</td>
+<td class="instruction">LD A,($A3DD)</td>
+<td class="comment-1" rowspan="3">Increment the horizontal position in the data buffer for the next icon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41956"></span>A3E4</td>
+<td class="instruction">ADD A,$02</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41958"></span>A3E6</td>
+<td class="instruction">LD ($A3DD),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41961"></span>A3E9</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41962"></span>A3EA</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="2">Increment the address of the graphics data to point to the next weapon icon</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41965"></span>A3ED</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41966"></span>A3EE</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41967"></span>A3EF</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Point to the next weapon in the weapon inventory status</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41968"></span>A3F0</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="41969"></span>A3F1</td>
+<td class="instruction">DJNZ <a href="41914.html#41927">$A3C7</a></td>
+<td class="comment-1" rowspan="1">Jump back until all the 5 weapon icons are displayed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41971"></span>A3F3</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="41947.html">A3DB</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#41953">Map</a></td>
+<td class="next">
+Next: <a href="41972.html">A3F4</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

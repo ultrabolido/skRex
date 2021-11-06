@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C1CB</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49473.html">C141</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49611">Map</a></td>
+<td class="next">
+Next: <a href="49747.html">C253</a>
+</td>
+</tr>
+</table>
+<div class="description">C1CB: Handle bubble bouncing and burst</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="48200.html">BC48</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49611"></span>C1CB</td>
+<td class="instruction">LD A,(IX+$10)</td>
+<td class="comment-1" rowspan="3">Increment graphic data counter for bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49614"></span>C1CE</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49615"></span>C1CF</td>
+<td class="instruction">LD (IX+$10),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49618"></span>C1D2</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="4">Set <span class="register">HL</span> to the corresponding poisition in graphic data offset table for bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49619"></span>C1D3</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49621"></span>C1D5</td>
+<td class="instruction">LD HL,$C253</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49624"></span>C1D8</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49625"></span>C1D9</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> to the graphic data offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49626"></span>C1DA</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">is $FF (end marker)?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49628"></span>C1DC</td>
+<td class="instruction">JP NZ,$C1E4</td>
+<td class="comment-1" rowspan="1">Jump forward if not</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49631"></span>C1DF</td>
+<td class="instruction">LD (IX+$10),$01</td>
+<td class="comment-1" rowspan="1">Set graphic data offset counter to 1. Reinit counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49635"></span>C1E3</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span>=0</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49636"></span>C1E4</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="5">Set <span class="register">HL</span> to the graphic data of the bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49637"></span>C1E5</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49639"></span>C1E7</td>
+<td class="instruction">LD L,(IX+$12)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49642"></span>C1EA</td>
+<td class="instruction">LD H,(IX+$13)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49645"></span>C1ED</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49646"></span>C1EE</td>
+<td class="instruction">LD A,(IX+$06)</td>
+<td class="comment-1" rowspan="2">is bubble falling?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49649"></span>C1F1</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49650"></span>C1F2</td>
+<td class="instruction">JP NZ,$C222</td>
+<td class="comment-1" rowspan="1">Jump if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49653"></span>C1F5</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="1">Check bubble counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49656"></span>C1F8</td>
+<td class="instruction">CP $14</td>
+<td class="comment-1" rowspan="1">is bubble counter &lt; 20?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49658"></span>C1FA</td>
+<td class="instruction">JP C,$C200</td>
+<td class="comment-1" rowspan="1">Jump forward if so</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49661"></span>C1FD</td>
+<td class="instruction">JP $C22C</td>
+<td class="comment-1" rowspan="1">Jump to finish bubble handler</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49664"></span>
+<div class="comments">
+<div class="paragraph">
+check bubble for burst
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49664"></span>C200</td>
+<td class="instruction">LD A,(IX+$11)</td>
+<td class="comment-1" rowspan="1">check bubble counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49667"></span>C203</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">is 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49669"></span>C205</td>
+<td class="instruction">JP Z,$C24D</td>
+<td class="comment-1" rowspan="1">Jump to set graphic data for bubble final burst (2)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49672"></span>C208</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="1">is 3?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49674"></span>C20A</td>
+<td class="instruction">JP Z,$C247</td>
+<td class="comment-1" rowspan="1">Jump to set graphic data for bubble burst (3)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49677"></span>C20D</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="1">is 4?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49679"></span>C20F</td>
+<td class="instruction">JP Z,$C241</td>
+<td class="comment-1" rowspan="1">Jump to set graphic data for bubble burst (4)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49682"></span>C212</td>
+<td class="instruction">CP $05</td>
+<td class="comment-1" rowspan="1">is 5?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49684"></span>C214</td>
+<td class="instruction">JP Z,$C23B</td>
+<td class="comment-1" rowspan="1">Jump to set graphic data for bubble burst (5)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49687"></span>C217</td>
+<td class="instruction">LD A,(IX+$10)</td>
+<td class="comment-1" rowspan="1">check graphic data counter of bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49690"></span>C21A</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="1">is 2?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49692"></span>C21C</td>
+<td class="instruction">JP NZ,$C22C</td>
+<td class="comment-1" rowspan="1">Jump forward if not</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49695"></span>
+<div class="comments">
+<div class="paragraph">
+Bubble stop bouncing
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49695"></span>C21F</td>
+<td class="instruction">DEC (IX+$10)</td>
+<td class="comment-1" rowspan="1">Decrement graphic data counter</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49698"></span>C222</td>
+<td class="instruction">LD L,(IX+$12)</td>
+<td class="comment-1" rowspan="4">Increment graphic data to sprite bubble non-bouncing (falling or stopped in floor)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49701"></span>C225</td>
+<td class="instruction">LD H,(IX+$13)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49704"></span>C228</td>
+<td class="instruction">LD DE,$0040</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49707"></span>C22B</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49708"></span>
+<div class="comments">
+<div class="paragraph">
+Finish configuring bubble
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49708"></span>C22C</td>
+<td class="instruction">LD (IX+$04),L</td>
+<td class="comment-1" rowspan="2">Set corresponding graphic data of bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49711"></span>C22F</td>
+<td class="instruction">LD (IX+$05),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49714"></span>C232</td>
+<td class="instruction">DEC (IX+$11)</td>
+<td class="comment-1" rowspan="1">Decrement bubble counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49717"></span>C235</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49718"></span>C236</td>
+<td class="instruction">LD (IX+$0C),$00</td>
+<td class="comment-1" rowspan="1">Set dead/non-visible bubble</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49722"></span>C23A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="49723"></span>C23B</td>
+<td class="instruction">LD HL,$8898</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to graphics data for bubble burst (5)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49726"></span>C23E</td>
+<td class="instruction">JP $C22C</td>
+<td class="comment-1" rowspan="1">Jump back and finish configuring bubble</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49729"></span>C241</td>
+<td class="instruction">LD HL,$88B8</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to graphics data for bubble burst (4)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49732"></span>C244</td>
+<td class="instruction">JP $C22C</td>
+<td class="comment-1" rowspan="1">Jump back and finish configuring bubble</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49735"></span>C247</td>
+<td class="instruction">LD HL,$88D8</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to graphics data for bubble burst (3)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49738"></span>C24A</td>
+<td class="instruction">JP $C22C</td>
+<td class="comment-1" rowspan="1">Jump back and finish configuring bubble</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49741"></span>C24D</td>
+<td class="instruction">LD HL,$88F8</td>
+<td class="comment-1" rowspan="1">Set <span class="register">HL</span> to graphics data for bubble final burst (2)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49744"></span>C250</td>
+<td class="instruction">JP $C22C</td>
+<td class="comment-1" rowspan="1">Jump back and finish configuring bubble</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="49473.html">C141</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49611">Map</a></td>
+<td class="next">
+Next: <a href="49747.html">C253</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

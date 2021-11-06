@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at C141</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="48975.html">BF4F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49473">Map</a></td>
+<td class="next">
+Next: <a href="49611.html">C1CB</a>
+</td>
+</tr>
+</table>
+<div class="description">C141: Configure BULB projectiles</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="48975.html#49064">BFA8</a>.
+</div>
+<div class="paragraph">
+Configure extra-left projectile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49473"></span>C141</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49474"></span>C142</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Set into <a href="41516.html">A22C</a> the x-position of projectile based on BULB x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49477"></span>C145</td>
+<td class="instruction">SUB $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49479"></span>C147</td>
+<td class="instruction">LD ($A22C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49482"></span>C14A</td>
+<td class="instruction">LD A,$14</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the increment for the y-position of the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49484"></span>C14C</td>
+<td class="instruction">CALL <a href="46548.html">$B5D4</a></td>
+<td class="comment-1" rowspan="1">Create new projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49487"></span>C14F</td>
+<td class="instruction">LD HL,$FFFF</td>
+<td class="comment-1" rowspan="1">Set into <span class="register">HL</span> the offset for the address pointer into room data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49490"></span>C152</td>
+<td class="instruction">LD (IY+$04),$F8</td>
+<td class="comment-1" rowspan="1">Set the x-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49494"></span>C156</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="1">Set the y-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49496"></span>C158</td>
+<td class="instruction">JP $C172</td>
+<td class="comment-1" rowspan="1">Jump to finish configuration</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49499"></span>
+<div class="comments">
+<div class="paragraph">
+Configure left projectile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49499"></span>C15B</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49500"></span>C15C</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Set into <a href="41516.html">A22C</a> the x-position of projectile based on BULB x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49503"></span>C15F</td>
+<td class="instruction">SUB $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49505"></span>C161</td>
+<td class="instruction">LD ($A22C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49508"></span>C164</td>
+<td class="instruction">LD A,$19</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the increment for the y-position of the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49510"></span>C166</td>
+<td class="instruction">CALL <a href="46548.html">$B5D4</a></td>
+<td class="comment-1" rowspan="1">Create new projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49513"></span>C169</td>
+<td class="instruction">LD HL,$FFFF</td>
+<td class="comment-1" rowspan="1">Set into <span class="register">HL</span> the offset for the address pointer into room data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49516"></span>C16C</td>
+<td class="instruction">LD (IY+$04),$F8</td>
+<td class="comment-1" rowspan="1">Set the x-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49520"></span>C170</td>
+<td class="instruction">LD A,$08</td>
+<td class="comment-1" rowspan="1">Set the y-delta for the projectile</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49522"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routines at <a href="49473.html">C141</a>, <a href="49473.html#49537">C181</a>, <a href="49473.html#49563">C19B</a> and <a href="49473.html#49587">C1B3</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49522"></span>C172</td>
+<td class="instruction">LD (IY+$07),L</td>
+<td class="comment-1" rowspan="2">Set the offset into room graphic data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49525"></span>C175</td>
+<td class="instruction">LD (IY+$08),H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49528"></span>C178</td>
+<td class="instruction">LD (IY+$05),$00</td>
+<td class="comment-1" rowspan="1">Set y-delta for projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49532"></span>C17C</td>
+<td class="instruction">CALL <a href="46384.html">$B530</a></td>
+<td class="comment-1" rowspan="1">Computes offset into the room graphic data based on projectile y-delta</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49535"></span>C17F</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49536"></span>C180</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49537"></span>
+<div class="comments">
+<div class="paragraph">
+Configure middle projectile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49537"></span>C181</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49538"></span>C182</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="3">Set into <a href="41516.html">A22C</a> the x-position of projectile based on BULB x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49541"></span>C185</td>
+<td class="instruction">SUB $10</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49543"></span>C187</td>
+<td class="instruction">LD ($A22C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49546"></span>C18A</td>
+<td class="instruction">LD A,$19</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the increment for the y-position of the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49548"></span>C18C</td>
+<td class="instruction">CALL <a href="46548.html">$B5D4</a></td>
+<td class="comment-1" rowspan="1">Create new projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49551"></span>C18F</td>
+<td class="instruction">LD HL,$0000</td>
+<td class="comment-1" rowspan="1">Set into <span class="register">HL</span> the offset for the address pointer into room data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49554"></span>C192</td>
+<td class="instruction">LD (IY+$04),$00</td>
+<td class="comment-1" rowspan="1">Set the x-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49558"></span>C196</td>
+<td class="instruction">LD A,$08</td>
+<td class="comment-1" rowspan="1">Set the y-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49560"></span>C198</td>
+<td class="instruction">JP $C172</td>
+<td class="comment-1" rowspan="1">Jump to finish configuration</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49563"></span>
+<div class="comments">
+<div class="paragraph">
+Configure right projectile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49563"></span>C19B</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49564"></span>C19C</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set into <a href="41516.html">A22C</a> the x-position of projectile based on BULB x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49567"></span>C19F</td>
+<td class="instruction">LD ($A22C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49570"></span>C1A2</td>
+<td class="instruction">LD A,$19</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the increment for the y-position of the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49572"></span>C1A4</td>
+<td class="instruction">CALL <a href="46548.html">$B5D4</a></td>
+<td class="comment-1" rowspan="1">Create new projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49575"></span>C1A7</td>
+<td class="instruction">LD HL,$0001</td>
+<td class="comment-1" rowspan="1">Set into <span class="register">HL</span> the offset for the address pointer into room data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49578"></span>C1AA</td>
+<td class="instruction">LD (IY+$04),$08</td>
+<td class="comment-1" rowspan="1">Set the x-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49582"></span>C1AE</td>
+<td class="instruction">LD A,$06</td>
+<td class="comment-1" rowspan="1">Set the y-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49584"></span>C1B0</td>
+<td class="instruction">JP $C172</td>
+<td class="comment-1" rowspan="1">Jump to finish configuration</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="49587"></span>
+<div class="comments">
+<div class="paragraph">
+Configure extra-right projectile
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="49587"></span>C1B3</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="49588"></span>C1B4</td>
+<td class="instruction">LD A,(IX+$00)</td>
+<td class="comment-1" rowspan="2">Set into <a href="41516.html">A22C</a> the x-position of projectile based on BULB x-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49591"></span>C1B7</td>
+<td class="instruction">LD ($A22C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49594"></span>C1BA</td>
+<td class="instruction">LD A,$14</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the increment for the y-position of the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49596"></span>C1BC</td>
+<td class="instruction">CALL <a href="46548.html">$B5D4</a></td>
+<td class="comment-1" rowspan="1">Create new projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49599"></span>C1BF</td>
+<td class="instruction">LD HL,$0001</td>
+<td class="comment-1" rowspan="1">Set into <span class="register">HL</span> the offset for the address pointer into room data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49602"></span>C1C2</td>
+<td class="instruction">LD (IY+$04),$08</td>
+<td class="comment-1" rowspan="1">Set the x-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49606"></span>C1C6</td>
+<td class="instruction">LD A,$04</td>
+<td class="comment-1" rowspan="1">Set the y-delta for the projectile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="49608"></span>C1C8</td>
+<td class="instruction">JP $C172</td>
+<td class="comment-1" rowspan="1">Jump to finish configuration</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="48975.html">BF4F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#49473">Map</a></td>
+<td class="next">
+Next: <a href="49611.html">C1CB</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

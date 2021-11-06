@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at A98E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43398.html">A986</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43406">Map</a></td>
+<td class="next">
+Next: <a href="43520.html">AA00</a>
+</td>
+</tr>
+</table>
+<div class="description">A98E: Main loop for attract-mode</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Until a key is pressed, show the list of rooms defined at <a href="43398.html">A986</a>. Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43406"></span>A98E</td>
+<td class="instruction">LD A,$C8</td>
+<td class="comment-1" rowspan="2">Set <a href="41564.html">A25C</a> the loop counter for the showed room = 200</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43408"></span>A990</td>
+<td class="instruction">LD ($A25C),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43411"></span>A993</td>
+<td class="instruction">LD A,($A25B)</td>
+<td class="comment-1" rowspan="1">Pick up the list number for the next room to show</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43414"></span>A996</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="5">Set <span class="register">A</span> the room number to show</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43415"></span>A997</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43417"></span>A999</td>
+<td class="instruction">LD HL,$A986</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43420"></span>A99C</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43421"></span>A99D</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43422"></span>A99E</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">the room number is $FF?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43424"></span>A9A0</td>
+<td class="instruction">JP NZ,$A9AA</td>
+<td class="comment-1" rowspan="1">Jump if it isn't</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43427"></span>A9A3</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Reset the list number at R$A25B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43428"></span>A9A4</td>
+<td class="instruction">LD ($A25B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43431"></span>A9A7</td>
+<td class="instruction">JP $A993</td>
+<td class="comment-1" rowspan="1">Jump back</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43434"></span>A9AA</td>
+<td class="instruction">LD ($A251),A</td>
+<td class="comment-1" rowspan="1">Set <a href="41553.html">A251</a> to the room number to display</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43437"></span>A9AD</td>
+<td class="instruction">LD A,($A25B)</td>
+<td class="comment-1" rowspan="3">Point $A25B to the next room on the list</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43440"></span>A9B0</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43441"></span>A9B1</td>
+<td class="instruction">LD ($A25B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43444"></span>A9B4</td>
+<td class="instruction">CALL <a href="43321.html">$A939</a></td>
+<td class="comment-1" rowspan="1">Configure current room</td>
+</tr>
+<tr>
+<td class="address-2"><span id="43447"></span>A9B7</td>
+<td class="instruction">LD A,($A25C)</td>
+<td class="comment-1" rowspan="1">Pick up loop counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43450"></span>A9BA</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrement loop counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43451"></span>A9BB</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">is zero?</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43452"></span>A9BC</td>
+<td class="instruction">JP Z,$A98E</td>
+<td class="comment-1" rowspan="1">Jump back if so and show next room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43455"></span>A9BF</td>
+<td class="instruction">LD ($A25C),A</td>
+<td class="comment-1" rowspan="1">Save loop counter at <a href="41564.html">A25C</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="43458"></span>A9C2</td>
+<td class="instruction">CALL <a href="46731.html">$B68B</a></td>
+<td class="comment-1" rowspan="1">Draw enemy projectiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43461"></span>A9C5</td>
+<td class="instruction">CALL <a href="48200.html">$BC48</a></td>
+<td class="comment-1" rowspan="1">Draw enemies</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43464"></span>A9C8</td>
+<td class="instruction">CALL <a href="54308.html">$D424</a></td>
+<td class="comment-1" rowspan="1">Play sound channels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43467"></span>A9CB</td>
+<td class="instruction">CALL <a href="45951.html#45956">$B384</a></td>
+<td class="comment-1" rowspan="1">Copy tile graphic into room graphic data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43470"></span>A9CE</td>
+<td class="instruction">CALL <a href="42034.html">$A432</a></td>
+<td class="comment-1" rowspan="1">Copy room graphic buffer to display file</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43473"></span>A9D1</td>
+<td class="instruction">CALL <a href="45635.html">$B243</a></td>
+<td class="comment-1" rowspan="1">Reset room graphic buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43476"></span>A9D4</td>
+<td class="instruction">CALL <a href="54308.html">$D424</a></td>
+<td class="comment-1" rowspan="1">Play sound channels</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43479"></span>A9D7</td>
+<td class="instruction">CALL <a href="53081.html">$CF59</a></td>
+<td class="comment-1" rowspan="1">Handle enemy projectile collision with Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43482"></span>A9DA</td>
+<td class="instruction">CALL <a href="47590.html">$B9E6</a></td>
+<td class="comment-1" rowspan="1">Update color attribute for weapon icon on HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43485"></span>A9DD</td>
+<td class="instruction">CALL <a href="51683.html">$C9E3</a></td>
+<td class="comment-1" rowspan="1">Generate train wagons: front, middle or rear wagon. No used</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43488"></span>A9E0</td>
+<td class="instruction">CALL <a href="51765.html">$CA35</a></td>
+<td class="comment-1" rowspan="1">Creates a new mobile enemy on room</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43491"></span>A9E3</td>
+<td class="instruction">CALL <a href="39088.html">$98B0</a></td>
+<td class="comment-1" rowspan="1">Update attribute color for score points in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43494"></span>A9E6</td>
+<td class="instruction">CALL <a href="39274.html">$996A</a></td>
+<td class="comment-1" rowspan="1">HUD flash</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43497"></span>A9E9</td>
+<td class="instruction">CALL <a href="41580.html">$A26C</a></td>
+<td class="comment-1" rowspan="1">Update timer bar in HUD</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43500"></span>A9EC</td>
+<td class="instruction">CALL <a href="42514.html#42527">$A61F</a></td>
+<td class="comment-1" rowspan="1">Check for FIRE key pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43503"></span>A9EF</td>
+<td class="instruction">JP Z,<a href="38000.html#38030">$948E</a></td>
+<td class="comment-1" rowspan="1">Jump to init game if pressed</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43506"></span>A9F2</td>
+<td class="instruction">CALL <a href="42758.html">$A706</a></td>
+<td class="comment-1" rowspan="1">Update arrow tiles, shield recharger and respawn indicator</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43509"></span>A9F5</td>
+<td class="instruction">LD A,($A1B0)</td>
+<td class="comment-1" rowspan="3">Change tilt arrow tiles</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43512"></span>A9F8</td>
+<td class="instruction">XOR $01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43514"></span>A9FA</td>
+<td class="instruction">LD ($A1B0),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="43517"></span>A9FD</td>
+<td class="instruction">JP $A9B7</td>
+<td class="comment-1" rowspan="1">Jump back to main loop game</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="43398.html">A986</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#43406">Map</a></td>
+<td class="next">
+Next: <a href="43520.html">AA00</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

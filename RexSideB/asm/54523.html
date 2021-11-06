@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Data at D4FB</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-b">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Data</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54513.html">D4F1</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54523">Map</a></td>
+<td class="next">
+Next: <a href="54730.html">D5CA</a>
+</td>
+</tr>
+</table>
+<div class="description">D4FB: Sound data</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$00</td>
+<td class="" colspan="1" rowspan="1">Channel number (1-3)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$01</td>
+<td class="" colspan="1" rowspan="1">Noise/tone 0 - tone  1 - noise</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$02</td>
+<td class="" colspan="1" rowspan="1">number of tones</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$03</td>
+<td class="" colspan="1" rowspan="1">Channel Volume (bits 7-4)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$04</td>
+<td class="" colspan="1" rowspan="1">base fine/noise pitch</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$05</td>
+<td class="" colspan="1" rowspan="1">base coarse pitch</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$06</td>
+<td class="" colspan="1" rowspan="1">variation counter for note #1</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$07</td>
+<td class="" colspan="1" rowspan="1">pitch delta for note #1 (bit 7 - coarse pitch / bits6-0 fine pitch)</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$08</td>
+<td class="" colspan="1" rowspan="1">volume delta for note #1</td>
+</tr>
+<tr>
+<td class="" colspan="1" rowspan="1">$09 +</td>
+<td class="" colspan="1" rowspan="1">counter, pitch and volume for note #n</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54523"></span>D4FB</td>
+<td class="instruction">DEFB $01,$01,$01,$AA,$0A,$00</td>
+<td class="comment-1" rowspan="2">Weapon sound for basic laser, doub fire and multiple</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54529"></span>D501</td>
+<td class="instruction">DEFB $0F,$00,$F4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54532"></span>D504</td>
+<td class="instruction">DEFB $03,$01,$02,$64,$0A,$00</td>
+<td class="comment-1" rowspan="2">Enemy weapon sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54538"></span>D50A</td>
+<td class="instruction">DEFB $03,$05,$14</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54541"></span>D50D</td>
+<td class="instruction">DEFB $01,$01,$01,$96,$0A,$00</td>
+<td class="comment-1" rowspan="2">Weapon sound for laser</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54547"></span>D513</td>
+<td class="instruction">DEFB $64,$0A,$FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54550"></span>D516</td>
+<td class="instruction">DEFB $01,$01,$01,$B8,$0A,$00</td>
+<td class="comment-1" rowspan="2">Weapon sound for spray</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54556"></span>D51C</td>
+<td class="instruction">DEFB $03,$00,$9C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54559"></span>D51F</td>
+<td class="instruction">DEFB $03,$01,$01,$78,$0A,$00</td>
+<td class="comment-1" rowspan="2">Projectile impact sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54565"></span>D525</td>
+<td class="instruction">DEFB $02,$00,$F0</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54568"></span>D528</td>
+<td class="instruction">DEFB $03,$01,$02,$FF,$0A,$00</td>
+<td class="comment-1" rowspan="3">Explosion sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54574"></span>D52E</td>
+<td class="instruction">DEFB $08,$3C,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54577"></span>D531</td>
+<td class="instruction">DEFB $26,$00,$F9</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54580"></span>D534</td>
+<td class="instruction">DEFB $02,$00,$01,$82,$E8,$03</td>
+<td class="comment-1" rowspan="2">Shield sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54586"></span>D53A</td>
+<td class="instruction">DEFB $04,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54589"></span>D53D</td>
+<td class="instruction">DEFB $02,$00,$01,$FF,$20,$4E</td>
+<td class="comment-1" rowspan="2">Sound not used</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54595"></span>D543</td>
+<td class="instruction">DEFB $02,$0A,$F6</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54598"></span>D546</td>
+<td class="instruction">DEFB $02,$00,$02,$A6,$40,$9C</td>
+<td class="comment-1" rowspan="3">Rex teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54604"></span>D54C</td>
+<td class="instruction">DEFB $5A,$00,$01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54607"></span>D54F</td>
+<td class="instruction">DEFB $1E,$00,$FA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54610"></span>D552</td>
+<td class="instruction">DEFB $02,$00,$02,$3C,$40,$9C</td>
+<td class="comment-1" rowspan="3">Rex dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54616"></span>D558</td>
+<td class="instruction">DEFB $1E,$00,$06</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54619"></span>D55B</td>
+<td class="instruction">DEFB $5A,$00,$FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54622"></span>D55E</td>
+<td class="instruction">DEFB $02,$00,$05,$96,$DE,$01</td>
+<td class="comment-1" rowspan="6">Big Bubble catching sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54628"></span>D564</td>
+<td class="instruction">DEFB $02,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54631"></span>D567</td>
+<td class="instruction">DEFB $02,$CC,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54634"></span>D56A</td>
+<td class="instruction">DEFB $02,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54637"></span>D56D</td>
+<td class="instruction">DEFB $02,$D1,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54640"></span>D570</td>
+<td class="instruction">DEFB $02,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54643"></span>D573</td>
+<td class="instruction">DEFB $02,$00,$05,$96,$EF,$00</td>
+<td class="comment-1" rowspan="6">Small Bubble catching sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54649"></span>D579</td>
+<td class="instruction">DEFB $02,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54652"></span>D57C</td>
+<td class="instruction">DEFB $02,$E6,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54655"></span>D57F</td>
+<td class="instruction">DEFB $02,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54658"></span>D582</td>
+<td class="instruction">DEFB $02,$E9,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54661"></span>D585</td>
+<td class="instruction">DEFB $02,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54664"></span>D588</td>
+<td class="instruction">DEFB $02,$00,$05,$96,$BC,$03</td>
+<td class="comment-1" rowspan="6">Smartbomb catching sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54670"></span>D58E</td>
+<td class="instruction">DEFB $02,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54673"></span>D591</td>
+<td class="instruction">DEFB $02,$CA,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54676"></span>D594</td>
+<td class="instruction">DEFB $02,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54679"></span>D597</td>
+<td class="instruction">DEFB $02,$CD,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54682"></span>D59A</td>
+<td class="instruction">DEFB $02,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54685"></span>D59D</td>
+<td class="instruction">DEFB $02,$00,$09,$C8,$20,$4E</td>
+<td class="comment-1" rowspan="10">Respawn sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54691"></span>D5A3</td>
+<td class="instruction">DEFB $0A,$00,$01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54694"></span>D5A6</td>
+<td class="instruction">DEFB $02,$00,$9C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54697"></span>D5A9</td>
+<td class="instruction">DEFB $02,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54700"></span>D5AC</td>
+<td class="instruction">DEFB $0A,$0A,$FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54703"></span>D5AF</td>
+<td class="instruction">DEFB $0A,$46,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54706"></span>D5B2</td>
+<td class="instruction">DEFB $02,$00,$9C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54709"></span>D5B5</td>
+<td class="instruction">DEFB $05,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54712"></span>D5B8</td>
+<td class="instruction">DEFB $02,$04,$64</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54715"></span>D5BB</td>
+<td class="instruction">DEFB $04,$00,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54718"></span>D5BE</td>
+<td class="instruction">DEFB $02,$00,$02,$A0,$40,$9C</td>
+<td class="comment-1" rowspan="3">Shield recharging sound</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54724"></span>D5C4</td>
+<td class="instruction">DEFB $07,$05,$01</td>
+</tr>
+<tr>
+<td class="address-1"><span id="54727"></span>D5C7</td>
+<td class="instruction">DEFB $07,$FB,$FF</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54513.html">D4F1</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54523">Map</a></td>
+<td class="next">
+Next: <a href="54730.html">D5CA</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

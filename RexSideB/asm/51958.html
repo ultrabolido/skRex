@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at CAF6</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51765.html">CA35</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51958">Map</a></td>
+<td class="next">
+Next: <a href="52033.html">CB41</a>
+</td>
+</tr>
+</table>
+<div class="description">CAF6: Check if enemy can be generated in a position</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="51765.html#51817">CA69</a>.
+</div>
+</div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Enemy can be generated if <span class="register">A</span> &lt;&gt; 0</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="51958"></span>CAF6</td>
+<td class="instruction">CALL <a href="42667.html">$A6AB</a></td>
+<td class="comment-1" rowspan="1">Computes into <span class="register">HL</span> address position in tile type buffer based on (x,y) position on screen</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51961"></span>CAF9</td>
+<td class="instruction">LD DE,$0060</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to point under the feet of the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51964"></span>CAFC</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51965"></span>CAFD</td>
+<td class="instruction">LD ($A22C),HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51968"></span>CB00</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51969"></span>CB01</td>
+<td class="instruction">CALL <a href="52725.html#52759">$CE17</a></td>
+<td class="comment-1" rowspan="1">Check if tile type is background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51972"></span>CB04</td>
+<td class="instruction">JP Z,$CB3F</td>
+<td class="comment-1" rowspan="1">Jump if is a background tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51975"></span>CB07</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to point in front the feet of the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51978"></span>CB0A</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51979"></span>CB0B</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51981"></span>CB0D</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51982"></span>CB0E</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Check if tile type is background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51983"></span>CB0F</td>
+<td class="instruction">JP NZ,$CB3F</td>
+<td class="comment-1" rowspan="1">Jump if not a background tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51986"></span>CB12</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to point in front the head of the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51987"></span>CB13</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51989"></span>CB15</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51990"></span>CB16</td>
+<td class="instruction">CALL <a href="52725.html#52759">$CE17</a></td>
+<td class="comment-1" rowspan="1">Check if tile type is background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51993"></span>CB19</td>
+<td class="instruction">JP NZ,$CB3F</td>
+<td class="comment-1" rowspan="1">Jump if not a background tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51996"></span>CB1C</td>
+<td class="instruction">LD HL,($A22C)</td>
+<td class="comment-1" rowspan="2">Recover base address under of the feet of enemy and increase pointer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="51999"></span>CB1F</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52000"></span>CB20</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52001"></span>CB21</td>
+<td class="instruction">CALL <a href="52725.html#52759">$CE17</a></td>
+<td class="comment-1" rowspan="1">Check if tile type is background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52004"></span>CB24</td>
+<td class="instruction">JP Z,$CB3F</td>
+<td class="comment-1" rowspan="1">Jump if is a background tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52007"></span>CB27</td>
+<td class="instruction">LD DE,$0020</td>
+<td class="comment-1" rowspan="3">Set <span class="register">HL</span> to point in front the feet of the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52010"></span>CB2A</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52011"></span>CB2B</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52013"></span>CB2D</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52014"></span>CB2E</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Check if tile type is background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52015"></span>CB2F</td>
+<td class="instruction">JP NZ,$CB3F</td>
+<td class="comment-1" rowspan="1">Jump if not a background tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52018"></span>CB32</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="2">Set <span class="register">HL</span> to point in front the head of the enemy</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52019"></span>CB33</td>
+<td class="instruction">SBC HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52021"></span>CB35</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the tile type</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52022"></span>CB36</td>
+<td class="instruction">CALL <a href="52725.html#52759">$CE17</a></td>
+<td class="comment-1" rowspan="1">Check if tile type is background</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52025"></span>CB39</td>
+<td class="instruction">JP NZ,$CB3F</td>
+<td class="comment-1" rowspan="1">Jump if not a background tile</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52028"></span>CB3C</td>
+<td class="instruction">LD A,$FF</td>
+<td class="comment-1" rowspan="1">Return <span class="register">A</span> = $FF so the enemy can be generated</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52030"></span>CB3E</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="52031"></span>CB3F</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Return <span class="register">A</span> = 0 so the enemy cannot be generated</td>
+</tr>
+<tr>
+<td class="address-1"><span id="52032"></span>CB40</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="51765.html">CA35</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#51958">Map</a></td>
+<td class="next">
+Next: <a href="52033.html">CB41</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>

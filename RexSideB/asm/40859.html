@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rex: Routine at 9F9B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../rex.css" />
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/scr/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40847.html">9F8F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40859">Map</a></td>
+<td class="next">
+Next: <a href="41125.html">A0A5</a>
+</td>
+</tr>
+</table>
+<div class="description">9F9B: Handle Rex atoms flush during teleporting</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="38000.html">9470</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40859"></span>9F9B</td>
+<td class="instruction">LD A,($A1F8)</td>
+<td class="comment-1" rowspan="3">Return if atoms are not flushing on teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40862"></span>9F9E</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40863"></span>9F9F</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40864"></span>9FA0</td>
+<td class="instruction">LD IY,$A0AD</td>
+<td class="comment-1" rowspan="1">Set <span class="register">IY</span> to the address for the Rex atoms data buffer during teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40868"></span>9FA4</td>
+<td class="instruction">LD B,$14</td>
+<td class="comment-1" rowspan="1">Set <span class="register">BC</span> to the number of 'Rex atoms' (20)</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40870"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="40859.html#40939">9FEB</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40870"></span>9FA6</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Save <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40871"></span>9FA7</td>
+<td class="instruction">LD A,(IY+$00)</td>
+<td class="comment-1" rowspan="3">If atom is not configured jump to iniciatise atom data</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40874"></span>9FAA</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40875"></span>9FAB</td>
+<td class="instruction">JP Z,$A023</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40878"></span>9FAE</td>
+<td class="instruction">LD A,($A24F)</td>
+<td class="comment-1" rowspan="3">Set <a href="40859.html#41107">A093</a> the x-position of the atom, based on x-offset of atom and x-position of Rex</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40881"></span>9FB1</td>
+<td class="instruction">ADD A,(IY+$01)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40884"></span>9FB4</td>
+<td class="instruction">LD ($A22C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40887"></span>9FB7</td>
+<td class="instruction">AND $07</td>
+<td class="comment-1" rowspan="6">Set <span class="register">A</span> the graphic data for atom based on bit2-0 x-position of atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40889"></span>9FB9</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40890"></span>9FBA</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40892"></span>9FBC</td>
+<td class="instruction">LD HL,$A0A5</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40895"></span>9FBF</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40896"></span>9FC0</td>
+<td class="instruction">LD A,(HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40897"></span>9FC1</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="1">Save <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40898"></span>9FC2</td>
+<td class="instruction">LD A,(IY+$02)</td>
+<td class="comment-1" rowspan="17">Computes into <span class="register">HL</span> the address into room graphic data of the atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40901"></span>9FC5</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40902"></span>9FC6</td>
+<td class="instruction">LD H,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40904"></span>9FC8</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40905"></span>9FC9</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40906"></span>9FCA</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40907"></span>9FCB</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40908"></span>9FCC</td>
+<td class="instruction">ADD HL,HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40909"></span>9FCD</td>
+<td class="instruction">LD A,($A22C)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40912"></span>9FD0</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40914"></span>9FD2</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40916"></span>9FD4</td>
+<td class="instruction">SRL A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40918"></span>9FD6</td>
+<td class="instruction">LD E,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40919"></span>9FD7</td>
+<td class="instruction">LD D,$00</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40921"></span>9FD9</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40922"></span>9FDA</td>
+<td class="instruction">LD DE,$EAFF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40925"></span>9FDD</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40926"></span>9FDE</td>
+<td class="instruction">POP AF</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">AF</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40927"></span>9FDF</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="2">Put the graphic data atom in this location</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40928"></span>9FE0</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40929"></span>9FE1</td>
+<td class="instruction">LD A,($A1FB)</td>
+<td class="comment-1" rowspan="3">if teleporting Rex at game begin jump to update atom position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40932"></span>9FE4</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40933"></span>9FE5</td>
+<td class="instruction">JP Z,$A070</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40936"></span>9FE8</td>
+<td class="instruction">JP $A08D</td>
+<td class="comment-1" rowspan="1">Jump to update atom position</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40939"></span>
+<div class="comments">
+<div class="paragraph">
+Process another atom
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40939"></span>9FEB</td>
+<td class="instruction">LD DE,$0003</td>
+<td class="comment-1" rowspan="2">Point <span class="register">IY</span> to the next atom into Rex atom data table</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40942"></span>9FEE</td>
+<td class="instruction">ADD IY,DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40944"></span>9FF0</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40945"></span>9FF1</td>
+<td class="instruction">DJNZ $9FA6</td>
+<td class="comment-1" rowspan="1">Jump back until all atoms has been processed</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40947"></span>
+<div class="comments">
+<div class="paragraph">
+All atoms processed
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40947"></span>9FF3</td>
+<td class="instruction">LD A,($A1FB)</td>
+<td class="comment-1" rowspan="3">Jump forward if Rex is teleporing on init game</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40950"></span>9FF6</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40951"></span>9FF7</td>
+<td class="instruction">JP Z,$A006</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40954"></span>9FFA</td>
+<td class="instruction">LD A,($A250)</td>
+<td class="comment-1" rowspan="5">Decrement y-position of Rex if y-position less than 24</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40957"></span>9FFD</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40958"></span>9FFE</td>
+<td class="instruction">CP $18</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40960"></span>A000</td>
+<td class="instruction">JP C,$A006</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40963"></span>A003</td>
+<td class="instruction">LD ($A250),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40966"></span>A006</td>
+<td class="instruction">LD A,($A1FA)</td>
+<td class="comment-1" rowspan="3">Decrement teleporting loop counter</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40969"></span>A009</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40970"></span>A00A</td>
+<td class="instruction">LD ($A1FA),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40973"></span>A00D</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="2">Return if loop counter is not zero</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40974"></span>A00E</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40975"></span>
+<div class="comments">
+<div class="paragraph">
+Loop counter for teleporting finished
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40975"></span>A00F</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Set Rex visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40977"></span>A011</td>
+<td class="instruction">LD ($A1F6),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40980"></span>A014</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="3">Finish teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40981"></span>A015</td>
+<td class="instruction">LD ($A1F8),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40984"></span>A018</td>
+<td class="instruction">LD ($A1F9),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40987"></span>A01B</td>
+<td class="instruction">LD A,($A1EE)</td>
+<td class="comment-1" rowspan="3">Jump to resume game after Rex is dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40990"></span>A01E</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40991"></span>A01F</td>
+<td class="instruction">JP NZ,<a href="40296.html">$9D68</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="40994"></span>A022</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="40995"></span>
+<div class="comments">
+<div class="paragraph">
+Initialise data for Rex atoms during teleporting
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="40995"></span>A023</td>
+<td class="instruction">LD A,($A1FB)</td>
+<td class="comment-1" rowspan="3">Jump forward if teleporting Rex after dead</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40998"></span>A026</td>
+<td class="instruction">OR A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="40999"></span>A027</td>
+<td class="instruction">JP NZ,$A04B</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41002"></span>
+<div class="comments">
+<div class="paragraph">
+Rex is teleporting on game begin
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41002"></span>A02A</td>
+<td class="instruction">LD A,($A1FA)</td>
+<td class="comment-1" rowspan="3">If teleporting loop counter &lt; 50 jump to process next atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41005"></span>A02D</td>
+<td class="instruction">CP $32</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41007"></span>A02F</td>
+<td class="instruction">JP C,$9FEB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41010"></span>A032</td>
+<td class="instruction">CALL <a href="42269.html#42288">$A530</a></td>
+<td class="comment-1" rowspan="3">Set <span class="register">A</span> a random number between 4 and 19</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41013"></span>A035</td>
+<td class="instruction">AND $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41015"></span>A037</td>
+<td class="instruction">ADD A,$04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41017"></span>A039</td>
+<td class="instruction">LD (IY+$00),A</td>
+<td class="comment-1" rowspan="1">Set this number as y-delta into data buffer for atom y-position variation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41020"></span>A03C</td>
+<td class="instruction">CALL <a href="42269.html#42288">$A530</a></td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> a random number between 0 and 15</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41023"></span>A03F</td>
+<td class="instruction">AND $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41025"></span>A041</td>
+<td class="instruction">LD (IY+$01),A</td>
+<td class="comment-1" rowspan="1">Set this number as x-offset into the teleporting data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41028"></span>A044</td>
+<td class="instruction">LD (IY+$02),$00</td>
+<td class="comment-1" rowspan="1">Set 0 as y-position of Rex atoms into the teleporting data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41032"></span>A048</td>
+<td class="instruction">JP $9FEB</td>
+<td class="comment-1" rowspan="1">Jump to process next atom</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41035"></span>
+<div class="comments">
+<div class="paragraph">
+Rex is teleporting after dead
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41035"></span>A04B</td>
+<td class="instruction">LD A,($A1FA)</td>
+<td class="comment-1" rowspan="3">If teleporting loop counter &lt; 50 jump to process next atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41038"></span>A04E</td>
+<td class="instruction">CP $32</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41040"></span>A050</td>
+<td class="instruction">JP C,$9FEB</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41043"></span>A053</td>
+<td class="instruction">CALL <a href="42269.html#42288">$A530</a></td>
+<td class="comment-1" rowspan="3">Set <span class="register">A</span> a random number between 4 and 19</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41046"></span>A056</td>
+<td class="instruction">AND $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41048"></span>A058</td>
+<td class="instruction">ADD A,$04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41050"></span>A05A</td>
+<td class="instruction">LD (IY+$00),A</td>
+<td class="comment-1" rowspan="1">Set this number as y-delta into data buffer for atom y-position variation</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41053"></span>A05D</td>
+<td class="instruction">CALL <a href="42269.html#42288">$A530</a></td>
+<td class="comment-1" rowspan="2">Set <span class="register">A</span> a random number between 0 and 15</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41056"></span>A060</td>
+<td class="instruction">AND $0F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41058"></span>A062</td>
+<td class="instruction">LD (IY+$01),A</td>
+<td class="comment-1" rowspan="1">Set this number as x-offset into the teleporting data buffer</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41061"></span>A065</td>
+<td class="instruction">LD A,($A250)</td>
+<td class="comment-1" rowspan="3">Set the y-position of Rex minus 4 the y-position for Rex atoms during teleporting</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41064"></span>A068</td>
+<td class="instruction">SUB $04</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41066"></span>A06A</td>
+<td class="instruction">LD (IY+$02),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41069"></span>A06D</td>
+<td class="instruction">JP $9FEB</td>
+<td class="comment-1" rowspan="1">Jump to process next atom</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41072"></span>
+<div class="comments">
+<div class="paragraph">
+Update data for the atom when teleporting Rex at game begin
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41072"></span>A070</td>
+<td class="instruction">LD A,(IY+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the y-position of atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41075"></span>A073</td>
+<td class="instruction">ADD A,(IY+$00)</td>
+<td class="comment-1" rowspan="1">Add to <span class="register">A</span> the y-offset of atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41078"></span>A076</td>
+<td class="instruction">LD HL,$A250</td>
+<td class="comment-1" rowspan="2">Compare atom y-position with Rex y-position</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41081"></span>A079</td>
+<td class="instruction">CP (HL)</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41082"></span>A07A</td>
+<td class="instruction">JP C,$A087</td>
+<td class="comment-1" rowspan="1">Jump forward if Rex y-position is greater than y-position of atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41085"></span>A07D</td>
+<td class="instruction">LD (IY+$00),$00</td>
+<td class="comment-1" rowspan="1">Reset y-offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41089"></span>A081</td>
+<td class="instruction">CALL <a href="40453.html">$9E05</a></td>
+<td class="comment-1" rowspan="1">Set Rex visible</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41092"></span>A084</td>
+<td class="instruction">JP $9FEB</td>
+<td class="comment-1" rowspan="1">Jump to process next atom</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41095"></span>A087</td>
+<td class="instruction">LD (IY+$02),A</td>
+<td class="comment-1" rowspan="1">Set the new y-position for the atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41098"></span>A08A</td>
+<td class="instruction">JP $9FEB</td>
+<td class="comment-1" rowspan="1">Jump to process next atom</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="41101"></span>
+<div class="comments">
+<div class="paragraph">
+Update data for the atom when teleporting Rex afer dead
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41101"></span>A08D</td>
+<td class="instruction">LD A,(IY+$02)</td>
+<td class="comment-1" rowspan="1">Set <span class="register">A</span> the y-position of atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41104"></span>A090</td>
+<td class="instruction">SUB (IY+$00)</td>
+<td class="comment-1" rowspan="1">substract to <span class="register">A</span> the y-offset of atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41107"></span>A093</td>
+<td class="instruction">CP $DF</td>
+<td class="comment-1" rowspan="2">Jump forward if atom y-position greater than 32</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41109"></span>A095</td>
+<td class="instruction">JP C,$A09F</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41112"></span>A098</td>
+<td class="instruction">LD (IY+$00),$00</td>
+<td class="comment-1" rowspan="1">Reset y-offset</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41116"></span>A09C</td>
+<td class="instruction">JP $9FEB</td>
+<td class="comment-1" rowspan="1">Jump to process next atom</td>
+</tr>
+<tr>
+<td class="address-2"><span id="41119"></span>A09F</td>
+<td class="instruction">LD (IY+$02),A</td>
+<td class="comment-1" rowspan="1">Set the new y-position for the atom</td>
+</tr>
+<tr>
+<td class="address-1"><span id="41122"></span>A0A2</td>
+<td class="instruction">JP $9FEB</td>
+<td class="comment-1" rowspan="1">Jump to process next atom</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="40847.html">9F8F</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#40859">Map</a></td>
+<td class="next">
+Next: <a href="41125.html">A0A5</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release">The complete Rex (Side B) RAM disassembly 20211106</div>
+<div class="copyright">&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 8.5.</div>
+</footer>
+</body>
+</html>
