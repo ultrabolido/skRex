@@ -1,0 +1,45 @@
+[Config]
+Expand=#INCLUDE(Expand)
+
+[Game]
+Game=Rex
+Logo=#LOGO
+StyleSheet=skoolkit.css;rex.css
+Copyright=&#169; 1988 Martech Games Ltd. &#169; 2021 Andreu Font.
+Release=The complete Rex (Side B) RAM disassembly 20211106
+
+[Titles]
+ScreenBuffers=Screen buffers
+
+[Index:DataTables:Data tables and buffers]
+GameStatusBuffer
+ScreenBuffers
+
+[Paths]
+ScreenBuffers=tables/screenBuffers.html
+
+[Page:ScreenBuffers]
+PageContent=#INCLUDE(ScreenBuffers)
+
+[ScreenBuffers]
+Initially, this memory is used to hold the graphic data and attributes of the title screen, some routines to handle the input selection and data
+for the enemy animation in the title screen. Once the game has started, this memory is overwritten by the screen buffers 
+and other related data described in the table below.
+<br/>
+#TABLE(default)
+{ =h Address | =h Length | =h Description }
+{ D962 | 2109 | Mapping table for tile graphics data and room graphic data buffer. Overwrites the data buffer at DE9F }
+{ DE9F | 768 | Tile counter buffer - Initialised but never used }
+{ E19F | 96 | Not used }
+{ E1FF | 672 | Tile type buffer }
+{ E49F | 96 | Not used }
+{ E4FF | 96 | Attribute buffer for HUD }
+{ E55F | 672 | Attribute buffer for room }
+{ E7FF | 768 | Graphic data for HUD }
+{ EAFF | 5376 | Graphics data for room }
+TABLE#
+
+[Expand]
+#DEF(#TILE(n) 
+    #UDG($63E0+8*$n,#PEEK($6BE0+$n),2)(tile#EVAL$n,,2)
+)
