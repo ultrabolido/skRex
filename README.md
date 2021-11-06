@@ -6,7 +6,9 @@ A disassembly of the [Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum) versi
 Browse the latest release:
 
 * [Rex (Side A) disassembly](https://ultrabolido.github.io/skRex/RexSideA) (hexadecimal)
+* [Rex (Side B) disassembly](https://ultrabolido.github.io/skRex/RexSideB) (hexadecimal)
 
 To build the current development version of the disassembly, first obtain the development version of [SkoolKit](https://github.com/skoolkid/skoolkit). Then:
 
     $ skool2html.py sources/RexSideA.skool
+    $ skool2html.py sources/RexSideB.skool
